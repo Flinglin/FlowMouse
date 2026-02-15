@@ -144,10 +144,17 @@ class GestureVisualizer {
 		this.duplicatePointCount = 0;
 	}
 
+	#createElement(tagName) {
+		if (document.contentType === 'application/xml' || document.contentType === 'image/svg+xml') {
+			return document.createElementNS('http://www.w3.org/1999/xhtml', tagName);
+		}
+		return document.createElement(tagName);
+	}
+
 	init() {
 		if (this.container) return;
 
-		this.container = document.createElement('div');
+		this.container = this.#createElement('div');
 
 		this.#updateContainerLang(this.settings.lang);
 
@@ -167,11 +174,11 @@ class GestureVisualizer {
 
 		this.shadow = this.container.attachShadow({ mode: 'closed' });
 
-		this.fontStyle = document.createElement('style');
+		this.fontStyle = this.#createElement('style');
 		this.fontStyle.textContent = this.#generateFontStyleCss(this.settings.lang);
 		this.shadow.appendChild(this.fontStyle);
 
-		this.canvas = document.createElement('canvas');
+		this.canvas = this.#createElement('canvas');
 		this.canvas.style.cssText = `
 			position: absolute;
 			top: 0;
@@ -200,7 +207,7 @@ class GestureVisualizer {
 
 		this.shadow.appendChild(this.canvas);
 
-		this.hud = document.createElement('div');
+		this.hud = this.#createElement('div');
 		this.updateHudStyle();
 		this.shadow.appendChild(this.hud);
 
@@ -413,7 +420,7 @@ class GestureVisualizer {
 		if (!this.container) this.init();
 		const bgOpacity = this.settings.hudBgOpacity / 100;
 
-		const toast = document.createElement('div');
+		const toast = this.#createElement('div');
 		toast.style.cssText = `
 			position: absolute;
 			bottom: 20%;

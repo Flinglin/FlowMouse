@@ -2,15 +2,22 @@
 	'use strict';
 
 	const isFirefox = false;
+	const isEdgeDesktop = navigator.userAgent.includes('Edg/');
+	const isEdge = navigator.userAgent.includes('Edg/') || navigator.userAgent.includes('EdgA/');
 
 	let translations = {};
 	let currentLang = 'en';
 	let initPromise = null;
 
+	let platform = 'unknown';
+	let platformName = 'System';
+	const OS_NAMES = {
+		'win': 'Windows', 'mac': 'macOS', 'linux': 'Linux',
+		'cros': 'Chrome OS', 'android': 'Android', 'openbsd': 'OpenBSD'
+	};
+
 	const SUPPORTED_LANGUAGES = {
 		"en": { name: "English", enName: "English" },
-		"zh_CN": { name: "简体中文", enName: "Chinese (Simplified)" },
-		"zh_TW": { name: "繁體中文", enName: "Chinese (Traditional)" },
 		"id": { name: "Bahasa Indonesia", enName: "Indonesian" },
 		"ms": { name: "Bahasa Melayu", enName: "Malay" },
 		"cs": { name: "Čeština", enName: "Czech" },
@@ -46,7 +53,9 @@
 		"hi": { name: "हिन्दी", enName: "Hindi" },
 		"th": { name: "ไทย", enName: "Thai" },
 		"ja": { name: "日本語", enName: "Japanese" },
-		"ko": { name: "한국어", enName: "Korean" }
+		"ko": { name: "한국어", enName: "Korean" },
+		"zh_CN": { name: "简体中文", enName: "Chinese (Simplified)" },
+		"zh_TW": { name: "繁體中文", enName: "Chinese (Traditional)" },
 	};
 
 	function getSupportedLanguages() {
@@ -88,7 +97,7 @@
 		if (translations[key] && translations[key].message) {
 			message = translations[key].message;
 		} else {
-			message = chrome.i18n.getMessage(key, substitutions) || key;
+			message = chrome.i18n.getMessage(key, substitutions) || '[!!!]' + key;
 		}
 		if (message.indexOf('%browserName%') !== -1) {
 			message = message.replaceAll("%browserName%", getBrowserName());
@@ -96,13 +105,13 @@
 		return message;
 	}
 
-	function applyI18n() {
-		if (currentLang) {
+	function applyI18n(rootElement = document) {
+		if (currentLang && rootElement === document) {
 			document.documentElement.lang = getHtmlLang();
 			document.documentElement.dir = getDir();
 		}
 
-		document.querySelectorAll('[data-i18n]').forEach(el => {
+		rootElement.querySelectorAll('[data-i18n]').forEach(el => {
 			const key = el.getAttribute('data-i18n');
 			const message = getMessage(key);
 			if (message && message !== key) {
@@ -110,7 +119,7 @@
 			}
 		});
 
-		document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+		rootElement.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
 			const key = el.getAttribute('data-i18n-placeholder');
 			const message = getMessage(key);
 			if (message && message !== key) {
@@ -118,7 +127,7 @@
 			}
 		});
 
-		document.querySelectorAll('[data-i18n-title]').forEach(el => {
+		rootElement.querySelectorAll('[data-i18n-title]').forEach(el => {
 			const key = el.getAttribute('data-i18n-title');
 			const message = getMessage(key);
 			if (message && message !== key) {
@@ -126,18 +135,20 @@
 			}
 		});
 
-		const titleEl = document.querySelector('title[data-i18n]');
-		if (titleEl) {
-			const key = titleEl.getAttribute('data-i18n');
-			const message = getMessage(key);
-			if (message && message !== key) {
-				document.title = message;
+		if (rootElement === document) {
+			const titleEl = document.querySelector('title[data-i18n]');
+			if (titleEl) {
+				const key = titleEl.getAttribute('data-i18n');
+				const message = getMessage(key);
+				if (message && message !== key) {
+					document.title = message;
+				}
 			}
-		}
-		
-		let i18nLoadStyle = document.getElementById('i18n-load-style');
-		if (i18nLoadStyle) {
-			i18nLoadStyle.remove();
+			
+			let i18nLoadStyle = document.getElementById('i18n-load-style');
+			if (i18nLoadStyle) {
+				i18nLoadStyle.remove();
+			}
 		}
 	}
 
@@ -171,8 +182,7 @@
 	function getBrowserType() {
 		if (browserType) return browserType;
 		{
-			const userAgent = navigator.userAgent.toLowerCase();
-			if (userAgent.indexOf('edg/') > -1) {
+			if (isEdge) {
 				browserType = 'edge';
 			} else {
 				browserType = 'chrome';
@@ -181,60 +191,48 @@
 		}
 	}
 
+	const browsers = {
+		'chrome': {
+			name: 'Chrome',
+			storeLink: 'https://chromewebstore.google.com/',
+			storeNameKey: 'storeNameChrome',
+			flowmouseStoreLink: 'https://chromewebstore.google.com/detail/fnldhkfidchnjiokpoemdhoejmaojkgp/reviews/my-review?utm_source=item-share-cb',
+			protocol: 'chrome://',
+		},
+		'edge': {
+			name: 'Edge',
+			storeLink: 'https://microsoftedge.microsoft.com/addons/',
+			storeNameKey: 'storeNameEdge',
+			flowmouseStoreLink: null,
+			protocol: 'edge://'
+		},
+		'firefox': {
+			name: 'Firefox',
+			storeLink: 'https://addons.mozilla.org/',
+			storeNameKey: 'storeNameFirefox',
+			flowmouseStoreLink: 'https://addons.mozilla.org/firefox/addon/flowmouse/',
+			protocol: 'about:'
+		}
+	}
+
 	let browserName;
 	function getBrowserName() {
 		if (browserName) return browserName;
-		const browserType = getBrowserType();
-		switch (browserType) {
-			case 'firefox':
-				browserName = 'Firefox';
-				break;
-			case 'edge':
-				browserName = 'Edge';
-				break;
-			default:
-				browserName = 'Chrome';
-				break;
-		}
+		browserName = getBrowserInfo().name;
 		return browserName;
 	}
 
-	const STORE_LINKS = {
-		chrome: 'https://chromewebstore.google.com/',
-		edge: 'https://microsoftedge.microsoft.com/addons/',
-		firefox: 'https://addons.mozilla.org/',
-	};
-
-	const FLOWMOUSE_STORE_LINKS = {
-		chrome: 'https://chromewebstore.google.com/detail/fnldhkfidchnjiokpoemdhoejmaojkgp/reviews/my-review?utm_source=item-share-cb',
-		edge: null,
-		firefox: null,
-	};
-
 	function getBrowserInfo() {
 		const browserType = getBrowserType();
-		const browserName = getBrowserName();
+		const browserConfig = browsers[browserType];
 		
-		let storeNameKey;
-		switch (browserType) {
-			case 'firefox':
-				storeNameKey = 'storeNameFirefox';
-				break;
-			case 'edge':
-				storeNameKey = 'storeNameEdge';
-				break;
-			default:
-				storeNameKey = 'storeNameChrome';
-				break;
-		}
-		const storeName = getMessage(storeNameKey);
-
 		return {
 			browserType,
-			browserName,
-			storeLink: STORE_LINKS[browserType],
-			flowmouseStoreLink: FLOWMOUSE_STORE_LINKS[browserType],
-			storeName
+			name: browserConfig.name,
+			storeLink: browserConfig.storeLink,
+			flowmouseStoreLink: browserConfig.flowmouseStoreLink,
+			storeName: getMessage(browserConfig.storeNameKey),
+			protocol: browserConfig.protocol,
 		};
 	}
 
@@ -277,7 +275,11 @@
 
 		applyI18n();
 
-		updateVersionFromManifest();
+		try {
+			const info = await chrome.runtime.getPlatformInfo();
+			platform = info.os || 'unknown';
+			platformName = OS_NAMES[info.os] || 'System';
+		} catch (e) { }
 	}
 
 	async function waitForInit() {
@@ -286,21 +288,6 @@
 		}
 		await initPromise;
 		return;
-	}
-
-	function updateVersionFromManifest() {
-		try {
-			const manifest = chrome.runtime.getManifest();
-			const version = manifest.version;
-			document.querySelectorAll('.version-from-manifest').forEach(el => {
-				if (el.textContent.startsWith('v') || el.textContent.startsWith('V')) {
-					el.textContent = `v${version}`;
-				} else {
-					el.textContent = version;
-				}
-			});
-		} catch (e) {
-		}
 	}
 
 	window.i18n = {
@@ -315,8 +302,13 @@
 		loadTranslations,
 		waitForInit,
 		isFirefox,
+		isEdge,
+		isEdgeDesktop,
 		getBrowserName,
 		getBrowserInfo,
+		get platform() { return platform; },
+		get platformName() { return platformName; },
+		version: chrome.runtime.getManifest().version,
 	};
 
 	initPromise = init();

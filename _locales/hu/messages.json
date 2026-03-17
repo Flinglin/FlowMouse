@@ -8,20 +8,12 @@
 		"description": "Short extension name for popup"
 	},
 	"extDescription": {
-		"message": "Nyílt forráskódú egérgesztus bővítmény, amely a magánéletre és a zökkenőmentes élményre összpontosít. Simák a gesztusok, szuper húzási támogatás, és minden adat helyben tárolódik.",
+		"message": "Nyílt forráskódú egérgesztus bővítmény, amely a magánéletre és a zökkenőmentes élményre összpontosít. Simák a gesztusok, szuper húzási támogatás.",
 		"description": "Extension description"
-	},
-	"appearance": {
-		"message": "Megjelenés",
-		"description": "Appearance section"
 	},
 	"theme": {
 		"message": "Téma",
 		"description": "Theme"
-	},
-	"themeDesc": {
-		"message": "Váltás világos és sötét téma között",
-		"description": "Theme description"
 	},
 	"themeDark": {
 		"message": "Sötét",
@@ -34,10 +26,6 @@
 	"themeAuto": {
 		"message": "Rendszer követése",
 		"description": "Auto theme - follow system"
-	},
-	"languageDesc": {
-		"message": "Nyelv kiválasztása",
-		"description": "Language description"
 	},
 	"syncStatus": {
 		"message": "Szinkronizálás állapota",
@@ -56,7 +44,7 @@
 		"description": "Author"
 	},
 	"privacyNote": {
-		"message": "🔒 Helyben fut, nincs hálózati hozzáférés kivéve a szinkronizálást, nincs adatgyűjtés",
+		"message": " Helyben fut, nincs hálózati hozzáférés kivéve a szinkronizálást, nincs adatgyűjtés",
 		"description": "Privacy note in footer"
 	},
 	"supportUsText": {
@@ -120,11 +108,19 @@
 		"description": "Hold the right mouse button and move the mouse to easily perform gestures"
 	},
 	"macLinuxContextMenuNotice": {
-		"message": "⚠️ Rendszerkorlátozások miatt macOS / Linux alatt gyors dupla jobb kattintás szükséges a helyi menü megnyitásához.",
+		"message": "Rendszerkorlátozások miatt, ha a jobb gombos gesztusok engedélyezve vannak, macOS / Linux alatt dupla jobb kattintás szükséges a helyi menü megnyitásához.",
 		"description": "Notice for macOS / Linux users about double right-click for context menu"
 	},
+	"macLinuxDoubleClickHint": {
+		"message": "A helyi menü megnyitásához kattintson duplán a jobb gombbal. (További információ)",
+		"description": "Short toast hint shown on first right-click on macOS/Linux explaining double-click requirement"
+	},
+	"edgeGestureConflictNotice": {
+		"message": "A(z) %browserName% beépített gesztusfunkciókkal rendelkezik. A FlowMouse gesztusainak használatához kérjük, <a href=\"#\" class=\"edge-gesture-link\">tiltse le a beépített gesztusokat</a> a(z) %browserName% beállításaiban.",
+		"description": "Notice for Edge users about built-in gesture conflict"
+	},
 	"macTextDragNotice": {
-		"message": "⚠️ A macOS viselkedése miatt szöveg húzásakor először jelöld ki a szöveget, majd nyomd le és tartsd lenyomva rövid ideig a bal gombot, mielőtt húznád. Ellenkező esetben a keresés nem indul el.",
+		"message": "A macOS viselkedése miatt szöveg húzásakor először jelölje ki a szöveget, majd a kijelölt területen belül nyomja le és tartsa lenyomva a bal gombot, és tartson rövid szünetet a húzás előtt. Ellenkező esetben előfordulhat, hogy a húzási funkció nem indul el.",
 		"description": "Notice for macOS users about text drag behavior"
 	},
 	"showTrail": {
@@ -159,6 +155,14 @@
 		"message": "Átlátszatanság",
 		"description": "Opacity"
 	},
+	"blur": {
+		"message": "Elmosás",
+		"description": "Blur radius"
+	},
+	"hudShadow": {
+		"message": "Árnyék",
+		"description": "HUD shadow toggle"
+	},
 	"text": {
 		"message": "Szöveg",
 		"description": "Text"
@@ -179,6 +183,10 @@
 		"message": "Görgetési animáció hatása fel/le gesztusokhoz",
 		"description": "Scroll smoothness description"
 	},
+	"smoothnessAuto": {
+		"message": "Automatikus",
+		"description": "Auto scroll smoothness - uses system if animation enabled, otherwise smooth"
+	},
 	"smoothnessSystem": {
 		"message": "Rendszer (Nagy teljesítmény)",
 		"description": "System scroll smoothness"
@@ -190,6 +198,18 @@
 	"smoothnessNone": {
 		"message": "Nincs animáció",
 		"description": "No scroll animation"
+	},
+	"scrollAccel": {
+		"message": "Folyamatos görgetés szorzója",
+		"description": "Speed multiplier applied when scrolling consecutively"
+	},
+	"scrollAccelOff": {
+		"message": "Ki",
+		"description": "Scroll acceleration disabled"
+	},
+	"scrollAccelWindow": {
+		"message": "Egymást követő görgetés időkorlátja",
+		"description": "Max time (ms) between scrolls to count as consecutive"
 	},
 	"dragFeatures": {
 		"message": "Húzási funkciók",
@@ -283,6 +303,22 @@
 		"message": "Nincs feketelistás oldal. Írj be egy domaint fent a hozzáadáshoz.",
 		"description": "Empty blacklist message"
 	},
+	"enableBlacklistContextMenu": {
+		"message": "Gesztusok kapcsolója a helyi menüben",
+		"description": "Setting title for blacklist context menu toggle"
+	},
+	"enableBlacklistContextMenuDesc": {
+		"message": "Az egérgesztusok letiltására/engedélyezésére szolgáló opció megjelenítése a helyi menüben",
+		"description": "Setting description for blacklist context menu toggle"
+	},
+	"menuAddToBlacklist": {
+		"message": "Gesztusok letiltása ezen a webhelyen",
+		"description": "Context menu title for adding current site to blacklist"
+	},
+	"menuRemoveFromBlacklist": {
+		"message": "Gesztusok engedélyezése ezen a webhelyen",
+		"description": "Context menu title for removing current site from blacklist"
+	},
 	"dataManagement": {
 		"message": "Adatkezelés",
 		"description": "Data management section"
@@ -322,6 +358,10 @@
 	"importDone": {
 		"message": "Beállítások importálva",
 		"description": "Import done message"
+	},
+	"importConfirm": {
+		"message": "Az importálás felülírja a jelenlegi beállításokat. Csak megbízható forrásból importáljon konfigurációs fájlokat.\n\nFolytatja?",
+		"description": "Import confirmation warning"
 	},
 	"importFailed": {
 		"message": "Importálás sikertelen: Érvénytelen konfigurációs fájl",
@@ -459,13 +499,41 @@
 		"message": "Lap bezárása",
 		"description": "Close tab"
 	},
-	"actionCloseTabKeepWindow": {
-		"message": "Lap bezárása (Ablak megtartása)",
-		"description": "Close tab but keep window open"
+	"closeTabKeepWindow": {
+		"message": "Ha ez az utolsó lap, tartsa nyitva az ablakot",
+		"description": "Checkbox label for closeTab action config"
+	},
+	"closeTabAfterClose": {
+		"message": "Bezárás után",
+		"description": "Label for closeTab afterClose config"
+	},
+	"closeTabAfterCloseDefault": {
+		"message": "Böngésző alapértelmezett",
+		"description": "Option for closeTab afterClose config - let browser decide"
+	},
+	"closeTabAfterCloseLeft": {
+		"message": "Váltás a bal oldali lapra",
+		"description": "Option for closeTab afterClose config - switch to left tab"
+	},
+	"closeTabAfterCloseRight": {
+		"message": "Váltás a jobb oldali lapra",
+		"description": "Option for closeTab afterClose config - switch to right tab"
+	},
+	"switchTabNoWrap": {
+		"message": "Nincs ciklikus körbejárás",
+		"description": "Checkbox label for switchLeftTab/switchRightTab action config"
+	},
+	"switchTabMoveTab": {
+		"message": "Jelenlegi lap mozgatása",
+		"description": "Checkbox label for switchLeftTab/switchRightTab/switchFirstTab/switchLastTab action config"
 	},
 	"actionCloseBrowser": {
 		"message": "Böngésző bezárása",
 		"description": "Close browser"
+	},
+	"actionCloseWindow": {
+		"message": "Ablak bezárása",
+		"description": "Close current window"
 	},
 	"actionRestoreTab": {
 		"message": "Bezárt lap visszaállítása",
@@ -498,6 +566,14 @@
 	"actionSwitchRightTab": {
 		"message": "Váltás a jobb oldali lapra",
 		"description": "Switch to right tab"
+	},
+	"actionSwitchFirstTab": {
+		"message": "Váltás az első lapra",
+		"description": "Switch to first tab"
+	},
+	"actionSwitchLastTab": {
+		"message": "Váltás az utolsó lapra",
+		"description": "Switch to last tab"
 	},
 	"actionRefresh": {
 		"message": "Jelenlegi lap frissítése",
@@ -575,6 +651,10 @@
 		"message": "Minden lap némítása/némítás feloldása",
 		"description": "Toggle mute all tabs"
 	},
+	"actionTogglePinTab": {
+		"message": "Lap rögzítése/rögzítés feloldása",
+		"description": "Toggle pin current tab"
+	},
 	"showTrailOrigin": {
 		"message": "Kezdőpont megjelenítése",
 		"description": "Show trail origin point"
@@ -595,17 +675,29 @@
 		"message": "Tipp: A legjobb felismerés érdekében 15-30 közötti érték javasolt.",
 		"description": "Warning when distance threshold is too small or too large"
 	},
-	"enableAdvancedSettings": {
-		"message": "Speciális beállítások",
-		"description": "Enable advanced settings"
+	"gestureTurnTolerance": {
+		"message": "Gesztus fordulási tűrése",
+		"description": "Turn tolerance for detecting direction changes in long gestures"
 	},
-	"enableAdvancedSettingsDesc": {
-		"message": "További speciális beállítások megjelenítése",
-		"description": "Show more advanced options when enabled"
+	"gestureTurnToleranceDesc": {
+		"message": "A magasabb értékek csökkentik a véletlen fordulásokat, de hosszabb mozdulatokat igényelnek az irány megváltoztatásához",
+		"description": "Description for gesture turn tolerance setting"
 	},
-	"enableAdvancedSettingsToggle": {
-		"message": "Speciális beállítások mód",
-		"description": "Enable advanced settings toggle label"
+	"advanced": {
+		"message": "Szakértői mód",
+		"description": "Short label for per-section advanced toggle"
+	},
+	"otherSettings": {
+		"message": "Egyéb beállítások",
+		"description": "Section title for other/miscellaneous settings"
+	},
+	"show": {
+		"message": "Megjelenítés",
+		"description": "Show navigation menu"
+	},
+	"hide": {
+		"message": "Elrejtés",
+		"description": "Hide navigation menu"
 	},
 	"urlFormatError": {
 		"message": "Kérlek, add meg a teljes URL-t http:// vagy https:// kezdettel",
@@ -615,41 +707,61 @@
 		"message": "Visszaállítás alapértelmezettre",
 		"description": "Reset gesture to default action"
 	},
+	"resetToDefaultConfirm": {
+		"message": "Visszaállítja ezeket a beállításokat az alapértelmezett értékekre?",
+		"description": "Confirmation dialog for resetting settings"
+	},
 	"addCustomGesture": {
 		"message": "Egyéni gesztus hozzáadása",
 		"description": "Add custom gesture section title"
-	},
-	"gesturePattern": {
-		"message": "Minta",
-		"description": "Gesture pattern label"
-	},
-	"selectAction": {
-		"message": "Művelet kiválasztása",
-		"description": "Select action label"
 	},
 	"clear": {
 		"message": "Törlés",
 		"description": "Clear button"
 	},
-	"addGesture": {
-		"message": "Gesztus hozzáadása",
-		"description": "Add gesture button"
-	},
-	"pleaseDrawGesture": {
-		"message": "Kérlek, először rajzolj egy gesztust",
-		"description": "Alert when no gesture drawn"
-	},
 	"gestureAdded": {
 		"message": "✓ Gesztus hozzáadva",
 		"description": "Gesture added success message"
 	},
-	"gestureDrawInstructions": {
-		"message": "Tartsd lenyomva a jobb egérgombot és rajzolj egy gesztust lent, majd engedd fel a befejezéshez. Támogatott irányok:",
-		"description": "Instructions for gesture drawing"
+	"gestureRecorderTitle": {
+		"message": "Gesztus rajzolása",
+		"description": "Gesture recorder full-screen title"
 	},
-	"gestureOverwriteConfirm": {
-		"message": "A(z) %pattern% gesztus már létezik. Felülírod?",
-		"description": "Confirmation message when adding a duplicate gesture"
+	"gestureRecorderDesc": {
+		"message": "Tartsa lenyomva a(z) %button% gombot és rajzoljon egy gesztusmintát",
+		"description": "Gesture recorder instruction, %button% is replaced with the mouse button name"
+	},
+	"gestureRecorderEsc": {
+		"message": "Mégse",
+		"description": "Gesture recorder cancel button label"
+	},
+	"gestureRecorderRecording": {
+		"message": "Rögzítés…",
+		"description": "Gesture recorder recording indicator"
+	},
+	"gestureRecorderResult": {
+		"message": "Rögzített gesztus",
+		"description": "Gesture recorder result label"
+	},
+	"gestureRecorderConfirm": {
+		"message": "Megerősítés",
+		"description": "Gesture recorder confirm button"
+	},
+	"gestureRecorderRedraw": {
+		"message": "Újrarajzolás",
+		"description": "Gesture recorder redraw button"
+	},
+	"gestureRecorderBanned": {
+		"message": "A(z) %pattern% gesztus már létezik",
+		"description": "Gesture recorder message when user draws a banned/existing gesture pattern"
+	},
+	"rightButton": {
+		"message": "Egér jobb gombja",
+		"description": "Right mouse button name"
+	},
+	"leftButton": {
+		"message": "Egér bal gombja",
+		"description": "Left mouse button name"
 	},
 	"customGesture": {
 		"message": "Egyéni",
@@ -670,6 +782,10 @@
 	"enterCustomUrl": {
 		"message": "Írd be az URL-t (javasolt a protokoll megadása, pl. https://, chrome:// stb.):",
 		"description": "Prompt for custom URL input"
+	},
+	"copyUrlIncludeTitle": {
+		"message": "Az oldal címének másolása is",
+		"description": "Checkbox label for including page title when copying URL"
 	},
 	"invalidUrl": {
 		"message": "Kérlek, adj meg egy érvényes URL-t (http:// vagy https:// kezdettel)",
@@ -750,6 +866,10 @@
 	"aboutTitle": {
 		"message": "A FlowMouse-ról",
 		"description": "About title"
+	},
+	"aboutTitleShort": {
+		"message": "Névjegy",
+		"description": "Short About title "
 	},
 	"aboutAuthor": {
 		"message": "Szerző",
@@ -863,6 +983,10 @@
 		"message": "Megnyitás előtérben",
 		"description": "Open tab in foreground"
 	},
+	"openInIncognito": {
+		"message": "Inkognító",
+		"description": "Open in incognito checkbox"
+	},
 	"textDragGestures": {
 		"message": "Szöveg húzási gesztusok",
 		"description": "Text drag gestures"
@@ -880,7 +1004,7 @@
 		"description": "Direction column header"
 	},
 	"action": {
-		"message": "Művelet",
+		"message": "Parancs",
 		"description": "Action column header"
 	},
 	"imageSearchUrl": {
@@ -915,6 +1039,10 @@
 		"message": "📋 Link másolása",
 		"description": "Copy link"
 	},
+	"dragActionCopyLinkText": {
+		"message": "📋 Link szövegének másolása",
+		"description": "Copy link text"
+	},
 	"dragActionSaveImage": {
 		"message": "💾 Kép mentése",
 		"description": "Save image"
@@ -936,7 +1064,7 @@
 		"description": "Custom search"
 	},
 	"reducedMotionWarning": {
-		"message": "⚠️ A %OS% rendszeranimáció le van tiltva, a görgetési animáció nem biztos, hogy megfelelően működik. Engedélyezheted az animációt a %OS% rendszerbeállításaiban.",
+		"message": "A %OS% rendszeranimáció le van tiltva, a görgetési animáció nem biztos, hogy megfelelően működik. Engedélyezheted az animációt a %OS% rendszerbeállításaiban.",
 		"description": "Warning message when system reduced motion is enabled"
 	},
 	"autoDetectUrl": {
@@ -964,7 +1092,7 @@
 		"description": "Setting description for restricted page notice"
 	},
 	"restrictedPagesDetailsTitle": {
-		"message": "⚠️ A böngésző biztonsági irányelvei miatt a bővítmények nem futhatnak bizonyos típusú oldalakon.",
+		"message": "A böngésző biztonsági irányelvei miatt a bővítmények nem futhatnak bizonyos típusú oldalakon.",
 		"description": "Collapsible details title"
 	},
 	"showMoreHint": {
@@ -972,7 +1100,7 @@
 		"description": "Hint to show more details"
 	},
 	"restrictedNewTab": {
-		"message": "Új lap oldal (chrome://newtab)",
+		"message": "Új lap oldal",
 		"description": "New tab page title"
 	},
 	"restrictedNewTabDesc": {
@@ -988,11 +1116,11 @@
 		"description": "Store page description"
 	},
 	"restrictedInternal": {
-		"message": "Böngésző belső oldalak",
+		"message": "Böngésző belső oldalak (%browserProtocol%)",
 		"description": "Internal page title"
 	},
 	"restrictedInternalDesc": {
-		"message": "Minden chrome:// (Chrome) vagy edge:// (Edge) kezdőbetűs oldal, beleértve a beállításokat, előzményeket, letöltéseket stb. Ezek az oldalak alapvető böngészőfunkciókat és felhasználói adatvédelmi adatokat érintenek, ezért szigorúan védettek.",
+		"message": "Például a(z) %browserName% belső beállításai, előzményei, letöltései stb. Ezek az oldalak alapvető böngészőfunkciókat és felhasználói adatvédelmi adatokat érintenek, ezért szigorúan védettek.",
 		"description": "Internal page description"
 	},
 	"restrictedFile": {
@@ -1000,7 +1128,7 @@
 		"description": "File page title"
 	},
 	"restrictedFileDesc": {
-		"message": "file:// protokollon keresztül megnyitott helyi HTML fájlok. Biztonsági korlátozások miatt (megakadályozandó, hogy rosszindulatú bővítmények hozzáférjenek a helyi fájlrendszerhez), a bővítmények nem működhetnek ezeken az oldalakon.",
+		"message": "file:// protokollon keresztül megnyitott helyi html, pdf, stb. fájlok. Biztonsági korlátozások miatt (megakadályozandó, hogy rosszindulatú bővítmények hozzáférjenek a helyi fájlrendszerhez), a bővítmények nem működhetnek ezeken az oldalakon.",
 		"description": "File page description"
 	},
 	"restrictedViewSource": {
@@ -1024,7 +1152,7 @@
 		"description": "Popup description when content script not loaded"
 	},
 	"popupRefreshBtn": {
-		"message": "🔄 Oldal frissítése",
+		"message": "Oldal frissítése",
 		"description": "Popup refresh button text"
 	},
 	"popupRestrictedTitle": {
@@ -1036,7 +1164,7 @@
 		"description": "Popup description for restricted pages"
 	},
 	"popupLearnMore": {
-		"message": "📖 Tudj meg többet",
+		"message": "Tudj meg többet",
 		"description": "Popup learn more button text"
 	},
 	"tutorialPending": {
@@ -1207,6 +1335,26 @@
 		"message": "Képek mentéséhez a FlowMouse hozzáférést igényel az oldalakhoz és a letöltéseidhez.",
 		"description": "Permission popup description for downloads and page capture"
 	},
+	"permissionIncognitoTitle": {
+		"message": "Engedélyezés inkognitó módban",
+		"description": "Permission popup title for incognito"
+	},
+	"permissionIncognitoDesc": {
+		"message": "Ahhoz, hogy inkognitó ablakokban működjön, manuálisan engedélyeznie kell az \"Engedélyezés inkognitó módban\" lehetőséget a FlowMouse számára.",
+		"description": "Permission popup description for incognito"
+	},
+	"openExtensionsSettings": {
+		"message": "Bővítmény részleteinek megnyitása",
+		"description": "Button to open extension details page"
+	},
+	"permissionFirefoxIncognitoTitle": {
+		"message": "Futtatás privát ablakokban",
+		"description": "Permission popup title for Firefox private browsing"
+	},
+	"permissionFirefoxIncognitoDesc": {
+		"message": "Ahhoz, hogy privát ablakokban működjön, manuálisan engedélyeznie kell a \"Futtatás privát ablakokban\" lehetőséget a FlowMouse számára a Kiegészítőkezelőben.",
+		"description": "Permission popup description for Firefox private browsing"
+	},
 	"grantPermission": {
 		"message": "Engedély megadása",
 		"description": "Grant permission button"
@@ -1234,5 +1382,205 @@
 	"saveImageTimeout": {
 		"message": "Kép mentése sikertelen: Betöltési időtúllépés",
 		"description": "Toast message when image loading times out"
+	},
+	"buttonOkay": {
+		"message": "Rendben",
+		"description": "Generic OK button"
+	},
+	"buttonCancel": {
+		"message": "Mégse",
+		"description": "Generic Cancel button"
+	},
+	"buttonClose": {
+		"message": "Bezárás",
+		"description": "Generic Close button"
+	},
+	"searchActions": {
+		"message": "Parancsok keresése...",
+		"description": "Placeholder for action search input in action picker"
+	},
+	"actionCategoryNavigation": {
+		"message": "Navigáció",
+		"description": "Action category: navigation"
+	},
+	"actionCategoryTabs": {
+		"message": "Lapok",
+		"description": "Action category: tabs"
+	},
+	"actionCategoryWindow": {
+		"message": "Ablak",
+		"description": "Action category: window"
+	},
+	"actionCategoryUtilities": {
+		"message": "Eszközök",
+		"description": "Action category: utilities"
+	},
+	"noResults": {
+		"message": "Nincs találat",
+		"description": "No search results found"
+	},
+	"wheelGestures": {
+		"message": "Egérgörgő gesztusai",
+		"description": "Mouse wheel gestures section title"
+	},
+	"enableWheelGestures": {
+		"message": "Egérgörgő gesztusok engedélyezése",
+		"description": "Enable mouse wheel gestures"
+	},
+	"enableWheelGesturesDesc": {
+		"message": "Végezzen el gyorsan különböző műveleteket az egérgörgő segítségével",
+		"description": "Enable mouse wheel gestures description"
+	},
+	"wheelGesture_scrollUpHoldingRight": {
+		"message": "Görgessen felfelé a jobb gomb nyomva tartásával",
+		"description": "Wheel gesture: scroll up while holding right button"
+	},
+	"wheelGesture_scrollDownHoldingRight": {
+		"message": "Görgessen lefelé a jobb gomb nyomva tartásával",
+		"description": "Wheel gesture: scroll down while holding right button"
+	},
+	"specialGestures": {
+		"message": "Speciális mozdulatok",
+		"description": "Special gestures section title"
+	},
+	"enableSpecialGestures": {
+		"message": "Speciális mozdulatok engedélyezése",
+		"description": "Enable special gestures"
+	},
+	"enableSpecialGesturesDesc": {
+		"message": "Végezzen műveleteket az egyik egérgombbal való kattintással, miközben a másikat lenyomva tartja",
+		"description": "Enable special gestures description"
+	},
+	"specialGesture_leftClickHoldingRight": {
+		"message": "Bal kattintás a jobb gomb nyomva tartása mellett",
+		"description": "Special gesture: left click while holding right button"
+	},
+	"specialGesture_rightClickHoldingLeft": {
+		"message": "Jobb kattintás a bal gomb nyomva tartása mellett",
+		"description": "Special gesture: right click while holding left button"
+	},
+	"actionChains": {
+		"message": "Parancsláncok",
+		"description": "Action chains section title"
+	},
+	"actionChainsDesc": {
+		"message": "Újrafelhasználható parancssorok létrehozása, amelyek egymás után hajtódnak végre",
+		"description": "Action chains section description"
+	},
+	"actionActionChain": {
+		"message": "Parancslánc",
+		"description": "Action chain action name"
+	},
+	"actionCategoryChains": {
+		"message": "Parancsláncok",
+		"description": "Action category: action chains"
+	},
+	"addChain": {
+		"message": "Lánc hozzáadása",
+		"description": "Add chain button"
+	},
+	"addNewChain": {
+		"message": "Új lánc létrehozása...",
+		"description": "Action item to navigate to chain editor and create a new chain"
+	},
+	"chainNamePlaceholder": {
+		"message": "Saját parancsláncom",
+		"description": "Chain name input placeholder"
+	},
+	"chainDelayUnit": {
+		"message": "ms",
+		"description": "Milliseconds unit for chain delay"
+	},
+	"addStep": {
+		"message": "Lépés hozzáadása",
+		"description": "Add step button"
+	},
+	"emptyChainSteps": {
+		"message": "Nincsenek hozzáadva lépések. A kezdéshez kattintson a \"Lépés hozzáadása\" gombra.",
+		"description": "Empty chain steps message in expanded body"
+	},
+	"emptyChainStepsShort": {
+		"message": "Nincsenek hozzáadva lépések",
+		"description": "Short empty chain steps message for summary"
+	},
+	"noChains": {
+		"message": "Még nincsenek parancsláncok. Kattintson a \"Lánc hozzáadása\" gombra egy létrehozásához.",
+		"description": "No chains message"
+	},
+	"chainNotFound": {
+		"message": "(Lánc nem található)",
+		"description": "Chain not found label"
+	},
+	"deleteChainConfirm": {
+		"message": "Biztosan törli a(z) \"%name%\" láncot?",
+		"description": "Delete chain confirmation"
+	},
+	"stepNumber": {
+		"message": "%n%. lépés",
+		"description": "Step number label"
+	},
+	"actionDelay": {
+		"message": "Késleltetés",
+		"description": "Delay action name for chain steps"
+	},
+	"actionSendCustomEvent": {
+		"message": "Egyéni esemény küldése",
+		"description": "Action to dispatch a custom DOM event"
+	},
+	"actionSimulateKey": {
+		"message": "Billentyűleütés szimulálása",
+		"description": "Action to simulate a keyboard key press on the page"
+	},
+	"simulateKeyPreset": {
+		"message": "Előre beállított billentyű",
+		"description": "Label for preset key dropdown in simulate key config"
+	},
+	"simulateKeyPresetLeft": {
+		"message": "← Balra nyíl (Előző oldal)",
+		"description": "Preset: ArrowLeft key"
+	},
+	"simulateKeyPresetRight": {
+		"message": "→ Jobbra nyíl (Következő oldal)",
+		"description": "Preset: ArrowRight key"
+	},
+	"simulateKeyPresetCustom": {
+		"message": "Egyéni billentyű",
+		"description": "Preset: Custom key option"
+	},
+	"simulateKeyRecordBtn": {
+		"message": "Billentyű rögzítése",
+		"description": "Button to start recording a key press"
+	},
+	"simulateKeyRecording": {
+		"message": "Nyomj meg egy billentyűt...",
+		"description": "Recording state text"
+	},
+	"simulateKeyManualInput": {
+		"message": "Jelenlegi billentyű",
+		"description": "Label for current key display in simulate key config"
+	},
+	"simulateKeyHint": {
+		"message": "Ez a funkció csak az aktuális oldalra küld billentyűzeteseményeket, általában oldalnavigációra (← előző / → következő) használják. NEM váltja ki a böngésző billentyűparancsait (pl. a Ctrl+R nem frissíti az oldalt). Továbbá, a weboldal keretrendszerének korlátai miatt előfordulhat, hogy a szimulált eseményeket nem rögzíti minden egyéni összetevő vagy beviteli mező.",
+		"description": "Hint text for simulate key feature"
+	},
+	"customEventInvalidJson": {
+		"message": "Érvénytelen JSON formátum",
+		"description": "Error message when event detail is not valid JSON"
+	},
+	"customEventHint": {
+		"message": "A %code% elküldése a %window% számára. Hasznos más szkriptekkel való integrációhoz.",
+		"description": "Hint explaining how custom event works. %code% = <code>new CustomEvent(...)</code>, %window% = <code>window</code>"
+	},
+	"delayDuration": {
+		"message": "Időtartam",
+		"description": "Delay duration label"
+	},
+	"chainStepCount": {
+		"message": "%count% lépés",
+		"description": "Step count for unnamed chains, e.g. '3 steps'"
+	},
+	"chainStepCountOne": {
+		"message": "%count% lépés",
+		"description": "Step count for unnamed chains with exactly 1 step"
 	}
 }

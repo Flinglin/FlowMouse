@@ -8,20 +8,12 @@
 		"description": "Short extension name for popup"
 	},
 	"extDescription": {
-		"message": "Cử chỉ chuột mã nguồn mở tập trung vào quyền riêng tư và trải nghiệm mượt mà. Cử chỉ mượt mà, hỗ trợ siêu kéo và tất cả dữ liệu chỉ được lưu trữ cục bộ.",
+		"message": "Cử chỉ chuột mã nguồn mở tập trung vào quyền riêng tư và trải nghiệm mượt mà. Cử chỉ mượt mà, hỗ trợ siêu kéo.",
 		"description": "Extension description"
-	},
-	"appearance": {
-		"message": "Giao diện",
-		"description": "Appearance section"
 	},
 	"theme": {
 		"message": "Chủ đề",
 		"description": "Theme"
-	},
-	"themeDesc": {
-		"message": "Chuyển đổi chủ đề sáng/tối",
-		"description": "Theme description"
 	},
 	"themeDark": {
 		"message": "Tối",
@@ -34,10 +26,6 @@
 	"themeAuto": {
 		"message": "Theo hệ thống",
 		"description": "Auto theme - follow system"
-	},
-	"languageDesc": {
-		"message": "Chọn ngôn ngữ giao diện",
-		"description": "Language description"
 	},
 	"syncStatus": {
 		"message": "Trạng thái đồng bộ hóa",
@@ -56,7 +44,7 @@
 		"description": "Author"
 	},
 	"privacyNote": {
-		"message": "🔒 Chạy cục bộ, không truy cập mạng ngoại trừ đồng bộ hóa, không thu thập dữ liệu",
+		"message": " Chạy cục bộ, không truy cập mạng ngoại trừ đồng bộ hóa, không thu thập dữ liệu",
 		"description": "Privacy note in footer"
 	},
 	"supportUsText": {
@@ -120,11 +108,19 @@
 		"description": "Hold the right mouse button and move the mouse to easily perform gestures"
 	},
 	"macLinuxContextMenuNotice": {
-		"message": "⚠️ Do giới hạn hệ thống, người dùng macOS / Linux cần nhấp đúp chuột phải để mở menu ngữ cảnh.",
+		"message": "Do giới hạn hệ thống, khi cử chỉ nhấp chuột phải được bật, người dùng macOS / Linux cần nhấp đúp chuột phải để mở menu ngữ cảnh.",
 		"description": "Notice for macOS / Linux users about double right-click for context menu"
 	},
+	"macLinuxDoubleClickHint": {
+		"message": "Để mở menu ngữ cảnh, hãy nhấp đúp chuột phải. (Tìm hiểu thêm)",
+		"description": "Short toast hint shown on first right-click on macOS/Linux explaining double-click requirement"
+	},
+	"edgeGestureConflictNotice": {
+		"message": "%browserName% có tính năng cử chỉ tích hợp. Để sử dụng cử chỉ của FlowMouse, vui lòng <a href=\"#\" class=\"edge-gesture-link\">tắt cử chỉ tích hợp</a> trong cài đặt %browserName%.",
+		"description": "Notice for Edge users about built-in gesture conflict"
+	},
 	"macTextDragNotice": {
-		"message": "⚠️ Do đặc điểm của macOS, khi kéo văn bản, bạn cần chọn văn bản trước, nhấn và giữ chuột trái một chút rồi mới kéo. Nếu không, tìm kiếm có thể không được kích hoạt.",
+		"message": "Do đặc điểm của macOS, khi kéo văn bản, trước tiên hãy chọn văn bản, sau đó nhấn và giữ nửa giây chuột trái bên trong khu vực đã chọn rồi mới kéo. Nếu không, chức năng kéo có thể không được kích hoạt.",
 		"description": "Notice for macOS users about text drag behavior"
 	},
 	"showTrail": {
@@ -159,6 +155,14 @@
 		"message": "Độ trong suốt",
 		"description": "Opacity"
 	},
+	"blur": {
+		"message": "Làm mờ",
+		"description": "Blur radius"
+	},
+	"hudShadow": {
+		"message": "Bóng",
+		"description": "HUD shadow toggle"
+	},
 	"text": {
 		"message": "Văn bản",
 		"description": "Text"
@@ -179,6 +183,10 @@
 		"message": "Hiệu ứng hoạt ảnh cuộn cho cử chỉ lên/xuống",
 		"description": "Scroll smoothness description"
 	},
+	"smoothnessAuto": {
+		"message": "Tự động",
+		"description": "Auto scroll smoothness - uses system if animation enabled, otherwise smooth"
+	},
 	"smoothnessSystem": {
 		"message": "Hệ thống (Hiệu suất cao)",
 		"description": "System scroll smoothness"
@@ -190,6 +198,18 @@
 	"smoothnessNone": {
 		"message": "Không có hoạt ảnh",
 		"description": "No scroll animation"
+	},
+	"scrollAccel": {
+		"message": "Hệ số cuộn liên tục",
+		"description": "Speed multiplier applied when scrolling consecutively"
+	},
+	"scrollAccelOff": {
+		"message": "Tắt",
+		"description": "Scroll acceleration disabled"
+	},
+	"scrollAccelWindow": {
+		"message": "Thời gian chờ cuộn liên tiếp",
+		"description": "Max time (ms) between scrolls to count as consecutive"
 	},
 	"dragFeatures": {
 		"message": "Tính năng kéo thả",
@@ -283,6 +303,22 @@
 		"message": "Chưa có trang web nào trong danh sách đen. Nhập tên miền ở trên để thêm.",
 		"description": "Empty blacklist message"
 	},
+	"enableBlacklistContextMenu": {
+		"message": "Nút bật/tắt cử chỉ trong menu chuột phải",
+		"description": "Setting title for blacklist context menu toggle"
+	},
+	"enableBlacklistContextMenuDesc": {
+		"message": "Hiển thị tùy chọn để tắt/bật cử chỉ trong menu ngữ cảnh",
+		"description": "Setting description for blacklist context menu toggle"
+	},
+	"menuAddToBlacklist": {
+		"message": "Tắt cử chỉ trên trang web này",
+		"description": "Context menu title for adding current site to blacklist"
+	},
+	"menuRemoveFromBlacklist": {
+		"message": "Bật cử chỉ trên trang web này",
+		"description": "Context menu title for removing current site from blacklist"
+	},
 	"dataManagement": {
 		"message": "Quản lý dữ liệu",
 		"description": "Data management section"
@@ -322,6 +358,10 @@
 	"importDone": {
 		"message": "Cấu hình đã được nhập",
 		"description": "Import done message"
+	},
+	"importConfirm": {
+		"message": "Việc nhập sẽ ghi đè các cài đặt hiện tại của bạn. Chỉ nhập tệp cấu hình từ các nguồn đáng tin cậy.\n\nTiếp tục?",
+		"description": "Import confirmation warning"
 	},
 	"importFailed": {
 		"message": "Nhập thất bại: Tệp cấu hình không hợp lệ",
@@ -459,13 +499,41 @@
 		"message": "Đóng tab",
 		"description": "Close tab"
 	},
-	"actionCloseTabKeepWindow": {
-		"message": "Đóng tab (Giữ cửa sổ)",
-		"description": "Close tab but keep window open"
+	"closeTabKeepWindow": {
+		"message": "Nếu đây là tab cuối cùng, giữ cửa sổ mở",
+		"description": "Checkbox label for closeTab action config"
+	},
+	"closeTabAfterClose": {
+		"message": "Sau khi đóng",
+		"description": "Label for closeTab afterClose config"
+	},
+	"closeTabAfterCloseDefault": {
+		"message": "Mặc định trình duyệt",
+		"description": "Option for closeTab afterClose config - let browser decide"
+	},
+	"closeTabAfterCloseLeft": {
+		"message": "Chuyển sang tab bên trái",
+		"description": "Option for closeTab afterClose config - switch to left tab"
+	},
+	"closeTabAfterCloseRight": {
+		"message": "Chuyển sang tab bên phải",
+		"description": "Option for closeTab afterClose config - switch to right tab"
+	},
+	"switchTabNoWrap": {
+		"message": "Không chuyển đổi xoay vòng",
+		"description": "Checkbox label for switchLeftTab/switchRightTab action config"
+	},
+	"switchTabMoveTab": {
+		"message": "Di chuyển tab hiện tại",
+		"description": "Checkbox label for switchLeftTab/switchRightTab/switchFirstTab/switchLastTab action config"
 	},
 	"actionCloseBrowser": {
 		"message": "Đóng trình duyệt",
 		"description": "Close browser"
+	},
+	"actionCloseWindow": {
+		"message": "Đóng cửa sổ",
+		"description": "Close current window"
 	},
 	"actionRestoreTab": {
 		"message": "Khôi phục tab vừa đóng",
@@ -498,6 +566,14 @@
 	"actionSwitchRightTab": {
 		"message": "Chuyển sang tab bên phải",
 		"description": "Switch to right tab"
+	},
+	"actionSwitchFirstTab": {
+		"message": "Chuyển sang tab đầu tiên",
+		"description": "Switch to first tab"
+	},
+	"actionSwitchLastTab": {
+		"message": "Chuyển sang tab cuối cùng",
+		"description": "Switch to last tab"
 	},
 	"actionRefresh": {
 		"message": "Tải lại tab hiện tại",
@@ -575,6 +651,10 @@
 		"message": "Tắt tiếng/Bật tiếng tất cả các tab",
 		"description": "Toggle mute all tabs"
 	},
+	"actionTogglePinTab": {
+		"message": "Ghim/Bỏ ghim tab hiện tại",
+		"description": "Toggle pin current tab"
+	},
 	"showTrailOrigin": {
 		"message": "Hiển thị điểm gốc",
 		"description": "Show trail origin point"
@@ -595,17 +675,29 @@
 		"message": "Gợi ý: Nên đặt giá trị từ 15-30 để nhận dạng tốt nhất.",
 		"description": "Warning when distance threshold is too small or too large"
 	},
-	"enableAdvancedSettings": {
-		"message": "Cài đặt nâng cao",
-		"description": "Enable advanced settings"
+	"gestureTurnTolerance": {
+		"message": "Dung sai chuyển hướng của cử chỉ",
+		"description": "Turn tolerance for detecting direction changes in long gestures"
 	},
-	"enableAdvancedSettingsDesc": {
-		"message": "Hiển thị thêm các tùy chọn nâng cao khi bật",
-		"description": "Show more advanced options when enabled"
+	"gestureTurnToleranceDesc": {
+		"message": "Giá trị cao hơn sẽ làm giảm số lần quay vô tình nhưng cần chuyển động dài hơn để thay đổi hướng",
+		"description": "Description for gesture turn tolerance setting"
 	},
-	"enableAdvancedSettingsToggle": {
-		"message": "Chế độ cài đặt nâng cao",
-		"description": "Enable advanced settings toggle label"
+	"advanced": {
+		"message": "Chế độ chuyên gia",
+		"description": "Short label for per-section advanced toggle"
+	},
+	"otherSettings": {
+		"message": "Cài đặt khác",
+		"description": "Section title for other/miscellaneous settings"
+	},
+	"show": {
+		"message": "Hiển thị",
+		"description": "Show navigation menu"
+	},
+	"hide": {
+		"message": "Ẩn",
+		"description": "Hide navigation menu"
 	},
 	"urlFormatError": {
 		"message": "Vui lòng nhập URL đầy đủ bắt đầu bằng http:// hoặc https://",
@@ -615,41 +707,61 @@
 		"message": "Khôi phục về mặc định",
 		"description": "Reset gesture to default action"
 	},
+	"resetToDefaultConfirm": {
+		"message": "Đặt lại các cài đặt này về giá trị mặc định?",
+		"description": "Confirmation dialog for resetting settings"
+	},
 	"addCustomGesture": {
 		"message": "Thêm cử chỉ tùy chỉnh",
 		"description": "Add custom gesture section title"
-	},
-	"gesturePattern": {
-		"message": "Mẫu cử chỉ",
-		"description": "Gesture pattern label"
-	},
-	"selectAction": {
-		"message": "Chọn hành động",
-		"description": "Select action label"
 	},
 	"clear": {
 		"message": "Xóa",
 		"description": "Clear button"
 	},
-	"addGesture": {
-		"message": "Thêm cử chỉ",
-		"description": "Add gesture button"
-	},
-	"pleaseDrawGesture": {
-		"message": "Vui lòng vẽ một cử chỉ trước",
-		"description": "Alert when no gesture drawn"
-	},
 	"gestureAdded": {
 		"message": "✓ Đã thêm cử chỉ",
 		"description": "Gesture added success message"
 	},
-	"gestureDrawInstructions": {
-		"message": "Giữ chuột phải và vẽ cử chỉ ở bên dưới, thả ra để hoàn tất. Các hướng được hỗ trợ:",
-		"description": "Instructions for gesture drawing"
+	"gestureRecorderTitle": {
+		"message": "Vẽ cử chỉ",
+		"description": "Gesture recorder full-screen title"
 	},
-	"gestureOverwriteConfirm": {
-		"message": "Cử chỉ %pattern% đã tồn tại. Ghi đè?",
-		"description": "Confirmation message when adding a duplicate gesture"
+	"gestureRecorderDesc": {
+		"message": "Giữ %button% và vẽ một mẫu cử chỉ",
+		"description": "Gesture recorder instruction, %button% is replaced with the mouse button name"
+	},
+	"gestureRecorderEsc": {
+		"message": "Hủy",
+		"description": "Gesture recorder cancel button label"
+	},
+	"gestureRecorderRecording": {
+		"message": "Đang ghi…",
+		"description": "Gesture recorder recording indicator"
+	},
+	"gestureRecorderResult": {
+		"message": "Cử chỉ đã ghi",
+		"description": "Gesture recorder result label"
+	},
+	"gestureRecorderConfirm": {
+		"message": "Xác nhận",
+		"description": "Gesture recorder confirm button"
+	},
+	"gestureRecorderRedraw": {
+		"message": "Vẽ lại",
+		"description": "Gesture recorder redraw button"
+	},
+	"gestureRecorderBanned": {
+		"message": "Cử chỉ %pattern% đã tồn tại",
+		"description": "Gesture recorder message when user draws a banned/existing gesture pattern"
+	},
+	"rightButton": {
+		"message": "Nút chuột phải",
+		"description": "Right mouse button name"
+	},
+	"leftButton": {
+		"message": "Nút chuột trái",
+		"description": "Left mouse button name"
 	},
 	"customGesture": {
 		"message": "Tùy chỉnh",
@@ -670,6 +782,10 @@
 	"enterCustomUrl": {
 		"message": "Nhập URL (khuyên dùng bao gồm giao thức như https://, chrome://, v.v.):",
 		"description": "Prompt for custom URL input"
+	},
+	"copyUrlIncludeTitle": {
+		"message": "Đồng thời sao chép tiêu đề trang",
+		"description": "Checkbox label for including page title when copying URL"
 	},
 	"invalidUrl": {
 		"message": "Vui lòng nhập URL hợp lệ (bắt đầu bằng http:// hoặc https://)",
@@ -750,6 +866,10 @@
 	"aboutTitle": {
 		"message": "Về FlowMouse",
 		"description": "About title"
+	},
+	"aboutTitleShort": {
+		"message": "Giới thiệu",
+		"description": "Short About title "
 	},
 	"aboutAuthor": {
 		"message": "Tác giả",
@@ -863,6 +983,10 @@
 		"message": "Mở ở nền trước",
 		"description": "Open tab in foreground"
 	},
+	"openInIncognito": {
+		"message": "Ẩn danh",
+		"description": "Open in incognito checkbox"
+	},
 	"textDragGestures": {
 		"message": "Cử chỉ kéo văn bản",
 		"description": "Text drag gestures"
@@ -880,7 +1004,7 @@
 		"description": "Direction column header"
 	},
 	"action": {
-		"message": "Hành động",
+		"message": "Lệnh",
 		"description": "Action column header"
 	},
 	"imageSearchUrl": {
@@ -915,6 +1039,10 @@
 		"message": "📋 Sao chép liên kết",
 		"description": "Copy link"
 	},
+	"dragActionCopyLinkText": {
+		"message": "📋 Sao chép văn bản liên kết",
+		"description": "Copy link text"
+	},
 	"dragActionSaveImage": {
 		"message": "💾 Lưu hình ảnh",
 		"description": "Save image"
@@ -936,7 +1064,7 @@
 		"description": "Custom search"
 	},
 	"reducedMotionWarning": {
-		"message": "⚠️ Hoạt ảnh hệ thống %OS% đã bị tắt, hoạt ảnh cuộn có thể không hiển thị đúng. Bạn có thể bật hoạt ảnh trong cài đặt hệ thống %OS%.",
+		"message": "Hoạt ảnh hệ thống %OS% đã bị tắt, hoạt ảnh cuộn có thể không hiển thị đúng. Bạn có thể bật hoạt ảnh trong cài đặt hệ thống %OS%.",
 		"description": "Warning message when system reduced motion is enabled"
 	},
 	"autoDetectUrl": {
@@ -964,7 +1092,7 @@
 		"description": "Setting description for restricted page notice"
 	},
 	"restrictedPagesDetailsTitle": {
-		"message": "⚠️ Do chính sách bảo mật của trình duyệt, tiện ích mở rộng không thể chạy trên một số loại trang nhất định.",
+		"message": "Do chính sách bảo mật của trình duyệt, tiện ích mở rộng không thể chạy trên một số loại trang nhất định.",
 		"description": "Collapsible details title"
 	},
 	"showMoreHint": {
@@ -972,7 +1100,7 @@
 		"description": "Hint to show more details"
 	},
 	"restrictedNewTab": {
-		"message": "Trang Tab mới (chrome://newtab)",
+		"message": "Trang Tab mới",
 		"description": "New tab page title"
 	},
 	"restrictedNewTabDesc": {
@@ -988,11 +1116,11 @@
 		"description": "Store page description"
 	},
 	"restrictedInternal": {
-		"message": "Trang nội bộ của trình duyệt",
+		"message": "Trang nội bộ của trình duyệt (%browserProtocol%)",
 		"description": "Internal page title"
 	},
 	"restrictedInternalDesc": {
-		"message": "Tất cả các trang bắt đầu bằng chrome:// (Chrome) hoặc edge:// (Edge), bao gồm cài đặt, lịch sử, tải xuống, v.v. Những trang này liên quan đến chức năng cốt lõi và dữ liệu riêng tư, nên được bảo vệ nghiêm ngặt.",
+		"message": "Ví dụ: cài đặt nội bộ, lịch sử, tải xuống, v.v. của %browserName%. Những trang này liên quan đến các chức năng cốt lõi của trình duyệt và dữ liệu riêng tư của người dùng, vì vậy chúng được bảo vệ nghiêm ngặt.",
 		"description": "Internal page description"
 	},
 	"restrictedFile": {
@@ -1000,7 +1128,7 @@
 		"description": "File page title"
 	},
 	"restrictedFileDesc": {
-		"message": "Các tệp HTML cục bộ được mở qua giao thức file://. Do hạn chế bảo mật (ngăn chặn tiện ích mở rộng độc hại truy cập vào hệ thống tệp cục bộ), tiện ích mở rộng trình duyệt không thể hoạt động trên các trang này.",
+		"message": "Các tệp cục bộ html, pdf, v.v. được mở qua giao thức file://. Do hạn chế bảo mật (ngăn chặn tiện ích mở rộng độc hại truy cập vào hệ thống tệp cục bộ), tiện ích mở rộng trình duyệt không thể hoạt động trên các trang này.",
 		"description": "File page description"
 	},
 	"restrictedViewSource": {
@@ -1024,7 +1152,7 @@
 		"description": "Popup description when content script not loaded"
 	},
 	"popupRefreshBtn": {
-		"message": "🔄 Làm mới trang",
+		"message": "Làm mới trang",
 		"description": "Popup refresh button text"
 	},
 	"popupRestrictedTitle": {
@@ -1036,7 +1164,7 @@
 		"description": "Popup description for restricted pages"
 	},
 	"popupLearnMore": {
-		"message": "📖 Tìm hiểu thêm",
+		"message": "Tìm hiểu thêm",
 		"description": "Popup learn more button text"
 	},
 	"tutorialPending": {
@@ -1207,6 +1335,26 @@
 		"message": "Để lưu hình ảnh, FlowMouse cần quyền truy cập vào các trang và tải xuống.",
 		"description": "Permission popup description for downloads and page capture"
 	},
+	"permissionIncognitoTitle": {
+		"message": "Cho phép ở chế độ ẩn danh",
+		"description": "Permission popup title for incognito"
+	},
+	"permissionIncognitoDesc": {
+		"message": "Để hoạt động trong các cửa sổ ẩn danh, bạn cần bật thủ công \"Cho phép ở chế độ ẩn danh\" cho FlowMouse.",
+		"description": "Permission popup description for incognito"
+	},
+	"openExtensionsSettings": {
+		"message": "Mở chi tiết tiện ích",
+		"description": "Button to open extension details page"
+	},
+	"permissionFirefoxIncognitoTitle": {
+		"message": "Chạy trong cửa sổ riêng tư",
+		"description": "Permission popup title for Firefox private browsing"
+	},
+	"permissionFirefoxIncognitoDesc": {
+		"message": "Để hoạt động trong các cửa sổ riêng tư, bạn cần bật thủ công \"Chạy trong cửa sổ riêng tư\" cho FlowMouse trong Trình quản lý tiện ích.",
+		"description": "Permission popup description for Firefox private browsing"
+	},
 	"grantPermission": {
 		"message": "Cấp quyền",
 		"description": "Grant permission button"
@@ -1234,5 +1382,205 @@
 	"saveImageTimeout": {
 		"message": "Lưu hình ảnh thất bại: Hết thời gian tải",
 		"description": "Toast message when image loading times out"
+	},
+	"buttonOkay": {
+		"message": "OK",
+		"description": "Generic OK button"
+	},
+	"buttonCancel": {
+		"message": "Hủy",
+		"description": "Generic Cancel button"
+	},
+	"buttonClose": {
+		"message": "Đóng",
+		"description": "Generic Close button"
+	},
+	"searchActions": {
+		"message": "Tìm kiếm lệnh...",
+		"description": "Placeholder for action search input in action picker"
+	},
+	"actionCategoryNavigation": {
+		"message": "Điều hướng",
+		"description": "Action category: navigation"
+	},
+	"actionCategoryTabs": {
+		"message": "Thẻ",
+		"description": "Action category: tabs"
+	},
+	"actionCategoryWindow": {
+		"message": "Cửa sổ",
+		"description": "Action category: window"
+	},
+	"actionCategoryUtilities": {
+		"message": "Tiện ích",
+		"description": "Action category: utilities"
+	},
+	"noResults": {
+		"message": "Không có kết quả",
+		"description": "No search results found"
+	},
+	"wheelGestures": {
+		"message": "Cử chỉ con lăn chuột",
+		"description": "Mouse wheel gestures section title"
+	},
+	"enableWheelGestures": {
+		"message": "Bật cử chỉ con lăn chuột",
+		"description": "Enable mouse wheel gestures"
+	},
+	"enableWheelGesturesDesc": {
+		"message": "Thực hiện các hành động khác nhau một cách nhanh chóng bằng cách sử dụng con lăn chuột",
+		"description": "Enable mouse wheel gestures description"
+	},
+	"wheelGesture_scrollUpHoldingRight": {
+		"message": "Cuộn lên trong khi giữ nút phải",
+		"description": "Wheel gesture: scroll up while holding right button"
+	},
+	"wheelGesture_scrollDownHoldingRight": {
+		"message": "Cuộn xuống trong khi giữ nút phải",
+		"description": "Wheel gesture: scroll down while holding right button"
+	},
+	"specialGestures": {
+		"message": "Cử chỉ đặc biệt",
+		"description": "Special gestures section title"
+	},
+	"enableSpecialGestures": {
+		"message": "Bật cử chỉ đặc biệt",
+		"description": "Enable special gestures"
+	},
+	"enableSpecialGesturesDesc": {
+		"message": "Thực hiện hành động bằng cách nhấp vào một nút chuột trong khi giữ nút kia",
+		"description": "Enable special gestures description"
+	},
+	"specialGesture_leftClickHoldingRight": {
+		"message": "Nhấp chuột trái trong khi giữ nút phải",
+		"description": "Special gesture: left click while holding right button"
+	},
+	"specialGesture_rightClickHoldingLeft": {
+		"message": "Nhấp chuột phải trong khi giữ nút trái",
+		"description": "Special gesture: right click while holding left button"
+	},
+	"actionChains": {
+		"message": "Chuỗi lệnh",
+		"description": "Action chains section title"
+	},
+	"actionChainsDesc": {
+		"message": "Tạo các chuỗi lệnh có thể tái sử dụng để chạy lần lượt",
+		"description": "Action chains section description"
+	},
+	"actionActionChain": {
+		"message": "Chuỗi lệnh",
+		"description": "Action chain action name"
+	},
+	"actionCategoryChains": {
+		"message": "Chuỗi lệnh",
+		"description": "Action category: action chains"
+	},
+	"addChain": {
+		"message": "Thêm chuỗi",
+		"description": "Add chain button"
+	},
+	"addNewChain": {
+		"message": "Tạo chuỗi mới...",
+		"description": "Action item to navigate to chain editor and create a new chain"
+	},
+	"chainNamePlaceholder": {
+		"message": "Chuỗi lệnh của tôi",
+		"description": "Chain name input placeholder"
+	},
+	"chainDelayUnit": {
+		"message": "mili giây",
+		"description": "Milliseconds unit for chain delay"
+	},
+	"addStep": {
+		"message": "Thêm bước",
+		"description": "Add step button"
+	},
+	"emptyChainSteps": {
+		"message": "Chưa thêm bước nào. Nhấp vào \"Thêm bước\" để bắt đầu.",
+		"description": "Empty chain steps message in expanded body"
+	},
+	"emptyChainStepsShort": {
+		"message": "Chưa thêm bước nào",
+		"description": "Short empty chain steps message for summary"
+	},
+	"noChains": {
+		"message": "Chưa có chuỗi lệnh nào. Nhấp vào \"Thêm chuỗi\" để tạo.",
+		"description": "No chains message"
+	},
+	"chainNotFound": {
+		"message": "(Không tìm thấy chuỗi)",
+		"description": "Chain not found label"
+	},
+	"deleteChainConfirm": {
+		"message": "Xóa chuỗi \"%name%\"?",
+		"description": "Delete chain confirmation"
+	},
+	"stepNumber": {
+		"message": "Bước %n%",
+		"description": "Step number label"
+	},
+	"actionDelay": {
+		"message": "Độ trễ",
+		"description": "Delay action name for chain steps"
+	},
+	"actionSendCustomEvent": {
+		"message": "Gửi sự kiện tùy chỉnh",
+		"description": "Action to dispatch a custom DOM event"
+	},
+	"actionSimulateKey": {
+		"message": "Mô phỏng nhấn phím",
+		"description": "Action to simulate a keyboard key press on the page"
+	},
+	"simulateKeyPreset": {
+		"message": "Phím đặt trước",
+		"description": "Label for preset key dropdown in simulate key config"
+	},
+	"simulateKeyPresetLeft": {
+		"message": "← Mũi tên trái (Trang trước)",
+		"description": "Preset: ArrowLeft key"
+	},
+	"simulateKeyPresetRight": {
+		"message": "→ Mũi tên phải (Trang sau)",
+		"description": "Preset: ArrowRight key"
+	},
+	"simulateKeyPresetCustom": {
+		"message": "Phím tùy chỉnh",
+		"description": "Preset: Custom key option"
+	},
+	"simulateKeyRecordBtn": {
+		"message": "Ghi phím",
+		"description": "Button to start recording a key press"
+	},
+	"simulateKeyRecording": {
+		"message": "Nhấn một phím...",
+		"description": "Recording state text"
+	},
+	"simulateKeyManualInput": {
+		"message": "Phím hiện tại",
+		"description": "Label for current key display in simulate key config"
+	},
+	"simulateKeyHint": {
+		"message": "Tính năng này chỉ gửi các sự kiện bàn phím đến trang hiện tại, thường được sử dụng để điều hướng trang (← trước / → sau). Tính năng này sẽ KHÔNG kích hoạt các phím tắt của trình duyệt (ví dụ: Ctrl+R sẽ không làm mới trang). Ngoài ra, do những hạn chế về khuôn khổ trang web, các sự kiện mô phỏng có thể không được ghi lại bởi tất cả các thành phần tùy chỉnh hoặc trường nhập liệu.",
+		"description": "Hint text for simulate key feature"
+	},
+	"customEventInvalidJson": {
+		"message": "Định dạng JSON không hợp lệ",
+		"description": "Error message when event detail is not valid JSON"
+	},
+	"customEventHint": {
+		"message": "Gửi %code% trên %window%. Hữu ích cho việc tích hợp với các tập lệnh khác.",
+		"description": "Hint explaining how custom event works. %code% = <code>new CustomEvent(...)</code>, %window% = <code>window</code>"
+	},
+	"delayDuration": {
+		"message": "Thời lượng",
+		"description": "Delay duration label"
+	},
+	"chainStepCount": {
+		"message": "%count% bước",
+		"description": "Step count for unnamed chains, e.g. '3 steps'"
+	},
+	"chainStepCountOne": {
+		"message": "%count% bước",
+		"description": "Step count for unnamed chains with exactly 1 step"
 	}
 }

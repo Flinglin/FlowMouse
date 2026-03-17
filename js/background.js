@@ -19,56 +19,79 @@ function asyncMessageHandler(asyncHandler) {
 	};
 }
 
-chrome.runtime.onMessage.addListener(asyncMessageHandler(async (request, sender) => {
+const CONTENT_ACTIONS = new Set([
+	'scrollUp', 'scrollDown', 'scrollToTop', 'scrollToBottom',
+	'stopLoading', 'copyUrl', 'copyTitle', 'printPage', 'sendCustomEvent',
+	'simulateKey',
+]);
+
+async function handleAction(request, sender) {
 	switch (request.action) {
 		case 'back':
 			if (sender.tab?.id) {
 				await chrome.tabs.goBack(sender.tab.id).catch(() => { });
 			}
-			break;
+			return { success: true };
 
 		case 'forward':
 			if (sender.tab?.id) {
 				await chrome.tabs.goForward(sender.tab.id).catch(() => { });
 			}
-			break;
+			return { success: true };
 
 		case 'refresh':
 			if (sender.tab?.id) {
 				await chrome.tabs.reload(sender.tab.id);
 			}
-			break;
+			return { success: true };
 
-		case 'closeTab':
+		case 'closeTab': {
 			if (sender.tab?.id) {
+				const tabs = await chrome.tabs.query({ windowId: sender.tab.windowId });
+				const currentIndex = sender.tab.index;
+				const afterClose = request.afterClose || 'default';
+
+				if (request.keepWindow && tabs.length === 1) {
+					await chrome.tabs.create({ active: true, windowId: sender.tab.windowId });
+				}
+
+				if (afterClose !== 'default' && tabs.length > 1) {
+					let targetIndex;
+					if (afterClose === 'left') {
+						targetIndex = currentIndex > 0 ? currentIndex - 1 : tabs.length - 1;
+					} else if (afterClose === 'right') {
+						targetIndex = currentIndex < tabs.length - 1 ? currentIndex + 1 : 0;
+					}
+					if (targetIndex !== undefined) {
+						const targetTab = tabs.find(t => t.index === targetIndex);
+						if (targetTab) {
+							await chrome.tabs.update(targetTab.id, { active: true });
+						}
+					}
+				}
+
 				await chrome.tabs.remove(sender.tab.id);
 			}
-			break;
-
-		case 'closeTabKeepWindow': {
-			if (sender.tab?.id) {
-				const tabs = await chrome.tabs.query({ currentWindow: true });
-				if (tabs.length === 1) {
-					await chrome.tabs.create({ active: true });
-					await chrome.tabs.remove(sender.tab.id);
-				} else {
-					await chrome.tabs.remove(sender.tab.id);
-				}
-			}
-			break;
+			return { success: true };
 		}
+
+		case 'closeWindow':
+			if (sender.tab?.windowId) {
+				await chrome.windows.remove(sender.tab.windowId);
+			}
+			return { success: true };
 
 		case 'closeBrowser': {
 			const windows = await chrome.windows.getAll({});
 			for (const win of windows) {
 				await chrome.windows.remove(win.id);
 			}
-			break;
+			return { success: true };
 		}
 
 		case 'restoreTab':
 			await chrome.sessions.restore(null).catch(() => { });
-			break;
+			return { success: true };
 
 		case 'openTab':
 			if (sender.tab) {
@@ -76,28 +99,41 @@ chrome.runtime.onMessage.addListener(asyncMessageHandler(async (request, sender)
 					url: request.url || undefined,
 					active: true,
 					index: sender.tab.index + 1,
-					openerTabId: sender.tab.id  
+					openerTabId: sender.tab.id,  
+					windowId: sender.tab.windowId
 				});
 			} else {
 				await chrome.tabs.create({ url: request.url || undefined, active: true });
 			}
-			break;
+			return { success: true };
 
 		case 'newTab':
-			await chrome.tabs.create({ active: true });
-			break;
+			if (sender.tab) {
+				await chrome.tabs.create({ active: true, windowId: sender.tab.windowId });
+			} else {
+				await chrome.tabs.create({ active: true });
+			}
+			return { success: true };
 
 		case 'openTabAtPosition': {
 			if (sender.tab) {
+				if (request.incognito && !sender.tab.incognito) {
+					const granted = await requestPermission(['incognito'], sender.tab.windowId);
+					if (granted) {
+						await chrome.windows.create({ incognito: true, url: request.url }); 
+					}
+					return { success: true };
+				}
+
 				const position = request.position || 'right';
 				const active = request.active !== false;
 
 				if (position === 'current') {
 					await chrome.tabs.update(sender.tab.id, { url: request.url, active: active });
-					return;
+					return { success: true };
 				}
 
-				const tabs = await chrome.tabs.query({ currentWindow: true });
+				const tabs = await chrome.tabs.query({ windowId: sender.tab.windowId });
 				let newIndex;
 				switch (position) {
 					case 'left':
@@ -119,23 +155,62 @@ chrome.runtime.onMessage.addListener(asyncMessageHandler(async (request, sender)
 					url: request.url,
 					active: active,
 					index: newIndex,
-					openerTabId: sender.tab.id
+					openerTabId: sender.tab.id,
+					windowId: sender.tab.windowId
 				});
 			} else {
 				await chrome.tabs.create({ url: request.url, active: request.active !== false });
 			}
-			break;
+			return { success: true };
+		}
+
+		case 'openIncognitoTabs': {
+			const urls = request.urls || [];
+			const queries = request.queries || [];
+			if (!sender.tab || (urls.length === 0 && queries.length === 0)) return { success: true };
+			if (sender.tab.incognito) {
+				for (const url of urls) {
+					await chrome.tabs.create({ url, windowId: sender.tab.windowId });
+				}
+				for (const query of queries) {
+					const tab = await chrome.tabs.create({ windowId: sender.tab.windowId });
+					await chrome.search.query({ text: query, tabId: tab.id });
+				}
+			} else {
+				const granted = await requestPermission(['incognito'], sender.tab.windowId);
+				if (granted) {
+					const newWin = await chrome.windows.create({ incognito: true, url: urls.length > 0 ? urls : undefined });
+					if (newWin) {
+						for (const query of queries) {
+							const tab = await chrome.tabs.create({ windowId: newWin.id });
+							await chrome.search.query({ text: query, tabId: tab.id });
+						}
+					}
+				}
+			}
+			return { success: true };
 		}
 
 		case 'systemSearch': {
-			if (chrome.search?.query && sender.tab) {
+			if (sender.tab) {
+				if (request.incognito && !sender.tab.incognito) {
+					const granted = await requestPermission(['incognito'], sender.tab.windowId);
+					if (granted) {
+						const newWin = await chrome.windows.create({ incognito: true }); 
+						if (newWin && newWin.tabs && newWin.tabs.length > 0) {
+							await chrome.search.query({ text: request.query, tabId: newWin.tabs[0].id });
+						}
+					}
+					return { success: true };
+				}
+
 				const position = request.position || 'right';
 				const active = request.active !== false;
 
 				if (position === 'current') {
-					chrome.search.query({ text: request.query, tabId: sender.tab.id });
+					await chrome.search.query({ text: request.query, tabId: sender.tab.id });
 				} else {
-					const tabs = await chrome.tabs.query({ currentWindow: true });
+					const tabs = await chrome.tabs.query({ windowId: sender.tab.windowId });
 					let newIndex;
 					switch (position) {
 						case 'left':
@@ -156,14 +231,15 @@ chrome.runtime.onMessage.addListener(asyncMessageHandler(async (request, sender)
 					const newTab = await chrome.tabs.create({
 						active: active,
 						index: newIndex,
-						openerTabId: sender.tab.id
+						openerTabId: sender.tab.id,
+						windowId: sender.tab.windowId
 					});
 					if (newTab) {
-						chrome.search.query({ text: request.query, tabId: newTab.id });
+						await chrome.search.query({ text: request.query, tabId: newTab.id });
 					}
 				}
 			}
-			break;
+			return { success: true };
 		}
 
 		case 'saveImage':
@@ -224,11 +300,11 @@ chrome.runtime.onMessage.addListener(asyncMessageHandler(async (request, sender)
 					}
 				});
 			}
-			break;
+			return { success: true };
 
 		case 'closeOtherTabs': {
 			if (sender.tab) {
-				const tabs = await chrome.tabs.query({ currentWindow: true });
+				const tabs = await chrome.tabs.query({ windowId: sender.tab.windowId });
 				const tabsToRemove = tabs
 					.filter(tab => tab.id !== sender.tab.id)
 					.map(tab => tab.id);
@@ -237,12 +313,12 @@ chrome.runtime.onMessage.addListener(asyncMessageHandler(async (request, sender)
 					await chrome.tabs.remove(tabsToRemove);
 				}
 			}
-			break;
+			return { success: true };
 		}
 
 		case 'closeRightTabs': {
 			if (sender.tab) {
-				const tabs = await chrome.tabs.query({ currentWindow: true });
+				const tabs = await chrome.tabs.query({ windowId: sender.tab.windowId });
 				const tabsToRemove = tabs
 					.filter(tab => tab.index > sender.tab.index)
 					.map(tab => tab.id);
@@ -251,12 +327,12 @@ chrome.runtime.onMessage.addListener(asyncMessageHandler(async (request, sender)
 					await chrome.tabs.remove(tabsToRemove);
 				}
 			}
-			break;
+			return { success: true };
 		}
 
 		case 'closeLeftTabs': {
 			if (sender.tab) {
-				const tabs = await chrome.tabs.query({ currentWindow: true });
+				const tabs = await chrome.tabs.query({ windowId: sender.tab.windowId });
 				const tabsToRemove = tabs
 					.filter(tab => tab.index < sender.tab.index)
 					.map(tab => tab.id);
@@ -265,54 +341,100 @@ chrome.runtime.onMessage.addListener(asyncMessageHandler(async (request, sender)
 					await chrome.tabs.remove(tabsToRemove);
 				}
 			}
-			break;
+			return { success: true };
 		}
 
 		case 'refreshAllTabs': {
-			const tabs = await chrome.tabs.query({ currentWindow: true });
+			const tabs = await chrome.tabs.query({ windowId: sender.tab.windowId });
 			for (const tab of tabs) {
 				await chrome.tabs.reload(tab.id);
 			}
-			break;
+			return { success: true };
 		}
 
 		case 'closeAllTabs': {
-			const tabs = await chrome.tabs.query({ currentWindow: true });
-			await chrome.tabs.create({ active: true });
+			const tabs = await chrome.tabs.query({ windowId: sender.tab.windowId });
+			await chrome.tabs.create({ active: true, windowId: sender.tab.windowId });
 			const tabsToRemove = tabs.map(tab => tab.id);
 			if (tabsToRemove.length > 0) {
 				await chrome.tabs.remove(tabsToRemove);
 			}
-			break;
+			return { success: true };
 		}
 
 		case 'switchLeftTab': {
 			if (sender.tab) {
-				const tabs = await chrome.tabs.query({ currentWindow: true });
+				const tabs = await chrome.tabs.query({ windowId: sender.tab.windowId });
 				const currentIndex = sender.tab.index;
+				if (request.noWrap && currentIndex === 0) return { success: true };
 				const prevIndex = currentIndex > 0 ? currentIndex - 1 : tabs.length - 1;
-				await chrome.tabs.update(tabs[prevIndex].id, { active: true });
+				if (request.moveTab) {
+					await chrome.tabs.move(sender.tab.id, { index: prevIndex });
+				} else {
+					await chrome.tabs.update(tabs[prevIndex].id, { active: true });
+				}
 			}
-			break;
+			return { success: true };
 		}
 
 		case 'switchRightTab': {
 			if (sender.tab) {
-				const tabs = await chrome.tabs.query({ currentWindow: true });
+				const tabs = await chrome.tabs.query({ windowId: sender.tab.windowId });
 				const currentIndex = sender.tab.index;
+				if (request.noWrap && currentIndex === tabs.length - 1) return { success: true };
 				const nextIndex = currentIndex < tabs.length - 1 ? currentIndex + 1 : 0;
-				await chrome.tabs.update(tabs[nextIndex].id, { active: true });
+				if (request.moveTab) {
+					await chrome.tabs.move(sender.tab.id, { index: nextIndex });
+				} else {
+					await chrome.tabs.update(tabs[nextIndex].id, { active: true });
+				}
 			}
-			break;
+			return { success: true };
+		}
+
+		case 'switchFirstTab': {
+			if (sender.tab) {
+				const tabs = await chrome.tabs.query({ windowId: sender.tab.windowId });
+				if (tabs.length > 0) {
+					if (request.moveTab) {
+						await chrome.tabs.move(sender.tab.id, { index: 0 });
+					} else {
+						await chrome.tabs.update(tabs[0].id, { active: true });
+					}
+				}
+			}
+			return { success: true };
+		}
+
+		case 'switchLastTab': {
+			if (sender.tab) {
+				const tabs = await chrome.tabs.query({ windowId: sender.tab.windowId });
+				if (tabs.length > 0) {
+					if (request.moveTab) {
+						await chrome.tabs.move(sender.tab.id, { index: -1 });
+					} else {
+						await chrome.tabs.update(tabs[tabs.length - 1].id, { active: true });
+					}
+				}
+			}
+			return { success: true };
+		}
+
+		case 'togglePinTab': {
+			if (sender.tab?.id) {
+				const tab = await chrome.tabs.get(sender.tab.id);
+				await chrome.tabs.update(tab.id, { pinned: !tab.pinned });
+			}
+			return { success: true };
 		}
 
 		case 'newWindow':
 			await chrome.windows.create({});
-			break;
+			return { success: true };
 
 		case 'newIncognito':
 			await chrome.windows.create({ incognito: true });
-			break;
+			return { success: true };
 
 		case 'addToBookmarks':
 			if (sender.tab) {
@@ -324,7 +446,7 @@ chrome.runtime.onMessage.addListener(asyncMessageHandler(async (request, sender)
 					});
 				});
 			}
-			break;
+			return { success: true };
 
 		case 'toggleFullscreen': {
 			const win = await chrome.windows.getCurrent();
@@ -339,26 +461,24 @@ chrome.runtime.onMessage.addListener(asyncMessageHandler(async (request, sender)
 				await chrome.storage.session.set({ [storageKey]: win.state });
 				await chrome.windows.update(win.id, { state: 'fullscreen' });
 			}
-			break;
+			return { success: true };
 		}
 
 		case 'toggleMaximize': {
 			const win = await chrome.windows.getCurrent();
 			const newState = win.state === 'maximized' ? 'normal' : 'maximized';
 			await chrome.windows.update(win.id, { state: newState });
-			break;
+			return { success: true };
 		}
 
 		case 'minimize': {
 			const win = await chrome.windows.getCurrent();
 			await chrome.windows.update(win.id, { state: 'minimized' });
-			break;
+			return { success: true };
 		}
 
 		case 'openCustomUrl': {
-			const items = await chrome.storage.sync.get(['customGestureUrls']);
-			const urls = items.customGestureUrls || {};
-			let url = urls[request.pattern];
+			let url = request.customUrl;
 			if (url) {
 				const protocolRegex = /^[a-zA-Z][a-zA-Z0-9+.-]*:/;
 
@@ -368,41 +488,41 @@ chrome.runtime.onMessage.addListener(asyncMessageHandler(async (request, sender)
 					url = 'http://' + url;
 				}
 
-				await chrome.tabs.create({ url: url, active: true });
+				await chrome.tabs.create({ url: url, active: true, windowId: sender.tab.windowId });
 			}
-			break;
+			return { success: true };
 		}
 
 		case 'openDownloads':
 			{
-				await chrome.tabs.create({ url: 'chrome://downloads', active: true });
+				await chrome.tabs.create({ url: 'chrome://downloads', active: true, windowId: sender.tab.windowId });
 			}
-			break;
+			return { success: true };
 
 		case 'openHistory':
 			{
-				await chrome.tabs.create({ url: 'chrome://history', active: true });
+				await chrome.tabs.create({ url: 'chrome://history', active: true, windowId: sender.tab.windowId });
 			}
-			break;
+			return { success: true };
 
 		case 'openExtensions':
 			{
-				await chrome.tabs.create({ url: 'chrome://extensions', active: true });
+				await chrome.tabs.create({ url: 'chrome://extensions', active: true, windowId: sender.tab.windowId });
 			}
-			break;
+			return { success: true };
 
 		case 'duplicateTab':
 			if (sender.tab?.id) {
 				await chrome.tabs.duplicate(sender.tab.id);
 			}
-			break;
+			return { success: true };
 
 		case 'toggleMuteTab': {
 			if (sender.tab?.id) {
 				const tab = await chrome.tabs.get(sender.tab.id);
 				await chrome.tabs.update(tab.id, { muted: !tab.mutedInfo.muted });
 			}
-			break;
+			return { success: true };
 		}
 
 		case 'toggleMuteAllTabs': {
@@ -415,7 +535,16 @@ chrome.runtime.onMessage.addListener(asyncMessageHandler(async (request, sender)
 			for (const tab of tabs) {
 				await chrome.tabs.update(tab.id, { muted: newState });
 			}
-			break;
+			return { success: true };
+		}
+
+		case 'openOptionsPage': {
+			const optionsUrl = chrome.runtime.getURL('pages/options.html');
+			const targetUrl = optionsUrl + (request.hash || '');
+
+			chrome.tabs.create({ url: targetUrl });
+
+			return { success: true };
 		}
 
 		case 'gestureStateUpdate':
@@ -426,7 +555,7 @@ chrome.runtime.onMessage.addListener(asyncMessageHandler(async (request, sender)
 				}).catch(() => {
 				});
 			}
-			break;
+			return { success: true };
 
 		case 'gestureHudUpdate':
 			if (sender.tab?.id) {
@@ -436,7 +565,7 @@ chrome.runtime.onMessage.addListener(asyncMessageHandler(async (request, sender)
 				}).catch(() => {
 				});
 			}
-			break;
+			return { success: true };
 
 		case 'gestureScrollUpdate':
 			if (sender.tab?.id) {
@@ -446,8 +575,51 @@ chrome.runtime.onMessage.addListener(asyncMessageHandler(async (request, sender)
 				}).catch(() => {
 				});
 			}
-			break;
+			return { success: true };
+
+		case 'actionChain': {
+			const steps = request.steps;
+			if (!steps?.length) return { success: true };
+			const windowId = sender.tab?.windowId;
+
+			const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
+			for (const step of steps) {
+				if (step.action === 'delay') {
+					await sleep(step.delayMs || 500);
+					continue;
+				}
+
+				const [activeTab] = await chrome.tabs.query({ active: true, windowId });
+				if (!activeTab) continue;
+
+				if (CONTENT_ACTIONS.has(step.action)) {
+					await chrome.tabs.sendMessage(activeTab.id, {
+						action: 'executeLocalAction',
+						stepAction: step.action,
+						stepConfig: step
+					}).catch(() => {});
+					if (steps.indexOf(step) < steps.length - 1) {
+						await sleep(100);
+					}
+				} else {
+					await handleAction(step, { tab: activeTab });
+				}
+			}
+			return { success: true };
+		}
 	}
+}
+
+chrome.runtime.onMessage.addListener(asyncMessageHandler(async (request, sender) => {
+	if (request.useActiveTab && sender.tab) {
+		const [activeTab] = await chrome.tabs.query({ active: true, windowId: sender.tab.windowId });
+		if (activeTab) {
+			sender = { ...sender, tab: activeTab };
+		}
+	}
+
+	return await handleAction(request, sender);
 }));
 
 chrome.runtime.onInstalled.addListener((details) => {
@@ -459,14 +631,6 @@ chrome.runtime.onInstalled.addListener((details) => {
 	}
 
 	if (details.reason === 'update' && details.previousVersion) {
-		if (details.previousVersion.startsWith('1.0')) {
-			chrome.storage.sync.get(['enableGestureCustomization'], (items) => {
-				if (!items.enableGestureCustomization) {
-					chrome.storage.sync.remove('gestures');
-				}
-			});
-		}
-
 		if (details.previousVersion.startsWith('1.1')) {
 			chrome.storage.sync.get(['imageDragGestures'], (items) => {
 				const gestures = items.imageDragGestures;
@@ -490,14 +654,99 @@ chrome.runtime.onInstalled.addListener((details) => {
 				}
 			});
 		}
+
+		function migrateScrollAmount() {
+			chrome.storage.sync.get(['scrollAmount', 'scrollSmoothness', 'mouseGestures'], (items) => {
+				if (items.scrollAmount === undefined && items.scrollSmoothness === undefined) return;
+
+				const mouseGestures = items.mouseGestures || {};
+				const scrollDistance = items.scrollAmount;
+
+				if (scrollDistance !== undefined) {
+					for (const config of Object.values(mouseGestures)) {
+						if ((config.action === 'scrollUp' || config.action === 'scrollDown') && config.scrollDistance === undefined) {
+							config.scrollDistance = Number(scrollDistance);
+						}
+					}
+				}
+
+				chrome.storage.sync.set({ mouseGestures }, () => {
+					chrome.storage.sync.remove(['scrollAmount', 'scrollSmoothness']);
+				});
+			});
+		}
+
+		chrome.storage.sync.get(['gestures', 'customGestures', 'customGestureUrls', 'mouseGestures'], (items) => {
+			if (items.mouseGestures && Object.keys(items.mouseGestures).length > 0) {
+				migrateScrollAmount();
+				return;
+			}
+			if (!items.customGestures && !items.customGestureUrls && !items.gestures) {
+				migrateScrollAmount();
+				return;
+			}
+
+			const LEGACY_DEFAULT_GESTURES = {
+				'←': 'back', '→': 'forward', '↑': 'scrollUp', '↓': 'scrollDown',
+				'↓→': 'closeTab', '←↑': 'restoreTab', '→↑': 'newTab', '→↓': 'refresh',
+				'↑←': 'switchLeftTab', '↑→': 'switchRightTab', '↓←': 'stopLoading',
+				'←↓': 'closeAllTabs', '↑↓': 'scrollToBottom', '↓↑': 'scrollToTop',
+				'←→': 'closeTab', '→←': 'restoreTab',
+			};
+			const baseGestures = items.gestures || LEGACY_DEFAULT_GESTURES;
+			const customGestures = items.customGestures || {};
+			const customGestureUrls = items.customGestureUrls || {};
+			const merged = { ...baseGestures, ...customGestures };
+
+			const mouseGestures = {};
+			for (const [pattern, action] of Object.entries(merged)) {
+				if (action === null) continue; 
+				const entry = { action };
+				if (customGestureUrls[pattern]) entry.customUrl = customGestureUrls[pattern];
+				mouseGestures[pattern] = entry;
+			}
+
+			chrome.storage.sync.remove(['gestures', 'customGestures', 'customGestureUrls'], () => {
+				chrome.storage.sync.set({ mouseGestures }, () => {
+					migrateScrollAmount();
+				});
+			});
+		});
+
+		chrome.storage.sync.get(['enableAdvancedSettings', 'sectionAdvanced'], (items) => {
+			if (items.sectionAdvanced !== undefined || items.enableAdvancedSettings === undefined) {
+				return;
+			}
+
+			if (items.enableAdvancedSettings === true) {
+				chrome.storage.sync.set({ 
+					sectionAdvanced: { basic: true, drag: true } 
+				}, () => {
+					chrome.storage.sync.remove(['enableAdvancedSettings']);
+				});
+			} else {
+				chrome.storage.sync.set({ 
+					sectionAdvanced: {} 
+				}, () => {
+					chrome.storage.sync.remove(['enableAdvancedSettings']);
+				});
+			}
+		});
+
+		if (details.previousVersion.startsWith('1.2')) {
+			const isMacOrLinux = /Mac|Linux/i.test(navigator.platform);
+			if (isMacOrLinux) {
+				chrome.storage.sync.set({ macLinuxHintDismissed: true });
+			}
+		}
 	}
 
-	
 });
 
 
 const MENU_ID_REFRESH = 'flowmouse-need-refresh';
 const MENU_ID_RESTRICTED = 'flowmouse-restricted';
+const MENU_ID_BLACKLIST = 'flowmouse-blacklist-toggle';
 
 function isRestrictedUrl(url) {
 	if (!url) return true;
@@ -545,6 +794,22 @@ function removeAllMenus() {
 	chrome.contextMenus.remove(MENU_ID_RESTRICTED, () => { chrome.runtime.lastError; });
 }
 
+function removeBlacklistMenu() {
+	chrome.contextMenus.remove(MENU_ID_BLACKLIST, () => { chrome.runtime.lastError; });
+}
+
+function createBlacklistMenu(isInBlacklist) {
+	removeBlacklistMenu();
+	const title = isInBlacklist
+		? chrome.i18n.getMessage('menuRemoveFromBlacklist')
+		: chrome.i18n.getMessage('menuAddToBlacklist');
+	chrome.contextMenus.create({
+		id: MENU_ID_BLACKLIST,
+		title: title,
+		contexts: ['all']
+	}, () => { chrome.runtime.lastError; });
+}
+
 function createRefreshMenu() {
 	removeAllMenus();
 	const title = chrome.i18n.getMessage('menuNeedRefresh');
@@ -582,24 +847,36 @@ async function updateMenuForTab(tab) {
 	const url = tab.url;
 	const status = tab.status;
 
-	const items = await chrome.storage.sync.get(['showRestrictedNotice', 'blacklist']);
+	if (status === 'loading') {
+		removeAllMenus();
+		updateBadge(tabId, 'normal');
+		return;
+	}
+
+	const items = await chrome.storage.sync.get(['showRestrictedNotice', 'blacklist', 'enableBlacklistContextMenu']);
+	let hostname = null;
+	try {
+		if (url) hostname = new URL(url).hostname;
+	} catch (e) {
+	}
+
+	if (items.enableBlacklistContextMenu && hostname && !isRestrictedUrl(url)) {
+		const isInBlacklist = items.blacklist && items.blacklist.includes(hostname);
+		createBlacklistMenu(isInBlacklist);
+	} else {
+		removeBlacklistMenu();
+	}
+
 	if (items.showRestrictedNotice === false) {
 		removeAllMenus();
 		updateBadge(tabId, 'normal');
 		return;
 	}
 
-	try {
-		if (url) {
-			const urlObj = new URL(url);
-			const hostname = urlObj.hostname;
-			if (items.blacklist && items.blacklist.includes(hostname)) {
-				removeAllMenus();
-				updateBadge(tabId, 'normal');
-				return;
-			}
-		}
-	} catch (e) {
+	if (hostname && items.blacklist && items.blacklist.includes(hostname)) {
+		removeAllMenus();
+		updateBadge(tabId, 'normal');
+		return;
 	}
 
 	if (isRestrictedUrl(url)) {
@@ -611,12 +888,6 @@ async function updateMenuForTab(tab) {
 			removeAllMenus();
 			updateBadge(tabId, 'normal');
 		} else {
-			if (status === 'loading') {
-				removeAllMenus();
-				updateBadge(tabId, 'normal');
-				return;
-			}
-
 			createRefreshMenu();
 			updateBadge(tabId, 'needRefresh');
 		}
@@ -642,6 +913,22 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
 		if (tab && tab.id) {
 			chrome.tabs.reload(tab.id);
 		}
+	} else if (info.menuItemId === MENU_ID_BLACKLIST) {
+		if (tab && tab.url) {
+			try {
+				const hostname = new URL(tab.url).hostname;
+				if (!hostname) return;
+				const storageItems = await chrome.storage.sync.get(['blacklist']);
+				let blacklist = storageItems.blacklist || [];
+				if (blacklist.includes(hostname)) {
+					blacklist = blacklist.filter(d => d !== hostname);
+				} else {
+					blacklist = [...blacklist, hostname];
+				}
+				await chrome.storage.sync.set({ blacklist });
+			} catch (e) {
+			}
+		}
 	} else if (info.menuItemId === MENU_ID_RESTRICTED) {
 		const optionsUrl = chrome.runtime.getURL('pages/options.html');
 		const targetUrl = optionsUrl + '#restricted-notice';
@@ -660,10 +947,10 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
 
 chrome.storage.onChanged.addListener((changes, namespace) => {
 	if (namespace === 'sync') {
-		if (changes.showRestrictedNotice || changes.language) {
+		if (changes.showRestrictedNotice || changes.language || changes.enableBlacklistContextMenu || changes.blacklist) {
 			chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 				if (tabs[0]) {
-					updateMenuForTab(tabs[0].id, tabs[0].url);
+					updateMenuForTab(tabs[0]);
 				}
 			});
 		}
@@ -789,17 +1076,39 @@ async function notifyDownloadError(tabId) {
 }
 
 async function requestPermission(permissions, windowId) {
-	const hasPermission = await chrome.permissions.contains({ permissions: permissions });
-
-	if (hasPermission) {
-		return true;
+	if (permissions.includes('incognito')) {
+		const isAllowed = await chrome.extension.isAllowedIncognitoAccess();
+		if (isAllowed) return true;
+	} else {
+		const hasPermission = await chrome.permissions.contains({ permissions: permissions });
+		if (hasPermission) return true;
 	}
 
 	return new Promise((resolve) => {
+		const permUrl = chrome.runtime.getURL(`pages/permission.html?permissions=${permissions.join(',')}`);
+
+		const checkGranted = async () => {
+			if (permissions.includes('incognito')) {
+				return await chrome.extension.isAllowedIncognitoAccess();
+			}
+			return await chrome.permissions.contains({ permissions: permissions });
+		};
+
+		const openAsTab = async () => {
+			const tab = await chrome.tabs.create({ url: permUrl, active: true });
+			const onTabRemoved = async (tabId) => {
+				if (tabId === tab.id) {
+					chrome.tabs.onRemoved.removeListener(onTabRemoved);
+					resolve(await checkGranted());
+				}
+			};
+			chrome.tabs.onRemoved.addListener(onTabRemoved);
+		};
+
 		const openPermissionWindow = async (winOptions) => {
 			try {
 				const popupWindow = await chrome.windows.create({
-					url: chrome.runtime.getURL(`pages/permission.html?permissions=${permissions.join(',')}`),
+					url: permUrl,
 					type: 'popup',
 					width: 340,
 					height: 380,
@@ -809,21 +1118,24 @@ async function requestPermission(permissions, windowId) {
 				});
 
 				if (!popupWindow) {
-					resolve(false);
+					await openAsTab();
 					return;
 				}
 
 				const onRemoved = async (closedWindowId) => {
 					if (closedWindowId === popupWindow.id) {
 						chrome.windows.onRemoved.removeListener(onRemoved);
-						const granted = await chrome.permissions.contains({ permissions: permissions });
-						resolve(granted);
+						resolve(await checkGranted());
 					}
 				};
 				chrome.windows.onRemoved.addListener(onRemoved);
 			} catch (e) {
-				console.error('Failed to open permission window:', e);
-				resolve(false);
+				try {
+					await openAsTab();
+				} catch (e2) {
+					console.error('Failed to open permission popup:', e2);
+					resolve(false);
+				}
 			}
 		};
 

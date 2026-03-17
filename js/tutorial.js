@@ -58,7 +58,6 @@
 		demoLink: document.getElementById('demoLink'),
 		step3DiscoveryWrapper: document.getElementById('step3DiscoveryWrapper'),
 		step3SwapContainer: document.querySelector('.step3-swap-container'),
-		step3SwapContainer: document.querySelector('.step3-swap-container'),
 		step3ContinueBtn: document.getElementById('step3ContinueBtn'),
 
 		macLinuxNotice: document.getElementById('macLinuxNotice'),
@@ -83,10 +82,7 @@
 	}
 
 	function msg(key) {
-		if (window.i18n && window.i18n.getMessage) {
-			return window.i18n.getMessage(key);
-		}
-		return key;
+		return window.i18n.getMessage(key);
 	}
 
 	function getActionName(actionKey) {
@@ -100,26 +96,25 @@
 
 	function getHudText(pattern) {
 		if (!window.GestureConstants?.DEFAULT_GESTURES) {
-			return pattern;
+			return '';
 		}
 		const actionKey = window.GestureConstants.DEFAULT_GESTURES[pattern];
 		if (actionKey) {
 			const actionName = getActionName(actionKey);
-			return pattern + ' ' + (actionName || actionKey);
+			return actionName || actionKey;
 		}
-		return pattern;
+		return '';
 	}
 
 	function getSuperDragHudText(dragType) {
 		if (dragType === 'text') {
 			const i18nKey = window.GestureConstants?.TEXT_DRAG_ACTIONS?.['search'];
-			const actionName = i18nKey ? msg(i18nKey) : 'Search';
-			return '→ ' + actionName;
+			return i18nKey ? msg(i18nKey) : 'Search';
 		} else if (dragType === 'settings') {
 			const actionName = msg('dragActionOpenTabLink');
-			return '→ ' + (actionName === 'dragActionOpenTabLink' ? 'Open Link' : actionName);
+			return actionName === 'dragActionOpenTabLink' ? 'Open Link' : actionName;
 		}
-		return '→';
+		return '';
 	}
 
 	function renderSvgArrows() {
@@ -272,6 +267,7 @@
 				{
 					if (isMacOrLinux && elements.macLinuxNotice) {
 						elements.macLinuxNotice.style.display = 'block';
+						try { chrome.storage.sync.set({ macLinuxHintDismissed: true }); } catch (e) {}
 					}
 				}
 			}
@@ -385,6 +381,35 @@
 		}
 	}, true);
 
+	let edgeGestureDetected = false;
+
+	window.addEventListener('blur', () => {
+		if (TutorialState.gestureActive) {
+			visualizer.hide();
+			recognizer.reset();
+			TutorialState.gestureActive = false;
+			TutorialState.pattern = [];
+			TutorialState.preventContextMenu = false;
+
+			if (TutorialState.currentStep === 1) {
+				resetStep1();
+				if (window.i18n.isEdgeDesktop) {
+					edgeGestureDetected = true;
+				}
+			}
+		}
+	});
+
+	if (window.i18n.isEdgeDesktop) {
+		window.addEventListener('focus', () => {
+			if (edgeGestureDetected) {
+				edgeGestureDetected = false;
+				TutorialState.stepTransitionCooldown = false;
+				goToStep(3);
+			}
+		});
+	}
+
 	document.addEventListener('pointermove', (e) => {
 		if (!TutorialState.gestureActive) return;
 
@@ -434,7 +459,8 @@
 			TutorialState.pattern.push(result.direction);
 
 			const patternStr = TutorialState.pattern.join('');
-			visualizer.updateAction(getHudText(patternStr));
+			const hudText = getHudText(patternStr);
+			visualizer.updateAction(patternStr, hudText ? [hudText] : []);
 		}
 	}, true);
 
@@ -616,9 +642,10 @@
 			if (result.directionChanged) {
 				const pattern = dragRecognizer.getPattern();
 				if (pattern === '→') {
-					visualizer.updateAction(getSuperDragHudText(dragType));
+					const dragHudText = getSuperDragHudText(dragType);
+					visualizer.updateAction('→', dragHudText ? [dragHudText] : []);
 				} else {
-					visualizer.updateAction('');
+					visualizer.updateAction('', []);
 				}
 			}
 		}
@@ -629,9 +656,21 @@
 			resetDragState();
 		}
 	}, true);
-	document.addEventListener('dragend', (e) => {
+
+	document.addEventListener('drop', (e) => {
+		if (isDragging && dragRecognizer.isActive()) {
+			e.preventDefault();
+			handleDragComplete(e);
+		}
 		resetDragState();
 	});
+
+	document.addEventListener('dragend', (e) => {
+		handleDragComplete(e);
+		resetDragState();
+	});
+
+
 	function handleDragComplete(e) {
 		if (!isDragging) return;
 
@@ -681,19 +720,6 @@
 			}
 		}
 	}
-
-	document.addEventListener('drop', (e) => {
-		if (isDragging && dragRecognizer.isActive()) {
-			e.preventDefault();
-			handleDragComplete(e);
-		}
-		resetDragState();
-	});
-
-	document.addEventListener('dragend', (e) => {
-		handleDragComplete(e);
-		resetDragState();
-	});
 
 	if (elements.step2ContinueBtn) {
 		elements.step2ContinueBtn.addEventListener('click', () => {

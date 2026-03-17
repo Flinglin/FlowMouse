@@ -15,8 +15,8 @@ class GestureRecognizer {
 	#segmentLength = 0; 
 
 	constructor(config = {}) {
-		this.#distanceThreshold = config.distanceThreshold || 25;
-		this.#longGestureMultiplier = config.longGestureMultiplier ?? 0.2;
+		this.#distanceThreshold = config.distanceThreshold || 20;
+		this.#longGestureMultiplier = config.longGestureMultiplier ?? 0.10;
 		this.#maxThreshold = config.maxThreshold ?? 120;
 		this.reset();
 	}
@@ -24,6 +24,9 @@ class GestureRecognizer {
 	updateConfig(config) {
 		if (config.distanceThreshold) {
 			this.#distanceThreshold = config.distanceThreshold;
+		}
+		if (config.longGestureMultiplier !== undefined) {
+			this.#longGestureMultiplier = config.longGestureMultiplier;
 		}
 	}
 
@@ -63,12 +66,14 @@ class GestureRecognizer {
 			directionChanged: false, 
 			direction: null,        
 			pattern: this.#pattern.join(''),
-			preActivationTrail: []  
+			preActivationTrail: [],  
+			totalDistance: 0,
 		};
 
 		const totalDeltaX = this.#currentX - this.#startX;
 		const totalDeltaY = this.#currentY - this.#startY;
 		const totalDistance = Math.sqrt(totalDeltaX * totalDeltaX + totalDeltaY * totalDeltaY);
+		result.totalDistance = totalDistance;
 
 		if (!this.#active && totalDistance > this.#distanceThreshold) {
 			this.#active = true;

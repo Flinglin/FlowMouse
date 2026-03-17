@@ -8,20 +8,12 @@
 		"description": "Short extension name for popup"
 	},
 	"extDescription": {
-		"message": "O extensie de gesturi mouse open-source, concentrată pe confidențialitate și experiență fluidă. Gesturi fine, suport super drag, și toate datele sunt stocate local.",
+		"message": "O extensie de gesturi mouse open-source, concentrată pe confidențialitate și experiență fluidă. Gesturi fine, suport super drag.",
 		"description": "Extension description"
-	},
-	"appearance": {
-		"message": "Aspect",
-		"description": "Appearance section"
 	},
 	"theme": {
 		"message": "Temă",
 		"description": "Theme"
-	},
-	"themeDesc": {
-		"message": "Comută între tema luminoasă și cea întunecată",
-		"description": "Theme description"
 	},
 	"themeDark": {
 		"message": "Întunecat",
@@ -34,10 +26,6 @@
 	"themeAuto": {
 		"message": "Urmează Sistemul",
 		"description": "Auto theme - follow system"
-	},
-	"languageDesc": {
-		"message": "Selectează limba interfeței",
-		"description": "Language description"
 	},
 	"syncStatus": {
 		"message": "Stare Sincronizare",
@@ -56,7 +44,7 @@
 		"description": "Author"
 	},
 	"privacyNote": {
-		"message": "🔒 Rulează local, fără acces la rețea exceptând sincronizarea, fără colectare de date",
+		"message": " Rulează local, fără acces la rețea exceptând sincronizarea, fără colectare de date",
 		"description": "Privacy note in footer"
 	},
 	"supportUsText": {
@@ -120,11 +108,19 @@
 		"description": "Hold the right mouse button and move the mouse to easily perform gestures"
 	},
 	"macLinuxContextMenuNotice": {
-		"message": "⚠️ Din cauza limitărilor de sistem, pe macOS / Linux este necesar dublu click dreapta pentru a deschide meniul contextual.",
+		"message": "Din cauza limitărilor de sistem, când gesturile pentru click dreapta sunt activate, pe macOS / Linux este necesar dublu click dreapta pentru a deschide meniul contextual.",
 		"description": "Notice for macOS / Linux users about double right-click for context menu"
 	},
+	"macLinuxDoubleClickHint": {
+		"message": "Pentru a deschide meniul contextual, faceți dublu clic dreapta. (Aflați mai multe)",
+		"description": "Short toast hint shown on first right-click on macOS/Linux explaining double-click requirement"
+	},
+	"edgeGestureConflictNotice": {
+		"message": "%browserName% are funcții de gesturi încorporate. Pentru a utiliza gesturile FlowMouse, vă rugăm să <a href=\"#\" class=\"edge-gesture-link\">dezactivați gesturile încorporate</a> în setările %browserName%.",
+		"description": "Notice for Edge users about built-in gesture conflict"
+	},
 	"macTextDragNotice": {
-		"message": "⚠️ Din cauza comportamentului macOS, când trageți text, selectați mai întâi textul, apoi apăsați și mențineți scurt butonul stâng înainte de a trage. Altfel, căutarea ar putea să nu se declanșeze.",
+		"message": "Din cauza comportamentului macOS, când trageți text, selectați mai întâi textul, apoi apăsați și mențineți butonul stâng în interiorul zonei selectate și faceți o scurtă pauză înainte de a trage. Altfel, funcția de tragere ar putea să nu se declanșeze.",
 		"description": "Notice for macOS users about text drag behavior"
 	},
 	"showTrail": {
@@ -159,6 +155,14 @@
 		"message": "Opacitate",
 		"description": "Opacity"
 	},
+	"blur": {
+		"message": "Estompare",
+		"description": "Blur radius"
+	},
+	"hudShadow": {
+		"message": "Umbră",
+		"description": "HUD shadow toggle"
+	},
 	"text": {
 		"message": "Text",
 		"description": "Text"
@@ -179,6 +183,10 @@
 		"message": "Efect de animație pentru gesturile de derulare sus/jos",
 		"description": "Scroll smoothness description"
 	},
+	"smoothnessAuto": {
+		"message": "Automat",
+		"description": "Auto scroll smoothness - uses system if animation enabled, otherwise smooth"
+	},
 	"smoothnessSystem": {
 		"message": "Sistem (Performanță Înaltă)",
 		"description": "System scroll smoothness"
@@ -190,6 +198,18 @@
 	"smoothnessNone": {
 		"message": "Fără animație",
 		"description": "No scroll animation"
+	},
+	"scrollAccel": {
+		"message": "Multiplicator de derulare continuă",
+		"description": "Speed multiplier applied when scrolling consecutively"
+	},
+	"scrollAccelOff": {
+		"message": "Oprit",
+		"description": "Scroll acceleration disabled"
+	},
+	"scrollAccelWindow": {
+		"message": "Timp limită pentru derulare consecutivă",
+		"description": "Max time (ms) between scrolls to count as consecutive"
 	},
 	"dragFeatures": {
 		"message": "Funcții Tragere (Drag)",
@@ -283,6 +303,22 @@
 		"message": "Niciun site în lista neagră. Introdu un domeniu mai sus pentru a adăuga.",
 		"description": "Empty blacklist message"
 	},
+	"enableBlacklistContextMenu": {
+		"message": "Comutator gesturi în meniul contextual",
+		"description": "Setting title for blacklist context menu toggle"
+	},
+	"enableBlacklistContextMenuDesc": {
+		"message": "Afișează o opțiune pentru a dezactiva/activa gesturile în meniul contextual",
+		"description": "Setting description for blacklist context menu toggle"
+	},
+	"menuAddToBlacklist": {
+		"message": "Dezactivați gesturile pe acest site",
+		"description": "Context menu title for adding current site to blacklist"
+	},
+	"menuRemoveFromBlacklist": {
+		"message": "Activați gesturile pe acest site",
+		"description": "Context menu title for removing current site from blacklist"
+	},
 	"dataManagement": {
 		"message": "Gestionare Date",
 		"description": "Data management section"
@@ -322,6 +358,10 @@
 	"importDone": {
 		"message": "Setări importate",
 		"description": "Import done message"
+	},
+	"importConfirm": {
+		"message": "Importul va suprascrie setările curente. Importați fișiere de configurare numai din surse de încredere.\n\nContinuați?",
+		"description": "Import confirmation warning"
 	},
 	"importFailed": {
 		"message": "Import eșuat: Fișier de configurare invalid",
@@ -459,13 +499,41 @@
 		"message": "Închide Tab",
 		"description": "Close tab"
 	},
-	"actionCloseTabKeepWindow": {
-		"message": "Închide Tab (Păstrează Fereastra)",
-		"description": "Close tab but keep window open"
+	"closeTabKeepWindow": {
+		"message": "Dacă este ultimul tab, păstrează fereastra deschisă",
+		"description": "Checkbox label for closeTab action config"
+	},
+	"closeTabAfterClose": {
+		"message": "După închidere",
+		"description": "Label for closeTab afterClose config"
+	},
+	"closeTabAfterCloseDefault": {
+		"message": "Implicit al browserului",
+		"description": "Option for closeTab afterClose config - let browser decide"
+	},
+	"closeTabAfterCloseLeft": {
+		"message": "Comută la tab-ul din stânga",
+		"description": "Option for closeTab afterClose config - switch to left tab"
+	},
+	"closeTabAfterCloseRight": {
+		"message": "Comută la tab-ul din dreapta",
+		"description": "Option for closeTab afterClose config - switch to right tab"
+	},
+	"switchTabNoWrap": {
+		"message": "Fără comutare ciclică",
+		"description": "Checkbox label for switchLeftTab/switchRightTab action config"
+	},
+	"switchTabMoveTab": {
+		"message": "Mută tabul curent",
+		"description": "Checkbox label for switchLeftTab/switchRightTab/switchFirstTab/switchLastTab action config"
 	},
 	"actionCloseBrowser": {
 		"message": "Închide Browser",
 		"description": "Close browser"
+	},
+	"actionCloseWindow": {
+		"message": "Închide fereastra",
+		"description": "Close current window"
 	},
 	"actionRestoreTab": {
 		"message": "Restaurează Tab Închis",
@@ -498,6 +566,14 @@
 	"actionSwitchRightTab": {
 		"message": "Comută la Tab-ul din Dreapta",
 		"description": "Switch to right tab"
+	},
+	"actionSwitchFirstTab": {
+		"message": "Comută la Primul Tab",
+		"description": "Switch to first tab"
+	},
+	"actionSwitchLastTab": {
+		"message": "Comută la Ultimul Tab",
+		"description": "Switch to last tab"
 	},
 	"actionRefresh": {
 		"message": "Reîmprospătează Tab Curent",
@@ -575,6 +651,10 @@
 		"message": "Activează/Dezactivează Sunet Toate Tab-urile",
 		"description": "Toggle mute all tabs"
 	},
+	"actionTogglePinTab": {
+		"message": "Fixează/Anulează fixarea tabului curent",
+		"description": "Toggle pin current tab"
+	},
 	"showTrailOrigin": {
 		"message": "Arată Punctul de Origine",
 		"description": "Show trail origin point"
@@ -595,17 +675,29 @@
 		"message": "Sfat: Se recomandă o valoare între 15-30 pentru cea mai bună recunoaștere.",
 		"description": "Warning when distance threshold is too small or too large"
 	},
-	"enableAdvancedSettings": {
-		"message": "Setări Avansate",
-		"description": "Enable advanced settings"
+	"gestureTurnTolerance": {
+		"message": "Toleranța de viraj a gestului",
+		"description": "Turn tolerance for detecting direction changes in long gestures"
 	},
-	"enableAdvancedSettingsDesc": {
-		"message": "Afișează mai multe opțiuni avansate când este activat",
-		"description": "Show more advanced options when enabled"
+	"gestureTurnToleranceDesc": {
+		"message": "Valorile mai mari reduc virajele accidentale, dar necesită mișcări mai lungi pentru a schimba direcția",
+		"description": "Description for gesture turn tolerance setting"
 	},
-	"enableAdvancedSettingsToggle": {
-		"message": "Mod Setări Avansate",
-		"description": "Enable advanced settings toggle label"
+	"advanced": {
+		"message": "Mod expert",
+		"description": "Short label for per-section advanced toggle"
+	},
+	"otherSettings": {
+		"message": "Alte setări",
+		"description": "Section title for other/miscellaneous settings"
+	},
+	"show": {
+		"message": "Afișare",
+		"description": "Show navigation menu"
+	},
+	"hide": {
+		"message": "Ascundere",
+		"description": "Hide navigation menu"
 	},
 	"urlFormatError": {
 		"message": "Te rugăm să introduci un URL complet începând cu http:// sau https://",
@@ -615,41 +707,61 @@
 		"message": "Revin-o la implicit",
 		"description": "Reset gesture to default action"
 	},
+	"resetToDefaultConfirm": {
+		"message": "Resetați aceste setări la valorile implicite?",
+		"description": "Confirmation dialog for resetting settings"
+	},
 	"addCustomGesture": {
 		"message": "Adaugă Gest Personalizat",
 		"description": "Add custom gesture section title"
-	},
-	"gesturePattern": {
-		"message": "Model",
-		"description": "Gesture pattern label"
-	},
-	"selectAction": {
-		"message": "Selectează Acțiune",
-		"description": "Select action label"
 	},
 	"clear": {
 		"message": "Curăță",
 		"description": "Clear button"
 	},
-	"addGesture": {
-		"message": "Adaugă Gest",
-		"description": "Add gesture button"
-	},
-	"pleaseDrawGesture": {
-		"message": "Te rugăm să desenezi un gest mai întâi",
-		"description": "Alert when no gesture drawn"
-	},
 	"gestureAdded": {
 		"message": "✓ Gest adăugat",
 		"description": "Gesture added success message"
 	},
-	"gestureDrawInstructions": {
-		"message": "Ține apăsat butonul dreapta al mouse-ului și desenează un gest mai jos, eliberează pentru a completa. Direcții suportate:",
-		"description": "Instructions for gesture drawing"
+	"gestureRecorderTitle": {
+		"message": "Desenează un Gest",
+		"description": "Gesture recorder full-screen title"
 	},
-	"gestureOverwriteConfirm": {
-		"message": "Gestul %pattern% există deja. Suprascrii?",
-		"description": "Confirmation message when adding a duplicate gesture"
+	"gestureRecorderDesc": {
+		"message": "Ține apăsat butonul „%button%” și desenează un model de gest",
+		"description": "Gesture recorder instruction, %button% is replaced with the mouse button name"
+	},
+	"gestureRecorderEsc": {
+		"message": "Anulare",
+		"description": "Gesture recorder cancel button label"
+	},
+	"gestureRecorderRecording": {
+		"message": "Înregistrare…",
+		"description": "Gesture recorder recording indicator"
+	},
+	"gestureRecorderResult": {
+		"message": "Gest Înregistrat",
+		"description": "Gesture recorder result label"
+	},
+	"gestureRecorderConfirm": {
+		"message": "Confirmare",
+		"description": "Gesture recorder confirm button"
+	},
+	"gestureRecorderRedraw": {
+		"message": "Redesenare",
+		"description": "Gesture recorder redraw button"
+	},
+	"gestureRecorderBanned": {
+		"message": "Gestul %pattern% există deja",
+		"description": "Gesture recorder message when user draws a banned/existing gesture pattern"
+	},
+	"rightButton": {
+		"message": "Butonul drept al mouse-ului",
+		"description": "Right mouse button name"
+	},
+	"leftButton": {
+		"message": "Butonul stâng al mouse-ului",
+		"description": "Left mouse button name"
 	},
 	"customGesture": {
 		"message": "Personalizat",
@@ -670,6 +782,10 @@
 	"enterCustomUrl": {
 		"message": "Introdu URL (sugerat inclusiv protocol precum https://, chrome://, etc.):",
 		"description": "Prompt for custom URL input"
+	},
+	"copyUrlIncludeTitle": {
+		"message": "Copiază și titlul paginii",
+		"description": "Checkbox label for including page title when copying URL"
 	},
 	"invalidUrl": {
 		"message": "Te rugăm să introduci un URL valid (începând cu http:// sau https://)",
@@ -750,6 +866,10 @@
 	"aboutTitle": {
 		"message": "Despre FlowMouse",
 		"description": "About title"
+	},
+	"aboutTitleShort": {
+		"message": "Despre",
+		"description": "Short About title "
 	},
 	"aboutAuthor": {
 		"message": "Autor",
@@ -863,6 +983,10 @@
 		"message": "Deschide în prim plan",
 		"description": "Open tab in foreground"
 	},
+	"openInIncognito": {
+		"message": "Incognito",
+		"description": "Open in incognito checkbox"
+	},
 	"textDragGestures": {
 		"message": "Gesturi Tragere Text",
 		"description": "Text drag gestures"
@@ -880,7 +1004,7 @@
 		"description": "Direction column header"
 	},
 	"action": {
-		"message": "Acțiune",
+		"message": "Comandă",
 		"description": "Action column header"
 	},
 	"imageSearchUrl": {
@@ -915,6 +1039,10 @@
 		"message": "📋 Copiază Link",
 		"description": "Copy link"
 	},
+	"dragActionCopyLinkText": {
+		"message": "📋 Copiază Textul Linkului",
+		"description": "Copy link text"
+	},
 	"dragActionSaveImage": {
 		"message": "💾 Salvează Imagine",
 		"description": "Save image"
@@ -936,7 +1064,7 @@
 		"description": "Custom search"
 	},
 	"reducedMotionWarning": {
-		"message": "⚠️ Animația de sistem %OS% este dezactivată, derularea animată ar putea să nu funcționeze corect. Poți activa animația în setările de sistem %OS%.",
+		"message": "Animația de sistem %OS% este dezactivată, derularea animată ar putea să nu funcționeze corect. Poți activa animația în setările de sistem %OS%.",
 		"description": "Warning message when system reduced motion is enabled"
 	},
 	"autoDetectUrl": {
@@ -964,7 +1092,7 @@
 		"description": "Setting description for restricted page notice"
 	},
 	"restrictedPagesDetailsTitle": {
-		"message": "⚠️ Din cauza politicilor de securitate ale browserului, extensiile nu pot rula pe anumite tipuri de pagini.",
+		"message": "Din cauza politicilor de securitate ale browserului, extensiile nu pot rula pe anumite tipuri de pagini.",
 		"description": "Collapsible details title"
 	},
 	"showMoreHint": {
@@ -972,7 +1100,7 @@
 		"description": "Hint to show more details"
 	},
 	"restrictedNewTab": {
-		"message": "Pagina Tab Nou (chrome://newtab)",
+		"message": "Pagina Tab Nou",
 		"description": "New tab page title"
 	},
 	"restrictedNewTabDesc": {
@@ -988,11 +1116,11 @@
 		"description": "Store page description"
 	},
 	"restrictedInternal": {
-		"message": "Pagini Interne Browser",
+		"message": "Pagini Interne Browser (%browserProtocol%)",
 		"description": "Internal page title"
 	},
 	"restrictedInternalDesc": {
-		"message": "Toate paginile care încep cu chrome:// (Chrome) sau edge:// (Edge), inclusiv setări, istoric, descărcări, etc. Aceste pagini sunt protejate strict.",
+		"message": "De exemplu, setările interne, istoricul, descărcările, etc. ale %browserName%. Aceste pagini implică funcții de bază ale browserului și date de confidențialitate ale utilizatorului, fiind astfel strict protejate.",
 		"description": "Internal page description"
 	},
 	"restrictedFile": {
@@ -1000,7 +1128,7 @@
 		"description": "File page title"
 	},
 	"restrictedFileDesc": {
-		"message": "Fișiere HTML locale deschise prin protocolul file://. Din cauza restricțiilor de securitate, extensiile nu pot funcționa pe aceste pagini.",
+		"message": "Fișiere locale html, pdf, etc. deschise prin protocolul file://. Din cauza restricțiilor de securitate, extensiile nu pot funcționa pe aceste pagini.",
 		"description": "File page description"
 	},
 	"restrictedViewSource": {
@@ -1024,7 +1152,7 @@
 		"description": "Popup description when content script not loaded"
 	},
 	"popupRefreshBtn": {
-		"message": "🔄 Reîmprospătează Pagina",
+		"message": "Reîmprospătează Pagina",
 		"description": "Popup refresh button text"
 	},
 	"popupRestrictedTitle": {
@@ -1036,7 +1164,7 @@
 		"description": "Popup description for restricted pages"
 	},
 	"popupLearnMore": {
-		"message": "📖 Află Mai Multe",
+		"message": "Află Mai Multe",
 		"description": "Popup learn more button text"
 	},
 	"tutorialPending": {
@@ -1207,6 +1335,26 @@
 		"message": "Pentru a salva imagini, FlowMouse are nevoie de acces la pagini și descărcări.",
 		"description": "Permission popup description for downloads and page capture"
 	},
+	"permissionIncognitoTitle": {
+		"message": "Permite în modul incognito",
+		"description": "Permission popup title for incognito"
+	},
+	"permissionIncognitoDesc": {
+		"message": "Pentru a funcționa în ferestrele incognito, trebuie să activați manual \"Permite în modul incognito\" pentru FlowMouse.",
+		"description": "Permission popup description for incognito"
+	},
+	"openExtensionsSettings": {
+		"message": "Deschide detaliile extensiei",
+		"description": "Button to open extension details page"
+	},
+	"permissionFirefoxIncognitoTitle": {
+		"message": "Rulează în ferestre private",
+		"description": "Permission popup title for Firefox private browsing"
+	},
+	"permissionFirefoxIncognitoDesc": {
+		"message": "Pentru a funcționa în ferestre private, trebuie să activați manual \"Rulează în ferestre private\" pentru FlowMouse în Managerul de suplimente.",
+		"description": "Permission popup description for Firefox private browsing"
+	},
 	"grantPermission": {
 		"message": "Acordă Permisiune",
 		"description": "Grant permission button"
@@ -1234,5 +1382,205 @@
 	"saveImageTimeout": {
 		"message": "Salvarea imaginii a eșuat: Timpul de încărcare a expirat",
 		"description": "Toast message when image loading times out"
+	},
+	"buttonOkay": {
+		"message": "OK",
+		"description": "Generic OK button"
+	},
+	"buttonCancel": {
+		"message": "Anulare",
+		"description": "Generic Cancel button"
+	},
+	"buttonClose": {
+		"message": "Închide",
+		"description": "Generic Close button"
+	},
+	"searchActions": {
+		"message": "Căutați comenzi...",
+		"description": "Placeholder for action search input in action picker"
+	},
+	"actionCategoryNavigation": {
+		"message": "Navigare",
+		"description": "Action category: navigation"
+	},
+	"actionCategoryTabs": {
+		"message": "File",
+		"description": "Action category: tabs"
+	},
+	"actionCategoryWindow": {
+		"message": "Fereastră",
+		"description": "Action category: window"
+	},
+	"actionCategoryUtilities": {
+		"message": "Instrumente",
+		"description": "Action category: utilities"
+	},
+	"noResults": {
+		"message": "Fără rezultate",
+		"description": "No search results found"
+	},
+	"wheelGestures": {
+		"message": "Gesturi cu rotița mouse-ului",
+		"description": "Mouse wheel gestures section title"
+	},
+	"enableWheelGestures": {
+		"message": "Activează gesturile cu rotița mouse-ului",
+		"description": "Enable mouse wheel gestures"
+	},
+	"enableWheelGesturesDesc": {
+		"message": "Efectuați rapid diverse acțiuni folosind rotița mouse-ului",
+		"description": "Enable mouse wheel gestures description"
+	},
+	"wheelGesture_scrollUpHoldingRight": {
+		"message": "Derulați în sus în timp ce țineți apăsat butonul drept",
+		"description": "Wheel gesture: scroll up while holding right button"
+	},
+	"wheelGesture_scrollDownHoldingRight": {
+		"message": "Derulați în jos în timp ce țineți apăsat butonul drept",
+		"description": "Wheel gesture: scroll down while holding right button"
+	},
+	"specialGestures": {
+		"message": "Gesturi speciale",
+		"description": "Special gestures section title"
+	},
+	"enableSpecialGestures": {
+		"message": "Activați gesturile speciale",
+		"description": "Enable special gestures"
+	},
+	"enableSpecialGesturesDesc": {
+		"message": "Efectuați acțiuni făcând clic pe un buton al mouse-ului în timp ce îl țineți apăsat pe celălalt",
+		"description": "Enable special gestures description"
+	},
+	"specialGesture_leftClickHoldingRight": {
+		"message": "Clic stânga în timp ce țineți apăsat butonul drept",
+		"description": "Special gesture: left click while holding right button"
+	},
+	"specialGesture_rightClickHoldingLeft": {
+		"message": "Clic dreapta în timp ce țineți apăsat butonul stâng",
+		"description": "Special gesture: right click while holding left button"
+	},
+	"actionChains": {
+		"message": "Lanțuri de comenzi",
+		"description": "Action chains section title"
+	},
+	"actionChainsDesc": {
+		"message": "Creați secvențe de comenzi reutilizabile care se execută una după alta",
+		"description": "Action chains section description"
+	},
+	"actionActionChain": {
+		"message": "Lanț de comenzi",
+		"description": "Action chain action name"
+	},
+	"actionCategoryChains": {
+		"message": "Lanțuri de comenzi",
+		"description": "Action category: action chains"
+	},
+	"addChain": {
+		"message": "Adăugați lanț",
+		"description": "Add chain button"
+	},
+	"addNewChain": {
+		"message": "Creați un lanț nou...",
+		"description": "Action item to navigate to chain editor and create a new chain"
+	},
+	"chainNamePlaceholder": {
+		"message": "Lanțul meu de comenzi",
+		"description": "Chain name input placeholder"
+	},
+	"chainDelayUnit": {
+		"message": "ms",
+		"description": "Milliseconds unit for chain delay"
+	},
+	"addStep": {
+		"message": "Adăugați pas",
+		"description": "Add step button"
+	},
+	"emptyChainSteps": {
+		"message": "Nu a fost adăugat niciun pas. Faceți clic pe \"Adăugați pas\" pentru a începe.",
+		"description": "Empty chain steps message in expanded body"
+	},
+	"emptyChainStepsShort": {
+		"message": "Niciun pas adăugat",
+		"description": "Short empty chain steps message for summary"
+	},
+	"noChains": {
+		"message": "Niciun lanț de comenzi încă. Faceți clic pe \"Adăugați lanț\" pentru a crea unul.",
+		"description": "No chains message"
+	},
+	"chainNotFound": {
+		"message": "(Lanțul nu a fost găsit)",
+		"description": "Chain not found label"
+	},
+	"deleteChainConfirm": {
+		"message": "Doriți să ștergeți lanțul \"%name%\"?",
+		"description": "Delete chain confirmation"
+	},
+	"stepNumber": {
+		"message": "Pasul %n%",
+		"description": "Step number label"
+	},
+	"actionDelay": {
+		"message": "Întârziere",
+		"description": "Delay action name for chain steps"
+	},
+	"actionSendCustomEvent": {
+		"message": "Trimite eveniment personalizat",
+		"description": "Action to dispatch a custom DOM event"
+	},
+	"actionSimulateKey": {
+		"message": "Simulează apăsarea unei taste",
+		"description": "Action to simulate a keyboard key press on the page"
+	},
+	"simulateKeyPreset": {
+		"message": "Tastă presetată",
+		"description": "Label for preset key dropdown in simulate key config"
+	},
+	"simulateKeyPresetLeft": {
+		"message": "← Săgeată stânga (Pagina anterioară)",
+		"description": "Preset: ArrowLeft key"
+	},
+	"simulateKeyPresetRight": {
+		"message": "→ Săgeată dreapta (Pagina următoare)",
+		"description": "Preset: ArrowRight key"
+	},
+	"simulateKeyPresetCustom": {
+		"message": "Tastă personalizată",
+		"description": "Preset: Custom key option"
+	},
+	"simulateKeyRecordBtn": {
+		"message": "Înregistrare tastă",
+		"description": "Button to start recording a key press"
+	},
+	"simulateKeyRecording": {
+		"message": "Apasă o tastă...",
+		"description": "Recording state text"
+	},
+	"simulateKeyManualInput": {
+		"message": "Tasta curentă",
+		"description": "Label for current key display in simulate key config"
+	},
+	"simulateKeyHint": {
+		"message": "Această funcție trimite evenimente de la tastatură doar către pagina curentă, fiind folosită frecvent pentru navigarea în pagină (← anterioara / → următoarea). NU va declanșa comenzile rapide ale browserului (de ex., Ctrl+R nu va reîmprospăta pagina). În plus, din cauza limitărilor framework-ului site-ului, evenimentele simulate s-ar putea să nu fie captate de toate componentele personalizate sau de câmpurile de introducere.",
+		"description": "Hint text for simulate key feature"
+	},
+	"customEventInvalidJson": {
+		"message": "Format JSON nevalid",
+		"description": "Error message when event detail is not valid JSON"
+	},
+	"customEventHint": {
+		"message": "Expediază %code% pe %window%. Util pentru integrarea cu alte scripturi.",
+		"description": "Hint explaining how custom event works. %code% = <code>new CustomEvent(...)</code>, %window% = <code>window</code>"
+	},
+	"delayDuration": {
+		"message": "Durată",
+		"description": "Delay duration label"
+	},
+	"chainStepCount": {
+		"message": "%count% pași",
+		"description": "Step count for unnamed chains, e.g. '3 steps'"
+	},
+	"chainStepCountOne": {
+		"message": "%count% pas",
+		"description": "Step count for unnamed chains with exactly 1 step"
 	}
 }

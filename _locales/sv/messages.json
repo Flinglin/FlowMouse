@@ -8,20 +8,12 @@
 		"description": "Short extension name for popup"
 	},
 	"extDescription": {
-		"message": "Ett öppen källkods-tillägg för musgester som fokuserar på integritet och en smidig upplevelse. Smidiga och responsiva gester, stöd för super-drag, och all data lagras lokalt.",
+		"message": "Ett öppen källkods-tillägg för musgester som fokuserar på integritet och en smidig upplevelse. Smidiga och responsiva gester, stöd för super-drag.",
 		"description": "Extension description"
-	},
-	"appearance": {
-		"message": "Utseende",
-		"description": "Appearance section"
 	},
 	"theme": {
 		"message": "Tema",
 		"description": "Theme"
-	},
-	"themeDesc": {
-		"message": "Växla mellan ljust och mörkt tema",
-		"description": "Theme description"
 	},
 	"themeDark": {
 		"message": "Mörkt",
@@ -34,10 +26,6 @@
 	"themeAuto": {
 		"message": "Följ systeminställningar",
 		"description": "Auto theme - follow system"
-	},
-	"languageDesc": {
-		"message": "Välj gränssnittsspråk",
-		"description": "Language description"
 	},
 	"syncStatus": {
 		"message": "Synkroniseringsstatus",
@@ -56,7 +44,7 @@
 		"description": "Author"
 	},
 	"privacyNote": {
-		"message": "🔒 Körs lokalt, ingen nätverksåtkomst förutom synkronisering, ingen datainsamling",
+		"message": " Körs lokalt, ingen nätverksåtkomst förutom synkronisering, ingen datainsamling",
 		"description": "Privacy note in footer"
 	},
 	"supportUsText": {
@@ -120,11 +108,19 @@
 		"description": "Hold the right mouse button and move the mouse to easily perform gestures"
 	},
 	"macLinuxContextMenuNotice": {
-		"message": "⚠️ På grund av systembegränsningar krävs dubbel högerklick för att öppna kontextmenyn på macOS / Linux.",
+		"message": "På grund av systembegränsningar, när högerklicksgester är aktiverade, krävs dubbel högerklick för att öppna kontextmenyn på macOS / Linux.",
 		"description": "Notice for macOS / Linux users about double right-click for context menu"
 	},
+	"macLinuxDoubleClickHint": {
+		"message": "För att öppna snabbmenyn, dubbelklicka med höger musknapp. (Läs mer)",
+		"description": "Short toast hint shown on first right-click on macOS/Linux explaining double-click requirement"
+	},
+	"edgeGestureConflictNotice": {
+		"message": "%browserName% har inbyggda gestfunktioner. För att använda FlowMouse-gester, vänligen <a href=\"#\" class=\"edge-gesture-link\">inaktivera de inbyggda gesterna</a> i %browserName%-inställningarna.",
+		"description": "Notice for Edge users about built-in gesture conflict"
+	},
 	"macTextDragNotice": {
-		"message": "⚠️ På grund av macOS beteende, markera först texten, tryck sedan och håll ned vänster knapp en kort stund innan du drar. Annars kanske sökningen inte utlöses.",
+		"message": "På grund av macOS beteende, markera först texten, tryck sedan och håll ned vänster knapp inom det markerade området och vänta en kort stund innan du drar. Annars kanske dragfunktionen inte utlöses.",
 		"description": "Notice for macOS users about text drag behavior"
 	},
 	"showTrail": {
@@ -159,6 +155,14 @@
 		"message": "Opacitet",
 		"description": "Opacity"
 	},
+	"blur": {
+		"message": "Oskärpa",
+		"description": "Blur radius"
+	},
+	"hudShadow": {
+		"message": "Skugga",
+		"description": "HUD shadow toggle"
+	},
 	"text": {
 		"message": "Text",
 		"description": "Text"
@@ -179,6 +183,10 @@
 		"message": "Rullningsanimeringseffekt för upp/ner-gester",
 		"description": "Scroll smoothness description"
 	},
+	"smoothnessAuto": {
+		"message": "Auto",
+		"description": "Auto scroll smoothness - uses system if animation enabled, otherwise smooth"
+	},
 	"smoothnessSystem": {
 		"message": "System (Hög prestanda)",
 		"description": "System scroll smoothness"
@@ -190,6 +198,18 @@
 	"smoothnessNone": {
 		"message": "Ingen animering",
 		"description": "No scroll animation"
+	},
+	"scrollAccel": {
+		"message": "Multiplikator för kontinuerlig rullning",
+		"description": "Speed multiplier applied when scrolling consecutively"
+	},
+	"scrollAccelOff": {
+		"message": "Av",
+		"description": "Scroll acceleration disabled"
+	},
+	"scrollAccelWindow": {
+		"message": "Tidsgräns för påföljande rullning",
+		"description": "Max time (ms) between scrolls to count as consecutive"
 	},
 	"dragFeatures": {
 		"message": "Dragfunktioner",
@@ -283,6 +303,22 @@
 		"message": "Inga svartlistade webbplatser. Ange en domän ovan för att lägga till.",
 		"description": "Empty blacklist message"
 	},
+	"enableBlacklistContextMenu": {
+		"message": "Gest-växlare i snabbmenyn",
+		"description": "Setting title for blacklist context menu toggle"
+	},
+	"enableBlacklistContextMenuDesc": {
+		"message": "Visa ett alternativ för att inaktivera/aktivera gester i snabbmenyn",
+		"description": "Setting description for blacklist context menu toggle"
+	},
+	"menuAddToBlacklist": {
+		"message": "Inaktivera gester på denna webbplats",
+		"description": "Context menu title for adding current site to blacklist"
+	},
+	"menuRemoveFromBlacklist": {
+		"message": "Aktivera gester på denna webbplats",
+		"description": "Context menu title for removing current site from blacklist"
+	},
 	"dataManagement": {
 		"message": "Datahantering",
 		"description": "Data management section"
@@ -322,6 +358,10 @@
 	"importDone": {
 		"message": "Inställningar importerade",
 		"description": "Import done message"
+	},
+	"importConfirm": {
+		"message": "Importen kommer att skriva över dina nuvarande inställningar. Importera endast konfigurationsfiler från betrodda källor.\n\nFortsätt?",
+		"description": "Import confirmation warning"
 	},
 	"importFailed": {
 		"message": "Import misslyckades: Ogiltig konfigurationsfil",
@@ -459,13 +499,41 @@
 		"message": "Stäng flik",
 		"description": "Close tab"
 	},
-	"actionCloseTabKeepWindow": {
-		"message": "Stäng flik (Behåll fönster)",
-		"description": "Close tab but keep window open"
+	"closeTabKeepWindow": {
+		"message": "Om detta är den sista fliken, behåll fönstret öppet",
+		"description": "Checkbox label for closeTab action config"
+	},
+	"closeTabAfterClose": {
+		"message": "Efter stängning",
+		"description": "Label for closeTab afterClose config"
+	},
+	"closeTabAfterCloseDefault": {
+		"message": "Webbläsarens standard",
+		"description": "Option for closeTab afterClose config - let browser decide"
+	},
+	"closeTabAfterCloseLeft": {
+		"message": "Växla till vänster flik",
+		"description": "Option for closeTab afterClose config - switch to left tab"
+	},
+	"closeTabAfterCloseRight": {
+		"message": "Växla till höger flik",
+		"description": "Option for closeTab afterClose config - switch to right tab"
+	},
+	"switchTabNoWrap": {
+		"message": "Ingen cyklisk växling",
+		"description": "Checkbox label for switchLeftTab/switchRightTab action config"
+	},
+	"switchTabMoveTab": {
+		"message": "Flytta aktuell flik",
+		"description": "Checkbox label for switchLeftTab/switchRightTab/switchFirstTab/switchLastTab action config"
 	},
 	"actionCloseBrowser": {
 		"message": "Stäng webbläsare",
 		"description": "Close browser"
+	},
+	"actionCloseWindow": {
+		"message": "Stäng fönster",
+		"description": "Close current window"
 	},
 	"actionRestoreTab": {
 		"message": "Återställ stängd flik",
@@ -498,6 +566,14 @@
 	"actionSwitchRightTab": {
 		"message": "Växla till höger flik",
 		"description": "Switch to right tab"
+	},
+	"actionSwitchFirstTab": {
+		"message": "Växla till första fliken",
+		"description": "Switch to first tab"
+	},
+	"actionSwitchLastTab": {
+		"message": "Växla till sista fliken",
+		"description": "Switch to last tab"
 	},
 	"actionRefresh": {
 		"message": "Uppdatera aktuell flik",
@@ -575,6 +651,10 @@
 		"message": "Ljud av/på för alla flikar",
 		"description": "Toggle mute all tabs"
 	},
+	"actionTogglePinTab": {
+		"message": "Fäst/Lossa aktuell flik",
+		"description": "Toggle pin current tab"
+	},
 	"showTrailOrigin": {
 		"message": "Visa startpunkt",
 		"description": "Show trail origin point"
@@ -595,17 +675,29 @@
 		"message": "Tips: Ett värde mellan 15-30 rekommenderas för bästa igenkänning.",
 		"description": "Warning when distance threshold is too small or too large"
 	},
-	"enableAdvancedSettings": {
-		"message": "Avancerade inställningar",
-		"description": "Enable advanced settings"
+	"gestureTurnTolerance": {
+		"message": "Gestsvängningstolerans",
+		"description": "Turn tolerance for detecting direction changes in long gestures"
 	},
-	"enableAdvancedSettingsDesc": {
-		"message": "Visa fler avancerade alternativ när aktiverad",
-		"description": "Show more advanced options when enabled"
+	"gestureTurnToleranceDesc": {
+		"message": "Högre värden minskar oavsiktliga vändningar men kräver längre rörelser för att ändra riktning",
+		"description": "Description for gesture turn tolerance setting"
 	},
-	"enableAdvancedSettingsToggle": {
-		"message": "Avancerat inställningsläge",
-		"description": "Enable advanced settings toggle label"
+	"advanced": {
+		"message": "Expertläge",
+		"description": "Short label for per-section advanced toggle"
+	},
+	"otherSettings": {
+		"message": "Andra inställningar",
+		"description": "Section title for other/miscellaneous settings"
+	},
+	"show": {
+		"message": "Visa",
+		"description": "Show navigation menu"
+	},
+	"hide": {
+		"message": "Dölj",
+		"description": "Hide navigation menu"
 	},
 	"urlFormatError": {
 		"message": "Vänligen ange fullständig URL som börjar med http:// eller https://",
@@ -615,41 +707,61 @@
 		"message": "Återställ till standard",
 		"description": "Reset gesture to default action"
 	},
+	"resetToDefaultConfirm": {
+		"message": "Återställ dessa inställningar till standardvärden?",
+		"description": "Confirmation dialog for resetting settings"
+	},
 	"addCustomGesture": {
 		"message": "Lägg till anpassad gest",
 		"description": "Add custom gesture section title"
-	},
-	"gesturePattern": {
-		"message": "Mönster",
-		"description": "Gesture pattern label"
-	},
-	"selectAction": {
-		"message": "Välj åtgärd",
-		"description": "Select action label"
 	},
 	"clear": {
 		"message": "Rensa",
 		"description": "Clear button"
 	},
-	"addGesture": {
-		"message": "Lägg till gest",
-		"description": "Add gesture button"
-	},
-	"pleaseDrawGesture": {
-		"message": "Vänligen rita en gest först",
-		"description": "Alert when no gesture drawn"
-	},
 	"gestureAdded": {
 		"message": "✓ Gest tillagd",
 		"description": "Gesture added success message"
 	},
-	"gestureDrawInstructions": {
-		"message": "Håll ned höger musknapp och rita en gest nedan, släpp för att slutföra. Riktningar som stöds:",
-		"description": "Instructions for gesture drawing"
+	"gestureRecorderTitle": {
+		"message": "Rita en gest",
+		"description": "Gesture recorder full-screen title"
 	},
-	"gestureOverwriteConfirm": {
-		"message": "Gest %pattern% finns redan. Skriva över?",
-		"description": "Confirmation message when adding a duplicate gesture"
+	"gestureRecorderDesc": {
+		"message": "Håll ner knappen %button% och rita ett gestmönster",
+		"description": "Gesture recorder instruction, %button% is replaced with the mouse button name"
+	},
+	"gestureRecorderEsc": {
+		"message": "Avbryt",
+		"description": "Gesture recorder cancel button label"
+	},
+	"gestureRecorderRecording": {
+		"message": "Spelar in…",
+		"description": "Gesture recorder recording indicator"
+	},
+	"gestureRecorderResult": {
+		"message": "Inspelad gest",
+		"description": "Gesture recorder result label"
+	},
+	"gestureRecorderConfirm": {
+		"message": "Bekräfta",
+		"description": "Gesture recorder confirm button"
+	},
+	"gestureRecorderRedraw": {
+		"message": "Rita om",
+		"description": "Gesture recorder redraw button"
+	},
+	"gestureRecorderBanned": {
+		"message": "Gesten %pattern% finns redan",
+		"description": "Gesture recorder message when user draws a banned/existing gesture pattern"
+	},
+	"rightButton": {
+		"message": "Höger musknapp",
+		"description": "Right mouse button name"
+	},
+	"leftButton": {
+		"message": "Vänster musknapp",
+		"description": "Left mouse button name"
 	},
 	"customGesture": {
 		"message": "Anpassad",
@@ -670,6 +782,10 @@
 	"enterCustomUrl": {
 		"message": "Ange URL (föreslår att inkludera protokoll som https://, chrome://, etc.):",
 		"description": "Prompt for custom URL input"
+	},
+	"copyUrlIncludeTitle": {
+		"message": "Kopiera även sidtiteln",
+		"description": "Checkbox label for including page title when copying URL"
 	},
 	"invalidUrl": {
 		"message": "Vänligen ange en giltig URL (som börjar med http:// eller https://)",
@@ -750,6 +866,10 @@
 	"aboutTitle": {
 		"message": "Om FlowMouse",
 		"description": "About title"
+	},
+	"aboutTitleShort": {
+		"message": "Om",
+		"description": "Short About title "
 	},
 	"aboutAuthor": {
 		"message": "Författare",
@@ -863,6 +983,10 @@
 		"message": "Öppna i förgrunden",
 		"description": "Open tab in foreground"
 	},
+	"openInIncognito": {
+		"message": "Inkognito",
+		"description": "Open in incognito checkbox"
+	},
 	"textDragGestures": {
 		"message": "Textdragsgester",
 		"description": "Text drag gestures"
@@ -880,7 +1004,7 @@
 		"description": "Direction column header"
 	},
 	"action": {
-		"message": "Åtgärd",
+		"message": "Kommando",
 		"description": "Action column header"
 	},
 	"imageSearchUrl": {
@@ -915,6 +1039,10 @@
 		"message": "📋 Kopiera länk",
 		"description": "Copy link"
 	},
+	"dragActionCopyLinkText": {
+		"message": "📋 Kopiera länktext",
+		"description": "Copy link text"
+	},
 	"dragActionSaveImage": {
 		"message": "💾 Spara bild",
 		"description": "Save image"
@@ -936,7 +1064,7 @@
 		"description": "Custom search"
 	},
 	"reducedMotionWarning": {
-		"message": "⚠️ %OS% systemanimering är inaktiverad, rullningsanimering kanske inte fungerar korrekt. Du kan aktivera animering i %OS% systeminställningar.",
+		"message": "%OS% systemanimering är inaktiverad, rullningsanimering kanske inte fungerar korrekt. Du kan aktivera animering i %OS% systeminställningar.",
 		"description": "Warning message when system reduced motion is enabled"
 	},
 	"autoDetectUrl": {
@@ -964,7 +1092,7 @@
 		"description": "Setting description for restricted page notice"
 	},
 	"restrictedPagesDetailsTitle": {
-		"message": "⚠️ På grund av webbläsarens säkerhetspolicyer kan tillägg inte köras på vissa typer av sidor.",
+		"message": "På grund av webbläsarens säkerhetspolicyer kan tillägg inte köras på vissa typer av sidor.",
 		"description": "Collapsible details title"
 	},
 	"showMoreHint": {
@@ -972,7 +1100,7 @@
 		"description": "Hint to show more details"
 	},
 	"restrictedNewTab": {
-		"message": "Ny flik-sida (chrome://newtab)",
+		"message": "Ny flik-sida",
 		"description": "New tab page title"
 	},
 	"restrictedNewTabDesc": {
@@ -988,11 +1116,11 @@
 		"description": "Store page description"
 	},
 	"restrictedInternal": {
-		"message": "Webbläsarens interna sidor",
+		"message": "Webbläsarens interna sidor (%browserProtocol%)",
 		"description": "Internal page title"
 	},
 	"restrictedInternalDesc": {
-		"message": "Alla sidor som börjar med chrome:// (Chrome) eller edge:// (Edge), inklusive inställningar, historik, nedladdningar, etc. Dessa sidor involverar kärnfunktioner i webbläsaren och användarintegritetsdata, så de är strikt skyddade.",
+		"message": "Till exempel %browserName%s interna inställningar, historik, nedladdningar etc. Dessa sidor involverar kärnfunktioner i webbläsaren och användarintegritetsdata, så de är strikt skyddade.",
 		"description": "Internal page description"
 	},
 	"restrictedFile": {
@@ -1000,7 +1128,7 @@
 		"description": "File page title"
 	},
 	"restrictedFileDesc": {
-		"message": "Lokala HTML-filer öppnade via file://-protokollet. På grund av säkerhetsbegränsningar (för att förhindra skadliga tillägg från att komma åt det lokala filsystemet) kan tillägg inte fungera på dessa sidor.",
+		"message": "Lokala html, pdf, etc. filer öppnade via file://-protokollet. På grund av säkerhetsbegränsningar (för att förhindra skadliga tillägg från att komma åt det lokala filsystemet) kan tillägg inte fungera på dessa sidor.",
 		"description": "File page description"
 	},
 	"restrictedViewSource": {
@@ -1024,7 +1152,7 @@
 		"description": "Popup description when content script not loaded"
 	},
 	"popupRefreshBtn": {
-		"message": "🔄 Uppdatera sida",
+		"message": "Uppdatera sida",
 		"description": "Popup refresh button text"
 	},
 	"popupRestrictedTitle": {
@@ -1036,7 +1164,7 @@
 		"description": "Popup description for restricted pages"
 	},
 	"popupLearnMore": {
-		"message": "📖 Läs mer",
+		"message": "Läs mer",
 		"description": "Popup learn more button text"
 	},
 	"tutorialPending": {
@@ -1207,6 +1335,26 @@
 		"message": "För att spara bilder behöver FlowMouse åtkomst till sidor och nedladdningar.",
 		"description": "Permission popup description for downloads and page capture"
 	},
+	"permissionIncognitoTitle": {
+		"message": "Tillåt i inkognitoläge",
+		"description": "Permission popup title for incognito"
+	},
+	"permissionIncognitoDesc": {
+		"message": "För att fungera i inkognitofönster måste du manuellt aktivera \"Tillåt i inkognitoläge\" för FlowMouse.",
+		"description": "Permission popup description for incognito"
+	},
+	"openExtensionsSettings": {
+		"message": "Öppna tilläggsinformation",
+		"description": "Button to open extension details page"
+	},
+	"permissionFirefoxIncognitoTitle": {
+		"message": "Kör i privata fönster",
+		"description": "Permission popup title for Firefox private browsing"
+	},
+	"permissionFirefoxIncognitoDesc": {
+		"message": "För att fungera i privata fönster måste du manuellt aktivera \"Kör i privata fönster\" för FlowMouse i Tilläggshanteraren.",
+		"description": "Permission popup description for Firefox private browsing"
+	},
 	"grantPermission": {
 		"message": "Ge behörighet",
 		"description": "Grant permission button"
@@ -1234,5 +1382,205 @@
 	"saveImageTimeout": {
 		"message": "Det gick inte att spara bilden: Tidsgränsen för laddning har löpt ut",
 		"description": "Toast message when image loading times out"
+	},
+	"buttonOkay": {
+		"message": "OK",
+		"description": "Generic OK button"
+	},
+	"buttonCancel": {
+		"message": "Avbryt",
+		"description": "Generic Cancel button"
+	},
+	"buttonClose": {
+		"message": "Stäng",
+		"description": "Generic Close button"
+	},
+	"searchActions": {
+		"message": "Sök kommandon...",
+		"description": "Placeholder for action search input in action picker"
+	},
+	"actionCategoryNavigation": {
+		"message": "Navigering",
+		"description": "Action category: navigation"
+	},
+	"actionCategoryTabs": {
+		"message": "Flikar",
+		"description": "Action category: tabs"
+	},
+	"actionCategoryWindow": {
+		"message": "Fönster",
+		"description": "Action category: window"
+	},
+	"actionCategoryUtilities": {
+		"message": "Verktyg",
+		"description": "Action category: utilities"
+	},
+	"noResults": {
+		"message": "Inga resultat",
+		"description": "No search results found"
+	},
+	"wheelGestures": {
+		"message": "Mushjulsgester",
+		"description": "Mouse wheel gestures section title"
+	},
+	"enableWheelGestures": {
+		"message": "Aktivera mushjulsgester",
+		"description": "Enable mouse wheel gestures"
+	},
+	"enableWheelGesturesDesc": {
+		"message": "Utför olika åtgärder snabbt med mushjulet",
+		"description": "Enable mouse wheel gestures description"
+	},
+	"wheelGesture_scrollUpHoldingRight": {
+		"message": "Rulla uppåt samtidigt som du håller ner höger knapp",
+		"description": "Wheel gesture: scroll up while holding right button"
+	},
+	"wheelGesture_scrollDownHoldingRight": {
+		"message": "Rulla nedåt samtidigt som du håller ner höger knapp",
+		"description": "Wheel gesture: scroll down while holding right button"
+	},
+	"specialGestures": {
+		"message": "Specialgester",
+		"description": "Special gestures section title"
+	},
+	"enableSpecialGestures": {
+		"message": "Aktivera specialgester",
+		"description": "Enable special gestures"
+	},
+	"enableSpecialGesturesDesc": {
+		"message": "Utför åtgärder genom att klicka på en musknapp medan du håller ned den andra",
+		"description": "Enable special gestures description"
+	},
+	"specialGesture_leftClickHoldingRight": {
+		"message": "Vänsterklick medan du håller nere höger knapp",
+		"description": "Special gesture: left click while holding right button"
+	},
+	"specialGesture_rightClickHoldingLeft": {
+		"message": "Högerklick medan du håller nere vänster knapp",
+		"description": "Special gesture: right click while holding left button"
+	},
+	"actionChains": {
+		"message": "Kommandokedjor",
+		"description": "Action chains section title"
+	},
+	"actionChainsDesc": {
+		"message": "Skapa återanvändbara kommandosekvenser som utförs efter varandra",
+		"description": "Action chains section description"
+	},
+	"actionActionChain": {
+		"message": "Kommandokedja",
+		"description": "Action chain action name"
+	},
+	"actionCategoryChains": {
+		"message": "Kommandokedjor",
+		"description": "Action category: action chains"
+	},
+	"addChain": {
+		"message": "Lägg till kedja",
+		"description": "Add chain button"
+	},
+	"addNewChain": {
+		"message": "Skapa ny kedja...",
+		"description": "Action item to navigate to chain editor and create a new chain"
+	},
+	"chainNamePlaceholder": {
+		"message": "Min kommandokedja",
+		"description": "Chain name input placeholder"
+	},
+	"chainDelayUnit": {
+		"message": "ms",
+		"description": "Milliseconds unit for chain delay"
+	},
+	"addStep": {
+		"message": "Lägg till steg",
+		"description": "Add step button"
+	},
+	"emptyChainSteps": {
+		"message": "Inga steg har lagts till. Klicka på \"Lägg till steg\" för att börja.",
+		"description": "Empty chain steps message in expanded body"
+	},
+	"emptyChainStepsShort": {
+		"message": "Inga steg tillagda",
+		"description": "Short empty chain steps message for summary"
+	},
+	"noChains": {
+		"message": "Inga kommandokedjor ännu. Klicka på \"Lägg till kedja\" för att skapa en.",
+		"description": "No chains message"
+	},
+	"chainNotFound": {
+		"message": "(Kedjan hittades inte)",
+		"description": "Chain not found label"
+	},
+	"deleteChainConfirm": {
+		"message": "Ta bort kedjan \"%name%\"?",
+		"description": "Delete chain confirmation"
+	},
+	"stepNumber": {
+		"message": "Steg %n%",
+		"description": "Step number label"
+	},
+	"actionDelay": {
+		"message": "Fördröjning",
+		"description": "Delay action name for chain steps"
+	},
+	"actionSendCustomEvent": {
+		"message": "Skicka anpassad händelse",
+		"description": "Action to dispatch a custom DOM event"
+	},
+	"actionSimulateKey": {
+		"message": "Simulera knapptryckning",
+		"description": "Action to simulate a keyboard key press on the page"
+	},
+	"simulateKeyPreset": {
+		"message": "Förinställd tangent",
+		"description": "Label for preset key dropdown in simulate key config"
+	},
+	"simulateKeyPresetLeft": {
+		"message": "← Vänsterpil (Föregående sida)",
+		"description": "Preset: ArrowLeft key"
+	},
+	"simulateKeyPresetRight": {
+		"message": "→ Högerpil (Nästa sida)",
+		"description": "Preset: ArrowRight key"
+	},
+	"simulateKeyPresetCustom": {
+		"message": "Anpassad tangent",
+		"description": "Preset: Custom key option"
+	},
+	"simulateKeyRecordBtn": {
+		"message": "Spela in tangent",
+		"description": "Button to start recording a key press"
+	},
+	"simulateKeyRecording": {
+		"message": "Tryck på en tangent...",
+		"description": "Recording state text"
+	},
+	"simulateKeyManualInput": {
+		"message": "Aktuell tangent",
+		"description": "Label for current key display in simulate key config"
+	},
+	"simulateKeyHint": {
+		"message": "Den här funktionen skickar bara tangentbordshändelser till den aktuella sidan och används vanligtvis för sidnavigering (← föregående / → nästa). Den utlöser INTE webbläsargenvägar (t.ex. uppdaterar inte Ctrl+R sidan). Dessutom, på grund av begränsningar i webbplatsens ramverk, kanske de simulerade händelserna inte fångas upp av alla anpassade komponenter eller inmatningsfält.",
+		"description": "Hint text for simulate key feature"
+	},
+	"customEventInvalidJson": {
+		"message": "Ogiltigt JSON-format",
+		"description": "Error message when event detail is not valid JSON"
+	},
+	"customEventHint": {
+		"message": "Skickar %code% på %window%. Användbart för integration med andra skript.",
+		"description": "Hint explaining how custom event works. %code% = <code>new CustomEvent(...)</code>, %window% = <code>window</code>"
+	},
+	"delayDuration": {
+		"message": "Varaktighet",
+		"description": "Delay duration label"
+	},
+	"chainStepCount": {
+		"message": "%count% steg",
+		"description": "Step count for unnamed chains, e.g. '3 steps'"
+	},
+	"chainStepCountOne": {
+		"message": "%count% steg",
+		"description": "Step count for unnamed chains with exactly 1 step"
 	}
 }

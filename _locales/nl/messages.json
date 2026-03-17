@@ -8,20 +8,12 @@
 		"description": "Short extension name for popup"
 	},
 	"extDescription": {
-		"message": "Een open-source muisgebaren extensie gericht op privacy en een soepele ervaring. Vloeiende gebaren, super drag ondersteuning, en alle gegevens worden lokaal opgeslagen.",
+		"message": "Een open-source muisgebaren extensie gericht op privacy en een soepele ervaring. Vloeiende gebaren, super drag ondersteuning.",
 		"description": "Extension description"
-	},
-	"appearance": {
-		"message": "Uiterlijk",
-		"description": "Appearance section"
 	},
 	"theme": {
 		"message": "Thema",
 		"description": "Theme"
-	},
-	"themeDesc": {
-		"message": "Wissel tussen licht en donker thema",
-		"description": "Theme description"
 	},
 	"themeDark": {
 		"message": "Donker",
@@ -34,10 +26,6 @@
 	"themeAuto": {
 		"message": "Systeem volgen",
 		"description": "Auto theme - follow system"
-	},
-	"languageDesc": {
-		"message": "Selecteer interfacetaal",
-		"description": "Language description"
 	},
 	"syncStatus": {
 		"message": "Synchronisatiestatus",
@@ -56,7 +44,7 @@
 		"description": "Author"
 	},
 	"privacyNote": {
-		"message": "🔒 Draait lokaal, geen netwerktoegang behalve sync, geen gegevensverzameling",
+		"message": " Draait lokaal, geen netwerktoegang behalve sync, geen gegevensverzameling",
 		"description": "Privacy note in footer"
 	},
 	"supportUsText": {
@@ -120,11 +108,19 @@
 		"description": "Hold the right mouse button and move the mouse to easily perform gestures"
 	},
 	"macLinuxContextMenuNotice": {
-		"message": "⚠️ Vanwege systeembeperkingen is een dubbele rechtsklik vereist om het contextmenu te openen op macOS / Linux.",
+		"message": "Vanwege systeembeperkingen is, wanneer rechtsklikgebaren zijn ingeschakeld, een dubbele rechtsklik vereist om het contextmenu te openen op macOS / Linux.",
 		"description": "Notice for macOS / Linux users about double right-click for context menu"
 	},
+	"macLinuxDoubleClickHint": {
+		"message": "Dubbelklik met de rechtermuisknop om het contextmenu te openen. (Meer informatie)",
+		"description": "Short toast hint shown on first right-click on macOS/Linux explaining double-click requirement"
+	},
+	"edgeGestureConflictNotice": {
+		"message": "%browserName% heeft ingebouwde gebarenfuncties. Om de gebaren van FlowMouse te gebruiken, <a href=\"#\" class=\"edge-gesture-link\">schakelt u de ingebouwde gebaren uit</a> in de instellingen van %browserName%.",
+		"description": "Notice for Edge users about built-in gesture conflict"
+	},
 	"macTextDragNotice": {
-		"message": "⚠️ Vanwege macOS-gedrag moet u bij het slepen van tekst eerst de tekst selecteren en vervolgens de linkermuisknop kort ingedrukt houden voordat u sleept. Anders wordt de zoekopdracht mogelijk niet geactiveerd.",
+		"message": "Vanwege macOS-gedrag moet u bij het slepen van tekst eerst de tekst selecteren, vervolgens de linkermuisknop binnen het geselecteerde gebied ingedrukt houden en even pauzeren voordat u sleept. Anders wordt de sleepfunctie mogelijk niet geactiveerd.",
 		"description": "Notice for macOS users about text drag behavior"
 	},
 	"showTrail": {
@@ -159,6 +155,14 @@
 		"message": "Ondoorzichtigheid",
 		"description": "Opacity"
 	},
+	"blur": {
+		"message": "Vervaging",
+		"description": "Blur radius"
+	},
+	"hudShadow": {
+		"message": "Schaduw",
+		"description": "HUD shadow toggle"
+	},
 	"text": {
 		"message": "Tekst",
 		"description": "Text"
@@ -179,6 +183,10 @@
 		"message": "Scroll-animatie-effect voor omhoog/omlaag gebaren",
 		"description": "Scroll smoothness description"
 	},
+	"smoothnessAuto": {
+		"message": "Automatisch",
+		"description": "Auto scroll smoothness - uses system if animation enabled, otherwise smooth"
+	},
 	"smoothnessSystem": {
 		"message": "Systeem (Hoge Prestaties)",
 		"description": "System scroll smoothness"
@@ -190,6 +198,18 @@
 	"smoothnessNone": {
 		"message": "Geen animatie",
 		"description": "No scroll animation"
+	},
+	"scrollAccel": {
+		"message": "Vermenigvuldiger voor continu scrollen",
+		"description": "Speed multiplier applied when scrolling consecutively"
+	},
+	"scrollAccelOff": {
+		"message": "Uit",
+		"description": "Scroll acceleration disabled"
+	},
+	"scrollAccelWindow": {
+		"message": "Time-out voor opeenvolgend scrollen",
+		"description": "Max time (ms) between scrolls to count as consecutive"
 	},
 	"dragFeatures": {
 		"message": "Sleepfuncties",
@@ -283,6 +303,22 @@
 		"message": "Geen geblokkeerde sites. Voer hierboven een domein in om toe te voegen.",
 		"description": "Empty blacklist message"
 	},
+	"enableBlacklistContextMenu": {
+		"message": "Gebarenschakelaar in contextmenu",
+		"description": "Setting title for blacklist context menu toggle"
+	},
+	"enableBlacklistContextMenuDesc": {
+		"message": "Toon een optie om gebaren in/uit te schakelen in het contextmenu",
+		"description": "Setting description for blacklist context menu toggle"
+	},
+	"menuAddToBlacklist": {
+		"message": "Gebaren uitschakelen op deze site",
+		"description": "Context menu title for adding current site to blacklist"
+	},
+	"menuRemoveFromBlacklist": {
+		"message": "Gebaren inschakelen op deze site",
+		"description": "Context menu title for removing current site from blacklist"
+	},
 	"dataManagement": {
 		"message": "Gegevensbeheer",
 		"description": "Data management section"
@@ -322,6 +358,10 @@
 	"importDone": {
 		"message": "Instellingen geïmporteerd",
 		"description": "Import done message"
+	},
+	"importConfirm": {
+		"message": "Importeren overschrijft uw huidige instellingen. Importeer alleen configuratiebestanden van vertrouwde bronnen.\n\nDoorgaan?",
+		"description": "Import confirmation warning"
 	},
 	"importFailed": {
 		"message": "Importeren mislukt: Ongeldig configuratiebestand",
@@ -459,13 +499,41 @@
 		"message": "Tabblad Sluiten",
 		"description": "Close tab"
 	},
-	"actionCloseTabKeepWindow": {
-		"message": "Tabblad Sluiten (Venster Behouden)",
-		"description": "Close tab but keep window open"
+	"closeTabKeepWindow": {
+		"message": "Als dit het laatste tabblad is, venster openhouden",
+		"description": "Checkbox label for closeTab action config"
+	},
+	"closeTabAfterClose": {
+		"message": "Na sluiten",
+		"description": "Label for closeTab afterClose config"
+	},
+	"closeTabAfterCloseDefault": {
+		"message": "Browser standaard",
+		"description": "Option for closeTab afterClose config - let browser decide"
+	},
+	"closeTabAfterCloseLeft": {
+		"message": "Wissel naar linker tabblad",
+		"description": "Option for closeTab afterClose config - switch to left tab"
+	},
+	"closeTabAfterCloseRight": {
+		"message": "Wissel naar rechter tabblad",
+		"description": "Option for closeTab afterClose config - switch to right tab"
+	},
+	"switchTabNoWrap": {
+		"message": "Niet cyclisch schakelen",
+		"description": "Checkbox label for switchLeftTab/switchRightTab action config"
+	},
+	"switchTabMoveTab": {
+		"message": "Huidig tabblad verplaatsen",
+		"description": "Checkbox label for switchLeftTab/switchRightTab/switchFirstTab/switchLastTab action config"
 	},
 	"actionCloseBrowser": {
 		"message": "Browser Sluiten",
 		"description": "Close browser"
+	},
+	"actionCloseWindow": {
+		"message": "Venster sluiten",
+		"description": "Close current window"
 	},
 	"actionRestoreTab": {
 		"message": "Gesloten Tabblad Herstellen",
@@ -498,6 +566,14 @@
 	"actionSwitchRightTab": {
 		"message": "Wissel naar Rechter Tabblad",
 		"description": "Switch to right tab"
+	},
+	"actionSwitchFirstTab": {
+		"message": "Wissel naar Eerste Tabblad",
+		"description": "Switch to first tab"
+	},
+	"actionSwitchLastTab": {
+		"message": "Wissel naar Laatste Tabblad",
+		"description": "Switch to last tab"
 	},
 	"actionRefresh": {
 		"message": "Huidig Tabblad Vernieuwen",
@@ -575,6 +651,10 @@
 		"message": "Geluid Alle Tabbladen Aan/Uit",
 		"description": "Toggle mute all tabs"
 	},
+	"actionTogglePinTab": {
+		"message": "Huidig tabblad vastzetten/losmaken",
+		"description": "Toggle pin current tab"
+	},
 	"showTrailOrigin": {
 		"message": "Toon Startpunt",
 		"description": "Show trail origin point"
@@ -595,17 +675,29 @@
 		"message": "Tip: Een waarde tussen 15-30 wordt aanbevolen voor de beste herkenning.",
 		"description": "Warning when distance threshold is too small or too large"
 	},
-	"enableAdvancedSettings": {
-		"message": "Geavanceerde Instellingen",
-		"description": "Enable advanced settings"
+	"gestureTurnTolerance": {
+		"message": "Draaitolerantie voor gebaren",
+		"description": "Turn tolerance for detecting direction changes in long gestures"
 	},
-	"enableAdvancedSettingsDesc": {
-		"message": "Toon meer geavanceerde opties wanneer ingeschakeld",
-		"description": "Show more advanced options when enabled"
+	"gestureTurnToleranceDesc": {
+		"message": "Hogere waarden verminderen onbedoelde wendingen, maar vereisen langere bewegingen om van richting te veranderen",
+		"description": "Description for gesture turn tolerance setting"
 	},
-	"enableAdvancedSettingsToggle": {
-		"message": "Geavanceerde Instellingen Modus",
-		"description": "Enable advanced settings toggle label"
+	"advanced": {
+		"message": "Expertmodus",
+		"description": "Short label for per-section advanced toggle"
+	},
+	"otherSettings": {
+		"message": "Andere instellingen",
+		"description": "Section title for other/miscellaneous settings"
+	},
+	"show": {
+		"message": "Weergeven",
+		"description": "Show navigation menu"
+	},
+	"hide": {
+		"message": "Verbergen",
+		"description": "Hide navigation menu"
 	},
 	"urlFormatError": {
 		"message": "Voer volledige URL in beginnend met http:// of https://",
@@ -615,41 +707,61 @@
 		"message": "Herstel naar standaard",
 		"description": "Reset gesture to default action"
 	},
+	"resetToDefaultConfirm": {
+		"message": "Deze instellingen terugzetten naar de standaardwaarden?",
+		"description": "Confirmation dialog for resetting settings"
+	},
 	"addCustomGesture": {
 		"message": "Aangepast Gebaar Toevoegen",
 		"description": "Add custom gesture section title"
-	},
-	"gesturePattern": {
-		"message": "Patroon",
-		"description": "Gesture pattern label"
-	},
-	"selectAction": {
-		"message": "Selecteer Actie",
-		"description": "Select action label"
 	},
 	"clear": {
 		"message": "Wissen",
 		"description": "Clear button"
 	},
-	"addGesture": {
-		"message": "Gebaar Toevoegen",
-		"description": "Add gesture button"
-	},
-	"pleaseDrawGesture": {
-		"message": "Teken eerst een gebaar",
-		"description": "Alert when no gesture drawn"
-	},
 	"gestureAdded": {
 		"message": "✓ Gebaar toegevoegd",
 		"description": "Gesture added success message"
 	},
-	"gestureDrawInstructions": {
-		"message": "Houd de rechtermuisknop ingedrukt en teken hieronder een gebaar, laat los om te voltooien. Ondersteunde richtingen:",
-		"description": "Instructions for gesture drawing"
+	"gestureRecorderTitle": {
+		"message": "Teken een Gebaar",
+		"description": "Gesture recorder full-screen title"
 	},
-	"gestureOverwriteConfirm": {
-		"message": "Gebaar %pattern% bestaat al. Overschrijven?",
-		"description": "Confirmation message when adding a duplicate gesture"
+	"gestureRecorderDesc": {
+		"message": "Houd de %button% ingedrukt en teken een gebarenpatroon",
+		"description": "Gesture recorder instruction, %button% is replaced with the mouse button name"
+	},
+	"gestureRecorderEsc": {
+		"message": "Annuleren",
+		"description": "Gesture recorder cancel button label"
+	},
+	"gestureRecorderRecording": {
+		"message": "Opnemen…",
+		"description": "Gesture recorder recording indicator"
+	},
+	"gestureRecorderResult": {
+		"message": "Opgenomen Gebaar",
+		"description": "Gesture recorder result label"
+	},
+	"gestureRecorderConfirm": {
+		"message": "Bevestigen",
+		"description": "Gesture recorder confirm button"
+	},
+	"gestureRecorderRedraw": {
+		"message": "Opnieuw tekenen",
+		"description": "Gesture recorder redraw button"
+	},
+	"gestureRecorderBanned": {
+		"message": "Gebaar %pattern% bestaat al",
+		"description": "Gesture recorder message when user draws a banned/existing gesture pattern"
+	},
+	"rightButton": {
+		"message": "Rechtermuisknop",
+		"description": "Right mouse button name"
+	},
+	"leftButton": {
+		"message": "Linkermuisknop",
+		"description": "Left mouse button name"
 	},
 	"customGesture": {
 		"message": "Aangepast",
@@ -670,6 +782,10 @@
 	"enterCustomUrl": {
 		"message": "Voer URL in (bij voorkeur inclusief protocol zoals https://, chrome://, etc.):",
 		"description": "Prompt for custom URL input"
+	},
+	"copyUrlIncludeTitle": {
+		"message": "Paginatitel ook kopiëren",
+		"description": "Checkbox label for including page title when copying URL"
 	},
 	"invalidUrl": {
 		"message": "Voer een geldige URL in (beginnend met http:// of https://)",
@@ -750,6 +866,10 @@
 	"aboutTitle": {
 		"message": "Over FlowMouse",
 		"description": "About title"
+	},
+	"aboutTitleShort": {
+		"message": "Over",
+		"description": "Short About title "
 	},
 	"aboutAuthor": {
 		"message": "Auteur",
@@ -863,6 +983,10 @@
 		"message": "Open op voorgrond",
 		"description": "Open tab in foreground"
 	},
+	"openInIncognito": {
+		"message": "Incognito",
+		"description": "Open in incognito checkbox"
+	},
 	"textDragGestures": {
 		"message": "Tekstsleepgebaren",
 		"description": "Text drag gestures"
@@ -880,7 +1004,7 @@
 		"description": "Direction column header"
 	},
 	"action": {
-		"message": "Actie",
+		"message": "Opdracht",
 		"description": "Action column header"
 	},
 	"imageSearchUrl": {
@@ -915,6 +1039,10 @@
 		"message": "📋 Link Kopiëren",
 		"description": "Copy link"
 	},
+	"dragActionCopyLinkText": {
+		"message": "📋 Linktekst Kopiëren",
+		"description": "Copy link text"
+	},
 	"dragActionSaveImage": {
 		"message": "💾 Afbeelding Opslaan",
 		"description": "Save image"
@@ -936,7 +1064,7 @@
 		"description": "Custom search"
 	},
 	"reducedMotionWarning": {
-		"message": "⚠️ %OS% systeem animatie is uitgeschakeld, scroll-animatie werkt mogelijk niet goed. U kunt animatie inschakelen in %OS% systeeminstellingen.",
+		"message": "%OS% systeem animatie is uitgeschakeld, scroll-animatie werkt mogelijk niet goed. U kunt animatie inschakelen in %OS% systeeminstellingen.",
 		"description": "Warning message when system reduced motion is enabled"
 	},
 	"autoDetectUrl": {
@@ -964,7 +1092,7 @@
 		"description": "Setting description for restricted page notice"
 	},
 	"restrictedPagesDetailsTitle": {
-		"message": "⚠️ Vanwege beveiligingsbeleid van de browser kunnen extensies niet werken op bepaalde typen pagina's.",
+		"message": "Vanwege beveiligingsbeleid van de browser kunnen extensies niet werken op bepaalde typen pagina's.",
 		"description": "Collapsible details title"
 	},
 	"showMoreHint": {
@@ -972,7 +1100,7 @@
 		"description": "Hint to show more details"
 	},
 	"restrictedNewTab": {
-		"message": "Nieuw Tabblad Pagina (chrome://newtab)",
+		"message": "Nieuw Tabblad Pagina",
 		"description": "New tab page title"
 	},
 	"restrictedNewTabDesc": {
@@ -988,11 +1116,11 @@
 		"description": "Store page description"
 	},
 	"restrictedInternal": {
-		"message": "Browser Interne Pagina's",
+		"message": "Browser Interne Pagina's (%browserProtocol%)",
 		"description": "Internal page title"
 	},
 	"restrictedInternalDesc": {
-		"message": "Alle pagina's die beginnen met chrome:// (Chrome) of edge:// (Edge), inclusief instellingen, geschiedenis, downloads, etc. Deze pagina's bevatten kernfuncties van de browser en privacygegevens van gebruikers, dus worden ze strikt beschermd.",
+		"message": "Bijvoorbeeld de interne instellingen, geschiedenis, downloads, enz. van %browserName%. Deze pagina's betreffen kernfuncties van de browser en privacygegevens van de gebruiker, en worden daarom strikt beschermd.",
 		"description": "Internal page description"
 	},
 	"restrictedFile": {
@@ -1000,7 +1128,7 @@
 		"description": "File page title"
 	},
 	"restrictedFileDesc": {
-		"message": "Lokale HTML-bestanden geopend via het file:// protocol. Vanwege veiligheidsbeperkingen (om te voorkomen dat schadelijke extensies toegang krijgen tot het lokale bestandssysteem), kunnen extensies niet werken op deze pagina's.",
+		"message": "Lokale html, pdf, etc. bestanden geopend via het file:// protocol. Vanwege veiligheidsbeperkingen (om te voorkomen dat schadelijke extensies toegang krijgen tot het lokale bestandssysteem), kunnen extensies niet werken op deze pagina's.",
 		"description": "File page description"
 	},
 	"restrictedViewSource": {
@@ -1024,7 +1152,7 @@
 		"description": "Popup description when content script not loaded"
 	},
 	"popupRefreshBtn": {
-		"message": "🔄 Pagina Vernieuwen",
+		"message": "Pagina Vernieuwen",
 		"description": "Popup refresh button text"
 	},
 	"popupRestrictedTitle": {
@@ -1036,7 +1164,7 @@
 		"description": "Popup description for restricted pages"
 	},
 	"popupLearnMore": {
-		"message": "📖 Meer Informatie",
+		"message": "Meer Informatie",
 		"description": "Popup learn more button text"
 	},
 	"tutorialPending": {
@@ -1207,6 +1335,26 @@
 		"message": "Om afbeeldingen op te slaan, heeft FlowMouse toegang tot pagina's en downloads nodig.",
 		"description": "Permission popup description for downloads and page capture"
 	},
+	"permissionIncognitoTitle": {
+		"message": "Toestaan in incognito",
+		"description": "Permission popup title for incognito"
+	},
+	"permissionIncognitoDesc": {
+		"message": "Om in incognitovensters te werken, moet je handmatig 'Toestaan in incognito' inschakelen voor FlowMouse.",
+		"description": "Permission popup description for incognito"
+	},
+	"openExtensionsSettings": {
+		"message": "Extensiedetails openen",
+		"description": "Button to open extension details page"
+	},
+	"permissionFirefoxIncognitoTitle": {
+		"message": "Uitvoeren in privévensters",
+		"description": "Permission popup title for Firefox private browsing"
+	},
+	"permissionFirefoxIncognitoDesc": {
+		"message": "Om in privévensters te werken, moet je handmatig 'Uitvoeren in privévensters' inschakelen voor FlowMouse in Beheer van add-ons.",
+		"description": "Permission popup description for Firefox private browsing"
+	},
 	"grantPermission": {
 		"message": "Toestemming Geven",
 		"description": "Grant permission button"
@@ -1234,5 +1382,205 @@
 	"saveImageTimeout": {
 		"message": "Afbeelding opslaan mislukt: Time-out bij laden",
 		"description": "Toast message when image loading times out"
+	},
+	"buttonOkay": {
+		"message": "OK",
+		"description": "Generic OK button"
+	},
+	"buttonCancel": {
+		"message": "Annuleren",
+		"description": "Generic Cancel button"
+	},
+	"buttonClose": {
+		"message": "Sluiten",
+		"description": "Generic Close button"
+	},
+	"searchActions": {
+		"message": "Opdrachten zoeken...",
+		"description": "Placeholder for action search input in action picker"
+	},
+	"actionCategoryNavigation": {
+		"message": "Navigatie",
+		"description": "Action category: navigation"
+	},
+	"actionCategoryTabs": {
+		"message": "Tabbladen",
+		"description": "Action category: tabs"
+	},
+	"actionCategoryWindow": {
+		"message": "Venster",
+		"description": "Action category: window"
+	},
+	"actionCategoryUtilities": {
+		"message": "Hulpprogramma's",
+		"description": "Action category: utilities"
+	},
+	"noResults": {
+		"message": "Geen resultaten",
+		"description": "No search results found"
+	},
+	"wheelGestures": {
+		"message": "Muiswielgebaren",
+		"description": "Mouse wheel gestures section title"
+	},
+	"enableWheelGestures": {
+		"message": "Muiswielgebaren inschakelen",
+		"description": "Enable mouse wheel gestures"
+	},
+	"enableWheelGesturesDesc": {
+		"message": "Voer snel verschillende acties uit met het muiswiel",
+		"description": "Enable mouse wheel gestures description"
+	},
+	"wheelGesture_scrollUpHoldingRight": {
+		"message": "Scroll omhoog terwijl u de rechtermuisknop ingedrukt houdt",
+		"description": "Wheel gesture: scroll up while holding right button"
+	},
+	"wheelGesture_scrollDownHoldingRight": {
+		"message": "Scroll omlaag terwijl u de rechtermuisknop ingedrukt houdt",
+		"description": "Wheel gesture: scroll down while holding right button"
+	},
+	"specialGestures": {
+		"message": "Speciale gebaren",
+		"description": "Special gestures section title"
+	},
+	"enableSpecialGestures": {
+		"message": "Speciale gebaren inschakelen",
+		"description": "Enable special gestures"
+	},
+	"enableSpecialGesturesDesc": {
+		"message": "Voer acties uit door op de ene muisknop te klikken terwijl u de andere ingedrukt houdt",
+		"description": "Enable special gestures description"
+	},
+	"specialGesture_leftClickHoldingRight": {
+		"message": "Linksklikken terwijl u de rechterknop ingedrukt houdt",
+		"description": "Special gesture: left click while holding right button"
+	},
+	"specialGesture_rightClickHoldingLeft": {
+		"message": "Rechtsklikken terwijl u de linkerknop ingedrukt houdt",
+		"description": "Special gesture: right click while holding left button"
+	},
+	"actionChains": {
+		"message": "Opdrachtenreeksen",
+		"description": "Action chains section title"
+	},
+	"actionChainsDesc": {
+		"message": "Maak herbruikbare reeksen opdrachten die na elkaar worden uitgevoerd",
+		"description": "Action chains section description"
+	},
+	"actionActionChain": {
+		"message": "Opdrachtenreeks",
+		"description": "Action chain action name"
+	},
+	"actionCategoryChains": {
+		"message": "Opdrachtenreeksen",
+		"description": "Action category: action chains"
+	},
+	"addChain": {
+		"message": "Reeks toevoegen",
+		"description": "Add chain button"
+	},
+	"addNewChain": {
+		"message": "Nieuwe reeks maken...",
+		"description": "Action item to navigate to chain editor and create a new chain"
+	},
+	"chainNamePlaceholder": {
+		"message": "Mijn opdrachtenreeks",
+		"description": "Chain name input placeholder"
+	},
+	"chainDelayUnit": {
+		"message": "ms",
+		"description": "Milliseconds unit for chain delay"
+	},
+	"addStep": {
+		"message": "Stap toevoegen",
+		"description": "Add step button"
+	},
+	"emptyChainSteps": {
+		"message": "Geen stappen toegevoegd. Klik op 'Stap toevoegen' om te beginnen.",
+		"description": "Empty chain steps message in expanded body"
+	},
+	"emptyChainStepsShort": {
+		"message": "Geen stappen toegevoegd",
+		"description": "Short empty chain steps message for summary"
+	},
+	"noChains": {
+		"message": "Nog geen opdrachtenreeksen. Klik op 'Reeks toevoegen' om er een te maken.",
+		"description": "No chains message"
+	},
+	"chainNotFound": {
+		"message": "(Reeks niet gevonden)",
+		"description": "Chain not found label"
+	},
+	"deleteChainConfirm": {
+		"message": "Reeks \"%name%\" verwijderen?",
+		"description": "Delete chain confirmation"
+	},
+	"stepNumber": {
+		"message": "Stap %n%",
+		"description": "Step number label"
+	},
+	"actionDelay": {
+		"message": "Vertraging",
+		"description": "Delay action name for chain steps"
+	},
+	"actionSendCustomEvent": {
+		"message": "Aangepaste gebeurtenis verzenden",
+		"description": "Action to dispatch a custom DOM event"
+	},
+	"actionSimulateKey": {
+		"message": "Toetsaanslag simuleren",
+		"description": "Action to simulate a keyboard key press on the page"
+	},
+	"simulateKeyPreset": {
+		"message": "Vooraf ingestelde toets",
+		"description": "Label for preset key dropdown in simulate key config"
+	},
+	"simulateKeyPresetLeft": {
+		"message": "← Pijl links (Vorige pagina)",
+		"description": "Preset: ArrowLeft key"
+	},
+	"simulateKeyPresetRight": {
+		"message": "→ Pijl rechts (Volgende pagina)",
+		"description": "Preset: ArrowRight key"
+	},
+	"simulateKeyPresetCustom": {
+		"message": "Aangepaste toets",
+		"description": "Preset: Custom key option"
+	},
+	"simulateKeyRecordBtn": {
+		"message": "Toets opnemen",
+		"description": "Button to start recording a key press"
+	},
+	"simulateKeyRecording": {
+		"message": "Druk op een toets...",
+		"description": "Recording state text"
+	},
+	"simulateKeyManualInput": {
+		"message": "Huidige toets",
+		"description": "Label for current key display in simulate key config"
+	},
+	"simulateKeyHint": {
+		"message": "Deze functie verzendt alleen toetsenbordgebeurtenissen naar de huidige pagina en wordt meestal gebruikt voor paginanavigatie (← vorige / → volgende). Dit triggert GEEN browsersneltoetsen (bijv. Ctrl+R vernieuwt de pagina niet). Bovendien worden de gesimuleerde gebeurtenissen vanwege beperkingen van het websiteframework mogelijk niet door alle aangepaste componenten of invoervelden vastgelegd.",
+		"description": "Hint text for simulate key feature"
+	},
+	"customEventInvalidJson": {
+		"message": "Ongeldige JSON-indeling",
+		"description": "Error message when event detail is not valid JSON"
+	},
+	"customEventHint": {
+		"message": "Verzendt %code% naar %window%. Handig voor integratie met andere scripts.",
+		"description": "Hint explaining how custom event works. %code% = <code>new CustomEvent(...)</code>, %window% = <code>window</code>"
+	},
+	"delayDuration": {
+		"message": "Duur",
+		"description": "Delay duration label"
+	},
+	"chainStepCount": {
+		"message": "%count% stappen",
+		"description": "Step count for unnamed chains, e.g. '3 steps'"
+	},
+	"chainStepCountOne": {
+		"message": "%count% stap",
+		"description": "Step count for unnamed chains with exactly 1 step"
 	}
 }

@@ -15,74 +15,15 @@
 </head>
 
 <body class="about-page">
-	<div class="container">
-		<header>
-			<h1>
-				<img src="../icons/icon48.png" class="logo-img" alt="Logo">
-				<span data-i18n="aboutTitle">FlowMouse</span>
-			</h1>
-		</header>
-
-		<div class="section">
-			<div class="info-row">
-				<span class="info-label" data-i18n="aboutAuthor">作者</span>
-				<span class="info-value">Hmily[LCG] & Coxxs</span>
-			</div>
-			<div class="info-row">
-				<span class="info-label" data-i18n="aboutWebsite">官网</span>
-				<span class="info-value"><a href="https://www.52pojie.cn/thread-2080303-1-1.html"
-						target="_blank">https://www.52pojie.cn/thread-2080303-1-1.html</a></span>
-			</div>
-			<div class="info-row">
-				<span class="info-label" data-i18n="aboutOpenSource">GitHub</span>
-				<span class="info-value"><a href="https://github.com/Hmily-LCG/FlowMouse"
-						target="_blank">https://github.com/Hmily-LCG/FlowMouse</a></span>
-			</div>
-			<div class="info-row">
-				<span class="info-label" data-i18n="aboutEmail">邮箱</span>
-				<span class="info-value"><a href="mailto:Service@52pojie.cn">Service@52pojie.cn</a></span>
-			</div>
-			<div class="info-row">
-				<span class="info-label" data-i18n="version">版本</span>
-				<span class="info-value version-from-manifest"></span>
-			</div>
-		</div>
-
-		<div class="section">
-			<h2>✨ <span data-i18n="aboutFeatures">特性</span></h2>
-			<div class="features">
-				<div class="feature" data-i18n="aboutFeature1">🎯 16种默认手势 + 自定义手势</div>
-				<div class="feature" data-i18n="aboutFeature2">🎨 可视化轨迹反馈</div>
-				<div class="feature" data-i18n="aboutFeature3">🔍 文字/图片/链接超级拖拽</div>
-				<div class="feature" data-i18n="aboutFeature4">🚫 网站黑名单</div>
-				<div class="feature" data-i18n="aboutFeature5">☁️ Chrome 账号同步</div>
-				<div class="feature" data-i18n="aboutFeature6">🔒 完全本地运行，除同步外无联网</div>
-			</div>
-		</div>
-
-		<div class="section">
-			<h2>🔒 <span data-i18n="aboutPrivacy">隐私声明</span></h2>
-			<p data-i18n="aboutPrivacyText"></p>
-			<div class="badges">
-				<span class="privacy-badge" data-i18n="badgeNoNetwork">🔒 除同步外无联网</span>
-				<span class="privacy-badge" data-i18n="badgeNoData">🚫 不收集数据</span>
-				<span class="privacy-badge" data-i18n="badgeLocalRun">✅ 本地运行</span>
-			</div>
-		</div>
-
-		<div class="section">
-			<h2><span class="heart">❤️</span> <span data-i18n="aboutCredits">致谢</span></h2>
-			<p class="credits" data-i18n="aboutCreditsText"></p>
-		</div>
-
-		<a href="options.html" class="back-btn">← <span data-i18n="backToSettings">返回设置</span></a>
-	</div>
+	<about-page></about-page>
 
 	<script src="../js/i18n.js"></script>
 	<script src="../js/constants.js"></script>
 	<script src="../js/gesture-visual.js"></script>
 	<script src="../js/gesture-recognizer.js"></script>
 	<script src="../js/content.js"></script>
+
+	<script type="module" src="../js/components/about-page.js"></script>
 </body>
 
 </html>

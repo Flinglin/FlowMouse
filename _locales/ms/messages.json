@@ -8,20 +8,12 @@
 		"description": "Short extension name for popup"
 	},
 	"extDescription": {
-		"message": "Sambungan gerak isyarat tetikus sumber terbuka yang memfokuskan kepada privasi dan pengalaman lancar. Gerak isyarat yang sangat lancar, sokongan seret super, dan semua data disimpan secara setempat.",
+		"message": "Sambungan gerak isyarat tetikus sumber terbuka yang memfokuskan kepada privasi dan pengalaman lancar. Gerak isyarat yang sangat lancar, sokongan seret super.",
 		"description": "Extension description"
-	},
-	"appearance": {
-		"message": "Penampilan",
-		"description": "Appearance section"
 	},
 	"theme": {
 		"message": "Tema",
 		"description": "Theme"
-	},
-	"themeDesc": {
-		"message": "Tukar antara tema cerah dan gelap",
-		"description": "Theme description"
 	},
 	"themeDark": {
 		"message": "Gelap",
@@ -34,10 +26,6 @@
 	"themeAuto": {
 		"message": "Ikuti Sistem",
 		"description": "Auto theme - follow system"
-	},
-	"languageDesc": {
-		"message": "Pilih bahasa antara muka",
-		"description": "Language description"
 	},
 	"syncStatus": {
 		"message": "Status Segerak",
@@ -56,7 +44,7 @@
 		"description": "Author"
 	},
 	"privacyNote": {
-		"message": "🔒 Berjalan secara setempat, tiada akses rangkaian kecuali penyegerakan, tiada pengumpulan data",
+		"message": " Berjalan secara setempat, tiada akses rangkaian kecuali penyegerakan, tiada pengumpulan data",
 		"description": "Privacy note in footer"
 	},
 	"supportUsText": {
@@ -120,11 +108,19 @@
 		"description": "Hold the right mouse button and move the mouse to easily perform gestures"
 	},
 	"macLinuxContextMenuNotice": {
-		"message": "⚠️ Disebabkan batasan sistem, klik kanan dua kali diperlukan untuk membuka menu konteks pada macOS / Linux.",
+		"message": "Disebabkan batasan sistem, apabila gerak isyarat klik kanan didayakan, klik kanan dua kali diperlukan untuk membuka menu konteks pada macOS / Linux.",
 		"description": "Notice for macOS / Linux users about double right-click for context menu"
 	},
+	"macLinuxDoubleClickHint": {
+		"message": "Untuk membuka menu konteks, dwiklik kanan. (Ketahui lebih lanjut)",
+		"description": "Short toast hint shown on first right-click on macOS/Linux explaining double-click requirement"
+	},
+	"edgeGestureConflictNotice": {
+		"message": "%browserName% mempunyai ciri isyarat terbina dalam. Untuk menggunakan isyarat FlowMouse, sila <a href=\"#\" class=\"edge-gesture-link\">lumpuhkan isyarat terbina dalam</a> dalam tetapan %browserName%.",
+		"description": "Notice for Edge users about built-in gesture conflict"
+	},
 	"macTextDragNotice": {
-		"message": "⚠️ Disebabkan tingkah laku macOS, semasa menyeret teks, pilih teks tersebut dahulu, kemudian tekan dan tahan butang kiri sebentar sebelum menyeret. Jika tidak, carian mungkin tidak akan dicetuskan.",
+		"message": "Disebabkan tingkah laku macOS, semasa menyeret teks, pilih teks tersebut dahulu, kemudian tekan dan tahan butang kiri dalam kawasan yang dipilih dan jeda sebentar sebelum menyeret. Jika tidak, fungsi seret mungkin tidak akan dicetuskan.",
 		"description": "Notice for macOS users about text drag behavior"
 	},
 	"showTrail": {
@@ -159,6 +155,14 @@
 		"message": "Kelegapan",
 		"description": "Opacity"
 	},
+	"blur": {
+		"message": "Kabur",
+		"description": "Blur radius"
+	},
+	"hudShadow": {
+		"message": "Bayang",
+		"description": "HUD shadow toggle"
+	},
 	"text": {
 		"message": "Teks",
 		"description": "Text"
@@ -179,6 +183,10 @@
 		"message": "Kesan animasi tatal untuk gerak isyarat atas/bawah",
 		"description": "Scroll smoothness description"
 	},
+	"smoothnessAuto": {
+		"message": "Auto",
+		"description": "Auto scroll smoothness - uses system if animation enabled, otherwise smooth"
+	},
 	"smoothnessSystem": {
 		"message": "Sistem (Prestasi Tinggi)",
 		"description": "System scroll smoothness"
@@ -190,6 +198,18 @@
 	"smoothnessNone": {
 		"message": "Tiada animasi",
 		"description": "No scroll animation"
+	},
+	"scrollAccel": {
+		"message": "Pengganda tatalan berterusan",
+		"description": "Speed multiplier applied when scrolling consecutively"
+	},
+	"scrollAccelOff": {
+		"message": "Matikan",
+		"description": "Scroll acceleration disabled"
+	},
+	"scrollAccelWindow": {
+		"message": "Masa tamat tatalan berturut-turut",
+		"description": "Max time (ms) between scrolls to count as consecutive"
 	},
 	"dragFeatures": {
 		"message": "Ciri Seret",
@@ -283,6 +303,22 @@
 		"message": "Tiada laman web disenarai hitam. Masukkan domain di atas untuk tambah.",
 		"description": "Empty blacklist message"
 	},
+	"enableBlacklistContextMenu": {
+		"message": "Suis Gerak Isyarat di Menu Konteks",
+		"description": "Setting title for blacklist context menu toggle"
+	},
+	"enableBlacklistContextMenuDesc": {
+		"message": "Tunjukkan pilihan untuk melumpuhkan/membolehkan gerak isyarat pada menu konteks",
+		"description": "Setting description for blacklist context menu toggle"
+	},
+	"menuAddToBlacklist": {
+		"message": "Lumpuhkan gerak isyarat di tapak ini",
+		"description": "Context menu title for adding current site to blacklist"
+	},
+	"menuRemoveFromBlacklist": {
+		"message": "Bolehkan gerak isyarat di tapak ini",
+		"description": "Context menu title for removing current site from blacklist"
+	},
 	"dataManagement": {
 		"message": "Pengurusan Data",
 		"description": "Data management section"
@@ -322,6 +358,10 @@
 	"importDone": {
 		"message": "Tetapan telah diimport",
 		"description": "Import done message"
+	},
+	"importConfirm": {
+		"message": "Pengimportan akan menulis ganti tetapan semasa anda. Hanya import fail konfigurasi dari sumber yang dipercayai.\n\nTeruskan?",
+		"description": "Import confirmation warning"
 	},
 	"importFailed": {
 		"message": "Import gagal: Fail konfigurasi tidak sah",
@@ -459,13 +499,41 @@
 		"message": "Tutup Tab",
 		"description": "Close tab"
 	},
-	"actionCloseTabKeepWindow": {
-		"message": "Tutup Tab (Kekalkan Tetingkap)",
-		"description": "Close tab but keep window open"
+	"closeTabKeepWindow": {
+		"message": "Jika ini tab terakhir, kekalkan tetingkap terbuka",
+		"description": "Checkbox label for closeTab action config"
+	},
+	"closeTabAfterClose": {
+		"message": "Selepas ditutup",
+		"description": "Label for closeTab afterClose config"
+	},
+	"closeTabAfterCloseDefault": {
+		"message": "Bawaan penyemak imbas",
+		"description": "Option for closeTab afterClose config - let browser decide"
+	},
+	"closeTabAfterCloseLeft": {
+		"message": "Tukar ke tab kiri",
+		"description": "Option for closeTab afterClose config - switch to left tab"
+	},
+	"closeTabAfterCloseRight": {
+		"message": "Tukar ke tab kanan",
+		"description": "Option for closeTab afterClose config - switch to right tab"
+	},
+	"switchTabNoWrap": {
+		"message": "Jangan beralih secara kitaran",
+		"description": "Checkbox label for switchLeftTab/switchRightTab action config"
+	},
+	"switchTabMoveTab": {
+		"message": "Alihkan tab semasa",
+		"description": "Checkbox label for switchLeftTab/switchRightTab/switchFirstTab/switchLastTab action config"
 	},
 	"actionCloseBrowser": {
 		"message": "Tutup Penyemak Imbas",
 		"description": "Close browser"
+	},
+	"actionCloseWindow": {
+		"message": "Tutup tetingkap",
+		"description": "Close current window"
 	},
 	"actionRestoreTab": {
 		"message": "Pulihkan Tab Tertutup",
@@ -498,6 +566,14 @@
 	"actionSwitchRightTab": {
 		"message": "Tukar ke Tab Kanan",
 		"description": "Switch to right tab"
+	},
+	"actionSwitchFirstTab": {
+		"message": "Tukar ke Tab Pertama",
+		"description": "Switch to first tab"
+	},
+	"actionSwitchLastTab": {
+		"message": "Tukar ke Tab Terakhir",
+		"description": "Switch to last tab"
 	},
 	"actionRefresh": {
 		"message": "Muat Semula Tab Semasa",
@@ -575,6 +651,10 @@
 		"message": "Senyap/Nyahsenyap Semua Tab",
 		"description": "Toggle mute all tabs"
 	},
+	"actionTogglePinTab": {
+		"message": "Semat/Nyahsemat Tab Semasa",
+		"description": "Toggle pin current tab"
+	},
 	"showTrailOrigin": {
 		"message": "Tunjukkan Titik Asal",
 		"description": "Show trail origin point"
@@ -595,17 +675,29 @@
 		"message": "Tip: Nilai antara 15-30 disyorkan untuk pengecaman terbaik.",
 		"description": "Warning when distance threshold is too small or too large"
 	},
-	"enableAdvancedSettings": {
-		"message": "Tetapan Lanjutan",
-		"description": "Enable advanced settings"
+	"gestureTurnTolerance": {
+		"message": "Toleransi belokan gerak isyarat",
+		"description": "Turn tolerance for detecting direction changes in long gestures"
 	},
-	"enableAdvancedSettingsDesc": {
-		"message": "Tunjukkan lebih banyak pilihan lanjutan apabila didayakan",
-		"description": "Show more advanced options when enabled"
+	"gestureTurnToleranceDesc": {
+		"message": "Nilai yang lebih tinggi mengurangkan belokan tidak sengaja tetapi memerlukan pergerakan yang lebih panjang untuk menukar arah",
+		"description": "Description for gesture turn tolerance setting"
 	},
-	"enableAdvancedSettingsToggle": {
-		"message": "Mod Tetapan Lanjutan",
-		"description": "Enable advanced settings toggle label"
+	"advanced": {
+		"message": "Mod Pakar",
+		"description": "Short label for per-section advanced toggle"
+	},
+	"otherSettings": {
+		"message": "Tetapan Lain",
+		"description": "Section title for other/miscellaneous settings"
+	},
+	"show": {
+		"message": "Tunjukkan",
+		"description": "Show navigation menu"
+	},
+	"hide": {
+		"message": "Sembunyikan",
+		"description": "Hide navigation menu"
 	},
 	"urlFormatError": {
 		"message": "Sila masukkan URL penuh bermula dengan http:// atau https://",
@@ -615,41 +707,61 @@
 		"message": "Tetapkan semula kepada lalai",
 		"description": "Reset gesture to default action"
 	},
+	"resetToDefaultConfirm": {
+		"message": "Tetapkan semula tetapan ini kepada nilai lalai?",
+		"description": "Confirmation dialog for resetting settings"
+	},
 	"addCustomGesture": {
 		"message": "Tambah Gerak Isyarat Tersuai",
 		"description": "Add custom gesture section title"
-	},
-	"gesturePattern": {
-		"message": "Corak",
-		"description": "Gesture pattern label"
-	},
-	"selectAction": {
-		"message": "Pilih Tindakan",
-		"description": "Select action label"
 	},
 	"clear": {
 		"message": "Kosongkan",
 		"description": "Clear button"
 	},
-	"addGesture": {
-		"message": "Tambah Gerak Isyarat",
-		"description": "Add gesture button"
-	},
-	"pleaseDrawGesture": {
-		"message": "Sila lukis gerak isyarat dahulu",
-		"description": "Alert when no gesture drawn"
-	},
 	"gestureAdded": {
 		"message": "✓ Gerak isyarat ditambah",
 		"description": "Gesture added success message"
 	},
-	"gestureDrawInstructions": {
-		"message": "Tahan butang tetikus kanan dan lukis gerak isyarat di bawah, lepaskan untuk selesaikan. Arah yang disokong:",
-		"description": "Instructions for gesture drawing"
+	"gestureRecorderTitle": {
+		"message": "Lukis Gerak Isyarat",
+		"description": "Gesture recorder full-screen title"
 	},
-	"gestureOverwriteConfirm": {
-		"message": "Gerak isyarat %pattern% sudah wujud. Tulis ganti?",
-		"description": "Confirmation message when adding a duplicate gesture"
+	"gestureRecorderDesc": {
+		"message": "Tahan %button% dan lukis corak gerak isyarat",
+		"description": "Gesture recorder instruction, %button% is replaced with the mouse button name"
+	},
+	"gestureRecorderEsc": {
+		"message": "Batal",
+		"description": "Gesture recorder cancel button label"
+	},
+	"gestureRecorderRecording": {
+		"message": "Merakam…",
+		"description": "Gesture recorder recording indicator"
+	},
+	"gestureRecorderResult": {
+		"message": "Gerak Isyarat Direkodkan",
+		"description": "Gesture recorder result label"
+	},
+	"gestureRecorderConfirm": {
+		"message": "Sahkan",
+		"description": "Gesture recorder confirm button"
+	},
+	"gestureRecorderRedraw": {
+		"message": "Lukis semula",
+		"description": "Gesture recorder redraw button"
+	},
+	"gestureRecorderBanned": {
+		"message": "Gerak isyarat %pattern% sudah wujud",
+		"description": "Gesture recorder message when user draws a banned/existing gesture pattern"
+	},
+	"rightButton": {
+		"message": "Butang kanan tetikus",
+		"description": "Right mouse button name"
+	},
+	"leftButton": {
+		"message": "Butang kiri tetikus",
+		"description": "Left mouse button name"
 	},
 	"customGesture": {
 		"message": "Tersuai",
@@ -670,6 +782,10 @@
 	"enterCustomUrl": {
 		"message": "Masukkan URL (cadangan termasuk protokol seperti https://, chrome://, dll.):",
 		"description": "Prompt for custom URL input"
+	},
+	"copyUrlIncludeTitle": {
+		"message": "Salin juga tajuk halaman",
+		"description": "Checkbox label for including page title when copying URL"
 	},
 	"invalidUrl": {
 		"message": "Sila masukkan URL yang sah (bermula dengan http:// atau https://)",
@@ -750,6 +866,10 @@
 	"aboutTitle": {
 		"message": "Tentang FlowMouse",
 		"description": "About title"
+	},
+	"aboutTitleShort": {
+		"message": "Mengenai",
+		"description": "Short About title "
 	},
 	"aboutAuthor": {
 		"message": "Pengarang",
@@ -863,6 +983,10 @@
 		"message": "Buka di latar hadapan",
 		"description": "Open tab in foreground"
 	},
+	"openInIncognito": {
+		"message": "Inkognito",
+		"description": "Open in incognito checkbox"
+	},
 	"textDragGestures": {
 		"message": "Gerak Isyarat Seret Teks",
 		"description": "Text drag gestures"
@@ -880,7 +1004,7 @@
 		"description": "Direction column header"
 	},
 	"action": {
-		"message": "Tindakan",
+		"message": "Perintah",
 		"description": "Action column header"
 	},
 	"imageSearchUrl": {
@@ -915,6 +1039,10 @@
 		"message": "📋 Salin Pautan",
 		"description": "Copy link"
 	},
+	"dragActionCopyLinkText": {
+		"message": "📋 Salin Teks Pautan",
+		"description": "Copy link text"
+	},
 	"dragActionSaveImage": {
 		"message": "💾 Simpan Imej",
 		"description": "Save image"
@@ -936,7 +1064,7 @@
 		"description": "Custom search"
 	},
 	"reducedMotionWarning": {
-		"message": "⚠️ Animasi sistem %OS% dilumpuhkan, animasi tatal mungkin tidak berfungsi dengan betul. Anda boleh dayakan animasi dalam tetapan sistem %OS%.",
+		"message": "Animasi sistem %OS% dilumpuhkan, animasi tatal mungkin tidak berfungsi dengan betul. Anda boleh dayakan animasi dalam tetapan sistem %OS%.",
 		"description": "Warning message when system reduced motion is enabled"
 	},
 	"autoDetectUrl": {
@@ -964,7 +1092,7 @@
 		"description": "Setting description for restricted page notice"
 	},
 	"restrictedPagesDetailsTitle": {
-		"message": "⚠️ Disebabkan dasar keselamatan penyemak imbas, sambungan tidak boleh berjalan pada jenis halaman tertentu.",
+		"message": "Disebabkan dasar keselamatan penyemak imbas, sambungan tidak boleh berjalan pada jenis halaman tertentu.",
 		"description": "Collapsible details title"
 	},
 	"showMoreHint": {
@@ -972,7 +1100,7 @@
 		"description": "Hint to show more details"
 	},
 	"restrictedNewTab": {
-		"message": "Halaman Tab Baharu (chrome://newtab)",
+		"message": "Halaman Tab Baharu",
 		"description": "New tab page title"
 	},
 	"restrictedNewTabDesc": {
@@ -988,11 +1116,11 @@
 		"description": "Store page description"
 	},
 	"restrictedInternal": {
-		"message": "Halaman Dalaman Penyemak Imbas",
+		"message": "Halaman Dalaman Penyemak Imbas (%browserProtocol%)",
 		"description": "Internal page title"
 	},
 	"restrictedInternalDesc": {
-		"message": "Semua halaman bermula dengan chrome:// (Chrome) atau edge:// (Edge), termasuk tetapan, sejarah, muat turun, dll. Halaman ini melibatkan fungsi teras penyemak imbas dan data privasi pengguna, jadi ia dilindungi dengan ketat.",
+		"message": "Sebagai contoh, tetapan dalaman, sejarah, muat turun, dll. bagi %browserName%. Halaman ini melibatkan fungsi teras penyemak imbas dan data privasi pengguna, jadi ia dilindungi dengan ketat.",
 		"description": "Internal page description"
 	},
 	"restrictedFile": {
@@ -1000,7 +1128,7 @@
 		"description": "File page title"
 	},
 	"restrictedFileDesc": {
-		"message": "Fail HTML tempatan dibuka melalui protokol file://. Disebabkan sekatan keselamatan (menghalang sambungan berniat jahat daripada mengakses sistem fail tempatan), sambungan tidak boleh berfungsi pada halaman ini.",
+		"message": "Fail tempatan html, pdf, dsb. dibuka melalui protokol file://. Disebabkan sekatan keselamatan (menghalang sambungan berniat jahat daripada mengakses sistem fail tempatan), sambungan tidak boleh berfungsi pada halaman ini.",
 		"description": "File page description"
 	},
 	"restrictedViewSource": {
@@ -1024,7 +1152,7 @@
 		"description": "Popup description when content script not loaded"
 	},
 	"popupRefreshBtn": {
-		"message": "🔄 Muat Semula Halaman",
+		"message": "Muat Semula Halaman",
 		"description": "Popup refresh button text"
 	},
 	"popupRestrictedTitle": {
@@ -1036,7 +1164,7 @@
 		"description": "Popup description for restricted pages"
 	},
 	"popupLearnMore": {
-		"message": "📖 Ketahui Lebih Lanjut",
+		"message": "Ketahui Lebih Lanjut",
 		"description": "Popup learn more button text"
 	},
 	"tutorialPending": {
@@ -1207,6 +1335,26 @@
 		"message": "Untuk menyimpan imej, FlowMouse memerlukan akses kepada halaman dan muat turun.",
 		"description": "Permission popup description for downloads and page capture"
 	},
+	"permissionIncognitoTitle": {
+		"message": "Benarkan dalam inkognito",
+		"description": "Permission popup title for incognito"
+	},
+	"permissionIncognitoDesc": {
+		"message": "Untuk berfungsi dalam tetingkap inkognito, anda perlu mengaktifkan \"Benarkan dalam inkognito\" secara manual untuk FlowMouse.",
+		"description": "Permission popup description for incognito"
+	},
+	"openExtensionsSettings": {
+		"message": "Buka Butiran Sambungan",
+		"description": "Button to open extension details page"
+	},
+	"permissionFirefoxIncognitoTitle": {
+		"message": "Jalankan dalam Tetingkap Peribadi",
+		"description": "Permission popup title for Firefox private browsing"
+	},
+	"permissionFirefoxIncognitoDesc": {
+		"message": "Untuk berfungsi dalam Tetingkap Peribadi, anda perlu mendayakan \"Jalankan dalam Tetingkap Peribadi\" secara manual untuk FlowMouse dalam Pengurus Tambahan.",
+		"description": "Permission popup description for Firefox private browsing"
+	},
 	"grantPermission": {
 		"message": "Berikan Kebenaran",
 		"description": "Grant permission button"
@@ -1234,5 +1382,205 @@
 	"saveImageTimeout": {
 		"message": "Gagal menyimpan imej: Masa pemuatan tamat",
 		"description": "Toast message when image loading times out"
+	},
+	"buttonOkay": {
+		"message": "OK",
+		"description": "Generic OK button"
+	},
+	"buttonCancel": {
+		"message": "Batal",
+		"description": "Generic Cancel button"
+	},
+	"buttonClose": {
+		"message": "Tutup",
+		"description": "Generic Close button"
+	},
+	"searchActions": {
+		"message": "Cari perintah...",
+		"description": "Placeholder for action search input in action picker"
+	},
+	"actionCategoryNavigation": {
+		"message": "Navigasi",
+		"description": "Action category: navigation"
+	},
+	"actionCategoryTabs": {
+		"message": "Tab",
+		"description": "Action category: tabs"
+	},
+	"actionCategoryWindow": {
+		"message": "Tetingkap",
+		"description": "Action category: window"
+	},
+	"actionCategoryUtilities": {
+		"message": "Alatan",
+		"description": "Action category: utilities"
+	},
+	"noResults": {
+		"message": "Tiada hasil",
+		"description": "No search results found"
+	},
+	"wheelGestures": {
+		"message": "Gerak Isyarat Roda Tetikus",
+		"description": "Mouse wheel gestures section title"
+	},
+	"enableWheelGestures": {
+		"message": "Dayakan Gerak Isyarat Roda Tetikus",
+		"description": "Enable mouse wheel gestures"
+	},
+	"enableWheelGesturesDesc": {
+		"message": "Lakukan pelbagai tindakan dengan cepat menggunakan roda tetikus",
+		"description": "Enable mouse wheel gestures description"
+	},
+	"wheelGesture_scrollUpHoldingRight": {
+		"message": "Tatal ke atas sambil menahan butang kanan",
+		"description": "Wheel gesture: scroll up while holding right button"
+	},
+	"wheelGesture_scrollDownHoldingRight": {
+		"message": "Tatal ke bawah sambil menahan butang kanan",
+		"description": "Wheel gesture: scroll down while holding right button"
+	},
+	"specialGestures": {
+		"message": "Gerak Isyarat Khas",
+		"description": "Special gestures section title"
+	},
+	"enableSpecialGestures": {
+		"message": "Dayakan gerak isyarat khas",
+		"description": "Enable special gestures"
+	},
+	"enableSpecialGesturesDesc": {
+		"message": "Lakukan tindakan dengan mengklik satu butang tetikus sambil menahan butang yang satu lagi",
+		"description": "Enable special gestures description"
+	},
+	"specialGesture_leftClickHoldingRight": {
+		"message": "Klik kiri sambil menahan butang kanan",
+		"description": "Special gesture: left click while holding right button"
+	},
+	"specialGesture_rightClickHoldingLeft": {
+		"message": "Klik kanan sambil menahan butang kiri",
+		"description": "Special gesture: right click while holding left button"
+	},
+	"actionChains": {
+		"message": "Rantaian Perintah",
+		"description": "Action chains section title"
+	},
+	"actionChainsDesc": {
+		"message": "Buat urutan perintah boleh guna semula yang dilaksanakan satu persatu",
+		"description": "Action chains section description"
+	},
+	"actionActionChain": {
+		"message": "Rantaian Perintah",
+		"description": "Action chain action name"
+	},
+	"actionCategoryChains": {
+		"message": "Rantaian Perintah",
+		"description": "Action category: action chains"
+	},
+	"addChain": {
+		"message": "Tambah Rantaian",
+		"description": "Add chain button"
+	},
+	"addNewChain": {
+		"message": "Cipta Rantaian Baharu...",
+		"description": "Action item to navigate to chain editor and create a new chain"
+	},
+	"chainNamePlaceholder": {
+		"message": "Rantaian Perintah Saya",
+		"description": "Chain name input placeholder"
+	},
+	"chainDelayUnit": {
+		"message": "ms",
+		"description": "Milliseconds unit for chain delay"
+	},
+	"addStep": {
+		"message": "Tambah Langkah",
+		"description": "Add step button"
+	},
+	"emptyChainSteps": {
+		"message": "Belum ada langkah yang ditambahkan. Klik \"Tambah Langkah\" untuk bermula.",
+		"description": "Empty chain steps message in expanded body"
+	},
+	"emptyChainStepsShort": {
+		"message": "Tiada langkah ditambah",
+		"description": "Short empty chain steps message for summary"
+	},
+	"noChains": {
+		"message": "Belum ada rantaian perintah. Klik \"Tambah Rantaian\" untuk menciptanya.",
+		"description": "No chains message"
+	},
+	"chainNotFound": {
+		"message": "(Rantaian tidak ditemui)",
+		"description": "Chain not found label"
+	},
+	"deleteChainConfirm": {
+		"message": "Padam rantaian \"%name%\"?",
+		"description": "Delete chain confirmation"
+	},
+	"stepNumber": {
+		"message": "Langkah %n%",
+		"description": "Step number label"
+	},
+	"actionDelay": {
+		"message": "Tangguh",
+		"description": "Delay action name for chain steps"
+	},
+	"actionSendCustomEvent": {
+		"message": "Hantar Acara Tersuai",
+		"description": "Action to dispatch a custom DOM event"
+	},
+	"actionSimulateKey": {
+		"message": "Simulasikan Tekanan Kekunci",
+		"description": "Action to simulate a keyboard key press on the page"
+	},
+	"simulateKeyPreset": {
+		"message": "Kekunci Pratetap",
+		"description": "Label for preset key dropdown in simulate key config"
+	},
+	"simulateKeyPresetLeft": {
+		"message": "← Anak Panah Kiri (Halaman Sebelumnya)",
+		"description": "Preset: ArrowLeft key"
+	},
+	"simulateKeyPresetRight": {
+		"message": "→ Anak Panah Kanan (Halaman Seterusnya)",
+		"description": "Preset: ArrowRight key"
+	},
+	"simulateKeyPresetCustom": {
+		"message": "Kekunci tersuai",
+		"description": "Preset: Custom key option"
+	},
+	"simulateKeyRecordBtn": {
+		"message": "Rakam kekunci",
+		"description": "Button to start recording a key press"
+	},
+	"simulateKeyRecording": {
+		"message": "Tekan kekunci...",
+		"description": "Recording state text"
+	},
+	"simulateKeyManualInput": {
+		"message": "Kekunci semasa",
+		"description": "Label for current key display in simulate key config"
+	},
+	"simulateKeyHint": {
+		"message": "Ciri ini hanya menghantar peristiwa papan kekunci kepada halaman semasa, biasanya digunakan untuk navigasi halaman (← sebelumnya / → seterusnya). Ia TIDAK akan mencetuskan pintasan penyemak imbas (cth., Ctrl+R tidak akan memuat semula halaman). Selain itu, disebabkan oleh pengehadan rangka kerja tapak web, peristiwa yang disimulasikan mungkin tidak ditangkap oleh semua komponen tersuai atau medan input.",
+		"description": "Hint text for simulate key feature"
+	},
+	"customEventInvalidJson": {
+		"message": "Format JSON tidak sah",
+		"description": "Error message when event detail is not valid JSON"
+	},
+	"customEventHint": {
+		"message": "Menghantar %code% pada %window%. Berguna untuk penyepaduan dengan skrip lain.",
+		"description": "Hint explaining how custom event works. %code% = <code>new CustomEvent(...)</code>, %window% = <code>window</code>"
+	},
+	"delayDuration": {
+		"message": "Tempoh",
+		"description": "Delay duration label"
+	},
+	"chainStepCount": {
+		"message": "%count% langkah",
+		"description": "Step count for unnamed chains, e.g. '3 steps'"
+	},
+	"chainStepCountOne": {
+		"message": "%count% langkah",
+		"description": "Step count for unnamed chains with exactly 1 step"
 	}
 }

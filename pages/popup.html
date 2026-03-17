@@ -7,166 +7,23 @@
 	<link rel="stylesheet" href="../css/common.css">
 	<style>
 		:root {
-			--bg-secondary: rgba(255, 255, 255, 0.05);
+			--bg-primary: #111114;
+			--bg-secondary: rgba(255, 255, 255, 0.055);
+			--border-color: rgba(255, 255, 255, 0.12);
 		}
 
 		[data-theme="light"] {
+			--bg-primary: #f5f7fa;
 			--bg-secondary: rgba(0, 0, 0, 0.03);
 			--text-primary: #333;
+			--badge-bg: rgba(0, 0, 0, 0.33);
+			--border-color: rgba(0, 0, 0, 0.1);
 		}
 
 		body {
 			width: 280px;
 			padding: 15px;
 			min-height: auto;
-		}
-
-		.header {
-			display: flex;
-			align-items: center;
-			gap: 10px;
-			padding-bottom: 12px;
-			border-bottom: 1px solid var(--border-color);
-		}
-
-		.header h1 {
-			font-size: 16px;
-			font-weight: 600;
-		}
-
-		.logo-small {
-			width: 18px;
-			height: 18px;
-			border-radius: 4px;
-		}
-
-		.header .version {
-			font-size: 11px;
-			color: var(--text-secondary);
-			background: var(--bg-secondary);
-			padding: 2px 6px;
-			border-radius: 4px;
-		}
-
-		.status-row {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			padding: 10px 0;
-			border-bottom: 1px solid var(--border-color);
-		}
-
-		.status-label {
-			font-size: 13px;
-		}
-
-		.gestures-info {
-			background: var(--bg-secondary);
-			border-radius: 8px;
-			padding: 12px;
-			margin: 15px 0;
-			font-size: 12px;
-		}
-
-		.gestures-info h3 {
-			font-size: 13px;
-			margin-bottom: 8px;
-			color: var(--accent-color);
-		}
-
-		.gesture-list {
-			display: grid;
-			grid-template-columns: 50px 1fr 50px 1fr;
-			gap: 6px 4px;
-			align-items: center;
-		}
-
-		.gesture-pattern {
-			font-weight: bold;
-			text-align: center;
-		}
-
-		.gesture-action {
-			color: var(--text-secondary);
-			font-size: 11px;
-		}
-
-		.actions {
-			display: flex;
-			gap: 8px;
-			margin-top: 15px;
-		}
-
-		.btn {
-			flex: 1;
-			padding: 10px;
-			font-size: 13px;
-			border-radius: 6px;
-		}
-
-		.current-site {
-			margin-top: 12px;
-			padding-top: 12px;
-			border-top: 1px solid var(--border-color);
-			font-size: 12px;
-			color: var(--text-secondary);
-		}
-
-		.current-site .domain {
-			color: var(--text-primary);
-			font-weight: 500;
-		}
-
-		.blacklisted {
-			color: #ea4335;
-		}
-
-		.not-available {
-			color: var(--text-secondary);
-			font-style: italic;
-		}
-
-		.notice-box {
-			display: none;
-			background: var(--bg-secondary);
-			border-radius: 8px;
-			padding: 15px;
-			margin: 15px 0;
-			text-align: center;
-		}
-
-		.notice-box.show {
-			display: block;
-		}
-
-		.notice-box .notice-icon {
-			font-size: 28px;
-			margin-bottom: 8px;
-		}
-
-		.notice-box .notice-title {
-			font-size: 14px;
-			font-weight: 600;
-			margin-bottom: 6px;
-		}
-
-		.notice-box .notice-desc {
-			font-size: 12px;
-			color: var(--text-secondary);
-			margin-bottom: 12px;
-			line-height: 1.5;
-		}
-
-		.notice-box .btn {
-			width: 100%;
-		}
-
-		.notice-box.warning .notice-icon {
-			color: #f4b400;
-		}
-
-		.notice-box.error .notice-icon {
-			color: #ea4335;
 		}
 	</style>
 	<style id="i18n-load-style">
@@ -177,67 +34,11 @@
 </head>
 
 <body>
-	<div class="header">
-		<img src="../icons/icon48.png" class="logo-small" alt="Logo">
-		<h1><span data-i18n="extNameShort">FlowMouse</span></h1>
-		<span class="version version-from-manifest"></span>
-	</div>
-
-	<div class="status-row" id="trailRow">
-		<span class="status-label" data-i18n="popupTrail">手势轨迹</span>
-		<label class="toggle">
-			<input type="checkbox" id="enableTrail" checked>
-			<span class="slider"></span>
-		</label>
-	</div>
-
-	<div class="status-row" id="hudRow">
-		<span class="status-label" data-i18n="popupHint">操作提示</span>
-		<label class="toggle">
-			<input type="checkbox" id="enableHUD" checked>
-			<span class="slider"></span>
-		</label>
-	</div>
-
-	<div class="gestures-info" id="gesturesInfo">
-		<h3 data-i18n="popupCommonGestures">常用手势</h3>
-		<div class="gesture-list">
-			<span class="gesture-pattern">←</span><span class="gesture-action" data-i18n="popupBack">返回</span>
-			<span class="gesture-pattern">→</span><span class="gesture-action" data-i18n="popupForward">前进</span>
-			<span class="gesture-pattern">↑</span><span class="gesture-action" data-i18n="popupScrollUp">上翻</span>
-			<span class="gesture-pattern">↓</span><span class="gesture-action" data-i18n="popupScrollDown">下翻</span>
-			<span class="gesture-pattern">↓→</span><span class="gesture-action" data-i18n="popupClose">关闭</span>
-			<span class="gesture-pattern">→←</span><span class="gesture-action" data-i18n="popupRestore">恢复</span>
-		</div>
-	</div>
-
-	<div class="notice-box warning" id="needRefreshNotice">
-		<div class="notice-icon">⚠️</div>
-		<div class="notice-title" data-i18n="popupNeedRefresh">扩展程序未加载</div>
-		<div class="notice-desc" data-i18n="popupNeedRefreshDesc">此页面在扩展程序安装/更新前已打开，需要刷新才能使用手势</div>
-		<button class="btn btn-primary" id="refreshPageBtn" data-i18n="popupRefreshBtn">🔄 刷新页面</button>
-	</div>
-
-	<div class="notice-box error" id="restrictedNotice">
-		<div class="notice-icon">🚫</div>
-		<div class="notice-title" data-i18n="popupRestrictedTitle">无法使用手势</div>
-		<div class="notice-desc" data-i18n="popupRestrictedDesc">此页面由于浏览器安全限制，扩展程序无法加载</div>
-		<button class="btn btn-secondary" id="learnMoreBtn" data-i18n="popupLearnMore">📖 了解详情</button>
-	</div>
-
-	<div class="current-site">
-		<span data-i18n="popupCurrentSite">当前网站</span>: <span class="domain" id="currentDomain">-</span>
-		<span id="blacklistStatus"></span>
-	</div>
-
-	<div class="actions">
-		<button class="btn btn-secondary" id="toggleBlacklist" data-i18n="popupAddBlacklist">加入黑名单</button>
-		<button class="btn btn-primary" id="openOptions" data-i18n="moreSettings">更多设置</button>
-	</div>
+	<popup-page></popup-page>
 
 	<script src="../js/i18n.js"></script>
 	<script src="../js/constants.js"></script>
-	<script src="../js/popup.js"></script>
+	<script type="module" src="../js/components/popup-page.js"></script>
 </body>
 
 </html>

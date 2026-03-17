@@ -8,20 +8,12 @@
 		"description": "Short extension name for popup"
 	},
 	"extDescription": {
-		"message": "专注于隐私与流畅体验的开源鼠标手势扩展。手势操作丝滑跟手，支持超级拖拽，且所有数据仅存储于本地。",
+		"message": "专注于隐私与流畅体验的开源鼠标手势扩展。手势操作丝滑跟手，且支持超级拖拽。",
 		"description": "Extension description"
-	},
-	"appearance": {
-		"message": "外观设置",
-		"description": "Appearance section"
 	},
 	"theme": {
 		"message": "主题",
 		"description": "Theme"
-	},
-	"themeDesc": {
-		"message": "切换亮色/暗色主题",
-		"description": "Theme description"
 	},
 	"themeDark": {
 		"message": "深色",
@@ -34,10 +26,6 @@
 	"themeAuto": {
 		"message": "跟随系统",
 		"description": "Auto theme - follow system"
-	},
-	"languageDesc": {
-		"message": "选择界面语言",
-		"description": "Language description"
 	},
 	"syncStatus": {
 		"message": "同步状态",
@@ -56,7 +44,7 @@
 		"description": "Author"
 	},
 	"privacyNote": {
-		"message": "🔒 纯本地运行，除同步外无任何联网，不收集任何用户数据",
+		"message": " 纯本地运行，除同步外无任何联网，不收集任何用户数据",
 		"description": "Privacy note in footer"
 	},
 	"supportUsText": {
@@ -120,11 +108,19 @@
 		"description": "Hold the right mouse button and move the mouse to easily perform gestures"
 	},
 	"macLinuxContextMenuNotice": {
-		"message": "⚠️ 由于系统限制，macOS / Linux 下需双击右键才能打开原生菜单。",
+		"message": "由于系统限制，启用涉及右键的手势功能时，macOS / Linux 下需双击右键才能打开原生菜单。",
 		"description": "Notice for macOS / Linux users about double right-click for context menu"
 	},
+	"macLinuxDoubleClickHint": {
+		"message": "要打开原生菜单，请双击右键。（了解详情）",
+		"description": "Short toast hint shown on first right-click on macOS/Linux explaining double-click requirement"
+	},
+	"edgeGestureConflictNotice": {
+		"message": "%browserName% 具有内置手势功能。如需使用 FlowMouse 的手势，请前往 %browserName% 设置中<a href=\"#\" class=\"edge-gesture-link\">禁用其自带手势</a>。",
+		"description": "Notice for Edge users about built-in gesture conflict"
+	},
 	"macTextDragNotice": {
-		"message": "⚠️ 受系统特性影响，拖拽文本时需先选中文字，按住左键短暂停顿后再拖动，否则可能无法触发搜索。",
+		"message": "受系统特性影响，拖拽文本时需先选中文字，然后在选中区域内按住左键并短暂停顿后再拖动，否则可能无法触发拖拽功能。",
 		"description": "Notice for macOS users about text drag behavior"
 	},
 	"showTrail": {
@@ -159,6 +155,14 @@
 		"message": "透明度",
 		"description": "Opacity"
 	},
+	"blur": {
+		"message": "模糊",
+		"description": "Blur radius"
+	},
+	"hudShadow": {
+		"message": "阴影",
+		"description": "HUD shadow toggle"
+	},
 	"text": {
 		"message": "文字",
 		"description": "Text"
@@ -179,6 +183,10 @@
 		"message": "上下滚动手势的动画效果",
 		"description": "Scroll smoothness description"
 	},
+	"smoothnessAuto": {
+		"message": "自动",
+		"description": "Auto scroll smoothness - uses system if animation enabled, otherwise smooth"
+	},
 	"smoothnessSystem": {
 		"message": "系统 (高性能)",
 		"description": "System scroll smoothness"
@@ -190,6 +198,18 @@
 	"smoothnessNone": {
 		"message": "关闭动画",
 		"description": "No scroll animation"
+	},
+	"scrollAccel": {
+		"message": "连续滚动距离倍率",
+		"description": "Speed multiplier applied when scrolling consecutively"
+	},
+	"scrollAccelOff": {
+		"message": "关闭",
+		"description": "Scroll acceleration disabled"
+	},
+	"scrollAccelWindow": {
+		"message": "连续滚动判定时间",
+		"description": "Max time (ms) between scrolls to count as consecutive"
 	},
 	"dragFeatures": {
 		"message": "拖拽功能",
@@ -283,6 +303,22 @@
 		"message": "暂无黑名单，在上方输入域名添加",
 		"description": "Empty blacklist message"
 	},
+	"enableBlacklistContextMenu": {
+		"message": "右键菜单手势开关",
+		"description": "Setting title for blacklist context menu toggle"
+	},
+	"enableBlacklistContextMenuDesc": {
+		"message": "在右键菜单中显示禁用/启用手势的选项",
+		"description": "Setting description for blacklist context menu toggle"
+	},
+	"menuAddToBlacklist": {
+		"message": "在此网站禁用手势",
+		"description": "Context menu title for adding current site to blacklist"
+	},
+	"menuRemoveFromBlacklist": {
+		"message": "在此网站启用手势",
+		"description": "Context menu title for removing current site from blacklist"
+	},
 	"dataManagement": {
 		"message": "数据管理",
 		"description": "Data management section"
@@ -322,6 +358,10 @@
 	"importDone": {
 		"message": "配置已导入",
 		"description": "Import done message"
+	},
+	"importConfirm": {
+		"message": "导入将覆盖当前设置。请仅导入来自可信来源的配置文件。\n\n是否继续？",
+		"description": "Import confirmation warning"
 	},
 	"importFailed": {
 		"message": "导入失败：无效的配置文件",
@@ -459,13 +499,41 @@
 		"message": "关闭标签页",
 		"description": "Close tab"
 	},
-	"actionCloseTabKeepWindow": {
-		"message": "关闭标签页(保留窗口)",
-		"description": "Close tab but keep window open"
+	"closeTabKeepWindow": {
+		"message": "如果是最后一个标签页，保留窗口",
+		"description": "Checkbox label for closeTab action config"
+	},
+	"closeTabAfterClose": {
+		"message": "关闭后",
+		"description": "Label for closeTab afterClose config"
+	},
+	"closeTabAfterCloseDefault": {
+		"message": "浏览器默认",
+		"description": "Option for closeTab afterClose config - let browser decide"
+	},
+	"closeTabAfterCloseLeft": {
+		"message": "切换到左侧标签页",
+		"description": "Option for closeTab afterClose config - switch to left tab"
+	},
+	"closeTabAfterCloseRight": {
+		"message": "切换到右侧标签页",
+		"description": "Option for closeTab afterClose config - switch to right tab"
+	},
+	"switchTabNoWrap": {
+		"message": "不循环切换",
+		"description": "Checkbox label for switchLeftTab/switchRightTab action config"
+	},
+	"switchTabMoveTab": {
+		"message": "移动当前标签页",
+		"description": "Checkbox label for switchLeftTab/switchRightTab/switchFirstTab/switchLastTab action config"
 	},
 	"actionCloseBrowser": {
 		"message": "关闭浏览器",
 		"description": "Close browser"
+	},
+	"actionCloseWindow": {
+		"message": "关闭窗口",
+		"description": "Close current window"
 	},
 	"actionRestoreTab": {
 		"message": "重新打开已关闭的标签页",
@@ -498,6 +566,14 @@
 	"actionSwitchRightTab": {
 		"message": "切换到右侧标签页",
 		"description": "Switch to right tab"
+	},
+	"actionSwitchFirstTab": {
+		"message": "切换到第一个标签页",
+		"description": "Switch to first tab"
+	},
+	"actionSwitchLastTab": {
+		"message": "切换到最后一个标签页",
+		"description": "Switch to last tab"
 	},
 	"actionRefresh": {
 		"message": "刷新当前标签页",
@@ -575,9 +651,9 @@
 		"message": "静音/取消静音全部标签页",
 		"description": "Toggle mute all tabs"
 	},
-	"actionSendCustomEvent": {
-		"message": "发送手势自定义事件",
-		"description": "Send custom event"
+	"actionTogglePinTab": {
+		"message": "固定/取消固定当前标签页",
+		"description": "Toggle pin current tab"
 	},
 	"showTrailOrigin": {
 		"message": "显示起始原点",
@@ -599,17 +675,29 @@
 		"message": "提示：建议设置在 15-30 之间，以获得最佳识别效果。",
 		"description": "Warning when distance threshold is too small or too large"
 	},
-	"enableAdvancedSettings": {
-		"message": "高级设置",
-		"description": "Enable advanced settings"
+	"gestureTurnTolerance": {
+		"message": "手势转向容差",
+		"description": "Turn tolerance for detecting direction changes in long gestures"
 	},
-	"enableAdvancedSettingsDesc": {
-		"message": "开启后显示更多高级选项",
-		"description": "Show more advanced options when enabled"
+	"gestureTurnToleranceDesc": {
+		"message": "数值越高越不易误判手势转向，但需要更长的移动距离才能改变方向",
+		"description": "Description for gesture turn tolerance setting"
 	},
-	"enableAdvancedSettingsToggle": {
-		"message": "高级设置模式",
-		"description": "Enable advanced settings toggle label"
+	"advanced": {
+		"message": "专家模式",
+		"description": "Short label for per-section advanced toggle"
+	},
+	"otherSettings": {
+		"message": "其他设置",
+		"description": "Section title for other/miscellaneous settings"
+	},
+	"show": {
+		"message": "显示",
+		"description": "Show navigation menu"
+	},
+	"hide": {
+		"message": "隐藏",
+		"description": "Hide navigation menu"
 	},
 	"urlFormatError": {
 		"message": "请输入以 http:// 或 https:// 开头的完整网址",
@@ -619,41 +707,61 @@
 		"message": "恢复默认",
 		"description": "Reset gesture to default action"
 	},
+	"resetToDefaultConfirm": {
+		"message": "确定要将这些设置恢复为默认值吗？",
+		"description": "Confirmation dialog for resetting settings"
+	},
 	"addCustomGesture": {
 		"message": "添加自定义手势",
 		"description": "Add custom gesture section title"
-	},
-	"gesturePattern": {
-		"message": "手势序列",
-		"description": "Gesture pattern label"
-	},
-	"selectAction": {
-		"message": "选择动作",
-		"description": "Select action label"
 	},
 	"clear": {
 		"message": "清除",
 		"description": "Clear button"
 	},
-	"addGesture": {
-		"message": "添加手势",
-		"description": "Add gesture button"
-	},
-	"pleaseDrawGesture": {
-		"message": "请先绘制手势",
-		"description": "Alert when no gesture drawn"
-	},
 	"gestureAdded": {
 		"message": "✓ 手势已添加",
 		"description": "Gesture added success message"
 	},
-	"gestureDrawInstructions": {
-		"message": "按住鼠标右键在下方区域绘制手势，松开后完成绘制。支持方向：",
-		"description": "Instructions for gesture drawing"
+	"gestureRecorderTitle": {
+		"message": "绘制手势",
+		"description": "Gesture recorder full-screen title"
 	},
-	"gestureOverwriteConfirm": {
-		"message": "手势 %pattern% 已存在，是否覆盖？",
-		"description": "Confirmation message when adding a duplicate gesture"
+	"gestureRecorderDesc": {
+		"message": "按住 %button% 绘制手势图案",
+		"description": "Gesture recorder instruction, %button% is replaced with the mouse button name"
+	},
+	"gestureRecorderEsc": {
+		"message": "取消",
+		"description": "Gesture recorder cancel button label"
+	},
+	"gestureRecorderRecording": {
+		"message": "录制中…",
+		"description": "Gesture recorder recording indicator"
+	},
+	"gestureRecorderResult": {
+		"message": "已录制的手势",
+		"description": "Gesture recorder result label"
+	},
+	"gestureRecorderConfirm": {
+		"message": "确认",
+		"description": "Gesture recorder confirm button"
+	},
+	"gestureRecorderRedraw": {
+		"message": "重新绘制",
+		"description": "Gesture recorder redraw button"
+	},
+	"gestureRecorderBanned": {
+		"message": "手势 %pattern% 已存在",
+		"description": "Gesture recorder message when user draws a banned/existing gesture pattern"
+	},
+	"rightButton": {
+		"message": "鼠标右键",
+		"description": "Right mouse button name"
+	},
+	"leftButton": {
+		"message": "鼠标左键",
+		"description": "Left mouse button name"
 	},
 	"customGesture": {
 		"message": "自定义",
@@ -674,6 +782,10 @@
 	"enterCustomUrl": {
 		"message": "请输入网址（建议包含协议，如 https://、chrome:// 等）：",
 		"description": "Prompt for custom URL input"
+	},
+	"copyUrlIncludeTitle": {
+		"message": "同时复制页面标题",
+		"description": "Checkbox label for including page title when copying URL"
 	},
 	"invalidUrl": {
 		"message": "请输入有效的网址（以 http:// 或 https:// 开头）",
@@ -754,6 +866,10 @@
 	"aboutTitle": {
 		"message": "关于 FlowMouse",
 		"description": "About title"
+	},
+	"aboutTitleShort": {
+		"message": "关于",
+		"description": "Short About title "
 	},
 	"aboutAuthor": {
 		"message": "作者",
@@ -867,6 +983,10 @@
 		"message": "前台打开",
 		"description": "Open tab in foreground"
 	},
+	"openInIncognito": {
+		"message": "无痕模式",
+		"description": "Open in incognito checkbox"
+	},
 	"textDragGestures": {
 		"message": "文字拖拽手势",
 		"description": "Text drag gestures"
@@ -884,7 +1004,7 @@
 		"description": "Direction column header"
 	},
 	"action": {
-		"message": "动作",
+		"message": "命令",
 		"description": "Action column header"
 	},
 	"imageSearchUrl": {
@@ -919,6 +1039,10 @@
 		"message": "📋 复制链接",
 		"description": "Copy link"
 	},
+	"dragActionCopyLinkText": {
+		"message": "📋 复制链接文字",
+		"description": "Copy link text"
+	},
 	"dragActionSaveImage": {
 		"message": "💾 保存图片",
 		"description": "Save image"
@@ -940,7 +1064,7 @@
 		"description": "Custom search"
 	},
 	"reducedMotionWarning": {
-		"message": "⚠️ %OS% 系统动画未启用，可能无法正常显示滚动动画。可在 %OS% 系统设置中开启动画。",
+		"message": "%OS% 系统动画未启用，可能无法正常显示滚动动画。可在 %OS% 系统设置中开启动画。",
 		"description": "Warning message when system reduced motion is enabled"
 	},
 	"autoDetectUrl": {
@@ -968,7 +1092,7 @@
 		"description": "Setting description for restricted page notice"
 	},
 	"restrictedPagesDetailsTitle": {
-		"message": "⚠️ 由于浏览器的安全策略限制，扩展程序无法在特定类型的页面中运行",
+		"message": "由于浏览器的安全策略限制，扩展程序无法在特定类型的页面中运行",
 		"description": "Collapsible details title"
 	},
 	"showMoreHint": {
@@ -976,7 +1100,7 @@
 		"description": "Hint to show more details"
 	},
 	"restrictedNewTab": {
-		"message": "新标签页 (chrome://newtab)",
+		"message": "新标签页",
 		"description": "New tab page title"
 	},
 	"restrictedNewTabDesc": {
@@ -992,11 +1116,11 @@
 		"description": "Store page description"
 	},
 	"restrictedInternal": {
-		"message": "浏览器内部管理页面",
+		"message": "浏览器内部管理页面 (%browserProtocol%)",
 		"description": "Internal page title"
 	},
 	"restrictedInternalDesc": {
-		"message": "所有以 chrome:// (Chrome) 或 edge:// (Edge) 开头的内部设置、历史记录、下载管理等页面。这些页面涉及浏览器核心功能与用户隐私数据，因此被严格保护。",
+		"message": "例如 %browserName% 的内部设置、历史记录、下载管理等页面。这些页面涉及浏览器核心功能与用户隐私数据，因此被严格保护。",
 		"description": "Internal page description"
 	},
 	"restrictedFile": {
@@ -1004,7 +1128,7 @@
 		"description": "File page title"
 	},
 	"restrictedFileDesc": {
-		"message": "通过 file:// 协议打开的本地 HTML 文件，由于安全限制（防止恶意扩展访问本地文件系统），扩展程序无法在此类页面运行。",
+		"message": "通过 file:// 协议打开的本地 html、pdf 等文件，由于安全限制（防止恶意扩展访问本地文件系统），扩展程序无法在此类页面运行。",
 		"description": "File page description"
 	},
 	"restrictedViewSource": {
@@ -1028,7 +1152,7 @@
 		"description": "Popup description when content script not loaded"
 	},
 	"popupRefreshBtn": {
-		"message": "🔄 刷新页面",
+		"message": "刷新页面",
 		"description": "Popup refresh button text"
 	},
 	"popupRestrictedTitle": {
@@ -1040,7 +1164,7 @@
 		"description": "Popup description for restricted pages"
 	},
 	"popupLearnMore": {
-		"message": "📖 了解详情",
+		"message": "了解详情",
 		"description": "Popup learn more button text"
 	},
 	"tutorialPending": {
@@ -1211,6 +1335,26 @@
 		"message": "为了保存图片，FlowMouse 需要访问页面和下载权限。",
 		"description": "Permission popup description for downloads and page capture"
 	},
+	"permissionIncognitoTitle": {
+		"message": "在无痕模式下启用",
+		"description": "Permission popup title for incognito"
+	},
+	"permissionIncognitoDesc": {
+		"message": "如需在无痕窗口中使用，您需要手动为 FlowMouse 开启“在无痕模式下启用”权限。",
+		"description": "Permission popup description for incognito"
+	},
+	"openExtensionsSettings": {
+		"message": "打开扩展详情",
+		"description": "Button to open extension details page"
+	},
+	"permissionFirefoxIncognitoTitle": {
+		"message": "在隐私窗口中运行",
+		"description": "Permission popup title for Firefox private browsing"
+	},
+	"permissionFirefoxIncognitoDesc": {
+		"message": "如需在隐私窗口中使用，您需要手动在附加组件管理器中为 FlowMouse 开启“在隐私窗口中运行”。",
+		"description": "Permission popup description for Firefox private browsing"
+	},
 	"grantPermission": {
 		"message": "授予权限",
 		"description": "Grant permission button"
@@ -1238,5 +1382,205 @@
 	"saveImageTimeout": {
 		"message": "保存图片失败：加载超时",
 		"description": "Toast message when image loading times out"
+	},
+	"buttonOkay": {
+		"message": "确定",
+		"description": "Generic OK button"
+	},
+	"buttonCancel": {
+		"message": "取消",
+		"description": "Generic Cancel button"
+	},
+	"buttonClose": {
+		"message": "关闭",
+		"description": "Generic Close button"
+	},
+	"searchActions": {
+		"message": "搜索命令...",
+		"description": "Placeholder for action search input in action picker"
+	},
+	"actionCategoryNavigation": {
+		"message": "导航",
+		"description": "Action category: navigation"
+	},
+	"actionCategoryTabs": {
+		"message": "标签页",
+		"description": "Action category: tabs"
+	},
+	"actionCategoryWindow": {
+		"message": "窗口",
+		"description": "Action category: window"
+	},
+	"actionCategoryUtilities": {
+		"message": "工具",
+		"description": "Action category: utilities"
+	},
+	"noResults": {
+		"message": "无结果",
+		"description": "No search results found"
+	},
+	"wheelGestures": {
+		"message": "滚轮手势",
+		"description": "Mouse wheel gestures section title"
+	},
+	"enableWheelGestures": {
+		"message": "启用鼠标滚轮手势",
+		"description": "Enable mouse wheel gestures"
+	},
+	"enableWheelGesturesDesc": {
+		"message": "使用鼠标滚轮，快速执行各项操作",
+		"description": "Enable mouse wheel gestures description"
+	},
+	"wheelGesture_scrollUpHoldingRight": {
+		"message": "按住右键并向上滚动滚轮",
+		"description": "Wheel gesture: scroll up while holding right button"
+	},
+	"wheelGesture_scrollDownHoldingRight": {
+		"message": "按住右键并向下滚动滚轮",
+		"description": "Wheel gesture: scroll down while holding right button"
+	},
+	"specialGestures": {
+		"message": "特殊手势",
+		"description": "Special gestures section title"
+	},
+	"enableSpecialGestures": {
+		"message": "启用特殊手势",
+		"description": "Enable special gestures"
+	},
+	"enableSpecialGesturesDesc": {
+		"message": "按住一个鼠标按键的同时点击另一个按键，快速执行操作",
+		"description": "Enable special gestures description"
+	},
+	"specialGesture_leftClickHoldingRight": {
+		"message": "按住右键并点击左键",
+		"description": "Special gesture: left click while holding right button"
+	},
+	"specialGesture_rightClickHoldingLeft": {
+		"message": "按住左键并点击右键",
+		"description": "Special gesture: right click while holding left button"
+	},
+	"actionChains": {
+		"message": "命令链",
+		"description": "Action chains section title"
+	},
+	"actionChainsDesc": {
+		"message": "创建可复用的命令序列，按顺序依次执行",
+		"description": "Action chains section description"
+	},
+	"actionActionChain": {
+		"message": "命令链",
+		"description": "Action chain action name"
+	},
+	"actionCategoryChains": {
+		"message": "命令链",
+		"description": "Action category: action chains"
+	},
+	"addChain": {
+		"message": "添加命令链",
+		"description": "Add chain button"
+	},
+	"addNewChain": {
+		"message": "新建命令链...",
+		"description": "Action item to navigate to chain editor and create a new chain"
+	},
+	"chainNamePlaceholder": {
+		"message": "我的命令链",
+		"description": "Chain name input placeholder"
+	},
+	"chainDelayUnit": {
+		"message": "毫秒",
+		"description": "Milliseconds unit for chain delay"
+	},
+	"addStep": {
+		"message": "添加步骤",
+		"description": "Add step button"
+	},
+	"emptyChainSteps": {
+		"message": "暂无步骤，点击「添加步骤」开始。",
+		"description": "Empty chain steps message in expanded body"
+	},
+	"emptyChainStepsShort": {
+		"message": "暂无步骤",
+		"description": "Short empty chain steps message for summary"
+	},
+	"noChains": {
+		"message": "暂无命令链，点击「添加命令链」创建。",
+		"description": "No chains message"
+	},
+	"chainNotFound": {
+		"message": "（命令链未找到）",
+		"description": "Chain not found label"
+	},
+	"deleteChainConfirm": {
+		"message": "确定删除命令链「%name%」吗？",
+		"description": "Delete chain confirmation"
+	},
+	"stepNumber": {
+		"message": "步骤 %n%",
+		"description": "Step number label"
+	},
+	"actionDelay": {
+		"message": "延迟",
+		"description": "Delay action name for chain steps"
+	},
+	"actionSendCustomEvent": {
+		"message": "发送自定义事件",
+		"description": "Action to dispatch a custom DOM event"
+	},
+	"actionSimulateKey": {
+		"message": "模拟按键",
+		"description": "Action to simulate a keyboard key press on the page"
+	},
+	"simulateKeyPreset": {
+		"message": "预设按键",
+		"description": "Label for preset key dropdown in simulate key config"
+	},
+	"simulateKeyPresetLeft": {
+		"message": "← 左方向键（上一页）",
+		"description": "Preset: ArrowLeft key"
+	},
+	"simulateKeyPresetRight": {
+		"message": "→ 右方向键（下一页）",
+		"description": "Preset: ArrowRight key"
+	},
+	"simulateKeyPresetCustom": {
+		"message": "自定义按键",
+		"description": "Preset: Custom key option"
+	},
+	"simulateKeyRecordBtn": {
+		"message": "录制按键",
+		"description": "Button to start recording a key press"
+	},
+	"simulateKeyRecording": {
+		"message": "请按下键盘...",
+		"description": "Recording state text"
+	},
+	"simulateKeyManualInput": {
+		"message": "当前按键",
+		"description": "Label for current key display in simulate key config"
+	},
+	"simulateKeyHint": {
+		"message": "此功能仅向当前页面发送键盘事件，常用于网站翻页（← 上一页 / → 下一页）。不会触发浏览器快捷键（例如：设置 Ctrl+R 不会刷新页面），并且受限于页面本身的代码框架，某些输入框或特殊组件可能无法捕获到该模拟事件。",
+		"description": "Hint text for simulate key feature"
+	},
+	"customEventInvalidJson": {
+		"message": "JSON 格式无效",
+		"description": "Error message when event detail is not valid JSON"
+	},
+	"customEventHint": {
+		"message": "在 %window% 上触发 %code%，可用于与其他脚本集成。",
+		"description": "Hint explaining how custom event works. %code% = <code>new CustomEvent(...)</code>, %window% = <code>window</code>"
+	},
+	"delayDuration": {
+		"message": "时长",
+		"description": "Delay duration label"
+	},
+	"chainStepCount": {
+		"message": "%count% 个步骤",
+		"description": "Step count for unnamed chains, e.g. '3 steps'"
+	},
+	"chainStepCountOne": {
+		"message": "%count% 个步骤",
+		"description": "Step count for unnamed chains with exactly 1 step"
 	}
 }

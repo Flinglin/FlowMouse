@@ -8,20 +8,12 @@
 		"description": "Short extension name for popup"
 	},
 	"extDescription": {
-		"message": "Proširenje za geste mišem otvorenog koda usmjereno na privatnost i glatko iskustvo. Glatke i responzivne geste, podrška za super povlačenje, a svi podaci pohranjuju se lokalno.",
+		"message": "Proširenje za geste mišem otvorenog koda usmjereno na privatnost i glatko iskustvo. Glatke i responzivne geste, podrška za super povlačenje.",
 		"description": "Extension description"
-	},
-	"appearance": {
-		"message": "Izgled",
-		"description": "Appearance section"
 	},
 	"theme": {
 		"message": "Tema",
 		"description": "Theme"
-	},
-	"themeDesc": {
-		"message": "Prebacivanje između svijetle i tamne teme",
-		"description": "Theme description"
 	},
 	"themeDark": {
 		"message": "Tamna",
@@ -34,10 +26,6 @@
 	"themeAuto": {
 		"message": "Prati sustav",
 		"description": "Auto theme - follow system"
-	},
-	"languageDesc": {
-		"message": "Odaberite jezik sučelja",
-		"description": "Language description"
 	},
 	"syncStatus": {
 		"message": "Status sinkronizacije",
@@ -56,7 +44,7 @@
 		"description": "Author"
 	},
 	"privacyNote": {
-		"message": "🔒 Radi lokalno, bez pristupa mreži osim sinkronizacije, bez prikupljanja podataka",
+		"message": " Radi lokalno, bez pristupa mreži osim sinkronizacije, bez prikupljanja podataka",
 		"description": "Privacy note in footer"
 	},
 	"supportUsText": {
@@ -120,11 +108,19 @@
 		"description": "Hold the right mouse button and move the mouse to easily perform gestures"
 	},
 	"macLinuxContextMenuNotice": {
-		"message": "⚠️ Zbog ograničenja sustava, na macOS / Linuxu potreban je brzi dvostruki klik desnom tipkom za otvaranje izbornika.",
+		"message": "Zbog ograničenja sustava, kada su omogućene geste desnom tipkom miša, na macOS / Linuxu potreban je dvostruki klik desnom tipkom za otvaranje kontekstnog izbornika.",
 		"description": "Notice for macOS / Linux users about double right-click for context menu"
 	},
+	"macLinuxDoubleClickHint": {
+		"message": "Za otvaranje kontekstnog izbornika dvaput kliknite desnom tipkom miša. (Saznajte više)",
+		"description": "Short toast hint shown on first right-click on macOS/Linux explaining double-click requirement"
+	},
+	"edgeGestureConflictNotice": {
+		"message": "%browserName% ima ugrađene značajke gesta. Da biste koristili geste FlowMouse-a, <a href=\"#\" class=\"edge-gesture-link\">onemogućite ugrađene geste</a> u postavkama %browserName%-a.",
+		"description": "Notice for Edge users about built-in gesture conflict"
+	},
 	"macTextDragNotice": {
-		"message": "⚠️ Zbog ponašanja macOS-a, prilikom povlačenja teksta prvo odaberite tekst, zatim kratko zadržite lijevu tipku prije povlačenja. Inače, pretraga se možda neće pokrenuti.",
+		"message": "Zbog ponašanja macOS-a, prilikom povlačenja teksta prvo odaberite tekst, zatim unutar odabranog područja pritisnite i kratko zadržite lijevu tipku prije povlačenja. U suprotnom, funkcija povlačenja se možda neće pokrenuti.",
 		"description": "Notice for macOS users about text drag behavior"
 	},
 	"showTrail": {
@@ -159,6 +155,14 @@
 		"message": "Prozirnost",
 		"description": "Opacity"
 	},
+	"blur": {
+		"message": "Zamućenje",
+		"description": "Blur radius"
+	},
+	"hudShadow": {
+		"message": "Sjena",
+		"description": "HUD shadow toggle"
+	},
 	"text": {
 		"message": "Tekst",
 		"description": "Text"
@@ -179,6 +183,10 @@
 		"message": "Efekt animacije skrolanja za geste gore/dolje",
 		"description": "Scroll smoothness description"
 	},
+	"smoothnessAuto": {
+		"message": "Automatski",
+		"description": "Auto scroll smoothness - uses system if animation enabled, otherwise smooth"
+	},
 	"smoothnessSystem": {
 		"message": "Sustav (Visoke performanse)",
 		"description": "System scroll smoothness"
@@ -190,6 +198,18 @@
 	"smoothnessNone": {
 		"message": "Bez animacije",
 		"description": "No scroll animation"
+	},
+	"scrollAccel": {
+		"message": "Množitelj neprekidnog pomicanja",
+		"description": "Speed multiplier applied when scrolling consecutively"
+	},
+	"scrollAccelOff": {
+		"message": "Isključeno",
+		"description": "Scroll acceleration disabled"
+	},
+	"scrollAccelWindow": {
+		"message": "Vremensko ograničenje uzastopnog pomicanja",
+		"description": "Max time (ms) between scrolls to count as consecutive"
 	},
 	"dragFeatures": {
 		"message": "Funkcije povlačenja",
@@ -283,6 +303,22 @@
 		"message": "Nema stranica na crnoj listi. Unesite domenu iznad za dodavanje.",
 		"description": "Empty blacklist message"
 	},
+	"enableBlacklistContextMenu": {
+		"message": "Prekidač gesta u kontekstnom izborniku",
+		"description": "Setting title for blacklist context menu toggle"
+	},
+	"enableBlacklistContextMenuDesc": {
+		"message": "Prikaži opciju za onemogućavanje/omogućavanje gesta u kontekstnom izborniku",
+		"description": "Setting description for blacklist context menu toggle"
+	},
+	"menuAddToBlacklist": {
+		"message": "Onemogući geste na ovoj web-lokaciji",
+		"description": "Context menu title for adding current site to blacklist"
+	},
+	"menuRemoveFromBlacklist": {
+		"message": "Omogući geste na ovoj web-lokaciji",
+		"description": "Context menu title for removing current site from blacklist"
+	},
 	"dataManagement": {
 		"message": "Upravljanje podacima",
 		"description": "Data management section"
@@ -322,6 +358,10 @@
 	"importDone": {
 		"message": "Postavke uvezene",
 		"description": "Import done message"
+	},
+	"importConfirm": {
+		"message": "Uvoz će prebrisati vaše trenutne postavke. Uvozite konfiguracijske datoteke samo iz pouzdanih izvora.\n\nNastaviti?",
+		"description": "Import confirmation warning"
 	},
 	"importFailed": {
 		"message": "Uvoz nije uspio: Neispravna konfiguracijska datoteka",
@@ -459,13 +499,41 @@
 		"message": "Zatvori karticu",
 		"description": "Close tab"
 	},
-	"actionCloseTabKeepWindow": {
-		"message": "Zatvori karticu (zadrži prozor)",
-		"description": "Close tab but keep window open"
+	"closeTabKeepWindow": {
+		"message": "Ako je ovo posljednja kartica, zadrži prozor otvoren",
+		"description": "Checkbox label for closeTab action config"
+	},
+	"closeTabAfterClose": {
+		"message": "Nakon zatvaranja",
+		"description": "Label for closeTab afterClose config"
+	},
+	"closeTabAfterCloseDefault": {
+		"message": "Zadano u pregledniku",
+		"description": "Option for closeTab afterClose config - let browser decide"
+	},
+	"closeTabAfterCloseLeft": {
+		"message": "Prebaci na lijevu karticu",
+		"description": "Option for closeTab afterClose config - switch to left tab"
+	},
+	"closeTabAfterCloseRight": {
+		"message": "Prebaci na desnu karticu",
+		"description": "Option for closeTab afterClose config - switch to right tab"
+	},
+	"switchTabNoWrap": {
+		"message": "Bez kružnog prebacivanja",
+		"description": "Checkbox label for switchLeftTab/switchRightTab action config"
+	},
+	"switchTabMoveTab": {
+		"message": "Premjesti trenutnu karticu",
+		"description": "Checkbox label for switchLeftTab/switchRightTab/switchFirstTab/switchLastTab action config"
 	},
 	"actionCloseBrowser": {
 		"message": "Zatvori preglednik",
 		"description": "Close browser"
+	},
+	"actionCloseWindow": {
+		"message": "Zatvori prozor",
+		"description": "Close current window"
 	},
 	"actionRestoreTab": {
 		"message": "Vrati zatvorenu karticu",
@@ -498,6 +566,14 @@
 	"actionSwitchRightTab": {
 		"message": "Prebaci na desnu karticu",
 		"description": "Switch to right tab"
+	},
+	"actionSwitchFirstTab": {
+		"message": "Prebaci na prvu karticu",
+		"description": "Switch to first tab"
+	},
+	"actionSwitchLastTab": {
+		"message": "Prebaci na zadnju karticu",
+		"description": "Switch to last tab"
 	},
 	"actionRefresh": {
 		"message": "Osvježi trenutnu karticu",
@@ -575,6 +651,10 @@
 		"message": "Utišaj/Oduzmi zvuk svim karticama",
 		"description": "Toggle mute all tabs"
 	},
+	"actionTogglePinTab": {
+		"message": "Prikvači/Otkvači trenutnu karticu",
+		"description": "Toggle pin current tab"
+	},
 	"showTrailOrigin": {
 		"message": "Prikaži početnu točku",
 		"description": "Show trail origin point"
@@ -595,17 +675,29 @@
 		"message": "Savjet: Preporučuje se vrijednost između 15-30 za najbolje prepoznavanje.",
 		"description": "Warning when distance threshold is too small or too large"
 	},
-	"enableAdvancedSettings": {
-		"message": "Napredne postavke",
-		"description": "Enable advanced settings"
+	"gestureTurnTolerance": {
+		"message": "Tolerancija zakretanja geste",
+		"description": "Turn tolerance for detecting direction changes in long gestures"
 	},
-	"enableAdvancedSettingsDesc": {
-		"message": "Prikaži više naprednih opcija kada je omogućeno",
-		"description": "Show more advanced options when enabled"
+	"gestureTurnToleranceDesc": {
+		"message": "Veće vrijednosti smanjuju slučajna zakretanja, ali zahtijevaju duže pokrete za promjenu smjera",
+		"description": "Description for gesture turn tolerance setting"
 	},
-	"enableAdvancedSettingsToggle": {
-		"message": "Način naprednih postavki",
-		"description": "Enable advanced settings toggle label"
+	"advanced": {
+		"message": "Stručni način",
+		"description": "Short label for per-section advanced toggle"
+	},
+	"otherSettings": {
+		"message": "Ostale postavke",
+		"description": "Section title for other/miscellaneous settings"
+	},
+	"show": {
+		"message": "Prikaži",
+		"description": "Show navigation menu"
+	},
+	"hide": {
+		"message": "Sakrij",
+		"description": "Hide navigation menu"
 	},
 	"urlFormatError": {
 		"message": "Unesite puni URL koji počinje s http:// ili https://",
@@ -615,41 +707,61 @@
 		"message": "Vrati na zadano",
 		"description": "Reset gesture to default action"
 	},
+	"resetToDefaultConfirm": {
+		"message": "Vratiti ove postavke na zadane vrijednosti?",
+		"description": "Confirmation dialog for resetting settings"
+	},
 	"addCustomGesture": {
 		"message": "Dodaj prilagođenu gestu",
 		"description": "Add custom gesture section title"
-	},
-	"gesturePattern": {
-		"message": "Uzorak",
-		"description": "Gesture pattern label"
-	},
-	"selectAction": {
-		"message": "Odaberi akciju",
-		"description": "Select action label"
 	},
 	"clear": {
 		"message": "Očisti",
 		"description": "Clear button"
 	},
-	"addGesture": {
-		"message": "Dodaj gestu",
-		"description": "Add gesture button"
-	},
-	"pleaseDrawGesture": {
-		"message": "Prvo nacrtajte gestu",
-		"description": "Alert when no gesture drawn"
-	},
 	"gestureAdded": {
 		"message": "✓ Gesta dodana",
 		"description": "Gesture added success message"
 	},
-	"gestureDrawInstructions": {
-		"message": "Držite desnu tipku miša i nacrtajte gestu ispod, pustite za završetak. Podržani smjerovi:",
-		"description": "Instructions for gesture drawing"
+	"gestureRecorderTitle": {
+		"message": "Nacrtaj gestu",
+		"description": "Gesture recorder full-screen title"
 	},
-	"gestureOverwriteConfirm": {
-		"message": "Gesta %pattern% već postoji. Zamijeniti?",
-		"description": "Confirmation message when adding a duplicate gesture"
+	"gestureRecorderDesc": {
+		"message": "Držite tipku „%button%” i nacrtajte uzorak geste",
+		"description": "Gesture recorder instruction, %button% is replaced with the mouse button name"
+	},
+	"gestureRecorderEsc": {
+		"message": "Odustani",
+		"description": "Gesture recorder cancel button label"
+	},
+	"gestureRecorderRecording": {
+		"message": "Snimanje…",
+		"description": "Gesture recorder recording indicator"
+	},
+	"gestureRecorderResult": {
+		"message": "Snimljena gesta",
+		"description": "Gesture recorder result label"
+	},
+	"gestureRecorderConfirm": {
+		"message": "Potvrdi",
+		"description": "Gesture recorder confirm button"
+	},
+	"gestureRecorderRedraw": {
+		"message": "Ponovno nacrtaj",
+		"description": "Gesture recorder redraw button"
+	},
+	"gestureRecorderBanned": {
+		"message": "Gesta %pattern% već postoji",
+		"description": "Gesture recorder message when user draws a banned/existing gesture pattern"
+	},
+	"rightButton": {
+		"message": "Desna tipka miša",
+		"description": "Right mouse button name"
+	},
+	"leftButton": {
+		"message": "Lijeva tipka miša",
+		"description": "Left mouse button name"
 	},
 	"customGesture": {
 		"message": "Prilagođeno",
@@ -670,6 +782,10 @@
 	"enterCustomUrl": {
 		"message": "Unesite URL (preporučuje se uključivanje protokola kao što su https://, chrome://, itd.):",
 		"description": "Prompt for custom URL input"
+	},
+	"copyUrlIncludeTitle": {
+		"message": "Kopiraj i naslov stranice",
+		"description": "Checkbox label for including page title when copying URL"
 	},
 	"invalidUrl": {
 		"message": "Unesite važeći URL (početak s http:// ili https://)",
@@ -750,6 +866,10 @@
 	"aboutTitle": {
 		"message": "O FlowMouse-u",
 		"description": "About title"
+	},
+	"aboutTitleShort": {
+		"message": "O proširenju",
+		"description": "Short About title "
 	},
 	"aboutAuthor": {
 		"message": "Autor",
@@ -863,6 +983,10 @@
 		"message": "Otvori u prednjem planu",
 		"description": "Open tab in foreground"
 	},
+	"openInIncognito": {
+		"message": "Anonimno",
+		"description": "Open in incognito checkbox"
+	},
 	"textDragGestures": {
 		"message": "Geste povlačenja teksta",
 		"description": "Text drag gestures"
@@ -880,7 +1004,7 @@
 		"description": "Direction column header"
 	},
 	"action": {
-		"message": "Akcija",
+		"message": "Naredba",
 		"description": "Action column header"
 	},
 	"imageSearchUrl": {
@@ -915,6 +1039,10 @@
 		"message": "📋 Kopiraj link",
 		"description": "Copy link"
 	},
+	"dragActionCopyLinkText": {
+		"message": "📋 Kopiraj tekst linka",
+		"description": "Copy link text"
+	},
 	"dragActionSaveImage": {
 		"message": "💾 Spremi sliku",
 		"description": "Save image"
@@ -936,7 +1064,7 @@
 		"description": "Custom search"
 	},
 	"reducedMotionWarning": {
-		"message": "⚠️ %OS% sistemska animacija je onemogućena, animacija pomicanja možda neće raditi ispravno. Možete omogućiti animaciju u postavkama sustava %OS%.",
+		"message": "%OS% sistemska animacija je onemogućena, animacija pomicanja možda neće raditi ispravno. Možete omogućiti animaciju u postavkama sustava %OS%.",
 		"description": "Warning message when system reduced motion is enabled"
 	},
 	"autoDetectUrl": {
@@ -964,7 +1092,7 @@
 		"description": "Setting description for restricted page notice"
 	},
 	"restrictedPagesDetailsTitle": {
-		"message": "⚠️ Zbog sigurnosnih pravila preglednika, proširenja ne mogu raditi na određenim stranicama.",
+		"message": "Zbog sigurnosnih pravila preglednika, proširenja ne mogu raditi na određenim stranicama.",
 		"description": "Collapsible details title"
 	},
 	"showMoreHint": {
@@ -972,7 +1100,7 @@
 		"description": "Hint to show more details"
 	},
 	"restrictedNewTab": {
-		"message": "Nova kartica (chrome://newtab)",
+		"message": "Nova kartica",
 		"description": "New tab page title"
 	},
 	"restrictedNewTabDesc": {
@@ -988,11 +1116,11 @@
 		"description": "Store page description"
 	},
 	"restrictedInternal": {
-		"message": "Interne stranice preglednika",
+		"message": "Interne stranice preglednika (%browserProtocol%)",
 		"description": "Internal page title"
 	},
 	"restrictedInternalDesc": {
-		"message": "Sve stranice koje počinju s chrome:// (Chrome) ili edge:// (Edge), uključujući postavke, povijest, preuzimanja, itd. Ove stranice uključuju osnovne funkcije preglednika i podatke o privatnosti korisnika pa su strogo zaštićene.",
+		"message": "Na primjer, interne postavke, povijest, preuzimanja itd. preglednika %browserName%. Ove stranice uključuju osnovne funkcije preglednika i podatke o privatnosti korisnika, stoga su strogo zaštićene.",
 		"description": "Internal page description"
 	},
 	"restrictedFile": {
@@ -1000,7 +1128,7 @@
 		"description": "File page title"
 	},
 	"restrictedFileDesc": {
-		"message": "Lokalne HTML datoteke otvorene putem file:// protokola. Zbog sigurnosnih ograničenja (kako bi se spriječilo zlonamjerne ekstenzije da pristupaju lokalnom datotečnom sustavu), proširenja ne mogu raditi na ovim stranicama.",
+		"message": "Lokalne html, pdf itd. datoteke otvorene putem file:// protokola. Zbog sigurnosnih ograničenja (kako bi se spriječilo zlonamjerne ekstenzije da pristupaju lokalnom datotečnom sustavu), proširenja ne mogu raditi na ovim stranicama.",
 		"description": "File page description"
 	},
 	"restrictedViewSource": {
@@ -1024,7 +1152,7 @@
 		"description": "Popup description when content script not loaded"
 	},
 	"popupRefreshBtn": {
-		"message": "🔄 Osvježi stranicu",
+		"message": "Osvježi stranicu",
 		"description": "Popup refresh button text"
 	},
 	"popupRestrictedTitle": {
@@ -1036,7 +1164,7 @@
 		"description": "Popup description for restricted pages"
 	},
 	"popupLearnMore": {
-		"message": "📖 Saznaj više",
+		"message": "Saznaj više",
 		"description": "Popup learn more button text"
 	},
 	"tutorialPending": {
@@ -1207,6 +1335,26 @@
 		"message": "Za spremanje slika, FlowMouse treba pristup stranicama i preuzimanjima.",
 		"description": "Permission popup description for downloads and page capture"
 	},
+	"permissionIncognitoTitle": {
+		"message": "Dopusti anonimno",
+		"description": "Permission popup title for incognito"
+	},
+	"permissionIncognitoDesc": {
+		"message": "Da bi radio u anonimnim prozorima, morate ručno omogućiti \"Dopusti anonimno\" za FlowMouse.",
+		"description": "Permission popup description for incognito"
+	},
+	"openExtensionsSettings": {
+		"message": "Otvori pojedinosti proširenja",
+		"description": "Button to open extension details page"
+	},
+	"permissionFirefoxIncognitoTitle": {
+		"message": "Pokreći u privatnim prozorima",
+		"description": "Permission popup title for Firefox private browsing"
+	},
+	"permissionFirefoxIncognitoDesc": {
+		"message": "Da bi radio u privatnim prozorima, morate ručno omogućiti \"Pokreći u privatnim prozorima\" za FlowMouse u Upravitelju dodacima.",
+		"description": "Permission popup description for Firefox private browsing"
+	},
 	"grantPermission": {
 		"message": "Dodijeli dozvolu",
 		"description": "Grant permission button"
@@ -1234,5 +1382,205 @@
 	"saveImageTimeout": {
 		"message": "Spremanje slike nije uspjelo: Vrijeme učitavanja je isteklo",
 		"description": "Toast message when image loading times out"
+	},
+	"buttonOkay": {
+		"message": "U redu",
+		"description": "Generic OK button"
+	},
+	"buttonCancel": {
+		"message": "Odustani",
+		"description": "Generic Cancel button"
+	},
+	"buttonClose": {
+		"message": "Zatvori",
+		"description": "Generic Close button"
+	},
+	"searchActions": {
+		"message": "Pretraži naredbe...",
+		"description": "Placeholder for action search input in action picker"
+	},
+	"actionCategoryNavigation": {
+		"message": "Navigacija",
+		"description": "Action category: navigation"
+	},
+	"actionCategoryTabs": {
+		"message": "Kartice",
+		"description": "Action category: tabs"
+	},
+	"actionCategoryWindow": {
+		"message": "Prozor",
+		"description": "Action category: window"
+	},
+	"actionCategoryUtilities": {
+		"message": "Alati",
+		"description": "Action category: utilities"
+	},
+	"noResults": {
+		"message": "Nema rezultata",
+		"description": "No search results found"
+	},
+	"wheelGestures": {
+		"message": "Geste kotačićem miša",
+		"description": "Mouse wheel gestures section title"
+	},
+	"enableWheelGestures": {
+		"message": "Omogući geste kotačićem miša",
+		"description": "Enable mouse wheel gestures"
+	},
+	"enableWheelGesturesDesc": {
+		"message": "Brzo izvršavajte razne radnje pomoću kotačića miša",
+		"description": "Enable mouse wheel gestures description"
+	},
+	"wheelGesture_scrollUpHoldingRight": {
+		"message": "Pomaknite se gore dok držite desnu tipku",
+		"description": "Wheel gesture: scroll up while holding right button"
+	},
+	"wheelGesture_scrollDownHoldingRight": {
+		"message": "Pomaknite se dolje dok držite desnu tipku",
+		"description": "Wheel gesture: scroll down while holding right button"
+	},
+	"specialGestures": {
+		"message": "Posebne geste",
+		"description": "Special gestures section title"
+	},
+	"enableSpecialGestures": {
+		"message": "Omogući posebne geste",
+		"description": "Enable special gestures"
+	},
+	"enableSpecialGesturesDesc": {
+		"message": "Izvršite radnje klikom na jednu tipku miša dok držite drugu",
+		"description": "Enable special gestures description"
+	},
+	"specialGesture_leftClickHoldingRight": {
+		"message": "Lijevi klik dok držite desnu tipku",
+		"description": "Special gesture: left click while holding right button"
+	},
+	"specialGesture_rightClickHoldingLeft": {
+		"message": "Desni klik dok držite lijevu tipku",
+		"description": "Special gesture: right click while holding left button"
+	},
+	"actionChains": {
+		"message": "Lanci naredbi",
+		"description": "Action chains section title"
+	},
+	"actionChainsDesc": {
+		"message": "Stvorite ponovno upotrebljive nizove naredbi koje se izvršavaju jedna za drugom",
+		"description": "Action chains section description"
+	},
+	"actionActionChain": {
+		"message": "Lanac naredbi",
+		"description": "Action chain action name"
+	},
+	"actionCategoryChains": {
+		"message": "Lanci naredbi",
+		"description": "Action category: action chains"
+	},
+	"addChain": {
+		"message": "Dodaj lanac",
+		"description": "Add chain button"
+	},
+	"addNewChain": {
+		"message": "Stvori novi lanac...",
+		"description": "Action item to navigate to chain editor and create a new chain"
+	},
+	"chainNamePlaceholder": {
+		"message": "Moj lanac naredbi",
+		"description": "Chain name input placeholder"
+	},
+	"chainDelayUnit": {
+		"message": "ms",
+		"description": "Milliseconds unit for chain delay"
+	},
+	"addStep": {
+		"message": "Dodaj korak",
+		"description": "Add step button"
+	},
+	"emptyChainSteps": {
+		"message": "Nisu dodani koraci. Kliknite \"Dodaj korak\" za početak.",
+		"description": "Empty chain steps message in expanded body"
+	},
+	"emptyChainStepsShort": {
+		"message": "Nisu dodani koraci",
+		"description": "Short empty chain steps message for summary"
+	},
+	"noChains": {
+		"message": "Još nema lanaca naredbi. Kliknite na \"Dodaj lanac\" da biste ga stvorili.",
+		"description": "No chains message"
+	},
+	"chainNotFound": {
+		"message": "(Lanac nije pronađen)",
+		"description": "Chain not found label"
+	},
+	"deleteChainConfirm": {
+		"message": "Izbrisati lanac \"%name%\"?",
+		"description": "Delete chain confirmation"
+	},
+	"stepNumber": {
+		"message": "Korak %n%",
+		"description": "Step number label"
+	},
+	"actionDelay": {
+		"message": "Odgoda",
+		"description": "Delay action name for chain steps"
+	},
+	"actionSendCustomEvent": {
+		"message": "Pošalji prilagođeni događaj",
+		"description": "Action to dispatch a custom DOM event"
+	},
+	"actionSimulateKey": {
+		"message": "Simuliraj pritisak tipke",
+		"description": "Action to simulate a keyboard key press on the page"
+	},
+	"simulateKeyPreset": {
+		"message": "Unaprijed postavljena tipka",
+		"description": "Label for preset key dropdown in simulate key config"
+	},
+	"simulateKeyPresetLeft": {
+		"message": "← Strelica ulijevo (Prethodna stranica)",
+		"description": "Preset: ArrowLeft key"
+	},
+	"simulateKeyPresetRight": {
+		"message": "→ Strelica udesno (Sljedeća stranica)",
+		"description": "Preset: ArrowRight key"
+	},
+	"simulateKeyPresetCustom": {
+		"message": "Prilagođena tipka",
+		"description": "Preset: Custom key option"
+	},
+	"simulateKeyRecordBtn": {
+		"message": "Snimi tipku",
+		"description": "Button to start recording a key press"
+	},
+	"simulateKeyRecording": {
+		"message": "Pritisnite tipku...",
+		"description": "Recording state text"
+	},
+	"simulateKeyManualInput": {
+		"message": "Trenutna tipka",
+		"description": "Label for current key display in simulate key config"
+	},
+	"simulateKeyHint": {
+		"message": "Ova značajka šalje događaje tipkovnice samo trenutnoj stranici, a obično se koristi za navigaciju stranicom (← prethodno / → sljedeće). NEĆE pokrenuti prečace preglednika (npr. Ctrl+R neće osvježiti stranicu). Osim toga, zbog ograničenja okvira web stranice, simulirane događaje možda neće zabilježiti sve prilagođene komponente ili polja za unos.",
+		"description": "Hint text for simulate key feature"
+	},
+	"customEventInvalidJson": {
+		"message": "Nevažeći JSON format",
+		"description": "Error message when event detail is not valid JSON"
+	},
+	"customEventHint": {
+		"message": "Šalje %code% na %window%. Korisno za integraciju s drugim skriptama.",
+		"description": "Hint explaining how custom event works. %code% = <code>new CustomEvent(...)</code>, %window% = <code>window</code>"
+	},
+	"delayDuration": {
+		"message": "Trajanje",
+		"description": "Delay duration label"
+	},
+	"chainStepCount": {
+		"message": "Broj koraka: %count%",
+		"description": "Step count for unnamed chains, e.g. '3 steps'"
+	},
+	"chainStepCountOne": {
+		"message": "Broj koraka: %count%",
+		"description": "Step count for unnamed chains with exactly 1 step"
 	}
 }

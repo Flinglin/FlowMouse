@@ -8,20 +8,12 @@
 		"description": "Short extension name for popup"
 	},
 	"extDescription": {
-		"message": "गोपनीयता और सहज अनुभव पर केंद्रित एक ओपन-सोर्स माउस जेस्चर एक्सटेंशन। सहज और सटीक जेस्चर, सुपर ड्रैग सपोर्ट, और सारा डेटा स्थानीय रूप से संग्रहीत किया जाता है।",
+		"message": "गोपनीयता और सहज अनुभव पर केंद्रित एक ओपन-सोर्स माउस जेस्चर एक्सटेंशन। सहज और सटीक जेस्चर, सुपर ड्रैग सपोर्ट।",
 		"description": "Extension description"
-	},
-	"appearance": {
-		"message": "दिखावट",
-		"description": "Appearance section"
 	},
 	"theme": {
 		"message": "थीम",
 		"description": "Theme"
-	},
-	"themeDesc": {
-		"message": "लाइट और डार्क थीम के बीच स्विच करें",
-		"description": "Theme description"
 	},
 	"themeDark": {
 		"message": "डार्क",
@@ -34,10 +26,6 @@
 	"themeAuto": {
 		"message": "सिस्टम के अनुसार",
 		"description": "Auto theme - follow system"
-	},
-	"languageDesc": {
-		"message": "इंटरफ़ेस भाषा चुनें",
-		"description": "Language description"
 	},
 	"syncStatus": {
 		"message": "सिंक स्थिति",
@@ -56,7 +44,7 @@
 		"description": "Author"
 	},
 	"privacyNote": {
-		"message": "🔒 स्थानीय रूप से चलता है, सिंक के अलावा कोई नेटवर्क एक्सेस नहीं, कोई डेटा संग्रह नहीं",
+		"message": " स्थानीय रूप से चलता है, सिंक के अलावा कोई नेटवर्क एक्सेस नहीं, कोई डेटा संग्रह नहीं",
 		"description": "Privacy note in footer"
 	},
 	"supportUsText": {
@@ -120,11 +108,19 @@
 		"description": "Hold the right mouse button and move the mouse to easily perform gestures"
 	},
 	"macLinuxContextMenuNotice": {
-		"message": "⚠️ सिस्टम सीमाओं के कारण, macOS / Linux पर संदर्भ मेनू खोलने के लिए डबल राइट-क्लिक की आवश्यकता होती है।",
+		"message": "सिस्टम सीमाओं के कारण, जब राइट-क्लिक जेस्चर सक्षम होते हैं, तो macOS / Linux पर संदर्भ मेनू खोलने के लिए डबल राइट-क्लिक की आवश्यकता होती है।",
 		"description": "Notice for macOS / Linux users about double right-click for context menu"
 	},
+	"macLinuxDoubleClickHint": {
+		"message": "संदर्भ मेनू खोलने के लिए, दो बार राइट-क्लिक करें। (और जानें)",
+		"description": "Short toast hint shown on first right-click on macOS/Linux explaining double-click requirement"
+	},
+	"edgeGestureConflictNotice": {
+		"message": "%browserName% में अंतर्निहित जेस्चर सुविधाएँ हैं। FlowMouse के जेस्चर का उपयोग करने के लिए, कृपया %browserName% सेटिंग में <a href=\"#\" class=\"edge-gesture-link\">अंतर्निहित जेस्चर को अक्षम करें</a>।",
+		"description": "Notice for Edge users about built-in gesture conflict"
+	},
 	"macTextDragNotice": {
-		"message": "⚠️ macOS व्यवहार के कारण, टेक्स्ट ड्रैग करते समय, पहले टेक्स्ट चुनें, फिर ड्रैग करने से पहले बाएं बटन को थोड़ी देर दबाए रखें। अन्यथा, खोज ट्रिगर नहीं हो सकती है।",
+		"message": "macOS व्यवहार के कारण, टेक्स्ट ड्रैग करते समय, पहले टेक्स्ट चुनें, फिर ड्रैग करने से पहले चयनित क्षेत्र के भीतर बाएं बटन को दबाए रखें और थोड़ा रुकें। अन्यथा, ड्रैग फ़ंक्शन ट्रिगर नहीं हो सकता है।",
 		"description": "Notice for macOS users about text drag behavior"
 	},
 	"showTrail": {
@@ -159,6 +155,14 @@
 		"message": "अपारदर्शिता",
 		"description": "Opacity"
 	},
+	"blur": {
+		"message": "धुंधला",
+		"description": "Blur radius"
+	},
+	"hudShadow": {
+		"message": "छाया",
+		"description": "HUD shadow toggle"
+	},
 	"text": {
 		"message": "टेक्स्ट",
 		"description": "Text"
@@ -179,6 +183,10 @@
 		"message": "ऊपर/नीचे जेस्चर के लिए स्क्रॉल एनीमेशन प्रभाव",
 		"description": "Scroll smoothness description"
 	},
+	"smoothnessAuto": {
+		"message": "स्वचालित",
+		"description": "Auto scroll smoothness - uses system if animation enabled, otherwise smooth"
+	},
 	"smoothnessSystem": {
 		"message": "सिस्टम (उच्च प्रदर्शन)",
 		"description": "System scroll smoothness"
@@ -190,6 +198,18 @@
 	"smoothnessNone": {
 		"message": "कोई एनीमेशन नहीं",
 		"description": "No scroll animation"
+	},
+	"scrollAccel": {
+		"message": "लगातार स्क्रॉल गुणक",
+		"description": "Speed multiplier applied when scrolling consecutively"
+	},
+	"scrollAccelOff": {
+		"message": "बंद",
+		"description": "Scroll acceleration disabled"
+	},
+	"scrollAccelWindow": {
+		"message": "लगातार स्क्रॉल का समय",
+		"description": "Max time (ms) between scrolls to count as consecutive"
 	},
 	"dragFeatures": {
 		"message": "ड्रैग सुविधाएँ",
@@ -283,6 +303,22 @@
 		"message": "कोई ब्लैकलिस्ट साइट नहीं। जोड़ने के लिए ऊपर डोमेन दर्ज करें।",
 		"description": "Empty blacklist message"
 	},
+	"enableBlacklistContextMenu": {
+		"message": "कंटेक्स्ट मेनू में जेस्चर टॉगल",
+		"description": "Setting title for blacklist context menu toggle"
+	},
+	"enableBlacklistContextMenuDesc": {
+		"message": "कंटेक्स्ट मेनू में जेस्चर को अक्षम/सक्षम करने का विकल्प दिखाएं",
+		"description": "Setting description for blacklist context menu toggle"
+	},
+	"menuAddToBlacklist": {
+		"message": "इस साइट पर जेस्चर अक्षम करें",
+		"description": "Context menu title for adding current site to blacklist"
+	},
+	"menuRemoveFromBlacklist": {
+		"message": "इस साइट पर जेस्चर सक्षम करें",
+		"description": "Context menu title for removing current site from blacklist"
+	},
 	"dataManagement": {
 		"message": "डेटा प्रबंधन",
 		"description": "Data management section"
@@ -322,6 +358,10 @@
 	"importDone": {
 		"message": "सेटिंग्स आयात की गईं",
 		"description": "Import done message"
+	},
+	"importConfirm": {
+		"message": "आयात करने से आपकी वर्तमान सेटिंग ओवरराइट हो जाएंगी। केवल विश्वसनीय स्रोतों से कॉन्फ़िगरेशन फ़ाइलें आयात करें।\n\nक्या आप जारी रखना चाहते हैं?",
+		"description": "Import confirmation warning"
 	},
 	"importFailed": {
 		"message": "आयात विफल: अमान्य कॉन्फ़िगरेशन फ़ाइल",
@@ -459,13 +499,41 @@
 		"message": "टैब बंद करें",
 		"description": "Close tab"
 	},
-	"actionCloseTabKeepWindow": {
-		"message": "टैब बंद करें (विंडो रखें)",
-		"description": "Close tab but keep window open"
+	"closeTabKeepWindow": {
+		"message": "यदि यह अंतिम टैब है, तो विंडो खुली रखें",
+		"description": "Checkbox label for closeTab action config"
+	},
+	"closeTabAfterClose": {
+		"message": "बंद करने के बाद",
+		"description": "Label for closeTab afterClose config"
+	},
+	"closeTabAfterCloseDefault": {
+		"message": "ब्राउज़र डिफ़ॉल्ट",
+		"description": "Option for closeTab afterClose config - let browser decide"
+	},
+	"closeTabAfterCloseLeft": {
+		"message": "बाएं टैब पर जाएं",
+		"description": "Option for closeTab afterClose config - switch to left tab"
+	},
+	"closeTabAfterCloseRight": {
+		"message": "दाएं टैब पर जाएं",
+		"description": "Option for closeTab afterClose config - switch to right tab"
+	},
+	"switchTabNoWrap": {
+		"message": "चक्रीय रूप से स्विच न करें",
+		"description": "Checkbox label for switchLeftTab/switchRightTab action config"
+	},
+	"switchTabMoveTab": {
+		"message": "वर्तमान टैब को ले जाएँ",
+		"description": "Checkbox label for switchLeftTab/switchRightTab/switchFirstTab/switchLastTab action config"
 	},
 	"actionCloseBrowser": {
 		"message": "ब्राउज़र बंद करें",
 		"description": "Close browser"
+	},
+	"actionCloseWindow": {
+		"message": "विंडो बंद करें",
+		"description": "Close current window"
 	},
 	"actionRestoreTab": {
 		"message": "बंद टैब को पुनर्स्थापित करें",
@@ -498,6 +566,14 @@
 	"actionSwitchRightTab": {
 		"message": "दाएं टैब पर जाएं",
 		"description": "Switch to right tab"
+	},
+	"actionSwitchFirstTab": {
+		"message": "पहले टैब पर जाएं",
+		"description": "Switch to first tab"
+	},
+	"actionSwitchLastTab": {
+		"message": "आखिरी टैब पर जाएं",
+		"description": "Switch to last tab"
 	},
 	"actionRefresh": {
 		"message": "वर्तमान टैब रीफ्रेश करें",
@@ -575,6 +651,10 @@
 		"message": "सभी टैब को म्यूट/अनम्यूट करें",
 		"description": "Toggle mute all tabs"
 	},
+	"actionTogglePinTab": {
+		"message": "वर्तमान टैब को पिन/अनपिन करें",
+		"description": "Toggle pin current tab"
+	},
 	"showTrailOrigin": {
 		"message": "मूल बिंदु दिखाएं",
 		"description": "Show trail origin point"
@@ -595,17 +675,29 @@
 		"message": "सुझाव: सर्वोत्तम पहचान के लिए 15-30 के बीच का मान अनुशंसित है।",
 		"description": "Warning when distance threshold is too small or too large"
 	},
-	"enableAdvancedSettings": {
-		"message": "उन्नत सेटिंग्स",
-		"description": "Enable advanced settings"
+	"gestureTurnTolerance": {
+		"message": "जेस्चर घुमाव सहिष्णुता",
+		"description": "Turn tolerance for detecting direction changes in long gestures"
 	},
-	"enableAdvancedSettingsDesc": {
-		"message": "सक्षम होने पर अधिक उन्नत विकल्प दिखाएं",
-		"description": "Show more advanced options when enabled"
+	"gestureTurnToleranceDesc": {
+		"message": "उच्च मान आकस्मिक घुमावों को कम करते हैं लेकिन दिशा बदलने के लिए लंबे आंदोलनों की आवश्यकता होती है",
+		"description": "Description for gesture turn tolerance setting"
 	},
-	"enableAdvancedSettingsToggle": {
-		"message": "उन्नत सेटिंग्स मोड",
-		"description": "Enable advanced settings toggle label"
+	"advanced": {
+		"message": "विशेषज्ञ मोड",
+		"description": "Short label for per-section advanced toggle"
+	},
+	"otherSettings": {
+		"message": "अन्य सेटिंग्स",
+		"description": "Section title for other/miscellaneous settings"
+	},
+	"show": {
+		"message": "दिखाएं",
+		"description": "Show navigation menu"
+	},
+	"hide": {
+		"message": "छिपाएं",
+		"description": "Hide navigation menu"
 	},
 	"urlFormatError": {
 		"message": "कृपया http:// या https:// से शुरू होने वाला पूरा URL दर्ज करें",
@@ -615,41 +707,61 @@
 		"message": "डिफ़ॉल्ट पर रीसेट करें",
 		"description": "Reset gesture to default action"
 	},
+	"resetToDefaultConfirm": {
+		"message": "क्या इन सेटिंग्स को डिफ़ॉल्ट मानों पर रीसेट करें?",
+		"description": "Confirmation dialog for resetting settings"
+	},
 	"addCustomGesture": {
 		"message": "कस्टम जेस्चर जोड़ें",
 		"description": "Add custom gesture section title"
-	},
-	"gesturePattern": {
-		"message": "पैटर्न",
-		"description": "Gesture pattern label"
-	},
-	"selectAction": {
-		"message": "एक्शन चुनें",
-		"description": "Select action label"
 	},
 	"clear": {
 		"message": "साफ़ करें",
 		"description": "Clear button"
 	},
-	"addGesture": {
-		"message": "जेस्चर जोड़ें",
-		"description": "Add gesture button"
-	},
-	"pleaseDrawGesture": {
-		"message": "कृपया पहले एक जेस्चर बनाएं",
-		"description": "Alert when no gesture drawn"
-	},
 	"gestureAdded": {
 		"message": "✓ जेस्चर जोड़ा गया",
 		"description": "Gesture added success message"
 	},
-	"gestureDrawInstructions": {
-		"message": "दायां माउस बटन दबाए रखें और नीचे एक जेस्चर बनाएं, पूरा करने के लिए छोड़ दें। समर्थित दिशाएं:",
-		"description": "Instructions for gesture drawing"
+	"gestureRecorderTitle": {
+		"message": "जेस्चर बनाएं",
+		"description": "Gesture recorder full-screen title"
 	},
-	"gestureOverwriteConfirm": {
-		"message": "जेस्चर %pattern% पहले से मौजूद है। क्या इसे ओवरराइट करें?",
-		"description": "Confirmation message when adding a duplicate gesture"
+	"gestureRecorderDesc": {
+		"message": "%button% दबाकर रखें और जेस्चर पैटर्न बनाएं",
+		"description": "Gesture recorder instruction, %button% is replaced with the mouse button name"
+	},
+	"gestureRecorderEsc": {
+		"message": "रद्द करें",
+		"description": "Gesture recorder cancel button label"
+	},
+	"gestureRecorderRecording": {
+		"message": "रिकॉर्डिंग…",
+		"description": "Gesture recorder recording indicator"
+	},
+	"gestureRecorderResult": {
+		"message": "रिकॉर्ड किया गया जेस्चर",
+		"description": "Gesture recorder result label"
+	},
+	"gestureRecorderConfirm": {
+		"message": "पुष्टि करें",
+		"description": "Gesture recorder confirm button"
+	},
+	"gestureRecorderRedraw": {
+		"message": "फिर से खींचें",
+		"description": "Gesture recorder redraw button"
+	},
+	"gestureRecorderBanned": {
+		"message": "जेस्चर %pattern% पहले से ही मौजूद है",
+		"description": "Gesture recorder message when user draws a banned/existing gesture pattern"
+	},
+	"rightButton": {
+		"message": "माउस का दायां बटन",
+		"description": "Right mouse button name"
+	},
+	"leftButton": {
+		"message": "माउस का बायां बटन",
+		"description": "Left mouse button name"
 	},
 	"customGesture": {
 		"message": "कस्टम",
@@ -670,6 +782,10 @@
 	"enterCustomUrl": {
 		"message": "URL दर्ज करें (जैसे https://, chrome://, आदि शामिल करने का सुझाव दें):",
 		"description": "Prompt for custom URL input"
+	},
+	"copyUrlIncludeTitle": {
+		"message": "पृष्ठ का शीर्षक भी कॉपी करें",
+		"description": "Checkbox label for including page title when copying URL"
 	},
 	"invalidUrl": {
 		"message": "कृपया एक मान्य URL दर्ज करें (http:// या https:// से शुरू)",
@@ -750,6 +866,10 @@
 	"aboutTitle": {
 		"message": "FlowMouse के बारे में",
 		"description": "About title"
+	},
+	"aboutTitleShort": {
+		"message": "परिचय",
+		"description": "Short About title "
 	},
 	"aboutAuthor": {
 		"message": "लेखक",
@@ -863,6 +983,10 @@
 		"message": "अग्रभूमि में खोलें",
 		"description": "Open tab in foreground"
 	},
+	"openInIncognito": {
+		"message": "गुप्त",
+		"description": "Open in incognito checkbox"
+	},
 	"textDragGestures": {
 		"message": "टेक्स्ट ड्रैग जेस्चर",
 		"description": "Text drag gestures"
@@ -880,7 +1004,7 @@
 		"description": "Direction column header"
 	},
 	"action": {
-		"message": "एक्शन",
+		"message": "कमांड",
 		"description": "Action column header"
 	},
 	"imageSearchUrl": {
@@ -915,6 +1039,10 @@
 		"message": "📋 लिंक कॉपी करें",
 		"description": "Copy link"
 	},
+	"dragActionCopyLinkText": {
+		"message": "📋 लिंक टेक्स्ट कॉपी करें",
+		"description": "Copy link text"
+	},
 	"dragActionSaveImage": {
 		"message": "💾 इमेज सहेजें",
 		"description": "Save image"
@@ -936,7 +1064,7 @@
 		"description": "Custom search"
 	},
 	"reducedMotionWarning": {
-		"message": "⚠️ %OS% सिस्टम एनीमेशन अक्षम है, स्क्रॉल एनीमेशन ठीक से काम नहीं कर सकता है। आप %OS% सिस्टम सेटिंग्स में एनीमेशन सक्षम कर सकते हैं।",
+		"message": "%OS% सिस्टम एनीमेशन अक्षम है, स्क्रॉल एनीमेशन ठीक से काम नहीं कर सकता है। आप %OS% सिस्टम सेटिंग्स में एनीमेशन सक्षम कर सकते हैं।",
 		"description": "Warning message when system reduced motion is enabled"
 	},
 	"autoDetectUrl": {
@@ -964,7 +1092,7 @@
 		"description": "Setting description for restricted page notice"
 	},
 	"restrictedPagesDetailsTitle": {
-		"message": "⚠️ ब्राउज़र सुरक्षा नीतियों के कारण, एक्सटेंशन कुछ प्रकार के पेजों पर नहीं चल सकते हैं।",
+		"message": "ब्राउज़र सुरक्षा नीतियों के कारण, एक्सटेंशन कुछ प्रकार के पेजों पर नहीं चल सकते हैं।",
 		"description": "Collapsible details title"
 	},
 	"showMoreHint": {
@@ -972,7 +1100,7 @@
 		"description": "Hint to show more details"
 	},
 	"restrictedNewTab": {
-		"message": "नया टैब पेज (chrome://newtab)",
+		"message": "नया टैब पेज",
 		"description": "New tab page title"
 	},
 	"restrictedNewTabDesc": {
@@ -988,11 +1116,11 @@
 		"description": "Store page description"
 	},
 	"restrictedInternal": {
-		"message": "ब्राउज़र आंतरिक पेज",
+		"message": "ब्राउज़र आंतरिक पेज (%browserProtocol%)",
 		"description": "Internal page title"
 	},
 	"restrictedInternalDesc": {
-		"message": "chrome:// (Chrome) या edge:// (Edge) से शुरू होने वाले सभी पेज, जिसमें सेटिंग्स, इतिहास, डाउनलोड आदि शामिल हैं। इन पेजों में मुख्य ब्राउज़र फ़ंक्शन और उपयोगकर्ता गोपनीयता डेटा शामिल हैं, इसलिए वे सख्ती से सुरक्षित हैं।",
+		"message": "उदाहरण के लिए, %browserName% की आंतरिक सेटिंग्स, इतिहास, डाउनलोड आदि। इन पृष्ठों में मुख्य ब्राउज़र कार्य और उपयोगकर्ता गोपनीयता डेटा शामिल हैं, इसलिए वे सख्ती से सुरक्षित हैं।",
 		"description": "Internal page description"
 	},
 	"restrictedFile": {
@@ -1000,7 +1128,7 @@
 		"description": "File page title"
 	},
 	"restrictedFileDesc": {
-		"message": "file:// प्रोटोकॉल के माध्यम से खोले गए स्थानीय HTML फ़ाइलें। सुरक्षा प्रतिबंधों के कारण (दुर्भावनापूर्ण एक्सटेंशन को स्थानीय फ़ाइल सिस्टम तक पहुँचने से रोकने के लिए), एक्सटेंशन इन पेजों पर काम नहीं कर सकते हैं।",
+		"message": "file:// प्रोटोकॉल के माध्यम से खोले गए स्थानीय html, pdf आदि फ़ाइलें। सुरक्षा प्रतिबंधों के कारण (दुर्भावनापूर्ण एक्सटेंशन को स्थानीय फ़ाइल सिस्टम तक पहुँचने से रोकने के लिए), एक्सटेंशन इन पेजों पर काम नहीं कर सकते हैं।",
 		"description": "File page description"
 	},
 	"restrictedViewSource": {
@@ -1024,7 +1152,7 @@
 		"description": "Popup description when content script not loaded"
 	},
 	"popupRefreshBtn": {
-		"message": "🔄 पेज रीफ्रेश करें",
+		"message": "पेज रीफ्रेश करें",
 		"description": "Popup refresh button text"
 	},
 	"popupRestrictedTitle": {
@@ -1036,7 +1164,7 @@
 		"description": "Popup description for restricted pages"
 	},
 	"popupLearnMore": {
-		"message": "📖 और जानें",
+		"message": "और जानें",
 		"description": "Popup learn more button text"
 	},
 	"tutorialPending": {
@@ -1207,6 +1335,26 @@
 		"message": "इमेज सहेजने के लिए, FlowMouse को पेजों और डाउनलोड तक पहुँचने की आवश्यकता है।",
 		"description": "Permission popup description for downloads and page capture"
 	},
+	"permissionIncognitoTitle": {
+		"message": "गुप्त मोड में अनुमति दें",
+		"description": "Permission popup title for incognito"
+	},
+	"permissionIncognitoDesc": {
+		"message": "गुप्त विंडो में काम करने के लिए, आपको FlowMouse के लिए मैन्युअल रूप से 'गुप्त मोड में अनुमति दें' को सक्षम करना होगा।",
+		"description": "Permission popup description for incognito"
+	},
+	"openExtensionsSettings": {
+		"message": "एक्सटेंशन विवरण खोलें",
+		"description": "Button to open extension details page"
+	},
+	"permissionFirefoxIncognitoTitle": {
+		"message": "निजी विंडो में चलाएं",
+		"description": "Permission popup title for Firefox private browsing"
+	},
+	"permissionFirefoxIncognitoDesc": {
+		"message": "निजी विंडो में काम करने के लिए, आपको ऐड-ऑन मैनेजर में FlowMouse के लिए 'निजी विंडो में चलाएं' को सक्षम करना होगा।",
+		"description": "Permission popup description for Firefox private browsing"
+	},
 	"grantPermission": {
 		"message": "अनुमति दें",
 		"description": "Grant permission button"
@@ -1234,5 +1382,205 @@
 	"saveImageTimeout": {
 		"message": "छवि सहेजना विफल: लोडिंग समय समाप्त",
 		"description": "Toast message when image loading times out"
+	},
+	"buttonOkay": {
+		"message": "ठीक",
+		"description": "Generic OK button"
+	},
+	"buttonCancel": {
+		"message": "रद्द करें",
+		"description": "Generic Cancel button"
+	},
+	"buttonClose": {
+		"message": "बंद करें",
+		"description": "Generic Close button"
+	},
+	"searchActions": {
+		"message": "कमांड खोजें...",
+		"description": "Placeholder for action search input in action picker"
+	},
+	"actionCategoryNavigation": {
+		"message": "नेविगेशन",
+		"description": "Action category: navigation"
+	},
+	"actionCategoryTabs": {
+		"message": "टैब्स",
+		"description": "Action category: tabs"
+	},
+	"actionCategoryWindow": {
+		"message": "विंडो",
+		"description": "Action category: window"
+	},
+	"actionCategoryUtilities": {
+		"message": "उपयोगिताएँ",
+		"description": "Action category: utilities"
+	},
+	"noResults": {
+		"message": "कोई परिणाम नहीं",
+		"description": "No search results found"
+	},
+	"wheelGestures": {
+		"message": "माउस व्हील जेस्चर",
+		"description": "Mouse wheel gestures section title"
+	},
+	"enableWheelGestures": {
+		"message": "माउस व्हील जेस्चर सक्षम करें",
+		"description": "Enable mouse wheel gestures"
+	},
+	"enableWheelGesturesDesc": {
+		"message": "माउस व्हील का उपयोग करके विभिन्न क्रियाओं को तेज़ी से करें",
+		"description": "Enable mouse wheel gestures description"
+	},
+	"wheelGesture_scrollUpHoldingRight": {
+		"message": "दायां बटन दबाए रखते हुए ऊपर स्क्रॉल करें",
+		"description": "Wheel gesture: scroll up while holding right button"
+	},
+	"wheelGesture_scrollDownHoldingRight": {
+		"message": "दायां बटन दबाए रखते हुए नीचे स्क्रॉल करें",
+		"description": "Wheel gesture: scroll down while holding right button"
+	},
+	"specialGestures": {
+		"message": "विशेष जेस्चर",
+		"description": "Special gestures section title"
+	},
+	"enableSpecialGestures": {
+		"message": "विशेष जेस्चर सक्षम करें",
+		"description": "Enable special gestures"
+	},
+	"enableSpecialGesturesDesc": {
+		"message": "एक माउस बटन को दबाए रखते हुए दूसरे पर क्लिक करके कार्य करें",
+		"description": "Enable special gestures description"
+	},
+	"specialGesture_leftClickHoldingRight": {
+		"message": "राइट बटन को दबाए रखते हुए लेफ्ट क्लिक करें",
+		"description": "Special gesture: left click while holding right button"
+	},
+	"specialGesture_rightClickHoldingLeft": {
+		"message": "लेफ्ट बटन को दबाए रखते हुए राइट क्लिक करें",
+		"description": "Special gesture: right click while holding left button"
+	},
+	"actionChains": {
+		"message": "कमांड की शृंखलाएं",
+		"description": "Action chains section title"
+	},
+	"actionChainsDesc": {
+		"message": "कमांड के ऐसे क्रम बनाएं जिनका फिर से इस्तेमाल किया जा सके और जो एक के बाद एक काम करें",
+		"description": "Action chains section description"
+	},
+	"actionActionChain": {
+		"message": "कमांड की शृंखला",
+		"description": "Action chain action name"
+	},
+	"actionCategoryChains": {
+		"message": "कमांड की शृंखलाएं",
+		"description": "Action category: action chains"
+	},
+	"addChain": {
+		"message": "शृंखला जोड़ें",
+		"description": "Add chain button"
+	},
+	"addNewChain": {
+		"message": "नई शृंखला बनाएं...",
+		"description": "Action item to navigate to chain editor and create a new chain"
+	},
+	"chainNamePlaceholder": {
+		"message": "मेरी कमांड की शृंखला",
+		"description": "Chain name input placeholder"
+	},
+	"chainDelayUnit": {
+		"message": "मि.से.",
+		"description": "Milliseconds unit for chain delay"
+	},
+	"addStep": {
+		"message": "चरण जोड़ें",
+		"description": "Add step button"
+	},
+	"emptyChainSteps": {
+		"message": "कोई चरण नहीं जोड़ा गया. शुरू करने के लिए \"चरण जोड़ें\" पर क्लिक करें.",
+		"description": "Empty chain steps message in expanded body"
+	},
+	"emptyChainStepsShort": {
+		"message": "कोई चरण नहीं जोड़ा गया",
+		"description": "Short empty chain steps message for summary"
+	},
+	"noChains": {
+		"message": "अभी कोई कमांड की शृंखला नहीं है. कोई शृंखला बनाने के लिए \"शृंखला जोड़ें\" पर क्लिक करें.",
+		"description": "No chains message"
+	},
+	"chainNotFound": {
+		"message": "(शृंखला नहीं मिली)",
+		"description": "Chain not found label"
+	},
+	"deleteChainConfirm": {
+		"message": "क्या \"%name%\" शृंखला को मिटाना है?",
+		"description": "Delete chain confirmation"
+	},
+	"stepNumber": {
+		"message": "चरण %n%",
+		"description": "Step number label"
+	},
+	"actionDelay": {
+		"message": "देरी",
+		"description": "Delay action name for chain steps"
+	},
+	"actionSendCustomEvent": {
+		"message": "कस्टम इवेंट भेजें",
+		"description": "Action to dispatch a custom DOM event"
+	},
+	"actionSimulateKey": {
+		"message": "कुंजी दबाने का अनुकरण करें",
+		"description": "Action to simulate a keyboard key press on the page"
+	},
+	"simulateKeyPreset": {
+		"message": "प्रीसेट कुंजी",
+		"description": "Label for preset key dropdown in simulate key config"
+	},
+	"simulateKeyPresetLeft": {
+		"message": "← बायां तीर (पिछला पृष्ठ)",
+		"description": "Preset: ArrowLeft key"
+	},
+	"simulateKeyPresetRight": {
+		"message": "→ दायां तीर (अगला पृष्ठ)",
+		"description": "Preset: ArrowRight key"
+	},
+	"simulateKeyPresetCustom": {
+		"message": "कस्टम की",
+		"description": "Preset: Custom key option"
+	},
+	"simulateKeyRecordBtn": {
+		"message": "की रिकॉर्ड करें",
+		"description": "Button to start recording a key press"
+	},
+	"simulateKeyRecording": {
+		"message": "कोई की दबाएं...",
+		"description": "Recording state text"
+	},
+	"simulateKeyManualInput": {
+		"message": "वर्तमान की",
+		"description": "Label for current key display in simulate key config"
+	},
+	"simulateKeyHint": {
+		"message": "यह सुविधा केवल वर्तमान पृष्ठ पर कीबोर्ड ईवेंट भेजती है, आम तौर पर पृष्ठ नेविगेशन (← पिछला / → अगला) के लिए उपयोग की जाती है। यह ब्राउज़र शॉर्टकट को ट्रिगर नहीं करेगा (उदाहरण के लिए, Ctrl+R पृष्ठ को ताज़ा नहीं करेगा)। इसके अतिरिक्त, वेबसाइट फ्रेमवर्क की सीमाओं के कारण, सिम्युलेटेड ईवेंट सभी कस्टम घटकों या इनपुट फ़ील्ड द्वारा कैप्चर नहीं किए जा सकते हैं।",
+		"description": "Hint text for simulate key feature"
+	},
+	"customEventInvalidJson": {
+		"message": "अमान्य JSON प्रारूप",
+		"description": "Error message when event detail is not valid JSON"
+	},
+	"customEventHint": {
+		"message": "%window% पर %code% भेजता है। अन्य स्क्रिप्ट के साथ एकीकरण के लिए उपयोगी।",
+		"description": "Hint explaining how custom event works. %code% = <code>new CustomEvent(...)</code>, %window% = <code>window</code>"
+	},
+	"delayDuration": {
+		"message": "अवधि",
+		"description": "Delay duration label"
+	},
+	"chainStepCount": {
+		"message": "%count% चरण",
+		"description": "Step count for unnamed chains, e.g. '3 steps'"
+	},
+	"chainStepCountOne": {
+		"message": "%count% चरण",
+		"description": "Step count for unnamed chains with exactly 1 step"
 	}
 }

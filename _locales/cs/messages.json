@@ -8,20 +8,12 @@
 		"description": "Short extension name for popup"
 	},
 	"extDescription": {
-		"message": "Open-source rozšíření pro gesta myší zaměřené na soukromí a plynulý zážitek. Plynulá a pohotová gesta, podpora super přetahování a všechna data jsou uložena lokálně.",
+		"message": "Open-source rozšíření pro gesta myší zaměřené na soukromí a plynulý zážitek. Plynulá a pohotová gesta, podpora super přetahování.",
 		"description": "Extension description"
-	},
-	"appearance": {
-		"message": "Vzhled",
-		"description": "Appearance section"
 	},
 	"theme": {
 		"message": "Téma",
 		"description": "Theme"
-	},
-	"themeDesc": {
-		"message": "Přepnout mezi světlým a tmavým tématem",
-		"description": "Theme description"
 	},
 	"themeDark": {
 		"message": "Tmavé",
@@ -34,10 +26,6 @@
 	"themeAuto": {
 		"message": "Podle systému",
 		"description": "Auto theme - follow system"
-	},
-	"languageDesc": {
-		"message": "Vybrat jazyk rozhraní",
-		"description": "Language description"
 	},
 	"syncStatus": {
 		"message": "Stav synchronizace",
@@ -56,7 +44,7 @@
 		"description": "Author"
 	},
 	"privacyNote": {
-		"message": "🔒 Běží lokálně, žádný přístup k síti kromě synchronizace, žádný sběr dat",
+		"message": " Běží lokálně, žádný přístup k síti kromě synchronizace, žádný sběr dat",
 		"description": "Privacy note in footer"
 	},
 	"supportUsText": {
@@ -120,11 +108,19 @@
 		"description": "Hold the right mouse button and move the mouse to easily perform gestures"
 	},
 	"macLinuxContextMenuNotice": {
-		"message": "⚠️ Kvůli systémovým omezením je pro otevření kontextové nabídky na macOS / Linux vyžadován dvojitý klik pravým tlačítkem.",
+		"message": "Kvůli systémovým omezením je při povolených gestech pravého tlačítka myši pro otevření kontextové nabídky na macOS / Linux vyžadován dvojitý klik pravým tlačítkem.",
 		"description": "Notice for macOS / Linux users about double right-click for context menu"
 	},
+	"macLinuxDoubleClickHint": {
+		"message": "Chcete-li otevřít kontextovou nabídku, dvakrát klikněte pravým tlačítkem. (Zjistit více)",
+		"description": "Short toast hint shown on first right-click on macOS/Linux explaining double-click requirement"
+	},
+	"edgeGestureConflictNotice": {
+		"message": "%browserName% má vestavěné funkce gest. Chcete-li používat gesta FlowMouse, <a href=\"#\" class=\"edge-gesture-link\">vypněte prosím vestavěná gesta</a> v nastavení %browserName%.",
+		"description": "Notice for Edge users about built-in gesture conflict"
+	},
 	"macTextDragNotice": {
-		"message": "⚠️ Kvůli chování macOS musíte při přetahování textu nejprve text vybrat, poté krátce podržet levé tlačítko a teprve pak táhnout. Jinak se vyhledávání nemusí spustit.",
+		"message": "Kvůli chování macOS musíte při přetahování textu nejprve text vybrat, poté v rámci vybrané oblasti stisknout a krátce podržet levé tlačítko před tím, než začnete táhnout. Jinak se funkce přetažení nemusí spustit.",
 		"description": "Notice for macOS users about text drag behavior"
 	},
 	"showTrail": {
@@ -159,6 +155,14 @@
 		"message": "Průhlednost",
 		"description": "Opacity"
 	},
+	"blur": {
+		"message": "Rozostření",
+		"description": "Blur radius"
+	},
+	"hudShadow": {
+		"message": "Stín",
+		"description": "HUD shadow toggle"
+	},
 	"text": {
 		"message": "Text",
 		"description": "Text"
@@ -179,6 +183,10 @@
 		"message": "Efekt animace posouvání pro gesta nahoru/dolů",
 		"description": "Scroll smoothness description"
 	},
+	"smoothnessAuto": {
+		"message": "Automaticky",
+		"description": "Auto scroll smoothness - uses system if animation enabled, otherwise smooth"
+	},
 	"smoothnessSystem": {
 		"message": "Systém (Vysoký výkon)",
 		"description": "System scroll smoothness"
@@ -190,6 +198,18 @@
 	"smoothnessNone": {
 		"message": "Bez animace",
 		"description": "No scroll animation"
+	},
+	"scrollAccel": {
+		"message": "Násobič souvislého posouvání",
+		"description": "Speed multiplier applied when scrolling consecutively"
+	},
+	"scrollAccelOff": {
+		"message": "Vypnuto",
+		"description": "Scroll acceleration disabled"
+	},
+	"scrollAccelWindow": {
+		"message": "Časový limit pro postupné posouvání",
+		"description": "Max time (ms) between scrolls to count as consecutive"
 	},
 	"dragFeatures": {
 		"message": "Funkce přetahování",
@@ -283,6 +303,22 @@
 		"message": "Žádné blokované weby. Zadejte doménu výše pro přidání.",
 		"description": "Empty blacklist message"
 	},
+	"enableBlacklistContextMenu": {
+		"message": "Přepínač gest v kontextové nabídce",
+		"description": "Setting title for blacklist context menu toggle"
+	},
+	"enableBlacklistContextMenuDesc": {
+		"message": "Zobrazit možnost zakázání/povolení gest v kontextové nabídce",
+		"description": "Setting description for blacklist context menu toggle"
+	},
+	"menuAddToBlacklist": {
+		"message": "Zakázat gesta na tomto webu",
+		"description": "Context menu title for adding current site to blacklist"
+	},
+	"menuRemoveFromBlacklist": {
+		"message": "Povolit gesta na tomto webu",
+		"description": "Context menu title for removing current site from blacklist"
+	},
 	"dataManagement": {
 		"message": "Správa dat",
 		"description": "Data management section"
@@ -322,6 +358,10 @@
 	"importDone": {
 		"message": "Nastavení importováno",
 		"description": "Import done message"
+	},
+	"importConfirm": {
+		"message": "Import přepíše vaše aktuální nastavení. Konfigurační soubory importujte pouze z důvěryhodných zdrojů.\n\nPokračovat?",
+		"description": "Import confirmation warning"
 	},
 	"importFailed": {
 		"message": "Import selhal: Neplatný konfigurační soubor",
@@ -459,13 +499,41 @@
 		"message": "Zavřít kartu",
 		"description": "Close tab"
 	},
-	"actionCloseTabKeepWindow": {
-		"message": "Zavřít kartu (zachovat okno)",
-		"description": "Close tab but keep window open"
+	"closeTabKeepWindow": {
+		"message": "Pokud je to poslední karta, ponechat okno otevřené",
+		"description": "Checkbox label for closeTab action config"
+	},
+	"closeTabAfterClose": {
+		"message": "Po zavření",
+		"description": "Label for closeTab afterClose config"
+	},
+	"closeTabAfterCloseDefault": {
+		"message": "Výchozí nastavení",
+		"description": "Option for closeTab afterClose config - let browser decide"
+	},
+	"closeTabAfterCloseLeft": {
+		"message": "Přepnout na kartu vlevo",
+		"description": "Option for closeTab afterClose config - switch to left tab"
+	},
+	"closeTabAfterCloseRight": {
+		"message": "Přepnout na kartu vpravo",
+		"description": "Option for closeTab afterClose config - switch to right tab"
+	},
+	"switchTabNoWrap": {
+		"message": "Nepřepínat cyklicky",
+		"description": "Checkbox label for switchLeftTab/switchRightTab action config"
+	},
+	"switchTabMoveTab": {
+		"message": "Přesunout aktuální kartu",
+		"description": "Checkbox label for switchLeftTab/switchRightTab/switchFirstTab/switchLastTab action config"
 	},
 	"actionCloseBrowser": {
 		"message": "Zavřít prohlížeč",
 		"description": "Close browser"
+	},
+	"actionCloseWindow": {
+		"message": "Zavřít okno",
+		"description": "Close current window"
 	},
 	"actionRestoreTab": {
 		"message": "Obnovit zavřenou kartu",
@@ -498,6 +566,14 @@
 	"actionSwitchRightTab": {
 		"message": "Přepnout na kartu vpravo",
 		"description": "Switch to right tab"
+	},
+	"actionSwitchFirstTab": {
+		"message": "Přepnout na první kartu",
+		"description": "Switch to first tab"
+	},
+	"actionSwitchLastTab": {
+		"message": "Přepnout na poslední kartu",
+		"description": "Switch to last tab"
 	},
 	"actionRefresh": {
 		"message": "Obnovit aktuální kartu",
@@ -575,6 +651,10 @@
 		"message": "Ztlumit/Zrušit ztlumení všech karet",
 		"description": "Toggle mute all tabs"
 	},
+	"actionTogglePinTab": {
+		"message": "Připnout/Odepnout aktuální kartu",
+		"description": "Toggle pin current tab"
+	},
 	"showTrailOrigin": {
 		"message": "Zobrazit počáteční bod",
 		"description": "Show trail origin point"
@@ -595,17 +675,29 @@
 		"message": "Tip: Pro nejlepší rozpoznávání se doporučuje hodnota mezi 15-30.",
 		"description": "Warning when distance threshold is too small or too large"
 	},
-	"enableAdvancedSettings": {
-		"message": "Pokročilá nastavení",
-		"description": "Enable advanced settings"
+	"gestureTurnTolerance": {
+		"message": "Tolerance otočení gesta",
+		"description": "Turn tolerance for detecting direction changes in long gestures"
 	},
-	"enableAdvancedSettingsDesc": {
-		"message": "Zobrazit více pokročilých možností",
-		"description": "Show more advanced options when enabled"
+	"gestureTurnToleranceDesc": {
+		"message": "Vyšší hodnoty snižují náhodná otočení, ale vyžadují delší pohyby ke změně směru",
+		"description": "Description for gesture turn tolerance setting"
 	},
-	"enableAdvancedSettingsToggle": {
-		"message": "Režim pokročilého nastavení",
-		"description": "Enable advanced settings toggle label"
+	"advanced": {
+		"message": "Expertní režim",
+		"description": "Short label for per-section advanced toggle"
+	},
+	"otherSettings": {
+		"message": "Další nastavení",
+		"description": "Section title for other/miscellaneous settings"
+	},
+	"show": {
+		"message": "Zobrazit",
+		"description": "Show navigation menu"
+	},
+	"hide": {
+		"message": "Skrýt",
+		"description": "Hide navigation menu"
 	},
 	"urlFormatError": {
 		"message": "Zadejte prosím celou URL začínající na http:// nebo https://",
@@ -615,41 +707,61 @@
 		"message": "Obnovit výchozí",
 		"description": "Reset gesture to default action"
 	},
+	"resetToDefaultConfirm": {
+		"message": "Obnovit tato nastavení na výchozí hodnoty?",
+		"description": "Confirmation dialog for resetting settings"
+	},
 	"addCustomGesture": {
 		"message": "Přidat vlastní gesto",
 		"description": "Add custom gesture section title"
-	},
-	"gesturePattern": {
-		"message": "Vzor",
-		"description": "Gesture pattern label"
-	},
-	"selectAction": {
-		"message": "Vybrat akci",
-		"description": "Select action label"
 	},
 	"clear": {
 		"message": "Vymazat",
 		"description": "Clear button"
 	},
-	"addGesture": {
-		"message": "Přidat gesto",
-		"description": "Add gesture button"
-	},
-	"pleaseDrawGesture": {
-		"message": "Prosím nejprve nakreslete gesto",
-		"description": "Alert when no gesture drawn"
-	},
 	"gestureAdded": {
 		"message": "✓ Gesto přidáno",
 		"description": "Gesture added success message"
 	},
-	"gestureDrawInstructions": {
-		"message": "Podržte pravé tlačítko myši a nakreslete gesto níže, uvolněním dokončíte. Podporované směry:",
-		"description": "Instructions for gesture drawing"
+	"gestureRecorderTitle": {
+		"message": "Nakreslit gesto",
+		"description": "Gesture recorder full-screen title"
 	},
-	"gestureOverwriteConfirm": {
-		"message": "Gesto %pattern% již existuje. Přepsat?",
-		"description": "Confirmation message when adding a duplicate gesture"
+	"gestureRecorderDesc": {
+		"message": "Podržte tlačítko „%button%“ a nakreslete vzor gesta",
+		"description": "Gesture recorder instruction, %button% is replaced with the mouse button name"
+	},
+	"gestureRecorderEsc": {
+		"message": "Zrušit",
+		"description": "Gesture recorder cancel button label"
+	},
+	"gestureRecorderRecording": {
+		"message": "Nahrávání…",
+		"description": "Gesture recorder recording indicator"
+	},
+	"gestureRecorderResult": {
+		"message": "Zaznamenané gesto",
+		"description": "Gesture recorder result label"
+	},
+	"gestureRecorderConfirm": {
+		"message": "Potvrdit",
+		"description": "Gesture recorder confirm button"
+	},
+	"gestureRecorderRedraw": {
+		"message": "Překreslit",
+		"description": "Gesture recorder redraw button"
+	},
+	"gestureRecorderBanned": {
+		"message": "Gesto %pattern% již existuje",
+		"description": "Gesture recorder message when user draws a banned/existing gesture pattern"
+	},
+	"rightButton": {
+		"message": "Pravé tlačítko myši",
+		"description": "Right mouse button name"
+	},
+	"leftButton": {
+		"message": "Levé tlačítko myši",
+		"description": "Left mouse button name"
 	},
 	"customGesture": {
 		"message": "Vlastní",
@@ -670,6 +782,10 @@
 	"enterCustomUrl": {
 		"message": "Zadejte URL (doporučujeme včetně protokolu jako https://, chrome://, atd.):",
 		"description": "Prompt for custom URL input"
+	},
+	"copyUrlIncludeTitle": {
+		"message": "Kopírovat také název stránky",
+		"description": "Checkbox label for including page title when copying URL"
 	},
 	"invalidUrl": {
 		"message": "Zadejte prosím platnou URL (začínající na http:// nebo https://)",
@@ -750,6 +866,10 @@
 	"aboutTitle": {
 		"message": "O FlowMouse",
 		"description": "About title"
+	},
+	"aboutTitleShort": {
+		"message": "O rozšíření",
+		"description": "Short About title "
 	},
 	"aboutAuthor": {
 		"message": "Autor",
@@ -863,6 +983,10 @@
 		"message": "Otevřít v popředí",
 		"description": "Open tab in foreground"
 	},
+	"openInIncognito": {
+		"message": "Anonymní",
+		"description": "Open in incognito checkbox"
+	},
 	"textDragGestures": {
 		"message": "Gesta přetahování textu",
 		"description": "Text drag gestures"
@@ -880,7 +1004,7 @@
 		"description": "Direction column header"
 	},
 	"action": {
-		"message": "Akce",
+		"message": "Příkaz",
 		"description": "Action column header"
 	},
 	"imageSearchUrl": {
@@ -915,6 +1039,10 @@
 		"message": "📋 Kopírovat odkaz",
 		"description": "Copy link"
 	},
+	"dragActionCopyLinkText": {
+		"message": "📋 Kopírovat text odkazu",
+		"description": "Copy link text"
+	},
 	"dragActionSaveImage": {
 		"message": "💾 Uložit obrázek",
 		"description": "Save image"
@@ -936,7 +1064,7 @@
 		"description": "Custom search"
 	},
 	"reducedMotionWarning": {
-		"message": "⚠️ Systémové animace v %OS% jsou vypnuty, animace posouvání nemusí fungovat správně. Animace můžete povolit v nastavení systému %OS%.",
+		"message": "Systémové animace v %OS% jsou vypnuty, animace posouvání nemusí fungovat správně. Animace můžete povolit v nastavení systému %OS%.",
 		"description": "Warning message when system reduced motion is enabled"
 	},
 	"autoDetectUrl": {
@@ -964,7 +1092,7 @@
 		"description": "Setting description for restricted page notice"
 	},
 	"restrictedPagesDetailsTitle": {
-		"message": "⚠️ Kvůli bezpečnostním zásadám prohlížeče nemohou rozšíření běžet na určitých typech stránek.",
+		"message": "Kvůli bezpečnostním zásadám prohlížeče nemohou rozšíření běžet na určitých typech stránek.",
 		"description": "Collapsible details title"
 	},
 	"showMoreHint": {
@@ -972,7 +1100,7 @@
 		"description": "Hint to show more details"
 	},
 	"restrictedNewTab": {
-		"message": "Nová karta (chrome://newtab)",
+		"message": "Nová karta",
 		"description": "New tab page title"
 	},
 	"restrictedNewTabDesc": {
@@ -988,11 +1116,11 @@
 		"description": "Store page description"
 	},
 	"restrictedInternal": {
-		"message": "Interní stránky prohlížeče",
+		"message": "Interní stránky prohlížeče (%browserProtocol%)",
 		"description": "Internal page title"
 	},
 	"restrictedInternalDesc": {
-		"message": "Všechny stránky začínající na chrome:// (Chrome) nebo edge:// (Edge), včetně nastavení, historie, stahování atd. Tyto stránky zahrnují klíčové funkce prohlížeče a soukromá data uživatelů, proto jsou přísně chráněny.",
+		"message": "Například interní nastavení, historie, stahování atd. prohlížeče %browserName%. Tyto stránky zahrnují základní funkce prohlížeče a údaje o soukromí uživatelů, proto jsou přísně chráněny.",
 		"description": "Internal page description"
 	},
 	"restrictedFile": {
@@ -1000,7 +1128,7 @@
 		"description": "File page title"
 	},
 	"restrictedFileDesc": {
-		"message": "Lokální HTML soubory otevřené přes protokol file://. Kvůli bezpečnostním omezením (bránícím škodlivým rozšířením v přístupu k lokálnímu souborovému systému) nemohou rozšíření na těchto stránkách fungovat.",
+		"message": "Lokální html, pdf atd. soubory otevřené přes protokol file://. Kvůli bezpečnostním omezením (bránícím škodlivým rozšířením v přístupu k lokálnímu souborovému systému) nemohou rozšíření na těchto stránkách fungovat.",
 		"description": "File page description"
 	},
 	"restrictedViewSource": {
@@ -1024,7 +1152,7 @@
 		"description": "Popup description when content script not loaded"
 	},
 	"popupRefreshBtn": {
-		"message": "🔄 Obnovit stránku",
+		"message": "Obnovit stránku",
 		"description": "Popup refresh button text"
 	},
 	"popupRestrictedTitle": {
@@ -1036,7 +1164,7 @@
 		"description": "Popup description for restricted pages"
 	},
 	"popupLearnMore": {
-		"message": "📖 Další informace",
+		"message": "Další informace",
 		"description": "Popup learn more button text"
 	},
 	"tutorialPending": {
@@ -1207,6 +1335,26 @@
 		"message": "Pro ukládání obrázků potřebuje FlowMouse přístup ke stránkám a stahování.",
 		"description": "Permission popup description for downloads and page capture"
 	},
+	"permissionIncognitoTitle": {
+		"message": "Povolit v anonymním režimu",
+		"description": "Permission popup title for incognito"
+	},
+	"permissionIncognitoDesc": {
+		"message": "Chcete-li pracovat v anonymních oknech, musíte ručně povolit \"Povolit v anonymním režimu\" pro FlowMouse.",
+		"description": "Permission popup description for incognito"
+	},
+	"openExtensionsSettings": {
+		"message": "Otevřít podrobnosti rozšíření",
+		"description": "Button to open extension details page"
+	},
+	"permissionFirefoxIncognitoTitle": {
+		"message": "Spouštět v anonymních oknech",
+		"description": "Permission popup title for Firefox private browsing"
+	},
+	"permissionFirefoxIncognitoDesc": {
+		"message": "Aby rozšíření fungovalo v anonymních oknech, musíte ve Správci doplňků ručně povolit \"Spouštět v anonymních oknech\" pro FlowMouse.",
+		"description": "Permission popup description for Firefox private browsing"
+	},
 	"grantPermission": {
 		"message": "Udělit oprávnění",
 		"description": "Grant permission button"
@@ -1234,5 +1382,205 @@
 	"saveImageTimeout": {
 		"message": "Uložení obrázku selhalo: Časový limit načítání vypršel",
 		"description": "Toast message when image loading times out"
+	},
+	"buttonOkay": {
+		"message": "OK",
+		"description": "Generic OK button"
+	},
+	"buttonCancel": {
+		"message": "Zrušit",
+		"description": "Generic Cancel button"
+	},
+	"buttonClose": {
+		"message": "Zavřít",
+		"description": "Generic Close button"
+	},
+	"searchActions": {
+		"message": "Hledat příkazy...",
+		"description": "Placeholder for action search input in action picker"
+	},
+	"actionCategoryNavigation": {
+		"message": "Navigace",
+		"description": "Action category: navigation"
+	},
+	"actionCategoryTabs": {
+		"message": "Karty",
+		"description": "Action category: tabs"
+	},
+	"actionCategoryWindow": {
+		"message": "Okno",
+		"description": "Action category: window"
+	},
+	"actionCategoryUtilities": {
+		"message": "Nástroje",
+		"description": "Action category: utilities"
+	},
+	"noResults": {
+		"message": "Žádné výsledky",
+		"description": "No search results found"
+	},
+	"wheelGestures": {
+		"message": "Gesta kolečkem myši",
+		"description": "Mouse wheel gestures section title"
+	},
+	"enableWheelGestures": {
+		"message": "Povolit gesta kolečkem myši",
+		"description": "Enable mouse wheel gestures"
+	},
+	"enableWheelGesturesDesc": {
+		"message": "Provádějte různé akce rychle pomocí kolečka myši",
+		"description": "Enable mouse wheel gestures description"
+	},
+	"wheelGesture_scrollUpHoldingRight": {
+		"message": "Posunout nahoru při podržení pravého tlačítka",
+		"description": "Wheel gesture: scroll up while holding right button"
+	},
+	"wheelGesture_scrollDownHoldingRight": {
+		"message": "Posunout dolů při podržení pravého tlačítka",
+		"description": "Wheel gesture: scroll down while holding right button"
+	},
+	"specialGestures": {
+		"message": "Speciální gesta",
+		"description": "Special gestures section title"
+	},
+	"enableSpecialGestures": {
+		"message": "Povolit speciální gesta",
+		"description": "Enable special gestures"
+	},
+	"enableSpecialGesturesDesc": {
+		"message": "Provádějte akce kliknutím na jedno tlačítko myši a současným podržením druhého",
+		"description": "Enable special gestures description"
+	},
+	"specialGesture_leftClickHoldingRight": {
+		"message": "Klepnutí levým tlačítkem při podržení pravého tlačítka",
+		"description": "Special gesture: left click while holding right button"
+	},
+	"specialGesture_rightClickHoldingLeft": {
+		"message": "Klepnutí pravým tlačítkem při podržení levého tlačítka",
+		"description": "Special gesture: right click while holding left button"
+	},
+	"actionChains": {
+		"message": "Řetězce příkazů",
+		"description": "Action chains section title"
+	},
+	"actionChainsDesc": {
+		"message": "Vytvářejte opakovaně použitelné sekvence příkazů, které se provádějí jedna po druhé",
+		"description": "Action chains section description"
+	},
+	"actionActionChain": {
+		"message": "Řetězec příkazů",
+		"description": "Action chain action name"
+	},
+	"actionCategoryChains": {
+		"message": "Řetězce příkazů",
+		"description": "Action category: action chains"
+	},
+	"addChain": {
+		"message": "Přidat řetězec",
+		"description": "Add chain button"
+	},
+	"addNewChain": {
+		"message": "Vytvořit nový řetězec...",
+		"description": "Action item to navigate to chain editor and create a new chain"
+	},
+	"chainNamePlaceholder": {
+		"message": "Můj řetězec příkazů",
+		"description": "Chain name input placeholder"
+	},
+	"chainDelayUnit": {
+		"message": "ms",
+		"description": "Milliseconds unit for chain delay"
+	},
+	"addStep": {
+		"message": "Přidat krok",
+		"description": "Add step button"
+	},
+	"emptyChainSteps": {
+		"message": "Nebyly přidány žádné kroky. Začněte kliknutím na tlačítko \"Přidat krok\".",
+		"description": "Empty chain steps message in expanded body"
+	},
+	"emptyChainStepsShort": {
+		"message": "Žádné přidané kroky",
+		"description": "Short empty chain steps message for summary"
+	},
+	"noChains": {
+		"message": "Zatím žádné řetězce příkazů. Vytvořte jej kliknutím na tlačítko \"Přidat řetězec\".",
+		"description": "No chains message"
+	},
+	"chainNotFound": {
+		"message": "(Řetězec nenalezen)",
+		"description": "Chain not found label"
+	},
+	"deleteChainConfirm": {
+		"message": "Smazat řetězec \"%name%\"?",
+		"description": "Delete chain confirmation"
+	},
+	"stepNumber": {
+		"message": "Krok %n%",
+		"description": "Step number label"
+	},
+	"actionDelay": {
+		"message": "Zpoždění",
+		"description": "Delay action name for chain steps"
+	},
+	"actionSendCustomEvent": {
+		"message": "Odeslat vlastní událost",
+		"description": "Action to dispatch a custom DOM event"
+	},
+	"actionSimulateKey": {
+		"message": "Simulovat stisknutí klávesy",
+		"description": "Action to simulate a keyboard key press on the page"
+	},
+	"simulateKeyPreset": {
+		"message": "Přednastavená klávesa",
+		"description": "Label for preset key dropdown in simulate key config"
+	},
+	"simulateKeyPresetLeft": {
+		"message": "← Šipka doleva (Předchozí stránka)",
+		"description": "Preset: ArrowLeft key"
+	},
+	"simulateKeyPresetRight": {
+		"message": "→ Šipka doprava (Další stránka)",
+		"description": "Preset: ArrowRight key"
+	},
+	"simulateKeyPresetCustom": {
+		"message": "Vlastní klávesa",
+		"description": "Preset: Custom key option"
+	},
+	"simulateKeyRecordBtn": {
+		"message": "Zaznamenat klávesu",
+		"description": "Button to start recording a key press"
+	},
+	"simulateKeyRecording": {
+		"message": "Stiskněte klávesu...",
+		"description": "Recording state text"
+	},
+	"simulateKeyManualInput": {
+		"message": "Aktuální klávesa",
+		"description": "Label for current key display in simulate key config"
+	},
+	"simulateKeyHint": {
+		"message": "Tato funkce odesílá události klávesnice pouze na aktuální stránku, běžně se používá pro navigaci na stránce (← předchozí / → další). NEBUDE spouštět klávesové zkratky prohlížeče (např. Ctrl+R neobnoví stránku). Navíc kvůli omezením frameworku webu nemusí být simulované události zachyceny všemi vlastními komponentami nebo vstupními poli.",
+		"description": "Hint text for simulate key feature"
+	},
+	"customEventInvalidJson": {
+		"message": "Neplatný formát JSON",
+		"description": "Error message when event detail is not valid JSON"
+	},
+	"customEventHint": {
+		"message": "Odešle %code% na %window%. Užitečné pro integraci s dalšími skripty.",
+		"description": "Hint explaining how custom event works. %code% = <code>new CustomEvent(...)</code>, %window% = <code>window</code>"
+	},
+	"delayDuration": {
+		"message": "Doba trvání",
+		"description": "Delay duration label"
+	},
+	"chainStepCount": {
+		"message": "Počet kroků: %count%",
+		"description": "Step count for unnamed chains, e.g. '3 steps'"
+	},
+	"chainStepCountOne": {
+		"message": "Kroků: %count%",
+		"description": "Step count for unnamed chains with exactly 1 step"
 	}
 }

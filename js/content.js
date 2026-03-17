@@ -1,9 +1,372 @@
 (function () {
 	'use strict';
 
+	let i18nMessages = null;
+	let currentLanguage = null;
+
+	function msg(key, defaultText) {
+		if (i18nMessages && i18nMessages[key]) {
+			return i18nMessages[key].message;
+		}
+		return chrome.i18n.getMessage(key) || defaultText;
+	}
+
+	async function loadLanguage(language) {
+		const uiLang = chrome.i18n.getUILanguage().replace('-', '_');
+		if (!language || language === 'auto' || language === uiLang || (language === 'en' && uiLang.startsWith('en_'))) {
+			currentLanguage = null;
+			i18nMessages = null;
+			return;
+		}
+
+		currentLanguage = language;
+		try {
+			const url = chrome.runtime.getURL(`_locales/${currentLanguage}/messages.json`);
+			const response = await fetch(url);
+			i18nMessages = await response.json();
+		} catch (e) {
+			i18nMessages = null;
+		}
+	}
+
+	function getHtmlLang() {
+		return currentLanguage
+			? currentLanguage.replace('_', '-')
+			: chrome.i18n.getUILanguage();
+	}
+
+	function getDir() {
+		const lang = getHtmlLang();
+		const rtlLangs = ['ar', 'he', 'fa', 'ps', 'ur', 'yi', 'sd', 'ug', 'ku'];
+		return rtlLangs.some(l => lang === l || lang.startsWith(l + '-')) ? 'rtl' : 'ltr';
+	}
+
+	window.ContentI18n = {
+		msg,
+		loadLanguage,
+		getHtmlLang,
+		getDir,
+	};
+})();
+
+
+(function () {
+	'use strict';
+
+
+	function getRoot() {
+		return document.scrollingElement || document.documentElement;
+	}
+
+	function getScrollTarget(forceTargetWindow = false, cursorX, cursorY) {
+		const root = getRoot();
+		if (forceTargetWindow) return root;
+
+		const isRootScrollable = root.scrollHeight > window.innerHeight &&
+			getComputedStyle(root).overflowY !== 'hidden' &&
+			(!document.body || getComputedStyle(document.body).overflowY !== 'hidden');
+
+		const x = cursorX;
+		const y = cursorY;
+		if (!isRootScrollable) {
+			let el = document.elementFromPoint(x, y);
+			while (el && el !== root && el !== document.body) {
+				const s = window.getComputedStyle(el);
+				if ((s.overflowY === 'auto' || s.overflowY === 'scroll') && el.scrollHeight > el.clientHeight) {
+					return el;
+				}
+				el = el.parentElement;
+			}
+		}
+		return root;
+	}
+
+	function checkScrollFeasibility(action, cursorX, cursorY) {
+		const tolerance = 1; 
+		const target = getScrollTarget(false, cursorX, cursorY);
+
+		const currentScrollTop = target.scrollTop;
+		const maxScrollTop = target.scrollHeight - target.clientHeight;
+
+		if (action === 'scrollUp' || action === 'scrollToTop') {
+			return currentScrollTop > tolerance; 
+		} else if (action === 'scrollDown' || action === 'scrollToBottom') {
+			return currentScrollTop < maxScrollTop - tolerance; 
+		}
+		return true; 
+	}
+
+	function resolveScrollSmoothness(value) {
+		if (value === 'auto') {
+			const systemHasAnimation = window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+			return systemHasAnimation ? 'system' : 'smooth';
+		}
+		return value;
+	}
+
+	const scrollGoals = new WeakMap(); 
+	let scrollRafId = null;
+	let scrollActiveTarget = null; 
+	let scrollVersion = 0; 
+
+	let scrollAccelLastTime = 0;
+	let scrollAccelCount = 0;
+	let scrollAccelLastDir = null;
+
+	function startScrollListeners() {
+		document.addEventListener('wheel', cancelEaseScroll, { capture: true, passive: true });
+	}
+
+	function stopScrollListeners() {
+		document.removeEventListener('wheel', cancelEaseScroll, { capture: true });
+	}
+
+	function cancelEaseScroll() {
+		if (scrollRafId) {
+			cancelAnimationFrame(scrollRafId);
+			scrollRafId = null;
+		}
+		if (scrollActiveTarget) {
+			scrollGoals.delete(scrollActiveTarget);
+			scrollActiveTarget = null;
+		}
+		stopScrollListeners();
+	}
+
+	function easeScrollTo(target, goalY, unclampedGoalY) {
+		scrollActiveTarget = target;
+
+		const startY = target.scrollTop;
+		if (startY === goalY) {
+			scrollActiveTarget = null;
+			return;
+		}
+
+		const deltaY = goalY - startY;
+		const startTime = performance.now();
+
+		const realDist = Math.abs(deltaY);
+		const unclampedDist = Math.abs(unclampedGoalY - startY);
+		let duration = 500;
+		if (unclampedDist > 0 && realDist < unclampedDist) {
+			duration = Math.max(16, duration * (realDist / unclampedDist));
+		}
+
+		startScrollListeners();
+
+		function step(now) {
+			const elapsed = now - startTime;
+			if (elapsed >= duration) {
+				target.scrollTo({ top: goalY, behavior: 'instant' });
+				scrollRafId = null;
+				scrollActiveTarget = null;
+				scrollGoals.delete(target);
+				stopScrollListeners();
+				return;
+			}
+			const ease = 1 - Math.pow(1 - elapsed / duration, 3);
+			const y = startY + deltaY * ease;
+			target.scrollTo({ top: y, behavior: 'instant' });
+			scrollRafId = requestAnimationFrame(step);
+		}
+
+		scrollRafId = requestAnimationFrame(step);
+	}
+
+	function handleScroll(action, scrollConfig, forceTargetWindow = false, cursorX, cursorY) {
+		const target = getScrollTarget(forceTargetWindow, cursorX, cursorY);
+		const smoothness = resolveScrollSmoothness(scrollConfig.scrollSmoothness);
+
+		const curY = target.scrollTop;
+		const maxY = target.scrollHeight - target.clientHeight;
+
+		let goalY, unclampedGoalY;
+		if (action === 'scrollUp' || action === 'scrollDown') {
+			const containerHeight = target.clientHeight;
+			let delta = containerHeight * (scrollConfig.scrollDistance / 100) * (action === 'scrollUp' ? -1 : 1);
+
+			const accel = scrollConfig.scrollAccel ?? 1;
+			const accelWindow = scrollConfig.scrollAccelWindow ?? 400;
+			if (accel != 1) {
+				const now = performance.now();
+				if (now - scrollAccelLastTime < accelWindow && scrollAccelLastDir === action) {
+					scrollAccelCount++;
+				} else {
+					scrollAccelCount = 0;
+				}
+				scrollAccelLastTime = now;
+				scrollAccelLastDir = action;
+				if (scrollAccelCount > 0) {
+					delta *= accel;
+				}
+			}
+
+			unclampedGoalY = (scrollGoals.get(target) ?? curY) + delta;
+			goalY = Math.max(0, Math.min(unclampedGoalY, maxY));
+		} else if (action === 'scrollToTop') {
+			goalY = unclampedGoalY = 0;
+		} else if (action === 'scrollToBottom') {
+			goalY = unclampedGoalY = maxY;
+		} else {
+			return;
+		}
+
+		cancelEaseScroll();
+		scrollGoals.set(target, goalY);
+		if (curY === goalY) return;
+
+		if (smoothness === 'none') {
+			scrollGoals.delete(target);
+			target.scrollTo({ top: goalY, behavior: 'instant' });
+		} else if (smoothness === 'system') {
+			target.scrollTo({ top: goalY, behavior: 'smooth' });
+			const version = ++scrollVersion;
+			const eventTarget = target === getRoot() ? document : target;
+			eventTarget.addEventListener('scrollend', () => {
+				if (scrollVersion === version) {
+					scrollGoals.delete(target);
+				}
+			}, { once: true });
+		} else {
+			easeScrollTo(target, goalY, unclampedGoalY);
+		}
+	}
+
+
+	function copyTextFallback(text) {
+		try {
+			const textarea = document.createElement('textarea');
+			textarea.value = text;
+			textarea.style.position = 'fixed';
+			textarea.style.left = '-9999px';
+			document.body.appendChild(textarea);
+			textarea.select();
+			document.execCommand('copy');
+			document.body.removeChild(textarea);
+		} catch (err) {
+		}
+	}
+
+	function copyText(text) {
+		if (navigator.clipboard && navigator.clipboard.writeText) {
+			navigator.clipboard.writeText(text).catch(err => {
+				copyTextFallback(text);
+			});
+		} else {
+			copyTextFallback(text);
+		}
+	}
+
+
+	function tryParseAsUrl(text) {
+		if (!text || typeof text !== 'string') return null;
+		text = text.trim();
+		if (!text) return null;
+
+		const protocolRegex = /^[a-zA-Z][a-zA-Z0-9+.-]*:/;
+		if (protocolRegex.test(text)) {
+			const ignoreProtocol = /^(javascript|data|blob):/i;
+			if (ignoreProtocol.test(text)) return null;
+			return text;
+		}
+
+		const ipRegex = /^(\d{1,3}\.){3}\d{1,3}(:\d+)?(\/.*)?$/;
+		if (ipRegex.test(text)) {
+			return 'http://' + text;
+		}
+
+		const localhostRegex = /^localhost(:\d+)?(\/.*)?$/i;
+		if (localhostRegex.test(text)) {
+			return 'http://' + text;
+		}
+
+		const domainRegex = /^[a-zA-Z0-9][-a-zA-Z0-9]*(\.[a-zA-Z0-9][-a-zA-Z0-9]*)*(:\d+)?(\/.*)?$/;
+		const commonTlds = /\.(com|cn|net|org|gov|edu|io|co|cc|me|tv|info|biz|xyz|top|vip|club|shop|site|online|tech|app|dev|ai|uk|de|fr|jp|kr|ru|br|in|au|ca|hk|tw|sg)\b/i;
+		if (domainRegex.test(text) && commonTlds.test(text)) {
+			return 'http://' + text;
+		}
+
+		return null;
+	}
+
+	function showToast(message, options = {}) {
+		const {
+			duration = 8000,
+			onClick = null,
+			bgColor = 'rgba(0,0,0,0.75)',
+			textColor = '#fff',
+		} = options;
+
+		const toast = document.createElement('div');
+		toast.style.cssText = [
+			'position:fixed',
+			'bottom:20%',
+			'left:50%',
+			'transform:translateX(-50%) translateY(20px)',
+			`background-color:${bgColor}`,
+			`color:${textColor}`,
+			'padding:12px 24px',
+			'border-radius:8px',
+			'font-size:14px',
+			'line-height:1.5',
+			'max-width:80%',
+			'text-align:center',
+			'opacity:0',
+			'transition:opacity 0.3s,transform 0.3s',
+			'box-shadow:0 4px 15px rgba(0,0,0,0.3)',
+			'z-index:2147483647',
+			onClick ? 'pointer-events:auto;cursor:pointer' : 'pointer-events:none',
+		].join(';');
+		toast.textContent = message;
+
+		document.documentElement.appendChild(toast);
+		void toast.offsetWidth;
+		requestAnimationFrame(() => {
+			toast.style.opacity = '1';
+			toast.style.transform = 'translateX(-50%) translateY(0)';
+		});
+
+		function dismiss() {
+			toast.style.opacity = '0';
+			toast.style.transform = 'translateX(-50%) translateY(20px)';
+			setTimeout(() => { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 300);
+		}
+
+		if (onClick) {
+			toast.addEventListener('click', () => { onClick(); dismiss(); });
+		}
+
+		setTimeout(dismiss, duration);
+		return dismiss;
+	}
+
+	window.FlowMouseUtils = {
+		handleScroll,
+		checkScrollFeasibility,
+		copyText,
+		tryParseAsUrl,
+		showToast,
+	};
+})();
+
+(function () {
+	'use strict';
+
+	const isEdgeDesktop = navigator.userAgent.includes('Edg/');
 
 	const currentDomain = location.hostname;
 	
+	function checkBlacklist(blacklist) {
+		if (blacklist.includes(currentDomain)) return true;
+		try {
+			const origins = location.ancestorOrigins;
+			if (origins && origins.length > 0) {
+				return blacklist.includes(new URL(origins[origins.length - 1]).hostname);
+			}
+		} catch (e) {}
+		return false;
+	}
+
 	let isBlacklisted = false;
 	let initGesturesCalled = false;
 
@@ -11,7 +374,7 @@
 		if (chrome.storage && chrome.storage.sync) {
 			chrome.storage.sync.get({ blacklist: [] }, (items) => {
 				if (chrome.runtime.lastError) return; 
-				isBlacklisted = items.blacklist.includes(currentDomain);
+				isBlacklisted = checkBlacklist(items.blacklist);
 				if (!isBlacklisted) {
 					initGestures();
 				}
@@ -30,8 +393,8 @@
 					if (changes.blacklist) {
 						const oldBlacklist = changes.blacklist.oldValue || [];
 						const newBlacklist = changes.blacklist.newValue || [];
-						const wasBlacklisted = oldBlacklist.includes(currentDomain);
-						const nowBlacklisted = newBlacklist.includes(currentDomain);
+						const wasBlacklisted = checkBlacklist(oldBlacklist);
+						const nowBlacklisted = checkBlacklist(newBlacklist);
 
 						if (wasBlacklisted !== nowBlacklisted) {
 							isBlacklisted = nowBlacklisted;
@@ -49,7 +412,9 @@
 
 	function initGestures() {
 		initGesturesCalled = true;
-		const { DEFAULT_GESTURES, SEARCH_ENGINES, DEFAULT_SETTINGS } = window.GestureConstants;
+		const { DEFAULT_GESTURES, DEFAULT_SETTINGS, ACTION_DEFAULTS, ACTION_KEYS, LOCAL_ACTIONS, TEXT_DRAG_ACTIONS, LINK_DRAG_ACTIONS, IMAGE_DRAG_ACTIONS } = window.GestureConstants;
+		const { handleScroll, checkScrollFeasibility, copyText, tryParseAsUrl } = window.FlowMouseUtils;
+		const { msg } = window.ContentI18n;
 
 		const CONFIG = {
 			DISTANCE_THRESHOLD: DEFAULT_SETTINGS.distanceThreshold,
@@ -67,156 +432,73 @@
 			isIframe = true;
 		}
 
-		let i18nMessages = null;
-		function msg(key, defaultText) {
-			if (i18nMessages && i18nMessages[key]) {
-				return i18nMessages[key].message;
-			}
-			return chrome.i18n.getMessage(key) || defaultText;
-		}
+		const isIncognito = chrome.extension.inIncognitoContext;
 
-		function safeSendMessage(message) {
+		async function safeSendMessage(message) {
 			try {
 				if (chrome.runtime && chrome.runtime.sendMessage) {
-					chrome.runtime.sendMessage(message).catch(() => { });
+					return await chrome.runtime.sendMessage(message);
 				}
 			} catch (e) {
 			}
 		}
 
-		let ACTION_DEFINITIONS = {};
-
-		function updateDefinitions() {
-			ACTION_DEFINITIONS = {
-				'none': { name: msg('actionNone', '无操作'), type: 'local' },
-				'back': { name: msg('actionBack', '返回'), type: 'background' },
-				'forward': { name: msg('actionForward', '前进'), type: 'background' },
-				'scrollUp': { name: msg('actionScrollUp', '向上滚动'), type: 'local' },
-				'scrollDown': { name: msg('actionScrollDown', '向下滚动'), type: 'local' },
-				'scrollToTop': { name: msg('actionScrollToTop', '滚动到顶部'), type: 'local' },
-				'scrollToBottom': { name: msg('actionScrollToBottom', '滚动到底部'), type: 'local' },
-				'closeTab': { name: msg('actionCloseTab', '关闭标签页'), type: 'background' },
-				'closeTabKeepWindow': { name: msg('actionCloseTabKeepWindow', '关闭标签页(保留窗口)'), type: 'background' },
-				'closeBrowser': { name: msg('actionCloseBrowser', '关闭浏览器'), type: 'background' },
-				'restoreTab': { name: msg('actionRestoreTab', '恢复标签页'), type: 'background' },
-				'newTab': { name: msg('actionNewTab', '打开新标签页'), type: 'background' },
-				'closeOtherTabs': { name: msg('actionCloseOtherTabs', '关闭其他标签页'), type: 'background' },
-				'closeLeftTabs': { name: msg('actionCloseLeftTabs', '关闭左侧标签页'), type: 'background' },
-				'closeRightTabs': { name: msg('actionCloseRightTabs', '关闭右侧标签页'), type: 'background' },
-				'closeAllTabs': { name: msg('actionCloseAllTabs', '关闭所有标签页'), type: 'background' },
-				'switchLeftTab': { name: msg('actionSwitchLeftTab', '切换到左侧标签页'), type: 'background' },
-				'switchRightTab': { name: msg('actionSwitchRightTab', '切换到右侧标签页'), type: 'background' },
-				'refresh': { name: msg('actionRefresh', '刷新当前标签页'), type: 'background' },
-				'refreshAllTabs': { name: msg('actionRefreshAllTabs', '刷新所有标签页'), type: 'background' },
-				'stopLoading': { name: msg('actionStopLoading', '停止加载'), type: 'local' },
-				'newWindow': { name: msg('actionNewWindow', '新建窗口'), type: 'background' },
-				'newIncognito': { name: msg('actionNewIncognito', '新建无痕窗口'), type: 'background' },
-				'addToBookmarks': { name: msg('actionAddToBookmarks', '添加到收藏夹'), type: 'background' },
-				'toggleFullscreen': { name: msg('actionToggleFullscreen', '切换全屏'), type: 'background' },
-				'toggleMaximize': { name: msg('actionToggleMaximize', '窗口最大化/还原'), type: 'background' },
-				'minimize': { name: msg('actionMinimize', '窗口最小化'), type: 'background' },
-				'openCustomUrl': { name: msg('actionOpenCustomUrl', '打开自定义网址'), type: 'background' },
-				'copyUrl': { name: msg('actionCopyUrl', '复制当前网址'), type: 'local' },
-				'copyTitle': { name: msg('actionCopyTitle', '复制页面标题'), type: 'local' },
-				...({
-					'openDownloads': { name: msg('actionOpenDownloads', '打开下载页面'), type: 'background' },
-					'openHistory': { name: msg('actionOpenHistory', '打开历史记录'), type: 'background' },
-					'openExtensions': { name: msg('actionOpenExtensions', '打开扩展管理'), type: 'background' },
-				}),
-				'printPage': { name: msg('actionPrintPage', '打印页面'), type: 'local' },
-				'duplicateTab': { name: msg('actionDuplicateTab', '复制当前标签页'), type: 'background' },
-				'toggleMuteTab': { name: msg('actionToggleMuteTab', '静音/取消静音当前标签页'), type: 'background' },
-				'toggleMuteAllTabs': { name: msg('actionToggleMuteAllTabs', '静音/取消静音全部标签页'), type: 'background' },
-				'sendCustomEvent': { name: msg('actionSendCustomEvent', '发送手势自定义事件'), type: 'local' },
-			};
+		function getActionHintText(action, type) {
+			const dragActionKeyMap = { text: TEXT_DRAG_ACTIONS, link: LINK_DRAG_ACTIONS, image: IMAGE_DRAG_ACTIONS };
+			const key = dragActionKeyMap[type]?.[action];
+			return key ? msg(key) : '';
 		}
 
-		function getDragHint(type, pattern) {
-			if (!SETTINGS.enableAdvancedSettings) {
-				if (pattern !== '→') return ''; 
-				const basicHints = {
-					'text': '→ ' + msg('dragActionSearch', '🔍 搜索引擎'),
-					'link': '→ ' + msg('dragActionOpenTabLink', '🔗 打开链接'),
-					'image': '→ ' + msg('dragActionOpenTabImage', '🖼️ 打开图片')
-				};
-				return basicHints[type] || '';
+		function getDragHints(type, pattern) {
+			const gestures = getGesturesForDragType(type);
+			if (!gestures) return [];
+
+			const configs = getDragGestureConfigs(gestures, pattern);
+			const rawHints = [];
+			for (const cfg of configs) {
+				const action = cfg.action || 'none';
+				if (action === 'none') continue;
+				const hint = getActionHintText(action, type);
+				if (hint) rawHints.push(hint);
 			}
 
-
-			const getAction = (gestures) => {
-				if (Array.isArray(gestures)) {
-					const found = gestures.find(g => g.direction === pattern);
-					return found ? (found.action || 'none') : 'none';
-				}
-				const cfg = gestures?.[pattern];
-				if (typeof cfg === 'object' && cfg !== null) {
-					return cfg.action || 'none';
-				}
-				return cfg || 'none';
-			};
-
-			let action = 'none';
-			if (type === 'text') {
-				action = getAction(SETTINGS.textDragGestures);
-			} else if (type === 'link') {
-				action = getAction(SETTINGS.linkDragGestures);
-			} else if (type === 'image') {
-				action = getAction(SETTINGS.imageDragGestures);
+			const countMap = new Map();
+			for (const h of rawHints) {
+				countMap.set(h, (countMap.get(h) || 0) + 1);
 			}
-
-			let actionHint = '';
-			if (action === 'openTab') {
-				if (type === 'link') {
-					actionHint = msg('dragActionOpenTabLink', '🔗 打开链接');
-				} else if (type === 'image') {
-					actionHint = msg('dragActionOpenTabImage', '🖼️ 打开图片');
-				} else {
-					actionHint = msg('dragActionOpenTab', '📑 新标签页打开');
-				}
-			} else {
-				const actionNames = {
-					'search': msg('dragActionSearch', '🔍 搜索引擎'),
-					'copy': msg('dragActionCopy', '📋 复制'),
-					'copyLink': msg('dragActionCopyLink', '🔗 复制链接'),
-					'saveImage': msg('dragActionSaveImage', '💾 保存图片'),
-					'copyImageUrl': msg('dragActionCopyImageUrl', '📋 复制图片地址'),
-					'imageSearch': msg('dragActionImageSearch', '🔍 图片搜索'),
-					'none': ''
-				};
-				actionHint = actionNames[action] || '';
+			const hints = [];
+			const seen = new Set();
+			for (const h of rawHints) {
+				if (seen.has(h)) continue;
+				seen.add(h);
+				const count = countMap.get(h);
+				hints.push(count > 1 ? `${h} × ${count}` : h);
 			}
-			return actionHint ? `${pattern} ${actionHint}` : '';
+			return hints;
+		}
+
+		function getGesturesForDragType(dragType) {
+			if (dragType === 'text') return SETTINGS.textDragGestures;
+			if (dragType === 'link') return SETTINGS.linkDragGestures;
+			if (dragType === 'image') return SETTINGS.imageDragGestures;
+			return null;
+		}
+
+		function getDragGestureConfigs(gestures, dir) {
+			if (!Array.isArray(gestures)) return [];
+			return gestures.filter(g => g.direction === dir);
+		}
+
+		function hasDragAction(dragType, pattern) {
+			if (!pattern) return false;
+			const gestures = getGesturesForDragType(dragType);
+			if (!gestures) return false;
+			return getDragGestureConfigs(gestures, pattern).some(g => g.action && g.action !== 'none');
 		}
 
 		let SETTINGS = {
-			enableGesture: DEFAULT_SETTINGS.enableGesture,
-			enableHUD: DEFAULT_SETTINGS.enableHUD,
-			enableTrail: DEFAULT_SETTINGS.enableTrail,
-			showTrailOrigin: DEFAULT_SETTINGS.showTrailOrigin,
-			enableTrailSmooth: DEFAULT_SETTINGS.enableTrailSmooth,
-			searchEngine: DEFAULT_SETTINGS.searchEngine,
-			customSearchUrl: DEFAULT_SETTINGS.customSearchUrl,
-			gestures: { ...DEFAULT_GESTURES },
-			customGestures: {}, 
-			enableGestureCustomization: DEFAULT_SETTINGS.enableGestureCustomization,
-			enableAdvancedSettings: DEFAULT_SETTINGS.enableAdvancedSettings,
-			scrollAmount: DEFAULT_SETTINGS.scrollAmount,
-			distanceThreshold: DEFAULT_SETTINGS.distanceThreshold,
-			scrollSmoothness: DEFAULT_SETTINGS.scrollSmoothness,
-			enableTextDrag: DEFAULT_SETTINGS.enableTextDrag,
-			enableImageDrag: DEFAULT_SETTINGS.enableImageDrag,
-			enableLinkDrag: DEFAULT_SETTINGS.enableLinkDrag,
-			enableDrag: DEFAULT_SETTINGS.enableTextDrag || DEFAULT_SETTINGS.enableImageDrag || DEFAULT_SETTINGS.enableLinkDrag, 
-			hudBgColor: DEFAULT_SETTINGS.hudBgColor,
-			hudBgOpacity: DEFAULT_SETTINGS.hudBgOpacity,
-			hudTextColor: DEFAULT_SETTINGS.hudTextColor,
-			trailColor: DEFAULT_SETTINGS.trailColor,
-			trailWidth: DEFAULT_SETTINGS.trailWidth,
-			newTabPosition: DEFAULT_SETTINGS.newTabPosition,
-			newTabActive: DEFAULT_SETTINGS.newTabActive,
-			textDragGestures: DEFAULT_SETTINGS.textDragGestures,
-			linkDragGestures: DEFAULT_SETTINGS.linkDragGestures,
-			imageDragGestures: DEFAULT_SETTINGS.imageDragGestures,
+			...DEFAULT_SETTINGS,
+			enableDrag: DEFAULT_SETTINGS.enableTextDrag || DEFAULT_SETTINGS.enableImageDrag || DEFAULT_SETTINGS.enableLinkDrag
 		};
 
 		function getGestureAction(pattern) {
@@ -224,23 +506,34 @@
 				return DEFAULT_GESTURES[pattern];
 			}
 
-			const custom = SETTINGS.customGestures?.[pattern];
-			if (custom === null) return null;  
-			if (custom !== undefined) return custom;  
-
-			if (SETTINGS.gestures && SETTINGS.gestures[pattern]) {
-				return SETTINGS.gestures[pattern];
-			}
-
-			return DEFAULT_GESTURES[pattern];  
+			const config = SETTINGS.mouseGestures?.[pattern];
+			return config?.action;
 		}
+
 
 		function getActionName(pattern) {
 			const action = getGestureAction(pattern);
-			if (action && ACTION_DEFINITIONS[action] && action !== 'none') {
-				return `${pattern} ${ACTION_DEFINITIONS[action].name}`;
+			if (!action || action === 'none') return '';
+			if (action === 'actionChain') {
+				const config = SETTINGS.mouseGestures?.[pattern];
+				const chain = SETTINGS.actionChains?.[config?.chainId];
+				if (chain?.name) return chain.name;
+				if (!chain) return `${msg(ACTION_KEYS[action])} ${msg('chainNotFound')}`;
 			}
-			return pattern;
+			if (action === 'simulateKey') {
+				const config = SETTINGS.mouseGestures?.[pattern] || {};
+				const defaults = ACTION_DEFAULTS.simulateKey || {};
+				const keyValue = config.keyValue || defaults.keyValue || 'ArrowLeft';
+				const mods = [];
+				if (config.modCtrl) mods.push('Ctrl');
+				if (config.modShift) mods.push('Shift');
+				if (config.modAlt) mods.push('Alt');
+				if (config.modMeta) mods.push('Meta');
+				mods.push(keyValue);
+				return `${msg(ACTION_KEYS[action])} (${mods.join('+')})`;
+			}
+			const i18nKey = ACTION_KEYS[action];
+			return i18nKey ? msg(i18nKey) : '';
 		}
 
 		function loadSettings() {
@@ -253,48 +546,39 @@
 						SETTINGS = { ...SETTINGS, ...otherSettings };
 					}
 
-					if (!SETTINGS.gestures || Object.keys(SETTINGS.gestures).length === 0) {
-						SETTINGS.gestures = DEFAULT_GESTURES;
-					}
+					SETTINGS.wheelGestures = {
+						...structuredClone(DEFAULT_SETTINGS.wheelGestures || {}),
+						...(SETTINGS.wheelGestures || {}),
+					};
+					SETTINGS.specialGestures = {
+						...structuredClone(DEFAULT_SETTINGS.specialGestures || {}),
+						...(SETTINGS.specialGestures || {}),
+					};
 
-					if (SETTINGS.language && SETTINGS.language !== 'auto') {
-						try {
-							const url = chrome.runtime.getURL(`_locales/${SETTINGS.language}/messages.json`);
-							const response = await fetch(url);
-							i18nMessages = await response.json();
-						} catch (e) {
-						}
-					} else {
-						i18nMessages = null;
-					}
+					await window.ContentI18n.loadLanguage(SETTINGS.language);
 
 					SETTINGS.enableDrag = SETTINGS.enableTextDrag || SETTINGS.enableImageDrag || SETTINGS.enableLinkDrag;
 
-					updateDefinitions();
-
 					if (window.GestureRecognizer && recognizer && recognizer.updateConfig) {
-						recognizer.updateConfig({ distanceThreshold: SETTINGS.distanceThreshold });
+						recognizer.updateConfig({
+							distanceThreshold: SETTINGS.distanceThreshold,
+							longGestureMultiplier: SETTINGS.gestureTurnTolerance
+						});
 					}
 
 					if (SETTINGS.enableTrail || SETTINGS.enableHUD) {
-						const currentLang = (SETTINGS.language && SETTINGS.language !== 'auto')
-							? SETTINGS.language.replace('_', '-') 
-							: chrome.i18n.getUILanguage();
-
-						const rtlLangs = ['ar', 'he', 'fa', 'ps', 'ur', 'yi', 'sd', 'ug', 'ku'];
-						const isRtl = rtlLangs.some(l => currentLang === l || currentLang.startsWith(l + '-'));
-
 						visualizer.updateSettings({
 							hudBgColor: SETTINGS.hudBgColor,
-							hudBgOpacity: SETTINGS.hudBgOpacity,
 							hudTextColor: SETTINGS.hudTextColor,
+							hudBlurRadius: SETTINGS.hudBlurRadius,
+							enableHudShadow: SETTINGS.enableHudShadow,
 							trailColor: SETTINGS.trailColor,
 							trailWidth: SETTINGS.trailWidth,
 							showTrailOrigin: SETTINGS.showTrailOrigin,
 							enableInputStabilization: SETTINGS.enableTrailSmooth,
 							enablePathInterpolation: SETTINGS.enableTrailSmooth,
-							lang: currentLang,
-							isRtl: isRtl
+							lang: window.ContentI18n.getHtmlLang(),
+							isRtl: window.ContentI18n.getDir() === 'rtl'
 						});
 					}
 				});
@@ -330,20 +614,31 @@
 					isRemoteGestureActive = request.active;
 				}
 
+				if (request.action === 'executeLocalAction' && !isIframe) {
+					if (!LOCAL_ACTIONS.has(request.stepAction)) {
+						sendResponse({ success: false });
+						return;
+					}
+					executeAction(request.stepAction, request.stepConfig)
+						.then(() => sendResponse({ success: true }))
+						.catch(() => sendResponse({ success: false }));
+					return true; 
+				}
+
 				if (request.action === 'gestureHudUpdate' && !isIframe) {
 					const d = request.data;
 					switch (d.type) {
 						case 'hide': visualizer.hide(); break;
-						case 'updateAction': visualizer.updateAction(d.text); break;
+						case 'updateAction': visualizer.updateAction(d.arrows, d.texts); break;
 					}
 				}
 
 				if (request.action === 'gestureScrollUpdate' && !isIframe) {
-					handleScroll(request.data.action, true);
+					handleScroll(request.data.action, request.data.scrollConfig, true);
 				}
 
 				if (request.action === 'showDownloadError' && !isIframe) {
-					visualizer.showToast(msg('downloadErrorHotlink', 'Image save failed. The website may have hotlink protection. Please right-click the image and select "Save image as..."'), 5000);
+					visualizer.showToast(msg('downloadErrorHotlink'), 5000);
 				}
 			});
 		} catch (e) {
@@ -360,18 +655,32 @@
 			skipFirstDragOver: false  
 		};
 
+		function resetState() {
+			visualizer.hide();
+			if (SETTINGS.enableHUD) visualizer.updateAction('', []);
+			recognizer.reset();
+			gestureState.isRightButton = false;
+			gestureState.isDrag = false;
+			gestureState.selectedText = '';
+			gestureState.dragElement = null;
+			gestureState.dragType = null;
+			gestureState.skipFirstDragOver = false;
+		}
+
 		let isRemoteGestureActive = false;
+
+		let edgeGestureBlurCount = 0;
 
 		let preventContextMenuTimeoutId = null;
 
 		let lastPointerType = 'mouse';
 
 		class RelayGestureVisualizer extends window.GestureVisualizer {
-			updateAction(text) {
+			updateAction(arrows, texts) {
 				if (isIframe) {
-					safeSendMessage({ action: 'gestureHudUpdate', data: { type: 'updateAction', text: text } });
+					safeSendMessage({ action: 'gestureHudUpdate', data: { type: 'updateAction', arrows, texts } });
 				} else {
-					super.updateAction(text);
+					super.updateAction(arrows, texts);
 				}
 			}
 
@@ -390,10 +699,64 @@
 		let lastRightClickTime = 0;
 		const doubleClickDelay = 500; 
 
-		document.addEventListener('contextmenu', (e) => {
-			if (!SETTINGS.enableGesture || isBlacklisted) return;
+		let macLinuxHintShown = false;
 
-			if (e.target.closest('[data-gesture-ignore]')) return;
+		function showMacLinuxHint() {
+			if (macLinuxHintShown) return;
+			const hintText = msg('macLinuxDoubleClickHint');
+			if (!hintText) return;
+			macLinuxHintShown = true;
+			window.FlowMouseUtils.showToast(hintText, {
+				bgColor: SETTINGS.hudBgColor,
+				textColor: SETTINGS.hudTextColor,
+				onClick: () => {
+					try { chrome.storage.sync.set({ macLinuxHintDismissed: true }); } catch (e) {}
+					SETTINGS.macLinuxHintDismissed = true;
+					safeSendMessage({ action: 'openOptionsPage', hash: '#mac-linux-notice' });
+				},
+			});
+		}
+
+		let wheelGestureTriggered = false;
+		let rockerGestureTriggered = false;
+		let rightButtonSeenOnPage = false;
+
+		window.addEventListener('pageshow', (e) => {
+			if (e.persisted) {
+				rightButtonSeenOnPage = false;
+				rockerGestureTriggered = false;
+				wheelGestureTriggered = false;
+				resetState();
+			}
+		});
+
+		document.addEventListener('contextmenu', (e) => {
+			if (isBlacklisted) return;
+
+			if (wheelGestureTriggered) {
+				wheelGestureTriggered = false;
+				e.preventDefault();
+				e.stopPropagation();
+				return false;
+			}
+
+			if (rockerGestureTriggered) {
+				rockerGestureTriggered = false;
+				e.preventDefault();
+				e.stopPropagation();
+				return false;
+			}
+
+			if (!rightButtonSeenOnPage && e.button === 2) {
+				rightButtonSeenOnPage = true;
+				e.preventDefault();
+				e.stopPropagation();
+				return false;
+			}
+
+			if (!SETTINGS.enableGesture && !SETTINGS.enableWheelGestures && !SETTINGS.enableSpecialGestures) return;
+
+			if (e.composedPath().some(el => el.hasAttribute && el.hasAttribute('data-gesture-ignore'))) return;
 
 			if (isMacOrLinux) {
 				const now = Date.now();
@@ -406,11 +769,19 @@
 					lastRightClickTime = 0; 
 					gestureState.isRightButton = false; 
 					recognizer.reset();
+					if (!SETTINGS.macLinuxHintDismissed) {
+						SETTINGS.macLinuxHintDismissed = true;
+						try { chrome.storage.sync.set({ macLinuxHintDismissed: true }); } catch (e) {}
+					}
 					return; 
 				} else {
 					lastRightClickTime = now;
 					e.preventDefault();
-					e.stopPropagation();
+
+					if (!SETTINGS.macLinuxHintDismissed && !isIframe) {
+						showMacLinuxHint();
+					}
+
 					return false;
 				}
 			} else {
@@ -426,13 +797,16 @@
 			if (e.button === 0) {
 				lastPointerType = e.pointerType; 
 			}
+			if (e.button === 2) {
+				rightButtonSeenOnPage = true;
+			}
 		}, true);
 
 		document.addEventListener('pointerdown', (e) => {
 			if (!SETTINGS.enableGesture || isBlacklisted) return;
 
 			if ((e.pointerType === 'mouse') && e.button === 2) {
-				if (e.target.closest('[data-gesture-ignore]')) return;
+				if (e.composedPath().some(el => el.hasAttribute && el.hasAttribute('data-gesture-ignore'))) return;
 
 				gestureState.isRightButton = true;
 				gestureState.isDrag = false;
@@ -443,16 +817,6 @@
 				}
 				recognizer.start(e.clientX, e.clientY, e.timeStamp);
 
-				try {
-					const target = document.documentElement || document.body;
-					if (target && target.setPointerCapture) {
-						target.setPointerCapture(e.pointerId);
-					}
-				} catch (err) {
-					console.warn('FlowMouse: setPointerCapture failed', err);
-				}
-
-
 			}
 		}, true);
 
@@ -461,6 +825,17 @@
 			if (!gestureState.isRightButton) return;
 
 			const result = recognizer.move(e.clientX, e.clientY, e.timeStamp);
+
+			if (result.totalDistance > 3 || result.activated) {
+				try {
+					const target = document.documentElement || document.body;
+					if (!target.hasPointerCapture(e.pointerId)) {
+						target.setPointerCapture(e.pointerId);
+					}
+				} catch (err) {
+					console.warn('FlowMouse: setPointerCapture failed', err);
+				}
+			}
 
 			let currentPoints = [];
 			if (SETTINGS.enableTrail) {
@@ -499,7 +874,7 @@
 
 			if (result.directionChanged && SETTINGS.enableHUD) {
 				const actionName = getActionName(result.pattern);
-				visualizer.updateAction(actionName);
+				visualizer.updateAction(result.pattern, actionName ? [actionName] : []);
 			}
 		}, true);
 
@@ -519,6 +894,55 @@
 					preventContextMenuTimeoutId = null;
 					safeSendMessage({ action: 'gestureStateUpdate', active: false });
 				}, 50);
+			}
+		}, true);
+
+		let rockerLeftExecuted = false;
+		document.addEventListener('mousedown', (e) => {
+			if (isBlacklisted) return;
+			if (!SETTINGS.enableSpecialGestures) return;
+			
+			if (e.button === 0 && (e.buttons & 2)) {
+				if (recognizer.isActive()) return;
+				const specialConfig = (SETTINGS.specialGestures || {}).leftClickHoldingRight;
+				if (!specialConfig?.action || specialConfig.action === 'none') return;
+				e.preventDefault();
+				e.stopPropagation();
+				gestureState.preventContextMenu = true;
+				gestureState.isRightButton = false;
+				recognizer.reset();
+				rockerGestureTriggered = true;
+				rockerLeftExecuted = true;
+				executeAction(specialConfig.action, specialConfig, e.clientX, e.clientY);
+				return;
+			}
+
+			if (e.button === 2 && (e.buttons & 1)) {
+				if (recognizer.isActive()) return;
+				const specialConfig = (SETTINGS.specialGestures || {}).rightClickHoldingLeft;
+				if (!specialConfig?.action || specialConfig.action === 'none') return;
+				e.preventDefault();
+				e.stopPropagation();
+				gestureState.preventContextMenu = true;
+				gestureState.isRightButton = false;
+				recognizer.reset();
+				rockerGestureTriggered = true;
+				executeAction(specialConfig.action, specialConfig, e.clientX, e.clientY);
+				return;
+			}
+		}, true);
+
+		document.addEventListener('click', (e) => {
+			if (rockerLeftExecuted) {
+				e.preventDefault();
+				e.stopPropagation();
+				rockerLeftExecuted = false;
+			}
+		}, true);
+
+		document.addEventListener('mouseup', (e) => {
+			if (e.button === 0 && rockerLeftExecuted) {
+				setTimeout(() => { rockerLeftExecuted = false; }, 10);
 			}
 		}, true);
 
@@ -583,7 +1007,6 @@
 
 			let targetImg = path.find(el => el.tagName === 'IMG');
 
-			
 
 			if (SETTINGS.enableImageDrag && targetImg) {
 				dragContent = targetImg.src || targetImg.currentSrc;
@@ -633,6 +1056,7 @@
 							if (absoluteUrl.startsWith('http') || absoluteUrl.startsWith('ftp') || absoluteUrl.startsWith('file') || absoluteUrl.startsWith('chrome-extension:') || absoluteUrl.startsWith('moz-extension:')) {
 								dragContent = absoluteUrl;
 								dragType = 'link';
+								dragElement = targetLink;
 								window.getSelection().removeAllRanges();
 							}
 						} catch (err) {
@@ -687,15 +1111,13 @@
 
 			if (!recognizer.isActive()) return;
 
-			e.preventDefault();
+			if (hasDragAction(gestureState.dragType, recognizer.getPattern())) {
+				e.preventDefault();
+			}
 
 			if (result.directionChanged && SETTINGS.enableHUD) {
-				if (['→', '←', '↑', '↓'].includes(result.pattern)) {
-					const hint = getDragHint(gestureState.dragType, result.pattern);
-					visualizer.updateAction(hint);
-				} else {
-					visualizer.updateAction('');
-				}
+				const hints = getDragHints(gestureState.dragType, result.pattern);
+				visualizer.updateAction(hints.length > 0 ? result.pattern : '', hints);
 			}
 		});
 
@@ -703,7 +1125,9 @@
 			if (!SETTINGS.enableDrag || isBlacklisted) return;
 			if (!gestureState.isDrag) return;
 			if (!recognizer.isActive()) return;
-			e.preventDefault();
+			if (hasDragAction(gestureState.dragType, recognizer.getPattern())) {
+				e.preventDefault();
+			}
 		}, true);
 
 		document.addEventListener('dragleave', (e) => {
@@ -722,8 +1146,11 @@
 			if (!SETTINGS.enableDrag || isBlacklisted) return;
 			try {
 				if (gestureState.isDrag && recognizer.isActive()) {
-					e.preventDefault();
-					executeDragGesture(gestureState, recognizer.getPattern(), e.dataTransfer);
+					const pattern = recognizer.getPattern();
+					if (hasDragAction(gestureState.dragType, pattern)) {
+						e.preventDefault();
+						executeDragGesture({ ...gestureState }, pattern, e.dataTransfer);
+					}
 				}
 			} catch (error) {
 			} finally {
@@ -747,384 +1174,270 @@
 			}
 		}, true);
 
-		function resetState() {
-			visualizer.hide();
-			if (SETTINGS.enableHUD) visualizer.updateAction('');
-			recognizer.reset();
+		document.addEventListener('wheel', (e) => {
+			if (isBlacklisted) return;
+			if (!SETTINGS.enableWheelGestures) return;
+			if (!(e.buttons & 2)) return;
+			if (recognizer.isActive()) return;
+			if (e.deltaY === 0) return;
+
+			const gestureKey = e.deltaY < 0 ? 'scrollUpHoldingRight' : 'scrollDownHoldingRight';
+			const scrollConfig = (SETTINGS.wheelGestures || {})[gestureKey];
+			const action = scrollConfig?.action;
+			if (!action || action === 'none') return;
+
+			e.preventDefault();
+			e.stopPropagation();
+			gestureState.preventContextMenu = true;
 			gestureState.isRightButton = false;
-			gestureState.isDrag = false;
-			gestureState.selectedText = '';
-			gestureState.dragElement = null;
-			gestureState.dragType = null;
-			gestureState.skipFirstDragOver = false;
-		}
+			recognizer.reset();
+			wheelGestureTriggered = true;
 
-		function getScrollTarget(forceTargetWindow = false) {
-			if (forceTargetWindow) return window;
+			executeAction(action, scrollConfig, e.clientX, e.clientY);
+		}, { capture: true, passive: false });
 
-			const root = document.scrollingElement || document.documentElement;
-			const isRootScrollable = root.scrollHeight > window.innerHeight &&
-				getComputedStyle(root).overflowY !== 'hidden' &&
-				(!document.body || getComputedStyle(document.body).overflowY !== 'hidden');
+		window.addEventListener('blur', () => {
+			if (gestureState.isRightButton) {
+				if (recognizer.isActive()) {
+					safeSendMessage({ action: 'gestureStateUpdate', active: false });
+				}
 
-			if (!isRootScrollable) {
-				let el = document.elementFromPoint(recognizer.startX, recognizer.startY);
-				while (el && el !== root && el !== document.body) {
-					const s = window.getComputedStyle(el);
-					if ((s.overflowY === 'auto' || s.overflowY === 'scroll') && el.scrollHeight > el.clientHeight) {
-						return el;
+				if (isEdgeDesktop && !isIframe) {
+					edgeGestureBlurCount++;
+					if (edgeGestureBlurCount >= 2 && !SETTINGS.edgeGestureConflict) {
+						SETTINGS.edgeGestureConflict = true;
+						try {
+							if (chrome.storage && chrome.storage.sync) {
+								chrome.storage.sync.set({ edgeGestureConflict: true });
+							}
+						} catch (e) { }
 					}
-					el = el.parentElement;
-				}
-			}
-			return window;
-		}
-
-		function checkScrollFeasibility(action) {
-			const tolerance = 1; 
-			const target = getScrollTarget(); 
-			const isWindow = target === window;
-			const root = document.scrollingElement || document.documentElement;
-
-			const currentScrollTop = isWindow ? window.scrollY : target.scrollTop;
-			const maxScrollTop = isWindow ? (root.scrollHeight - window.innerHeight) : (target.scrollHeight - target.clientHeight);
-
-			if (action === 'scrollUp' || action === 'scrollToTop') {
-				return currentScrollTop > tolerance; 
-			} else if (action === 'scrollDown' || action === 'scrollToBottom') {
-				return currentScrollTop < maxScrollTop - tolerance; 
-			}
-			return true; 
-		}
-
-		function handleScroll(action, forceTargetWindow = false) {
-			const target = getScrollTarget(forceTargetWindow);
-			const isWindow = target === window;
-			const root = document.scrollingElement || document.documentElement;
-
-			const containerHeight = isWindow ? window.innerHeight : target.clientHeight;
-			const scrollAmount = containerHeight * ((SETTINGS.scrollAmount || 75) / 100);
-
-			if (action === 'scrollUp' || action === 'scrollDown') {
-				const direction = action === 'scrollUp' ? -1 : 1;
-				const delta = scrollAmount * direction;
-				const smoothness = SETTINGS.scrollSmoothness || 'system';
-
-				if (smoothness === 'custom') {
-					smoothScrollBy(target, 0, delta);
-				} else {
-					target.scrollBy({ top: delta, left: 0, behavior: smoothness === 'none' ? 'instant' : 'smooth' });
-				}
-			} else if (action === 'scrollToTop') {
-				target.scrollTo({ top: 0, behavior: 'instant' });
-			} else if (action === 'scrollToBottom') {
-				const fullHeight = isWindow ? root.scrollHeight : target.scrollHeight;
-				target.scrollTo({ top: fullHeight, behavior: 'instant' });
-			}
-		}
-
-		let scrollRafId = null;
-		function smoothScrollBy(target, dx, dy) {
-			if (scrollRafId) cancelAnimationFrame(scrollRafId);
-
-			const isWindow = target === window;
-			const root = document.scrollingElement || document.documentElement;
-
-			const startX = isWindow ? window.scrollX : target.scrollLeft;
-			const startY = isWindow ? window.scrollY : target.scrollTop;
-
-			const maxScrollX = isWindow ? (root.scrollWidth - window.innerWidth) : (target.scrollWidth - target.clientWidth);
-			const maxScrollY = isWindow ? (root.scrollHeight - window.innerHeight) : (target.scrollHeight - target.clientHeight);
-
-			let targetX = startX + dx;
-			let targetY = startY + dy;
-
-			targetX = Math.max(0, Math.min(targetX, maxScrollX));
-			targetY = Math.max(0, Math.min(targetY, maxScrollY));
-
-			if (startX === targetX && startY === targetY) return;
-
-			const realDx = targetX - startX;
-			const realDy = targetY - startY;
-
-			const startTime = performance.now();
-
-			const intendedDist = Math.sqrt(dx * dx + dy * dy);
-			const realDist = Math.sqrt(realDx * realDx + realDy * realDy);
-
-			let duration = 500; 
-			if (intendedDist > 0 && realDist < intendedDist) {
-				duration = Math.max(16, duration * (realDist / intendedDist)); 
-			}
-
-			function step(currentTime) {
-				const elapsed = currentTime - startTime;
-
-				if (elapsed > duration) {
-					if (isWindow) {
-						window.scrollTo(targetX, targetY);
-					} else {
-						target.scrollLeft = targetX;
-						target.scrollTop = targetY;
-					}
-					scrollRafId = null;
-					return;
 				}
 
-				const progress = elapsed / duration;
-				const ease = 1 - Math.pow(1 - progress, 3);
-
-				const currentX = startX + realDx * ease;
-				const currentY = startY + realDy * ease;
-
-				if (isWindow) {
-					window.scrollTo(currentX, currentY);
-				} else {
-					target.scrollLeft = currentX;
-					target.scrollTop = currentY;
-				}
-
-				scrollRafId = requestAnimationFrame(step);
+				gestureState.preventContextMenu = false;
+				resetState();
 			}
+		});
 
-			scrollRafId = requestAnimationFrame(step);
-		}
+		async function executeAction(action, config = {}, cursorX, cursorY, useActiveTab = false) {
+			if (!action || action === 'none') return false;
 
-		function executeGesture(pattern) {
-			const action = getGestureAction(pattern);
+			if (!ACTION_KEYS[action]) return false;
 
-			if (!action || action === 'none') {
-				return;
-			}
+			const defaults = ACTION_DEFAULTS[action] || {};
+			const mergedConfig = { ...defaults, ...config };
 
-			const actionDef = ACTION_DEFINITIONS[action];
-			if (!actionDef) {
-				return;
-			}
-
-			if (actionDef.type === 'local') {
+			if (LOCAL_ACTIONS.has(action)) {
+				const scrollConfig = { scrollDistance: mergedConfig.scrollDistance, scrollSmoothness: mergedConfig.scrollSmoothness, scrollAccel: mergedConfig.scrollAccel, scrollAccelWindow: mergedConfig.scrollAccelWindow };
 				switch (action) {
 					case 'scrollUp':
 					case 'scrollDown':
 					case 'scrollToTop':
 					case 'scrollToBottom':
-						if (isIframe) {
-							if (!checkScrollFeasibility(action)) {
-								safeSendMessage({ action: 'gestureScrollUpdate', data: { action } });
-								break; 
-							}
+						if (isIframe && !checkScrollFeasibility(action, cursorX, cursorY)) {
+							safeSendMessage({ action: 'gestureScrollUpdate', data: { action, scrollConfig } });
+							break;
 						}
-						handleScroll(action);
+						handleScroll(action, scrollConfig, false, cursorX, cursorY);
 						break;
 					case 'stopLoading': window.stop(); break;
-					case 'copyUrl':
-						fallbackCopy(location.href);
+					case 'copyUrl': copyText(mergedConfig.includeTitle ? `${document.title}\n${location.href}` : location.href); break;
+					case 'copyTitle': copyText(document.title); break;
+					case 'printPage': window.print(); break;
+					case 'sendCustomEvent': {
+						const eventType = mergedConfig.eventType;
+						if (eventType) {
+							let detail = {};
+							try {
+								const detailStr = mergedConfig.eventDetail || '{}';
+								detail = JSON.parse(detailStr);
+							} catch {  }
+							window.dispatchEvent(new CustomEvent(eventType, { detail, bubbles: true, cancelable: true }));
+						}
 						break;
-					case 'copyTitle':
-						fallbackCopy(document.title);
+					}
+					case 'simulateKey': {
+						const keyValue = mergedConfig.keyValue;
+						if (keyValue) {
+							const KEY_CODE_MAP = {
+								Backspace: 8, Tab: 9, Enter: 13, Shift: 16, Control: 17, Alt: 18,
+								Escape: 27, ' ': 32, PageUp: 33, PageDown: 34,
+								End: 35, Home: 36, ArrowLeft: 37, ArrowUp: 38, ArrowRight: 39, ArrowDown: 40,
+								Delete: 46, Insert: 45,
+								F1: 112, F2: 113, F3: 114, F4: 115, F5: 116, F6: 117,
+								F7: 118, F8: 119, F9: 120, F10: 121, F11: 122, F12: 123,
+							};
+							let keyCode = KEY_CODE_MAP[keyValue];
+							if (keyCode == null && keyValue.length === 1) {
+								keyCode = keyValue.toUpperCase().charCodeAt(0);
+							}
+							keyCode = keyCode || 0;
+							let code = keyValue;
+							if (keyValue.length === 1) {
+								const ch = keyValue.toUpperCase();
+								if (ch >= 'A' && ch <= 'Z') code = 'Key' + ch;
+								else if (ch >= '0' && ch <= '9') code = 'Digit' + ch;
+							}
+							const opts = {
+								key: keyValue,
+								code,
+								keyCode,
+								which: keyCode,
+								bubbles: true,
+								cancelable: true,
+								ctrlKey: !!mergedConfig.modCtrl,
+								shiftKey: !!mergedConfig.modShift,
+								altKey: !!mergedConfig.modAlt,
+								metaKey: !!mergedConfig.modMeta,
+							};
+							const target = document.activeElement || document.body;
+							target.dispatchEvent(new KeyboardEvent('keydown', opts));
+							target.dispatchEvent(new KeyboardEvent('keyup', opts));
+						}
 						break;
-					case 'printPage':
-						window.print();
-						break;
-					case "sendCustomEvent":
-						window.dispatchEvent(new CustomEvent("FLOW_MOUSE_EVENT", { detail: pattern }));
-						break;
+					}
 				}
 			} else {
+				const msg_obj = { action };
+				if (useActiveTab) msg_obj.useActiveTab = true;
 				if (action === 'openCustomUrl') {
-					safeSendMessage({ action: action, pattern: pattern });
-				} else {
-					safeSendMessage({ action: action });
+					msg_obj.customUrl = mergedConfig.customUrl || '';
+				} else if (action === 'closeTab') {
+					msg_obj.keepWindow = !!mergedConfig.keepWindow;
+					msg_obj.afterClose = mergedConfig.afterClose || 'default';
+				} else if (action === 'switchLeftTab' || action === 'switchRightTab') {
+					msg_obj.noWrap = !!mergedConfig.noWrap;
+					msg_obj.moveTab = !!mergedConfig.moveTab;
+				} else if (action === 'switchFirstTab' || action === 'switchLastTab') {
+					msg_obj.moveTab = !!mergedConfig.moveTab;
+				} else if (action === 'actionChain') {
+					const chainId = mergedConfig.chainId;
+					const chain = SETTINGS.actionChains?.[chainId];
+					if (chain?.steps?.length) {
+						msg_obj.steps = chain.steps
+							.filter(s => s.action && s.action !== 'none' && s.action !== 'actionChain')
+							.map(s => ({ ...(ACTION_DEFAULTS[s.action] || {}), ...s }));
+					}
 				}
+				return await safeSendMessage(msg_obj);
 			}
+			return true;
 		}
 
-		function fallbackCopy(text) {
-			if (navigator.clipboard && navigator.clipboard.writeText) {
-				navigator.clipboard.writeText(text).catch(err => {
-					manualCopy(text);
-				});
-			} else {
-				manualCopy(text);
+		function executeGesture(pattern) {
+			const action = getGestureAction(pattern);
+			if (!action || action === 'none') return;
+
+			if (isEdgeDesktop && SETTINGS.edgeGestureConflict) {
+				SETTINGS.edgeGestureConflict = false;
+				edgeGestureBlurCount = 0;
+				try {
+					if (chrome.storage && chrome.storage.sync) {
+						chrome.storage.sync.set({ edgeGestureConflict: false });
+					}
+				} catch (e) { }
 			}
+
+			const config = SETTINGS.enableGestureCustomization
+				? (SETTINGS.mouseGestures?.[pattern] || {})
+				: {};
+			executeAction(action, config, recognizer.startX, recognizer.startY);
 		}
 
-		function manualCopy(text) {
-			try {
-				const textarea = document.createElement('textarea');
-				textarea.value = text;
-				textarea.style.position = 'fixed';
-				textarea.style.left = '-9999px';
-				document.body.appendChild(textarea);
-				textarea.select();
-				document.execCommand('copy');
-				document.body.removeChild(textarea);
-			} catch (err) {
-			}
-		}
+		function resolveTabTarget(config, state) {
+			const { SEARCH_ENGINES, IMAGE_SEARCH_ENGINES } = window.GestureConstants;
+			const { selectedText: content, dragType, parentLink } = state;
+			const engine = config.engine || 'google';
+			const customUrl = config.url || '';
 
-		function tryParseAsUrl(text) {
-			if (!text || typeof text !== 'string') return null;
-			text = text.trim();
-			if (!text) return null;
-
-			const protocolRegex = /^[a-zA-Z][a-zA-Z0-9+.-]*:/;
-			if (protocolRegex.test(text)) {
-				return text;
-			}
-
-			const ipRegex = /^(\d{1,3}\.){3}\d{1,3}(:\d+)?(\/.*)?$/;
-			if (ipRegex.test(text)) {
-				return 'http://' + text;
-			}
-
-			const localhostRegex = /^localhost(:\d+)?(\/.*)?$/i;
-			if (localhostRegex.test(text)) {
-				return 'http://' + text;
-			}
-
-			const domainRegex = /^[a-zA-Z0-9][-a-zA-Z0-9]*(\.[a-zA-Z0-9][-a-zA-Z0-9]*)*(:\d+)?(\/.*)?$/;
-			const commonTlds = /\.(com|cn|net|org|gov|edu|io|co|cc|me|tv|info|biz|xyz|top|vip|club|shop|site|online|tech|app|dev|ai|uk|de|fr|jp|kr|ru|br|in|au|ca|hk|tw|sg)\b/i;
-			if (domainRegex.test(text) && commonTlds.test(text)) {
-				return 'http://' + text;
-			}
-
-			return null;
-		}
-
-		function executeDragGesture(state, pattern, dataTransfer) {
-			if (!['→', '←', '↑', '↓'].includes(pattern)) {
-				return; 
-			}
-
-			const { selectedText: content, dragType, parentLink, dragElement } = state;
-
-			if (!SETTINGS.enableAdvancedSettings) {
-				if (pattern !== '→') return;
-
-				if (dragType === 'text') {
-					if (SETTINGS.autoDetectUrl) {
+			switch (config.action) {
+				case 'search': {
+					if (config.autoDetectUrl === true && dragType === 'text') {
 						const url = tryParseAsUrl(content);
-						if (url) {
-							safeSendMessage({ action: 'openTabAtPosition', url: url, position: 'right', active: true });
-							return;
-						}
+						if (url) return { url };
 					}
-					if (SETTINGS.searchEngine === 'system') {
-						safeSendMessage({ action: 'systemSearch', query: content, position: 'right', active: true });
-					} else {
-						let searchUrl = '';
-						if (SETTINGS.searchEngine === 'custom' && SETTINGS.customSearchUrl) {
-							searchUrl = SETTINGS.customSearchUrl.replace('%s', encodeURIComponent(content));
-						} else {
-							const baseUrl = (SEARCH_ENGINES[SETTINGS.searchEngine] || SEARCH_ENGINES['google']).url;
-							searchUrl = `${baseUrl}${encodeURIComponent(content)}`;
-						}
-						safeSendMessage({ action: 'openTabAtPosition', url: searchUrl, position: 'right', active: true });
-					}
-				} else if (dragType === 'link') {
-					safeSendMessage({ action: 'openTabAtPosition', url: content, position: 'right', active: true });
-				} else if (dragType === 'image') {
-					if (SETTINGS.preferLink && parentLink) {
-						safeSendMessage({ action: 'openTabAtPosition', url: parentLink, position: 'right', active: true });
-					} else {
-						safeSendMessage({ action: 'openTabAtPosition', url: content, position: 'right', active: true });
-					}
+					if (engine === 'system') return { query: content };
+					if (engine === 'custom' && customUrl) return { url: customUrl.replace('%s', encodeURIComponent(content)) };
+					return { url: (SEARCH_ENGINES[engine] || SEARCH_ENGINES['google']).url + encodeURIComponent(content) };
 				}
-				return;
+				case 'openTab':
+					return { url: (dragType === 'image' && config.preferLink === true && parentLink) ? parentLink : content };
+				case 'imageSearch': {
+					if (engine === 'custom' && customUrl) return { url: customUrl.replace('%s', encodeURIComponent(content)) };
+					return { url: (IMAGE_SEARCH_ENGINES[engine] || IMAGE_SEARCH_ENGINES['google']).url + encodeURIComponent(content) };
+				}
+				default:
+					return null;
+			}
+		}
+
+		const COPY_ACTION_RESOLVERS = {
+			'copy':         (state) => state.selectedText,
+			'copyLink':     (state) => state.selectedText,
+			'copyLinkText': (state) => state.dragElement ? (state.dragElement.innerText || state.dragElement.textContent || '') : null,
+			'copyImageUrl': (state) => state.selectedText,
+		};
+
+		async function executeDragGesture(state, pattern, dataTransfer) {
+			if (!pattern) return;
+
+			const gestures = getGesturesForDragType(state.dragType);
+			if (!gestures) return;
+
+			let configs = getDragGestureConfigs(gestures, pattern);
+
+			const copyTexts = [];
+			configs = configs.filter(config => {
+				const resolver = COPY_ACTION_RESOLVERS[config.action || 'none'];
+				if (!resolver) return true;
+				const text = resolver(state);
+				if (text) copyTexts.push(text);
+				return false;
+			});
+			if (copyTexts.length > 0) {
+				copyText(copyTexts.join('\n'));
 			}
 
-			const getGestureConfig = (gestures, dir) => {
-				if (Array.isArray(gestures)) {
-					const found = gestures.find(g => g.direction === dir);
-					return found || { action: 'none', position: 'right', active: true };
+			if (!isIncognito) {
+				const incognitoUrls = [];
+				const incognitoQueries = [];
+				configs = configs.filter(config => {
+					if (!config.incognito) return true;
+					const target = resolveTabTarget(config, state);
+					if (target?.url) incognitoUrls.push(target.url);
+					else if (target?.query) incognitoQueries.push(target.query);
+					return !target; 
+				});
+				if (incognitoUrls.length > 0 || incognitoQueries.length > 0) {
+					await safeSendMessage({ action: 'openIncognitoTabs', urls: incognitoUrls, queries: incognitoQueries });
 				}
-				const cfg = gestures?.[dir];
-				if (typeof cfg === 'object' && cfg !== null) {
-					return cfg;
-				}
-				return { action: cfg || 'none', position: 'right', active: true };
-			};
-
-			let config;
-			if (dragType === 'text') {
-				config = getGestureConfig(SETTINGS.textDragGestures, pattern);
-			} else if (dragType === 'link') {
-				config = getGestureConfig(SETTINGS.linkDragGestures, pattern);
-			} else if (dragType === 'image') {
-				config = getGestureConfig(SETTINGS.imageDragGestures, pattern);
-			} else {
-				return;
 			}
 
+			for (const config of configs) {
+				await executeSingleDragAction(config, state, dataTransfer);
+			}
+		}
+
+		async function executeSingleDragAction(config, state, dataTransfer) {
+			const { selectedText: content, dragType, parentLink, dragElement } = state;
 			const action = config.action || 'none';
 			if (action === 'none') return;
 
 			const position = config.position || 'right';
 			const active = config.active !== false;
-			const engine = config.engine || 'google';
-			const customUrl = config.url || '';
-			const autoDetectUrl = config.autoDetectUrl === true;  
-			const preferLink = config.preferLink === true;  
+			const incognito = config.incognito === true;
 
 			switch (action) {
 				case 'search':
-					if (autoDetectUrl && dragType === 'text') {
-						const url = tryParseAsUrl(content);
-						if (url) {
-							safeSendMessage({
-								action: 'openTabAtPosition',
-								url: url,
-								position: position,
-								active: active
-							});
-							break;
-						}
-					}
-					if (engine === 'system') {
-						safeSendMessage({
-							action: 'systemSearch',
-							query: content,
-							position: position,
-							active: active
-						});
-					} else {
-						let searchUrl = '';
-						if (engine === 'custom' && customUrl) {
-							searchUrl = customUrl.replace('%s', encodeURIComponent(content));
-						} else {
-							const baseUrl = (SEARCH_ENGINES[engine] || SEARCH_ENGINES['google']).url;
-							searchUrl = `${baseUrl}${encodeURIComponent(content)}`;
-						}
-						safeSendMessage({
-							action: 'openTabAtPosition',
-							url: searchUrl,
-							position: position,
-							active: active
-						});
+				case 'openTab': {
+					const target = resolveTabTarget(config, state);
+					if (target?.query) {
+						await safeSendMessage({ action: 'systemSearch', query: target.query, position, active, incognito });
+					} else if (target?.url) {
+						await safeSendMessage({ action: 'openTabAtPosition', url: target.url, position, active, incognito });
 					}
 					break;
-
-				case 'copy':
-					fallbackCopy(content);
-					break;
-
-				case 'openTab':
-					let targetUrl = content;
-					if (dragType === 'image' && preferLink && parentLink) {
-						targetUrl = parentLink;
-					}
-					safeSendMessage({
-						action: 'openTabAtPosition',
-						url: targetUrl,
-						position: position,
-						active: active
-					});
-					break;
-
-				case 'copyLink':
-					fallbackCopy(content);
-					break;
+				}
 
 				case 'saveImage':
 					if (content.startsWith('data:')) {
@@ -1146,87 +1459,68 @@
 						break;
 					}
 
-					const waitForImageLoad = (img, timeout = 60000) => {
-						return new Promise((resolve, reject) => {
-							if (!img || img.tagName !== 'IMG' || img.complete) {
-								resolve();
-								return;
-							}
-
-							let settled = false;
-							const cleanup = () => {
-								img.removeEventListener('load', onLoad);
-								img.removeEventListener('error', onError);
-							};
-							const onLoad = () => {
-								if (settled) return;
-								settled = true;
-								cleanup();
-								resolve();
-							};
-							const onError = () => {
-								if (settled) return;
-								settled = true;
-								cleanup();
-								reject(new Error('load'));
-							};
-
-							img.addEventListener('load', onLoad);
-							img.addEventListener('error', onError);
-
-							setTimeout(() => {
-								if (settled) return;
-								settled = true;
-								cleanup();
-								reject(new Error('timeout'));
-							}, timeout);
-						});
-					};
-
-					waitForImageLoad(dragElement)
-						.then(() => {
-							safeSendMessage({ 
-								action: 'saveImage', 
-								url: content,
-								origin: window.location.origin
-							});
-						})
-						.catch((err) => {
-							const toastMsg = err.message === 'timeout'
-								? msg('saveImageTimeout', 'Image save failed: loading timed out.')
-								: msg('saveImageLoadError', 'Image save failed: failed to load image.');
-							visualizer.showToast(toastMsg, 5000);
-						});
-					break;
-
-				case 'copyImageUrl':
-					fallbackCopy(content);
-					break;
-
-				case 'imageSearch':
 					{
-						const { IMAGE_SEARCH_ENGINES } = window.GestureConstants;
-						let searchUrl = '';
-						let engineConfig = IMAGE_SEARCH_ENGINES['google']; 
-						
-						if (engine && IMAGE_SEARCH_ENGINES[engine]) {
-							engineConfig = IMAGE_SEARCH_ENGINES[engine];
-						}
-						
-                        if (engine === 'custom' && config.url) {
-                            searchUrl = config.url.replace('%s', encodeURIComponent(content));
-                        } else {
-						    searchUrl = engineConfig.url + encodeURIComponent(content);
-                        }
+						const waitForImageLoad = (img, timeout = 60000) => {
+							return new Promise((resolve, reject) => {
+								if (!img || img.tagName !== 'IMG' || img.complete) {
+									resolve();
+									return;
+								}
 
-						safeSendMessage({
-							action: 'openTabAtPosition',
-							url: searchUrl,
-							position: position,
-							active: active
-						});
+								let settled = false;
+								const cleanup = () => {
+									img.removeEventListener('load', onLoad);
+									img.removeEventListener('error', onError);
+								};
+								const onLoad = () => {
+									if (settled) return;
+									settled = true;
+									cleanup();
+									resolve();
+								};
+								const onError = () => {
+									if (settled) return;
+									settled = true;
+									cleanup();
+									reject(new Error('load'));
+								};
+
+								img.addEventListener('load', onLoad);
+								img.addEventListener('error', onError);
+
+								setTimeout(() => {
+									if (settled) return;
+									settled = true;
+									cleanup();
+									reject(new Error('timeout'));
+								}, timeout);
+							});
+						};
+
+						waitForImageLoad(dragElement)
+							.then(() => {
+								safeSendMessage({ 
+									action: 'saveImage', 
+									url: content,
+									origin: window.location.origin
+								});
+							})
+							.catch((err) => {
+								const toastMsg = err.message === 'timeout'
+									? msg('saveImageTimeout')
+									: msg('saveImageLoadError');
+								visualizer.showToast(toastMsg, 5000);
+							});
 					}
 					break;
+
+				case 'imageSearch': {
+					const target = resolveTabTarget(config, state);
+					if (target?.url) {
+						await safeSendMessage({ action: 'openTabAtPosition', url: target.url, position, active, incognito });
+					}
+					break;
+				}
 			}
 		}
 	}

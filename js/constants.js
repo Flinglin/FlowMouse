@@ -2,6 +2,7 @@
 	'use strict';
 
 
+
 	const DEFAULT_GESTURES = {
 		'←': 'back',              
 		'→': 'forward',           
@@ -30,7 +31,7 @@
 		'scrollToTop': 'actionScrollToTop',
 		'scrollToBottom': 'actionScrollToBottom',
 		'closeTab': 'actionCloseTab',
-		'closeTabKeepWindow': 'actionCloseTabKeepWindow',
+		'closeWindow': 'actionCloseWindow',
 		'closeBrowser': 'actionCloseBrowser',
 		'restoreTab': 'actionRestoreTab',
 		'newTab': 'actionNewTab',
@@ -40,6 +41,8 @@
 		'closeAllTabs': 'actionCloseAllTabs',
 		'switchLeftTab': 'actionSwitchLeftTab',
 		'switchRightTab': 'actionSwitchRightTab',
+		'switchFirstTab': 'actionSwitchFirstTab',
+		'switchLastTab': 'actionSwitchLastTab',
 		'refresh': 'actionRefresh',
 		'refreshAllTabs': 'actionRefreshAllTabs',
 		'stopLoading': 'actionStopLoading',
@@ -61,8 +64,75 @@
 		'duplicateTab': 'actionDuplicateTab',
 		'toggleMuteTab': 'actionToggleMuteTab',
 		'toggleMuteAllTabs': 'actionToggleMuteAllTabs',
+		'togglePinTab': 'actionTogglePinTab',
+		'actionChain': 'actionActionChain',
+		'delay': 'actionDelay',
 		'sendCustomEvent': 'actionSendCustomEvent',
+		'simulateKey': 'actionSimulateKey',
 	};
+
+	const ACTION_DEFAULTS = {
+		closeTab: { keepWindow: false, afterClose: 'default' }, 
+		openCustomUrl: { customUrl: '' },
+		copyUrl: { includeTitle: false },
+		scrollUp: { scrollDistance: 75, scrollSmoothness: 'auto', scrollAccel: 1, scrollAccelWindow: 500 },
+		scrollDown: { scrollDistance: 75, scrollSmoothness: 'auto', scrollAccel: 1, scrollAccelWindow: 500 },
+		scrollToTop: { scrollSmoothness: 'none' },
+		scrollToBottom: { scrollSmoothness: 'none' },
+		switchLeftTab: { noWrap: false, moveTab: false },
+		switchRightTab: { noWrap: false, moveTab: false },
+		switchFirstTab: { moveTab: false },
+		switchLastTab: { moveTab: false },
+		actionChain: { chainId: '' },
+		delay: { delayMs: 500 },
+		sendCustomEvent: { eventType: 'flowmouse:gesture', eventDetail: '{}' },
+		simulateKey: { keyValue: 'ArrowLeft', modCtrl: false, modShift: false, modAlt: false, modMeta: false },
+	};
+
+	const LOCAL_ACTIONS = new Set([
+		'none', 'scrollUp', 'scrollDown', 'scrollToTop', 'scrollToBottom',
+		'stopLoading', 'copyUrl', 'copyTitle', 'printPage', 'sendCustomEvent', 'simulateKey'
+	]);
+
+
+	const ACTION_SHORT_KEYS = {
+		'back': 'popupBack',
+		'forward': 'popupForward',
+		'scrollUp': 'popupScrollUp',
+		'scrollDown': 'popupScrollDown',
+		'closeTab': 'popupClose',
+		'restoreTab': 'popupRestore',
+	};
+
+	const TEXT_DRAG_ACTIONS = {
+		'none': 'dragActionNone',
+		'search': 'dragActionSearch',
+		'copy': 'dragActionCopy'
+	};
+
+	const LINK_DRAG_ACTIONS = {
+		'none': 'dragActionNone',
+		'openTab': 'dragActionOpenTabLink',
+		'copyLink': 'dragActionCopyLink',
+		'copyLinkText': 'dragActionCopyLinkText'
+	};
+
+	const IMAGE_DRAG_ACTIONS = {
+		'none': 'dragActionNone',
+		'openTab': 'dragActionOpenTabImage',
+		'saveImage': 'dragActionSaveImage',
+		'copyImageUrl': 'dragActionCopyImageUrl',
+		'imageSearch': 'dragActionImageSearch'
+	};
+
+	const TAB_POSITIONS = {
+		'right': 'tabPositionRight',
+		'left': 'tabPositionLeft',
+		'first': 'tabPositionFirst',
+		'last': 'tabPositionLast',
+		'current': 'tabPositionCurrent'
+	};
+
 
 	const SEARCH_ENGINES = {
 		'system': {
@@ -163,34 +233,6 @@
 		'uk': ['google', 'bing', 'tineye', 'saucenao', 'iqdb', 'trace'],
 	};
 
-	const TEXT_DRAG_ACTIONS = {
-		'none': 'dragActionNone',
-		'search': 'dragActionSearch',
-		'copy': 'dragActionCopy'
-	};
-
-	const LINK_DRAG_ACTIONS = {
-		'none': 'dragActionNone',
-		'openTab': 'dragActionOpenTabLink',
-		'copyLink': 'dragActionCopyLink'
-	};
-
-	const IMAGE_DRAG_ACTIONS = {
-		'none': 'dragActionNone',
-		'openTab': 'dragActionOpenTabImage',
-		'saveImage': 'dragActionSaveImage',
-		'copyImageUrl': 'dragActionCopyImageUrl',
-		'imageSearch': 'dragActionImageSearch'
-	};
-
-	const TAB_POSITIONS = {
-		'right': 'tabPositionRight',
-		'left': 'tabPositionLeft',
-		'first': 'tabPositionFirst',
-		'last': 'tabPositionLast',
-		'current': 'tabPositionCurrent'
-	};
-
 	const DEFAULT_SETTINGS = {
 		theme: 'auto',
 		language: 'auto',
@@ -199,37 +241,49 @@
 		enableTrail: true,
 		showTrailOrigin: true, 
 		enableTrailSmooth: true, 
-		searchEngine: 'system',
-		customSearchUrl: '',
-		gestures: DEFAULT_GESTURES,
 		enableGestureCustomization: false,
-		customGestures: {}, 
-		customGestureUrls: {}, 
-		enableAdvancedSettings: false, 
-		scrollAmount: 75, 
-		scrollSmoothness: (window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) ? 'system' : 'custom', 
+		mouseGestures: Object.fromEntries(
+			Object.entries(DEFAULT_GESTURES).map(([p, a]) => [p, { action: a }])
+		), 
+		sectionAdvanced: {}, 
 		enableTextDrag: true,
 		enableImageDrag: true,
 		enableLinkDrag: true,
-		autoDetectUrl: false,  
-		preferLink: false,     
 		textDragGestures: [
-			{ direction: '→', action: 'search', engine: 'system', position: 'right', active: true, url: '' }
+			{ direction: '→', action: 'search', engine: 'system', position: 'right', active: true, url: '', autoDetectUrl: true, incognito: false }
 		],
 		linkDragGestures: [
-			{ direction: '→', action: 'openTab', position: 'right', active: true }
+			{ direction: '→', action: 'openTab', position: 'right', active: true, incognito: false }
 		],
 		imageDragGestures: [
-			{ direction: '→', action: 'openTab', position: 'right', active: true, url: '' }
+			{ direction: '→', action: 'openTab', position: 'right', active: true, url: '', incognito: false }
 		],
-		hudBgColor: '#000000',
-		hudBgOpacity: 70,
+		hudBgColor: '#000000b3',
 		hudTextColor: '#ffffff',
+		hudBlurRadius: 5,
+		enableHudShadow: true,
 		trailColor: '#4285f4',
 		trailWidth: 5,
-		distanceThreshold: 25,
+		distanceThreshold: 20,
+		gestureTurnTolerance: 0.10, 
 		showRestrictedNotice: true, 
+		macLinuxHintDismissed: false, 
+		edgeGestureConflict: false, 
+		enableWheelGestures: false, 
+		wheelGestures: {
+			scrollUpHoldingRight: { action: 'switchLeftTab' },
+			scrollDownHoldingRight: { action: 'switchRightTab' },
+		},
+		enableSpecialGestures: false, 
+		specialGestures: {
+			leftClickHoldingRight: { action: 'back' },
+			rightClickHoldingLeft: { action: 'forward' },
+		},
+		actionChains: {},
+		showChainSection: false, 
 		blacklist: [],
+		enableBlacklistContextMenu: false,
+		navCollapsed: false,
 		lastSyncTime: null
 	};
 
@@ -247,16 +301,25 @@
 	window.GestureConstants = {
 		DEFAULT_GESTURES,
 		ACTION_KEYS,
-		SEARCH_ENGINES,
-		SEARCH_ENGINE_ORDER,
-		IMAGE_SEARCH_ENGINES,
-		IMAGE_SEARCH_ENGINE_ORDER,
+		LOCAL_ACTIONS,
+		ACTION_SHORT_KEYS,
+		ACTION_DEFAULTS,
+
 		TEXT_DRAG_ACTIONS,
 		LINK_DRAG_ACTIONS,
 		IMAGE_DRAG_ACTIONS,
 		TAB_POSITIONS,
+
+		SEARCH_ENGINES,
+		SEARCH_ENGINE_ORDER,
+		IMAGE_SEARCH_ENGINES,
+		IMAGE_SEARCH_ENGINE_ORDER,
+
 		DEFAULT_SETTINGS,
+
 		ARROW_SVG,
-		arrowsToSvg
+		arrowsToSvg,
 	};
+
+	window.litDisableBundleWarning = true;
 })();

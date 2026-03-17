@@ -8,20 +8,12 @@
 		"description": "Short extension name for popup"
 	},
 	"extDescription": {
-		"message": "Разширение за жестове с мишката с отворен код, фокусирано върху поверителността и плавността. Плавни жестове, поддръжка на Супер влачене, всички данни се съхраняват локално.",
+		"message": "Разширение за жестове с мишката с отворен код, фокусирано върху поверителността и плавността. Плавни жестове, поддръжка на Супер влачене.",
 		"description": "Extension description"
-	},
-	"appearance": {
-		"message": "Външен вид",
-		"description": "Appearance section"
 	},
 	"theme": {
 		"message": "Тема",
 		"description": "Theme"
-	},
-	"themeDesc": {
-		"message": "Превключване между светла и тъмна тема",
-		"description": "Theme description"
 	},
 	"themeDark": {
 		"message": "Тъмна",
@@ -34,10 +26,6 @@
 	"themeAuto": {
 		"message": "Следвай системата",
 		"description": "Auto theme - follow system"
-	},
-	"languageDesc": {
-		"message": "Изберете език на интерфейса",
-		"description": "Language description"
 	},
 	"syncStatus": {
 		"message": "Състояние на синхронизация",
@@ -56,7 +44,7 @@
 		"description": "Author"
 	},
 	"privacyNote": {
-		"message": "🔒 Изцяло локално, няма достъп до мрежата освен за синхронизация, не събира данни.",
+		"message": " Изцяло локално, няма достъп до мрежата освен за синхронизация, не събира данни.",
 		"description": "Privacy note in footer"
 	},
 	"supportUsText": {
@@ -120,11 +108,19 @@
 		"description": "Hold the right mouse button and move the mouse to easily perform gestures"
 	},
 	"macLinuxContextMenuNotice": {
-		"message": "⚠️ Поради системни ограничения, при macOS / Linux е необходимо двойно щракване с десния бутон за отваряне на контекстното меню.",
+		"message": "Поради системни ограничения, когато са активирани жестовете с десния бутон, при macOS / Linux е необходимо двойно щракване с десния бутон за отваряне на контекстното меню.",
 		"description": "Notice for macOS / Linux users about double right-click for context menu"
 	},
+	"macLinuxDoubleClickHint": {
+		"message": "За да отворите контекстното меню, щракнете двукратно с десния бутон. (Научете повече)",
+		"description": "Short toast hint shown on first right-click on macOS/Linux explaining double-click requirement"
+	},
+	"edgeGestureConflictNotice": {
+		"message": "%browserName% има вградени функции за жестове. За да използвате жестовете на FlowMouse, моля, <a href=\"#\" class=\"edge-gesture-link\">деактивирайте вградените жестове</a> в настройките на %browserName%.",
+		"description": "Notice for Edge users about built-in gesture conflict"
+	},
 	"macTextDragNotice": {
-		"message": "⚠️ Поради особеностите на macOS, при влачене на текст първо маркирайте желания текст, след това задръжте левия бутон за кратко, преди да го плъзнете. В противен случай търсенето може да не се задейства.",
+		"message": "Поради особеностите на macOS, при влачене на текст първо маркирайте текста, след това натиснете и задръжте левия бутон в маркираната област за кратко, преди да го плъзнете. В противен случай функцията за влачене може да не се задейства.",
 		"description": "Notice for macOS users about text drag behavior"
 	},
 	"showTrail": {
@@ -159,6 +155,14 @@
 		"message": "Прозрачност",
 		"description": "Opacity"
 	},
+	"blur": {
+		"message": "Размиване",
+		"description": "Blur radius"
+	},
+	"hudShadow": {
+		"message": "Сянка",
+		"description": "HUD shadow toggle"
+	},
 	"text": {
 		"message": "Текст",
 		"description": "Text"
@@ -179,6 +183,10 @@
 		"message": "Ефект на анимация на превъртане за жестове нагоре/надолу",
 		"description": "Scroll smoothness description"
 	},
+	"smoothnessAuto": {
+		"message": "Автоматично",
+		"description": "Auto scroll smoothness - uses system if animation enabled, otherwise smooth"
+	},
 	"smoothnessSystem": {
 		"message": "Системна (висока производителност)",
 		"description": "System scroll smoothness"
@@ -190,6 +198,18 @@
 	"smoothnessNone": {
 		"message": "Без анимация",
 		"description": "No scroll animation"
+	},
+	"scrollAccel": {
+		"message": "Множител за непрекъснато превъртане",
+		"description": "Speed multiplier applied when scrolling consecutively"
+	},
+	"scrollAccelOff": {
+		"message": "Изкл.",
+		"description": "Scroll acceleration disabled"
+	},
+	"scrollAccelWindow": {
+		"message": "Време за последователно превъртане",
+		"description": "Max time (ms) between scrolls to count as consecutive"
 	},
 	"dragFeatures": {
 		"message": "Функции за плъзгане",
@@ -283,6 +303,22 @@
 		"message": "Няма сайтове в черния списък. Въведете домейн по-горе за добавяне.",
 		"description": "Empty blacklist message"
 	},
+	"enableBlacklistContextMenu": {
+		"message": "Превключвател на жестовете в контекстното меню",
+		"description": "Setting title for blacklist context menu toggle"
+	},
+	"enableBlacklistContextMenuDesc": {
+		"message": "Показване на опция за деактивиране/активиране на жестове в контекстното меню",
+		"description": "Setting description for blacklist context menu toggle"
+	},
+	"menuAddToBlacklist": {
+		"message": "Деактивиране на жестовете на този сайт",
+		"description": "Context menu title for adding current site to blacklist"
+	},
+	"menuRemoveFromBlacklist": {
+		"message": "Активиране на жестовете на този сайт",
+		"description": "Context menu title for removing current site from blacklist"
+	},
 	"dataManagement": {
 		"message": "Управление на данни",
 		"description": "Data management section"
@@ -322,6 +358,10 @@
 	"importDone": {
 		"message": "Настройките бяха импортирани успешно",
 		"description": "Import done message"
+	},
+	"importConfirm": {
+		"message": "Импортирането ще презапише текущите ви настройки. Импортирайте конфигурационни файлове само от надеждни източници.\n\nПродължаване?",
+		"description": "Import confirmation warning"
 	},
 	"importFailed": {
 		"message": "Неуспешно импортиране: Невалиден конфигурационен файл",
@@ -459,13 +499,41 @@
 		"message": "Затвори раздела",
 		"description": "Close tab"
 	},
-	"actionCloseTabKeepWindow": {
-		"message": "Затвори раздела (запази прозореца)",
-		"description": "Close tab but keep window open"
+	"closeTabKeepWindow": {
+		"message": "Ако това е последният раздел, запази прозореца отворен",
+		"description": "Checkbox label for closeTab action config"
+	},
+	"closeTabAfterClose": {
+		"message": "След затваряне",
+		"description": "Label for closeTab afterClose config"
+	},
+	"closeTabAfterCloseDefault": {
+		"message": "По подразбиране за браузъра",
+		"description": "Option for closeTab afterClose config - let browser decide"
+	},
+	"closeTabAfterCloseLeft": {
+		"message": "Превключване към ляв раздел",
+		"description": "Option for closeTab afterClose config - switch to left tab"
+	},
+	"closeTabAfterCloseRight": {
+		"message": "Превключване към десен раздел",
+		"description": "Option for closeTab afterClose config - switch to right tab"
+	},
+	"switchTabNoWrap": {
+		"message": "Без циклично превключване",
+		"description": "Checkbox label for switchLeftTab/switchRightTab action config"
+	},
+	"switchTabMoveTab": {
+		"message": "Премести текущия раздел",
+		"description": "Checkbox label for switchLeftTab/switchRightTab/switchFirstTab/switchLastTab action config"
 	},
 	"actionCloseBrowser": {
 		"message": "Затвори браузъра",
 		"description": "Close browser"
+	},
+	"actionCloseWindow": {
+		"message": "Затвори прозореца",
+		"description": "Close current window"
 	},
 	"actionRestoreTab": {
 		"message": "Възстанови затворения раздел",
@@ -498,6 +566,14 @@
 	"actionSwitchRightTab": {
 		"message": "Превключване към десен раздел",
 		"description": "Switch to right tab"
+	},
+	"actionSwitchFirstTab": {
+		"message": "Превключване към първи раздел",
+		"description": "Switch to first tab"
+	},
+	"actionSwitchLastTab": {
+		"message": "Превключване към последен раздел",
+		"description": "Switch to last tab"
 	},
 	"actionRefresh": {
 		"message": "Опресни текущия раздел",
@@ -575,6 +651,10 @@
 		"message": "Заглуши/включи звука във всички раздели",
 		"description": "Toggle mute all tabs"
 	},
+	"actionTogglePinTab": {
+		"message": "Фиксирай/Откачи текущия раздел",
+		"description": "Toggle pin current tab"
+	},
 	"showTrailOrigin": {
 		"message": "Показване на начална точка",
 		"description": "Show trail origin point"
@@ -595,17 +675,29 @@
 		"message": "Съвет: Препоръчва се стойност между 15-30 за най-добро разпознаване.",
 		"description": "Warning when distance threshold is too small or too large"
 	},
-	"enableAdvancedSettings": {
-		"message": "Разширени настройки",
-		"description": "Enable advanced settings"
+	"gestureTurnTolerance": {
+		"message": "Допуск за завой на жеста",
+		"description": "Turn tolerance for detecting direction changes in long gestures"
 	},
-	"enableAdvancedSettingsDesc": {
-		"message": "Показване на повече разширени опции при активиране",
-		"description": "Show more advanced options when enabled"
+	"gestureTurnToleranceDesc": {
+		"message": "По-високите стойности намаляват случайните завои, но изискват по-дълги движения за промяна на посоката",
+		"description": "Description for gesture turn tolerance setting"
 	},
-	"enableAdvancedSettingsToggle": {
-		"message": "Режим на разширени настройки",
-		"description": "Enable advanced settings toggle label"
+	"advanced": {
+		"message": "Експертен режим",
+		"description": "Short label for per-section advanced toggle"
+	},
+	"otherSettings": {
+		"message": "Други настройки",
+		"description": "Section title for other/miscellaneous settings"
+	},
+	"show": {
+		"message": "Показване",
+		"description": "Show navigation menu"
+	},
+	"hide": {
+		"message": "Скриване",
+		"description": "Hide navigation menu"
 	},
 	"urlFormatError": {
 		"message": "Моля, въведете пълен URL, започващ с http:// или https://",
@@ -615,41 +707,61 @@
 		"message": "Нулиране по подразбиране",
 		"description": "Reset gesture to default action"
 	},
+	"resetToDefaultConfirm": {
+		"message": "Нулиране на тези настройки до стойностите по подразбиране?",
+		"description": "Confirmation dialog for resetting settings"
+	},
 	"addCustomGesture": {
 		"message": "Добавяне на персонализиран жест",
 		"description": "Add custom gesture section title"
-	},
-	"gesturePattern": {
-		"message": "Модел",
-		"description": "Gesture pattern label"
-	},
-	"selectAction": {
-		"message": "Избор на действие",
-		"description": "Select action label"
 	},
 	"clear": {
 		"message": "Изчистване",
 		"description": "Clear button"
 	},
-	"addGesture": {
-		"message": "Добавяне на жест",
-		"description": "Add gesture button"
-	},
-	"pleaseDrawGesture": {
-		"message": "Моля, първо нарисувайте жест",
-		"description": "Alert when no gesture drawn"
-	},
 	"gestureAdded": {
 		"message": "✓ Жестът е добавен",
 		"description": "Gesture added success message"
 	},
-	"gestureDrawInstructions": {
-		"message": "Задръжте десния бутон на мишката и нарисувайте жест по-долу, отпуснете за завършване. Поддържани посоки:",
-		"description": "Instructions for gesture drawing"
+	"gestureRecorderTitle": {
+		"message": "Нарисувайте жест",
+		"description": "Gesture recorder full-screen title"
 	},
-	"gestureOverwriteConfirm": {
-		"message": "Жестът %pattern% вече съществува. Да се презапише ли?",
-		"description": "Confirmation message when adding a duplicate gesture"
+	"gestureRecorderDesc": {
+		"message": "Задръжте бутона „%button%“ и нарисувайте жест",
+		"description": "Gesture recorder instruction, %button% is replaced with the mouse button name"
+	},
+	"gestureRecorderEsc": {
+		"message": "Отказ",
+		"description": "Gesture recorder cancel button label"
+	},
+	"gestureRecorderRecording": {
+		"message": "Записване…",
+		"description": "Gesture recorder recording indicator"
+	},
+	"gestureRecorderResult": {
+		"message": "Записан жест",
+		"description": "Gesture recorder result label"
+	},
+	"gestureRecorderConfirm": {
+		"message": "Потвърждаване",
+		"description": "Gesture recorder confirm button"
+	},
+	"gestureRecorderRedraw": {
+		"message": "Преначертаване",
+		"description": "Gesture recorder redraw button"
+	},
+	"gestureRecorderBanned": {
+		"message": "Жестът %pattern% вече съществува",
+		"description": "Gesture recorder message when user draws a banned/existing gesture pattern"
+	},
+	"rightButton": {
+		"message": "Десен бутон на мишката",
+		"description": "Right mouse button name"
+	},
+	"leftButton": {
+		"message": "Ляв бутон на мишката",
+		"description": "Left mouse button name"
 	},
 	"customGesture": {
 		"message": "Персонализиран",
@@ -670,6 +782,10 @@
 	"enterCustomUrl": {
 		"message": "Въведете URL (препоръчително включете протокол като https://, chrome:// и др.):",
 		"description": "Prompt for custom URL input"
+	},
+	"copyUrlIncludeTitle": {
+		"message": "Копиране и на заглавието на страницата",
+		"description": "Checkbox label for including page title when copying URL"
 	},
 	"invalidUrl": {
 		"message": "Моля, въведете валиден URL (започващ с http:// или https://)",
@@ -750,6 +866,10 @@
 	"aboutTitle": {
 		"message": "За FlowMouse",
 		"description": "About title"
+	},
+	"aboutTitleShort": {
+		"message": "Относно",
+		"description": "Short About title "
 	},
 	"aboutAuthor": {
 		"message": "Автор",
@@ -863,6 +983,10 @@
 		"message": "Отваряне на преден план",
 		"description": "Open tab in foreground"
 	},
+	"openInIncognito": {
+		"message": "Инкогнито",
+		"description": "Open in incognito checkbox"
+	},
 	"textDragGestures": {
 		"message": "Жестове за плъзгане на текст",
 		"description": "Text drag gestures"
@@ -880,7 +1004,7 @@
 		"description": "Direction column header"
 	},
 	"action": {
-		"message": "Действие",
+		"message": "Команда",
 		"description": "Action column header"
 	},
 	"imageSearchUrl": {
@@ -915,6 +1039,10 @@
 		"message": "📋 Копиране на връзка",
 		"description": "Copy link"
 	},
+	"dragActionCopyLinkText": {
+		"message": "📋 Копиране на текста на връзката",
+		"description": "Copy link text"
+	},
 	"dragActionSaveImage": {
 		"message": "💾 Запази изображението",
 		"description": "Save image"
@@ -936,7 +1064,7 @@
 		"description": "Custom search"
 	},
 	"reducedMotionWarning": {
-		"message": "⚠️ Системните анимации на %OS% не са активирани, анимацията на превъртане може да не се показва правилно. Можете да активирате анимациите в системните настройки на %OS%.",
+		"message": "Системните анимации на %OS% не са активирани, анимацията на превъртане може да не се показва правилно. Можете да активирате анимациите в системните настройки на %OS%.",
 		"description": "Warning message when system reduced motion is enabled"
 	},
 	"autoDetectUrl": {
@@ -964,7 +1092,7 @@
 		"description": "Setting description for restricted page notice"
 	},
 	"restrictedPagesDetailsTitle": {
-		"message": "⚠️ Поради ограничения на политиката за сигурност на браузъра, разширенията не могат да работят на определени типове страници",
+		"message": "Поради ограничения на политиката за сигурност на браузъра, разширенията не могат да работят на определени типове страници",
 		"description": "Collapsible details title"
 	},
 	"showMoreHint": {
@@ -972,7 +1100,7 @@
 		"description": "Hint to show more details"
 	},
 	"restrictedNewTab": {
-		"message": "Нов раздел (chrome://newtab)",
+		"message": "Нов раздел",
 		"description": "New tab page title"
 	},
 	"restrictedNewTabDesc": {
@@ -988,11 +1116,11 @@
 		"description": "Store page description"
 	},
 	"restrictedInternal": {
-		"message": "Вътрешни страници за управление на браузъра",
+		"message": "Вътрешни страници за управление на браузъра (%browserProtocol%)",
 		"description": "Internal page title"
 	},
 	"restrictedInternalDesc": {
-		"message": "Всички вътрешни страници, започващи с chrome:// (Chrome) или edge:// (Edge), включително настройки, история, управление на изтегляния и др. Тези страници включват основни функции на браузъра и потребителски данни за поверителност, затова са строго защитени.",
+		"message": "Например, вътрешните настройки, историята, изтеглянията и др. на %browserName%. Тези страници засягат основни функции на браузъра и данни за поверителността на потребителите, така че са строго защитени.",
 		"description": "Internal page description"
 	},
 	"restrictedFile": {
@@ -1000,7 +1128,7 @@
 		"description": "File page title"
 	},
 	"restrictedFileDesc": {
-		"message": "Локални HTML файлове, отворени чрез file:// протокол, поради ограничения за сигурност (за предотвратяване на достъпа на злонамерени разширения до локалната файлова система), разширенията не могат да работят на такива страници.",
+		"message": "Локални html, pdf и др. файлове, отворени чрез file:// протокол, поради ограничения за сигурност (за предотвратяване на достъпа на злонамерени разширения до локалната файлова система), разширенията не могат да работят на такива страници.",
 		"description": "File page description"
 	},
 	"restrictedViewSource": {
@@ -1024,7 +1152,7 @@
 		"description": "Popup description when content script not loaded"
 	},
 	"popupRefreshBtn": {
-		"message": "🔄 Опресняване на страницата",
+		"message": "Опресняване на страницата",
 		"description": "Popup refresh button text"
 	},
 	"popupRestrictedTitle": {
@@ -1036,7 +1164,7 @@
 		"description": "Popup description for restricted pages"
 	},
 	"popupLearnMore": {
-		"message": "📖 Научете подробности",
+		"message": "Научете подробности",
 		"description": "Popup learn more button text"
 	},
 	"tutorialPending": {
@@ -1207,6 +1335,26 @@
 		"message": "За да запази изображения, FlowMouse се нуждае от достъп до страници и изтегляния.",
 		"description": "Permission popup description for downloads and page capture"
 	},
+	"permissionIncognitoTitle": {
+		"message": "Да се разрешава в режим „инкогнито“",
+		"description": "Permission popup title for incognito"
+	},
+	"permissionIncognitoDesc": {
+		"message": "За да работи в прозорци „инкогнито“, трябва ръчно да разрешите „Да се разрешава в режим „инкогнито““ за FlowMouse.",
+		"description": "Permission popup description for incognito"
+	},
+	"openExtensionsSettings": {
+		"message": "Отвори подробности за разширението",
+		"description": "Button to open extension details page"
+	},
+	"permissionFirefoxIncognitoTitle": {
+		"message": "Изпълнение в прозорци за поверително сърфиране",
+		"description": "Permission popup title for Firefox private browsing"
+	},
+	"permissionFirefoxIncognitoDesc": {
+		"message": "За да работи в прозорци за поверително сърфиране, трябва ръчно да разрешите „Изпълнение в прозорци за поверително сърфиране“ за FlowMouse в Управление на добавки.",
+		"description": "Permission popup description for Firefox private browsing"
+	},
 	"grantPermission": {
 		"message": "Предоставяне на разрешение",
 		"description": "Grant permission button"
@@ -1234,5 +1382,205 @@
 	"saveImageTimeout": {
 		"message": "Запазването на изображението е неуспешно: Времето за зареждане изтече",
 		"description": "Toast message when image loading times out"
+	},
+	"buttonOkay": {
+		"message": "Добре",
+		"description": "Generic OK button"
+	},
+	"buttonCancel": {
+		"message": "Отказ",
+		"description": "Generic Cancel button"
+	},
+	"buttonClose": {
+		"message": "Затвори",
+		"description": "Generic Close button"
+	},
+	"searchActions": {
+		"message": "Търсене на команди...",
+		"description": "Placeholder for action search input in action picker"
+	},
+	"actionCategoryNavigation": {
+		"message": "Навигация",
+		"description": "Action category: navigation"
+	},
+	"actionCategoryTabs": {
+		"message": "Раздели",
+		"description": "Action category: tabs"
+	},
+	"actionCategoryWindow": {
+		"message": "Прозорец",
+		"description": "Action category: window"
+	},
+	"actionCategoryUtilities": {
+		"message": "Инструменти",
+		"description": "Action category: utilities"
+	},
+	"noResults": {
+		"message": "Няма резултати",
+		"description": "No search results found"
+	},
+	"wheelGestures": {
+		"message": "Жестове с колелцето на мишката",
+		"description": "Mouse wheel gestures section title"
+	},
+	"enableWheelGestures": {
+		"message": "Активиране на жестовете с колелцето на мишката",
+		"description": "Enable mouse wheel gestures"
+	},
+	"enableWheelGesturesDesc": {
+		"message": "Извършвайте различни действия бързо с помощта на колелцето на мишката",
+		"description": "Enable mouse wheel gestures description"
+	},
+	"wheelGesture_scrollUpHoldingRight": {
+		"message": "Превъртане нагоре при задържане на десния бутон",
+		"description": "Wheel gesture: scroll up while holding right button"
+	},
+	"wheelGesture_scrollDownHoldingRight": {
+		"message": "Превъртане надолу при задържане на десния бутон",
+		"description": "Wheel gesture: scroll down while holding right button"
+	},
+	"specialGestures": {
+		"message": "Специални жестове",
+		"description": "Special gestures section title"
+	},
+	"enableSpecialGestures": {
+		"message": "Активиране на специални жестове",
+		"description": "Enable special gestures"
+	},
+	"enableSpecialGesturesDesc": {
+		"message": "Извършвайте действия чрез щракване върху един бутон на мишката, докато задържате другия",
+		"description": "Enable special gestures description"
+	},
+	"specialGesture_leftClickHoldingRight": {
+		"message": "Щракнете с левия бутон, докато задържате десния",
+		"description": "Special gesture: left click while holding right button"
+	},
+	"specialGesture_rightClickHoldingLeft": {
+		"message": "Щракнете с десния бутон, докато задържате левия",
+		"description": "Special gesture: right click while holding left button"
+	},
+	"actionChains": {
+		"message": "Вериги от команди",
+		"description": "Action chains section title"
+	},
+	"actionChainsDesc": {
+		"message": "Създаване на последователности от команди за многократна употреба, които се изпълняват една след друга",
+		"description": "Action chains section description"
+	},
+	"actionActionChain": {
+		"message": "Верига от команди",
+		"description": "Action chain action name"
+	},
+	"actionCategoryChains": {
+		"message": "Вериги от команди",
+		"description": "Action category: action chains"
+	},
+	"addChain": {
+		"message": "Добавяне на верига",
+		"description": "Add chain button"
+	},
+	"addNewChain": {
+		"message": "Създаване на нова верига...",
+		"description": "Action item to navigate to chain editor and create a new chain"
+	},
+	"chainNamePlaceholder": {
+		"message": "Моята верига от команди",
+		"description": "Chain name input placeholder"
+	},
+	"chainDelayUnit": {
+		"message": "мс",
+		"description": "Milliseconds unit for chain delay"
+	},
+	"addStep": {
+		"message": "Добавяне на стъпка",
+		"description": "Add step button"
+	},
+	"emptyChainSteps": {
+		"message": "Няма добавени стъпки. Кликнете върху „Добавяне на стъпка“, за да започнете.",
+		"description": "Empty chain steps message in expanded body"
+	},
+	"emptyChainStepsShort": {
+		"message": "Няма добавени стъпки",
+		"description": "Short empty chain steps message for summary"
+	},
+	"noChains": {
+		"message": "Все още няма вериги от команди. Кликнете върху „Добавяне на верига“, за да създадете такава.",
+		"description": "No chains message"
+	},
+	"chainNotFound": {
+		"message": "(Веригата не е намерена)",
+		"description": "Chain not found label"
+	},
+	"deleteChainConfirm": {
+		"message": "Изтриване на веригата \"%name%\"?",
+		"description": "Delete chain confirmation"
+	},
+	"stepNumber": {
+		"message": "Стъпка %n%",
+		"description": "Step number label"
+	},
+	"actionDelay": {
+		"message": "Закъснение",
+		"description": "Delay action name for chain steps"
+	},
+	"actionSendCustomEvent": {
+		"message": "Изпращане на персонализирано събитие",
+		"description": "Action to dispatch a custom DOM event"
+	},
+	"actionSimulateKey": {
+		"message": "Симулиране на натискане на клавиш",
+		"description": "Action to simulate a keyboard key press on the page"
+	},
+	"simulateKeyPreset": {
+		"message": "Предварително зададен клавиш",
+		"description": "Label for preset key dropdown in simulate key config"
+	},
+	"simulateKeyPresetLeft": {
+		"message": "← Стрелка наляво (Предишна страница)",
+		"description": "Preset: ArrowLeft key"
+	},
+	"simulateKeyPresetRight": {
+		"message": "→ Стрелка надясно (Следваща страница)",
+		"description": "Preset: ArrowRight key"
+	},
+	"simulateKeyPresetCustom": {
+		"message": "Персонализиран клавиш",
+		"description": "Preset: Custom key option"
+	},
+	"simulateKeyRecordBtn": {
+		"message": "Запис на клавиш",
+		"description": "Button to start recording a key press"
+	},
+	"simulateKeyRecording": {
+		"message": "Натиснете клавиш...",
+		"description": "Recording state text"
+	},
+	"simulateKeyManualInput": {
+		"message": "Текущ клавиш",
+		"description": "Label for current key display in simulate key config"
+	},
+	"simulateKeyHint": {
+		"message": "Тази функция изпраща събития от клавиатурата само към текущата страница, обикновено се използва за навигация (← предишна / → следваща). НЯМА да задейства преки пътища на браузъра (напр. Ctrl+R няма да опресни страницата). Освен това, поради ограничения на рамката на уебсайта, симулираните събития може да не бъдат уловени от всички персонализирани компоненти или полета за въвеждане.",
+		"description": "Hint text for simulate key feature"
+	},
+	"customEventInvalidJson": {
+		"message": "Невалиден JSON формат",
+		"description": "Error message when event detail is not valid JSON"
+	},
+	"customEventHint": {
+		"message": "Изпраща %code% на %window%. Полезно за интеграция с други скриптове.",
+		"description": "Hint explaining how custom event works. %code% = <code>new CustomEvent(...)</code>, %window% = <code>window</code>"
+	},
+	"delayDuration": {
+		"message": "Продължителност",
+		"description": "Delay duration label"
+	},
+	"chainStepCount": {
+		"message": "%count% стъпки",
+		"description": "Step count for unnamed chains, e.g. '3 steps'"
+	},
+	"chainStepCountOne": {
+		"message": "%count% стъпка",
+		"description": "Step count for unnamed chains with exactly 1 step"
 	}
 }

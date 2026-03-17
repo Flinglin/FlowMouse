@@ -104,6 +104,7 @@ class GestureVisualizer {
 		this.hud = null;
 
 		this.container = null;
+		this.foreignObject = null;
 		this.shadow = null;
 		this.fontStyle = null;
 
@@ -111,9 +112,10 @@ class GestureVisualizer {
 		this.isDrawScheduled = false;
 
 		this.settings = {
-			hudBgColor: '#000000',
-			hudBgOpacity: 70,
+			hudBgColor: '#000000b3',
 			hudTextColor: '#ffffff',
+			hudBlurRadius: 5,
+			enableHudShadow: true,
 			trailColor: '#4285f4',
 			trailWidth: 5,
 			showTrailOrigin: true,
@@ -145,14 +147,39 @@ class GestureVisualizer {
 	}
 
 	#createElement(tagName) {
-		if (document.contentType === 'application/xml' || document.contentType === 'image/svg+xml') {
+		if (document instanceof XMLDocument) {
 			return document.createElementNS('http://www.w3.org/1999/xhtml', tagName);
 		}
 		return document.createElement(tagName);
 	}
 
+	#mountContainer() {
+		if (document.body) {
+			document.body.appendChild(this.container);
+		} else if (document.contentType === 'image/svg+xml' || (document.documentElement && document.documentElement.tagName.toLowerCase() === 'svg')) {
+			this.#mountToSvg();
+		} else {
+			document.documentElement.appendChild(this.container);
+		}
+	}
+
+	#mountToSvg() {
+		this.foreignObject = document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject');
+		this.foreignObject.setAttribute('width', '100%');
+		this.foreignObject.setAttribute('height', '100%');
+		this.foreignObject.setAttribute('x', '0');
+		this.foreignObject.setAttribute('y', '0');
+		this.foreignObject.style.pointerEvents = 'none';
+		
+		this.foreignObject.appendChild(this.container);
+		document.documentElement.appendChild(this.foreignObject);
+		
+		requestAnimationFrame(() => this.updateForeignObjectTransform());
+	}
+
 	init() {
-		if (this.container) return;
+		if (this.container) return true;
+
 
 		this.container = this.#createElement('div');
 
@@ -170,6 +197,7 @@ class GestureVisualizer {
 			background: transparent !important;
 			margin: 0 !important;
 			padding: 0 !important;
+			opacity: 1 !important;
 		`;
 
 		this.shadow = this.container.attachShadow({ mode: 'closed' });
@@ -201,6 +229,10 @@ class GestureVisualizer {
 			this.canvas.style.height = height + 'px';
 			this.ctx = this.canvas.getContext('2d');
 			this.ctx.scale(dpr, dpr);
+
+			if (this.foreignObject) {
+				this.updateForeignObjectTransform();
+			}
 		};
 
 		this.resizeHandler();
@@ -211,35 +243,82 @@ class GestureVisualizer {
 		this.updateHudStyle();
 		this.shadow.appendChild(this.hud);
 
-		if (document.body) {
-			document.body.appendChild(this.container);
-		} else {
-			document.documentElement.appendChild(this.container);
-		}
+		this.#mountContainer();
 
 		void this.hud.offsetHeight;
 
 		window.addEventListener('resize', this.resizeHandler);
+
+		return true;
 	}
 
-	static #hexToRgb(hex) {
-		const r = parseInt(hex.slice(1, 3), 16);
-		const g = parseInt(hex.slice(3, 5), 16);
-		const b = parseInt(hex.slice(5, 7), 16);
-		return `${r}, ${g}, ${b}`;
+	static #escapeHtml(text) {
+		const element = document.createElement('div');
+		element.textContent = text;
+		return element.innerHTML;
+	}
+
+	static #colorWithAlpha(color, defaultAlpha = 1) {
+		if (!color) return `rgba(0, 0, 0, ${defaultAlpha})`;
+		if (color.startsWith('oklch(')) {
+			if (/\//.test(color)) return color;
+			if (defaultAlpha < 1) return color.replace(')', ` / ${defaultAlpha})`);
+			return color;
+		}
+		const r = parseInt(color.slice(1, 3), 16);
+		const g = parseInt(color.slice(3, 5), 16);
+		const b = parseInt(color.slice(5, 7), 16);
+		const a = color.length >= 9 ? parseInt(color.slice(7, 9), 16) / 255 : defaultAlpha;
+		return `rgba(${r}, ${g}, ${b}, ${a})`;
 	};
 
+	static #colorHasAlpha(color) {
+		if (!color || typeof color !== 'string') return false;
+		if (color.startsWith('oklch(')) {
+			const m = color.match(/\/\s*([\d.]+)/);
+			return m ? parseFloat(m[1]) < 1 : false;
+		}
+		if (color.startsWith('#') && color.length >= 9) {
+			return parseInt(color.slice(7, 9), 16) < 255;
+		}
+		const m = color.match(/rgba?\(.+?,\s*([\d.]+)\s*\)|hsla?\(.+?,\s*([\d.]+)\s*\)/);
+		if (m) {
+			const a = parseFloat(m[1] ?? m[2]);
+			return a < 1;
+		}
+		return false;
+	}
+
+	updateForeignObjectTransform() {
+		if (!this.foreignObject || !document.documentElement.getScreenCTM) return;
+		try {
+			const svg = document.documentElement;
+			const ctm = svg.getScreenCTM();
+			if (!ctm) return;
+
+			const inv = ctm.inverse();
+			
+			this.foreignObject.setAttribute('transform', `matrix(${inv.a}, ${inv.b}, ${inv.c}, ${inv.d}, ${inv.e}, ${inv.f})`);
+			
+			this.foreignObject.setAttribute('x', '0');
+			this.foreignObject.setAttribute('y', '0');
+			this.foreignObject.setAttribute('width', window.innerWidth);
+			this.foreignObject.setAttribute('height', window.innerHeight);
+		} catch (e) {
+			console.warn('Failed to update foreignObject transform:', e);
+		}
+	}
+
 	updateHudStyle() {
-		if (!this.hud) return;
-		const bgOpacity = this.settings.hudBgOpacity / 100;
+		if (!this.init()) return;
 
 		this.hud.style.cssText = `
 			position: absolute;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -40%);
-			background-color: rgba(${GestureVisualizer.#hexToRgb(this.settings.hudBgColor)}, ${bgOpacity});
-			color: ${this.settings.hudTextColor};
+			background-color: ${GestureVisualizer.#colorWithAlpha(this.settings.hudBgColor, 0.7)};
+			color: ${GestureVisualizer.#colorWithAlpha(this.settings.hudTextColor)};
 			padding-inline: 27px var(--hud-padding-end, 30px);
 			padding-block: 15px 16px;
 			border-radius: 10px;
@@ -250,8 +329,9 @@ class GestureVisualizer {
 			opacity: 0;
 			transition: opacity 0.2s, transform 0.2s;
 			text-align: center;
-			box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-			backdrop-filter: blur(5px);
+			box-shadow: ${this.settings.enableHudShadow ? '0 4px 15px rgba(0,0,0,0.3)' : 'none'};
+			backdrop-filter: blur(${this.settings.hudBlurRadius ?? 5}px);
+			user-select: none;
 		`;
 	}
 
@@ -292,7 +372,7 @@ class GestureVisualizer {
 		if (this.container && !this.container.isConnected) {
 			this.cleanup();
 		}
-		if (!this.canvas) this.init();
+		if (!this.init()) return;
 		this.trail = [];
 		
 		this.filter.minCutoff = this.settings.minCutoff;
@@ -327,6 +407,7 @@ class GestureVisualizer {
 	}
 
 	addPoint(x, y, timestamp = null) {
+		if (!this.init()) return;
 		if (this.lastPointInput && this.lastPointInput.x === x && this.lastPointInput.y === y) {
 			this.duplicatePointCount++;
 		} else {
@@ -344,15 +425,16 @@ class GestureVisualizer {
 		if (this.settings.enableInputStabilization) {
 			const filtered = this.filter.filter(x, y, timestamp);
 			this.trail.push({ x: filtered.x, y: filtered.y, rawX: x, rawY: y });
-			this.scheduleDraw();
-			this.lagTimer = setTimeout(() => this.catchUp(), this.settings.stabilizationCatchUpDelay);
+			this.#scheduleDraw();
+			this.lagTimer = setTimeout(() => this.#catchUp(), this.settings.stabilizationCatchUpDelay);
 		} else {
 			this.trail.push({ x, y, rawX: x, rawY: y });
-			this.scheduleDraw();
+			this.#scheduleDraw();
 		}
 	}
 
 	addPoints(points) {
+		if (!this.init()) return;
 		const validPoints = [];
 		for (const p of points) {
 			if (this.lastPointInput && this.lastPointInput.x === p.x && this.lastPointInput.y === p.y) {
@@ -378,17 +460,17 @@ class GestureVisualizer {
 				const filtered = this.filter.filter(p.x, p.y, p.timestamp);
 				this.trail.push({ x: filtered.x, y: filtered.y, rawX: p.x, rawY: p.y });
 			}
-			this.scheduleDraw();
-			this.lagTimer = setTimeout(() => this.catchUp(), this.settings.stabilizationCatchUpDelay);
+			this.#scheduleDraw();
+			this.lagTimer = setTimeout(() => this.#catchUp(), this.settings.stabilizationCatchUpDelay);
 		} else {
 			for (const p of validPoints) {
 				this.trail.push({ x: p.x, y: p.y, rawX: p.x, rawY: p.y });
 			}
-			this.scheduleDraw();
+			this.#scheduleDraw();
 		}
 	}
 
-	catchUp() {
+	#catchUp() {
 		if (!this.trail.length || !this.settings.enableInputStabilization) return;
 
 		const last = this.trail[this.trail.length - 1];
@@ -401,24 +483,40 @@ class GestureVisualizer {
 		this.addPoint(last.rawX, last.rawY);
 	}
 
-	updateAction(text) {
-		if (!this.hud) this.init();
-		if (text) {
-			this.hud.innerHTML = '\u200B' + window.GestureConstants.arrowsToSvg(text);
-			
-			const hasOnlyArrows = /^[↑↓←→]+$/.test(text);
-			this.hud.style.setProperty('--hud-padding-end', hasOnlyArrows ? '27px' : '30px');
-			
-			this.hud.style.opacity = '1';
-			this.hud.style.transform = 'translate(-50%, -50%)';
-		} else {
+	updateAction(arrows, texts) {
+		if (!Array.isArray(texts)) throw new TypeError('updateAction: texts must be an array');
+		if (!this.init()) return;
+
+		if (!arrows && texts.length === 0) {
 			this.hud.style.opacity = '0';
+			return;
 		}
+
+		let innerHTML = '\u200B';
+		const hasText = texts.length > 0 && texts.some(t => t);
+
+		if (arrows && hasText) {
+			const arrowsHtml = window.GestureConstants.arrowsToSvg(arrows);
+			const textsHtml = texts.map(t => `<div>${GestureVisualizer.#escapeHtml(t)}</div>`).join('');
+
+			innerHTML += `<div style="display:inline-flex;align-items:center;gap:12px;text-align:start;max-width:80vw">`
+				+ `<div style="line-height:32px">${arrowsHtml}</div>`
+				+ `<div style="display:flex;flex-direction:column;align-items:flex-start;flex-shrink:0;white-space:nowrap;gap:4px">${textsHtml}</div>`
+				+ `</div>`;
+		} else if (arrows) {
+			innerHTML += window.GestureConstants.arrowsToSvg(arrows);
+		} else {
+			innerHTML += texts.map(t => `<div>${GestureVisualizer.#escapeHtml(t)}</div>`).join('');
+		}
+
+		this.hud.innerHTML = innerHTML;
+		this.hud.style.setProperty('--hud-padding-end', !hasText ? '27px' : '30px');
+		this.hud.style.opacity = '1';
+		this.hud.style.transform = 'translate(-50%, -50%)';
 	}
 
 	showToast(message, duration = 3000) {
-		if (!this.container) this.init();
-		const bgOpacity = this.settings.hudBgOpacity / 100;
+		if (!this.init()) return;
 
 		const toast = this.#createElement('div');
 		toast.style.cssText = `
@@ -426,8 +524,8 @@ class GestureVisualizer {
 			bottom: 20%;
 			left: 50%;
 			transform: translateX(-50%) translateY(20px);
-			background-color: rgba(${GestureVisualizer.#hexToRgb(this.settings.hudBgColor)}, ${bgOpacity});
-			color: ${this.settings.hudTextColor};
+			background-color: ${GestureVisualizer.#colorWithAlpha(this.settings.hudBgColor, 0.7)};
+			color: ${GestureVisualizer.#colorWithAlpha(this.settings.hudTextColor)};
 			padding: 12px 24px;
 			border-radius: 8px;
 			font-size: 14px;
@@ -461,12 +559,12 @@ class GestureVisualizer {
 		}, duration);
 	}
 
-	scheduleDraw() {
+	#scheduleDraw() {
 		if (!this.isDrawScheduled) {
 			this.isDrawScheduled = true;
 			this.animationFrameId = requestAnimationFrame(() => {
 				try {
-					this.draw();
+					this.#draw();
 				} finally {
 					this.isDrawScheduled = false;
 					this.animationFrameId = null;
@@ -475,7 +573,7 @@ class GestureVisualizer {
 		}
 	}
 
-	draw() {
+	#draw() {
 		if (!this.ctx) return;
 
 		const ctx = this.ctx;
@@ -537,10 +635,19 @@ class GestureVisualizer {
 
 		if (this.settings.showTrailOrigin) {
 			const originRadius = Math.max(width * 1.2, 4);
+			const ox = this.trail[0].x, oy = this.trail[0].y;
+
+			if (GestureVisualizer.#colorHasAlpha(color)) {
+				ctx.globalCompositeOperation = 'destination-out';
+				ctx.beginPath();
+				ctx.arc(ox, oy, originRadius, 0, Math.PI * 2);
+				ctx.fill();
+				ctx.globalCompositeOperation = 'source-over';
+			}
 
 			ctx.beginPath();
 			ctx.fillStyle = color;
-			ctx.arc(this.trail[0].x, this.trail[0].y, originRadius, 0, Math.PI * 2);
+			ctx.arc(ox, oy, originRadius, 0, Math.PI * 2);
 			ctx.fill();
 		}
 
@@ -555,7 +662,9 @@ class GestureVisualizer {
 			this.resizeHandler = null;
 		}
 
-		if (this.container && this.container.parentNode) {
+		if (this.foreignObject && this.foreignObject.parentNode) {
+			this.foreignObject.parentNode.removeChild(this.foreignObject);
+		} else if (this.container && this.container.parentNode) {
 			this.container.parentNode.removeChild(this.container);
 		}
 
@@ -563,6 +672,7 @@ class GestureVisualizer {
 		this.canvas = null;
 		this.hud = null;
 		this.container = null;
+		this.foreignObject = null;
 		this.shadow = null;
 	}
 }

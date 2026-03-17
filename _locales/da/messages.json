@@ -8,20 +8,12 @@
 		"description": "Short extension name for popup"
 	},
 	"extDescription": {
-		"message": "En open-source musebevægelse-udvidelse med fokus på privatliv og flydende oplevelse. Flydende og responsive bevægelser, understøtter super-træk, og alle data gemmes kun lokalt.",
+		"message": "En open-source musebevægelse-udvidelse med fokus på privatliv og flydende oplevelse. Flydende og responsive bevægelser, understøtter super-træk.",
 		"description": "Extension description"
-	},
-	"appearance": {
-		"message": "Udseende",
-		"description": "Appearance section"
 	},
 	"theme": {
 		"message": "Tema",
 		"description": "Theme"
-	},
-	"themeDesc": {
-		"message": "Skift mellem lyst og mørkt tema",
-		"description": "Theme description"
 	},
 	"themeDark": {
 		"message": "Mørk",
@@ -34,10 +26,6 @@
 	"themeAuto": {
 		"message": "Følg system",
 		"description": "Auto theme - follow system"
-	},
-	"languageDesc": {
-		"message": "Vælg sprog",
-		"description": "Language description"
 	},
 	"syncStatus": {
 		"message": "Synkroniseringsstatus",
@@ -56,7 +44,7 @@
 		"description": "Author"
 	},
 	"privacyNote": {
-		"message": "🔒 Kører lokalt, ingen netværksadgang undtagen synkronisering, ingen dataindsamling",
+		"message": " Kører lokalt, ingen netværksadgang undtagen synkronisering, ingen dataindsamling",
 		"description": "Privacy note in footer"
 	},
 	"supportUsText": {
@@ -120,11 +108,19 @@
 		"description": "Hold the right mouse button and move the mouse to easily perform gestures"
 	},
 	"macLinuxContextMenuNotice": {
-		"message": "⚠️ På grund af systembegrænsninger kræves dobbelt højreklik for at åbne genvejsmenuen på macOS / Linux.",
+		"message": "På grund af systembegrænsninger kræves der et dobbelt højreklik for at åbne genvejsmenuen på macOS / Linux, når højrekliksbevægelser er aktiveret.",
 		"description": "Notice for macOS / Linux users about double right-click for context menu"
 	},
+	"macLinuxDoubleClickHint": {
+		"message": "For at åbne kontekstmenuen skal du dobbeltklikke med højre museknap. (Læs mere)",
+		"description": "Short toast hint shown on first right-click on macOS/Linux explaining double-click requirement"
+	},
+	"edgeGestureConflictNotice": {
+		"message": "%browserName% har indbyggede gestusfunktioner. For at bruge FlowMouse's gestus, skal du <a href=\"#\" class=\"edge-gesture-link\">deaktivere de indbyggede gestus</a> i %browserName% indstillinger.",
+		"description": "Notice for Edge users about built-in gesture conflict"
+	},
 	"macTextDragNotice": {
-		"message": "⚠️ På grund af macOS-adfærd skal du ved teksttræk først markere teksten og derefter trykke og holde venstre knap nede kortvarigt før du trækker. Ellers udløses søgningen muligvis ikke.",
+		"message": "På grund af macOS-adfærd skal du ved teksttræk først markere teksten, derefter trykke og holde venstre knap nede inden for det markerede område og give en kort pause, før du trækker. Ellers udløses trækfunktionen muligvis ikke.",
 		"description": "Notice for macOS users about text drag behavior"
 	},
 	"showTrail": {
@@ -159,6 +155,14 @@
 		"message": "Gennemsigtighed",
 		"description": "Opacity"
 	},
+	"blur": {
+		"message": "Sløring",
+		"description": "Blur radius"
+	},
+	"hudShadow": {
+		"message": "Skygge",
+		"description": "HUD shadow toggle"
+	},
 	"text": {
 		"message": "Tekst",
 		"description": "Text"
@@ -179,6 +183,10 @@
 		"message": "Rulleanimationseffekt for op/ned-bevægelser",
 		"description": "Scroll smoothness description"
 	},
+	"smoothnessAuto": {
+		"message": "Auto",
+		"description": "Auto scroll smoothness - uses system if animation enabled, otherwise smooth"
+	},
 	"smoothnessSystem": {
 		"message": "System (Høj ydeevne)",
 		"description": "System scroll smoothness"
@@ -190,6 +198,18 @@
 	"smoothnessNone": {
 		"message": "Ingen animation",
 		"description": "No scroll animation"
+	},
+	"scrollAccel": {
+		"message": "Multiplikator for kontinuerlig rulning",
+		"description": "Speed multiplier applied when scrolling consecutively"
+	},
+	"scrollAccelOff": {
+		"message": "Fra",
+		"description": "Scroll acceleration disabled"
+	},
+	"scrollAccelWindow": {
+		"message": "Tidsgrænse for fortløbende rulning",
+		"description": "Max time (ms) between scrolls to count as consecutive"
 	},
 	"dragFeatures": {
 		"message": "Træk-funktioner",
@@ -283,6 +303,22 @@
 		"message": "Ingen sortlistede sider. Indtast et domæne ovenfor for at tilføje.",
 		"description": "Empty blacklist message"
 	},
+	"enableBlacklistContextMenu": {
+		"message": "Skift bevægelser i kontekstmenuen",
+		"description": "Setting title for blacklist context menu toggle"
+	},
+	"enableBlacklistContextMenuDesc": {
+		"message": "Vis en mulighed for at deaktivere/aktivere bevægelser i kontekstmenuen",
+		"description": "Setting description for blacklist context menu toggle"
+	},
+	"menuAddToBlacklist": {
+		"message": "Deaktiver bevægelser på dette websted",
+		"description": "Context menu title for adding current site to blacklist"
+	},
+	"menuRemoveFromBlacklist": {
+		"message": "Aktiver bevægelser på dette websted",
+		"description": "Context menu title for removing current site from blacklist"
+	},
 	"dataManagement": {
 		"message": "Datastyring",
 		"description": "Data management section"
@@ -322,6 +358,10 @@
 	"importDone": {
 		"message": "Indstillinger importeret",
 		"description": "Import done message"
+	},
+	"importConfirm": {
+		"message": "Importen vil overskrive dine nuværende indstillinger. Importer kun konfigurationsfiler fra pålidelige kilder.\n\nFortsæt?",
+		"description": "Import confirmation warning"
 	},
 	"importFailed": {
 		"message": "Import mislykkedes: Ugyldig konfigurationsfil",
@@ -459,13 +499,41 @@
 		"message": "Luk fane",
 		"description": "Close tab"
 	},
-	"actionCloseTabKeepWindow": {
-		"message": "Luk fane (Behold vindue)",
-		"description": "Close tab but keep window open"
+	"closeTabKeepWindow": {
+		"message": "Hvis dette er den sidste fane, behold vinduet åbent",
+		"description": "Checkbox label for closeTab action config"
+	},
+	"closeTabAfterClose": {
+		"message": "Efter lukning",
+		"description": "Label for closeTab afterClose config"
+	},
+	"closeTabAfterCloseDefault": {
+		"message": "Browserstandard",
+		"description": "Option for closeTab afterClose config - let browser decide"
+	},
+	"closeTabAfterCloseLeft": {
+		"message": "Skift til venstre fane",
+		"description": "Option for closeTab afterClose config - switch to left tab"
+	},
+	"closeTabAfterCloseRight": {
+		"message": "Skift til højre fane",
+		"description": "Option for closeTab afterClose config - switch to right tab"
+	},
+	"switchTabNoWrap": {
+		"message": "Skift ikke cyklisk",
+		"description": "Checkbox label for switchLeftTab/switchRightTab action config"
+	},
+	"switchTabMoveTab": {
+		"message": "Flyt aktuel fane",
+		"description": "Checkbox label for switchLeftTab/switchRightTab/switchFirstTab/switchLastTab action config"
 	},
 	"actionCloseBrowser": {
 		"message": "Luk browser",
 		"description": "Close browser"
+	},
+	"actionCloseWindow": {
+		"message": "Luk vindue",
+		"description": "Close current window"
 	},
 	"actionRestoreTab": {
 		"message": "Gendan lukket fane",
@@ -498,6 +566,14 @@
 	"actionSwitchRightTab": {
 		"message": "Skift til højre fane",
 		"description": "Switch to right tab"
+	},
+	"actionSwitchFirstTab": {
+		"message": "Skift til første fane",
+		"description": "Switch to first tab"
+	},
+	"actionSwitchLastTab": {
+		"message": "Skift til sidste fane",
+		"description": "Switch to last tab"
 	},
 	"actionRefresh": {
 		"message": "Opdater aktuel fane",
@@ -575,6 +651,10 @@
 		"message": "Slå lyd til/fra for alle faner",
 		"description": "Toggle mute all tabs"
 	},
+	"actionTogglePinTab": {
+		"message": "Fastgør/frigør aktuel fane",
+		"description": "Toggle pin current tab"
+	},
 	"showTrailOrigin": {
 		"message": "Vis startpunkt",
 		"description": "Show trail origin point"
@@ -595,17 +675,29 @@
 		"message": "Tip: En værdi mellem 15-30 anbefales for bedste genkendelse.",
 		"description": "Warning when distance threshold is too small or too large"
 	},
-	"enableAdvancedSettings": {
-		"message": "Avancerede indstillinger",
-		"description": "Enable advanced settings"
+	"gestureTurnTolerance": {
+		"message": "Gestus drejetolerance",
+		"description": "Turn tolerance for detecting direction changes in long gestures"
 	},
-	"enableAdvancedSettingsDesc": {
-		"message": "Vis flere avancerede muligheder når aktiveret",
-		"description": "Show more advanced options when enabled"
+	"gestureTurnToleranceDesc": {
+		"message": "Højere værdier reducerer utilsigtede drej, men kræver længere bevægelser for at ændre retning",
+		"description": "Description for gesture turn tolerance setting"
 	},
-	"enableAdvancedSettingsToggle": {
-		"message": "Avanceret tilstand",
-		"description": "Enable advanced settings toggle label"
+	"advanced": {
+		"message": "Ekspertilstand",
+		"description": "Short label for per-section advanced toggle"
+	},
+	"otherSettings": {
+		"message": "Andre indstillinger",
+		"description": "Section title for other/miscellaneous settings"
+	},
+	"show": {
+		"message": "Vis",
+		"description": "Show navigation menu"
+	},
+	"hide": {
+		"message": "Skjul",
+		"description": "Hide navigation menu"
 	},
 	"urlFormatError": {
 		"message": "Indtast venligst fuld URL der starter med http:// eller https://",
@@ -615,41 +707,61 @@
 		"message": "Nulstil til standard",
 		"description": "Reset gesture to default action"
 	},
+	"resetToDefaultConfirm": {
+		"message": "Nulstil disse indstillinger til standardværdier?",
+		"description": "Confirmation dialog for resetting settings"
+	},
 	"addCustomGesture": {
 		"message": "Tilføj tilpasset bevægelse",
 		"description": "Add custom gesture section title"
-	},
-	"gesturePattern": {
-		"message": "Mønster",
-		"description": "Gesture pattern label"
-	},
-	"selectAction": {
-		"message": "Vælg handling",
-		"description": "Select action label"
 	},
 	"clear": {
 		"message": "Ryd",
 		"description": "Clear button"
 	},
-	"addGesture": {
-		"message": "Tilføj bevægelse",
-		"description": "Add gesture button"
-	},
-	"pleaseDrawGesture": {
-		"message": "Tegn venligst en bevægelse først",
-		"description": "Alert when no gesture drawn"
-	},
 	"gestureAdded": {
 		"message": "✓ Bevægelse tilføjet",
 		"description": "Gesture added success message"
 	},
-	"gestureDrawInstructions": {
-		"message": "Hold højre museknap nede og tegn en bevægelse nedenfor, slip for at afslutte. Understøttede retninger:",
-		"description": "Instructions for gesture drawing"
+	"gestureRecorderTitle": {
+		"message": "Tegn en bevægelse",
+		"description": "Gesture recorder full-screen title"
 	},
-	"gestureOverwriteConfirm": {
-		"message": "Bevægelse %pattern% findes allerede. Overskriv?",
-		"description": "Confirmation message when adding a duplicate gesture"
+	"gestureRecorderDesc": {
+		"message": "Hold knappen %button% nede, og tegn et bevægelsesmønster",
+		"description": "Gesture recorder instruction, %button% is replaced with the mouse button name"
+	},
+	"gestureRecorderEsc": {
+		"message": "Annuller",
+		"description": "Gesture recorder cancel button label"
+	},
+	"gestureRecorderRecording": {
+		"message": "Optager…",
+		"description": "Gesture recorder recording indicator"
+	},
+	"gestureRecorderResult": {
+		"message": "Registreret bevægelse",
+		"description": "Gesture recorder result label"
+	},
+	"gestureRecorderConfirm": {
+		"message": "Bekræft",
+		"description": "Gesture recorder confirm button"
+	},
+	"gestureRecorderRedraw": {
+		"message": "Tegn igen",
+		"description": "Gesture recorder redraw button"
+	},
+	"gestureRecorderBanned": {
+		"message": "Bevægelsen %pattern% findes allerede",
+		"description": "Gesture recorder message when user draws a banned/existing gesture pattern"
+	},
+	"rightButton": {
+		"message": "Højre museknap",
+		"description": "Right mouse button name"
+	},
+	"leftButton": {
+		"message": "Venstre museknap",
+		"description": "Left mouse button name"
 	},
 	"customGesture": {
 		"message": "Tilpasset",
@@ -670,6 +782,10 @@
 	"enterCustomUrl": {
 		"message": "Indtast URL (anbefaler at inkludere protokol som https://, chrome://, osv.):",
 		"description": "Prompt for custom URL input"
+	},
+	"copyUrlIncludeTitle": {
+		"message": "Kopiér også sidetitlen",
+		"description": "Checkbox label for including page title when copying URL"
 	},
 	"invalidUrl": {
 		"message": "Indtast venligst en gyldig URL (der starter med http:// eller https://)",
@@ -750,6 +866,10 @@
 	"aboutTitle": {
 		"message": "Om FlowMouse",
 		"description": "About title"
+	},
+	"aboutTitleShort": {
+		"message": "Om",
+		"description": "Short About title "
 	},
 	"aboutAuthor": {
 		"message": "Forfatter",
@@ -863,6 +983,10 @@
 		"message": "Åbn i forgrunden",
 		"description": "Open tab in foreground"
 	},
+	"openInIncognito": {
+		"message": "Inkognito",
+		"description": "Open in incognito checkbox"
+	},
 	"textDragGestures": {
 		"message": "Teksttrækbevægelser",
 		"description": "Text drag gestures"
@@ -880,7 +1004,7 @@
 		"description": "Direction column header"
 	},
 	"action": {
-		"message": "Handling",
+		"message": "Kommando",
 		"description": "Action column header"
 	},
 	"imageSearchUrl": {
@@ -915,6 +1039,10 @@
 		"message": "📋 Kopier link",
 		"description": "Copy link"
 	},
+	"dragActionCopyLinkText": {
+		"message": "📋 Kopier linktekst",
+		"description": "Copy link text"
+	},
 	"dragActionSaveImage": {
 		"message": "💾 Gem billede",
 		"description": "Save image"
@@ -936,7 +1064,7 @@
 		"description": "Custom search"
 	},
 	"reducedMotionWarning": {
-		"message": "⚠️ %OS%-systemanimation er deaktiveret, rulleanimation fungerer muligvis ikke korrekt. Du kan aktivere animation i %OS%-systemindstillinger.",
+		"message": "%OS%-systemanimation er deaktiveret, rulleanimation fungerer muligvis ikke korrekt. Du kan aktivere animation i %OS%-systemindstillinger.",
 		"description": "Warning message when system reduced motion is enabled"
 	},
 	"autoDetectUrl": {
@@ -964,7 +1092,7 @@
 		"description": "Setting description for restricted page notice"
 	},
 	"restrictedPagesDetailsTitle": {
-		"message": "⚠️ På grund af browserens sikkerhedspolitikker kan udvidelser ikke køre på visse typer sider.",
+		"message": "På grund af browserens sikkerhedspolitikker kan udvidelser ikke køre på visse typer sider.",
 		"description": "Collapsible details title"
 	},
 	"showMoreHint": {
@@ -972,7 +1100,7 @@
 		"description": "Hint to show more details"
 	},
 	"restrictedNewTab": {
-		"message": "Ny faneside (chrome://newtab)",
+		"message": "Ny faneside",
 		"description": "New tab page title"
 	},
 	"restrictedNewTabDesc": {
@@ -988,11 +1116,11 @@
 		"description": "Store page description"
 	},
 	"restrictedInternal": {
-		"message": "Browserens interne sider",
+		"message": "Browserens interne sider (%browserProtocol%)",
 		"description": "Internal page title"
 	},
 	"restrictedInternalDesc": {
-		"message": "Alle sider der starter med chrome:// (Chrome) eller edge:// (Edge), herunder indstillinger, historik, overførsler osv. Disse sider involverer centrale browserfunktioner og brugerdata, så de er strengt beskyttede.",
+		"message": "For eksempel %browserName%s interne indstillinger, historik, overførsler osv. Disse sider involverer centrale browserfunktioner og brugerdata, så de er strengt beskyttede.",
 		"description": "Internal page description"
 	},
 	"restrictedFile": {
@@ -1000,7 +1128,7 @@
 		"description": "File page title"
 	},
 	"restrictedFileDesc": {
-		"message": "Lokale HTML-filer åbnet via file://-protokollen. På grund af sikkerhedsbegrænsninger (for at forhindre ondsindede udvidelser i at få adgang til det lokale filsystem) kan udvidelser ikke fungere på disse sider.",
+		"message": "Lokale html, pdf osv. filer åbnet via file://-protokollen. På grund af sikkerhedsbegrænsninger (for at forhindre ondsindede udvidelser i at få adgang til det lokale filsystem) kan udvidelser ikke fungere på disse sider.",
 		"description": "File page description"
 	},
 	"restrictedViewSource": {
@@ -1024,7 +1152,7 @@
 		"description": "Popup description when content script not loaded"
 	},
 	"popupRefreshBtn": {
-		"message": "🔄 Opdater side",
+		"message": "Opdater side",
 		"description": "Popup refresh button text"
 	},
 	"popupRestrictedTitle": {
@@ -1036,7 +1164,7 @@
 		"description": "Popup description for restricted pages"
 	},
 	"popupLearnMore": {
-		"message": "📖 Læs mere",
+		"message": "Læs mere",
 		"description": "Popup learn more button text"
 	},
 	"tutorialPending": {
@@ -1207,6 +1335,26 @@
 		"message": "For at gemme billeder skal FlowMouse bruge adgang til sider og overførsler.",
 		"description": "Permission popup description for downloads and page capture"
 	},
+	"permissionIncognitoTitle": {
+		"message": "Tillad i inkognitotilstand",
+		"description": "Permission popup title for incognito"
+	},
+	"permissionIncognitoDesc": {
+		"message": "For at fungere i inkognitovinduer skal du manuelt aktivere \"Tillad i inkognitotilstand\" for FlowMouse.",
+		"description": "Permission popup description for incognito"
+	},
+	"openExtensionsSettings": {
+		"message": "Åbn udvidelsesdetaljer",
+		"description": "Button to open extension details page"
+	},
+	"permissionFirefoxIncognitoTitle": {
+		"message": "Kør i private vinduer",
+		"description": "Permission popup title for Firefox private browsing"
+	},
+	"permissionFirefoxIncognitoDesc": {
+		"message": "For at fungere i private vinduer skal du manuelt aktivere \"Kør i private vinduer\" for FlowMouse i Tilføjelsesstyring.",
+		"description": "Permission popup description for Firefox private browsing"
+	},
 	"grantPermission": {
 		"message": "Giv tilladelse",
 		"description": "Grant permission button"
@@ -1234,5 +1382,205 @@
 	"saveImageTimeout": {
 		"message": "Gem billede mislykkedes: Indlæsning fik timeout",
 		"description": "Toast message when image loading times out"
+	},
+	"buttonOkay": {
+		"message": "OK",
+		"description": "Generic OK button"
+	},
+	"buttonCancel": {
+		"message": "Annuller",
+		"description": "Generic Cancel button"
+	},
+	"buttonClose": {
+		"message": "Luk",
+		"description": "Generic Close button"
+	},
+	"searchActions": {
+		"message": "Søg efter kommandoer...",
+		"description": "Placeholder for action search input in action picker"
+	},
+	"actionCategoryNavigation": {
+		"message": "Navigation",
+		"description": "Action category: navigation"
+	},
+	"actionCategoryTabs": {
+		"message": "Faner",
+		"description": "Action category: tabs"
+	},
+	"actionCategoryWindow": {
+		"message": "Vindue",
+		"description": "Action category: window"
+	},
+	"actionCategoryUtilities": {
+		"message": "Værktøjer",
+		"description": "Action category: utilities"
+	},
+	"noResults": {
+		"message": "Ingen resultater",
+		"description": "No search results found"
+	},
+	"wheelGestures": {
+		"message": "Musehjulsbevægelser",
+		"description": "Mouse wheel gestures section title"
+	},
+	"enableWheelGestures": {
+		"message": "Aktivér musehjulsbevægelser",
+		"description": "Enable mouse wheel gestures"
+	},
+	"enableWheelGesturesDesc": {
+		"message": "Udfør nemt forskellige handlinger ved hjælp af musehjulet",
+		"description": "Enable mouse wheel gestures description"
+	},
+	"wheelGesture_scrollUpHoldingRight": {
+		"message": "Rul op, mens du holder højre knap nede",
+		"description": "Wheel gesture: scroll up while holding right button"
+	},
+	"wheelGesture_scrollDownHoldingRight": {
+		"message": "Rul ned, mens du holder højre knap nede",
+		"description": "Wheel gesture: scroll down while holding right button"
+	},
+	"specialGestures": {
+		"message": "Særlige bevægelser",
+		"description": "Special gestures section title"
+	},
+	"enableSpecialGestures": {
+		"message": "Aktivér særlige bevægelser",
+		"description": "Enable special gestures"
+	},
+	"enableSpecialGesturesDesc": {
+		"message": "Udfør handlinger ved at klikke på den ene museknap, mens du holder den anden nede",
+		"description": "Enable special gestures description"
+	},
+	"specialGesture_leftClickHoldingRight": {
+		"message": "Venstreklik mens du holder højre knap nede",
+		"description": "Special gesture: left click while holding right button"
+	},
+	"specialGesture_rightClickHoldingLeft": {
+		"message": "Højreklik mens du holder venstre knap nede",
+		"description": "Special gesture: right click while holding left button"
+	},
+	"actionChains": {
+		"message": "Kommandokæder",
+		"description": "Action chains section title"
+	},
+	"actionChainsDesc": {
+		"message": "Opret genanvendelige sekvenser af kommandoer, der udføres efter hinanden",
+		"description": "Action chains section description"
+	},
+	"actionActionChain": {
+		"message": "Kommandokæde",
+		"description": "Action chain action name"
+	},
+	"actionCategoryChains": {
+		"message": "Kommandokæder",
+		"description": "Action category: action chains"
+	},
+	"addChain": {
+		"message": "Tilføj kæde",
+		"description": "Add chain button"
+	},
+	"addNewChain": {
+		"message": "Opret ny kæde...",
+		"description": "Action item to navigate to chain editor and create a new chain"
+	},
+	"chainNamePlaceholder": {
+		"message": "Min kommandokæde",
+		"description": "Chain name input placeholder"
+	},
+	"chainDelayUnit": {
+		"message": "ms",
+		"description": "Milliseconds unit for chain delay"
+	},
+	"addStep": {
+		"message": "Tilføj trin",
+		"description": "Add step button"
+	},
+	"emptyChainSteps": {
+		"message": "Ingen trin tilføjet. Klik på \"Tilføj trin\" for at begynde.",
+		"description": "Empty chain steps message in expanded body"
+	},
+	"emptyChainStepsShort": {
+		"message": "Ingen trin tilføjet",
+		"description": "Short empty chain steps message for summary"
+	},
+	"noChains": {
+		"message": "Ingen kommandokæder endnu. Klik på \"Tilføj kæde\" for at oprette en.",
+		"description": "No chains message"
+	},
+	"chainNotFound": {
+		"message": "(Kæde ikke fundet)",
+		"description": "Chain not found label"
+	},
+	"deleteChainConfirm": {
+		"message": "Slet kæde \"%name%\"?",
+		"description": "Delete chain confirmation"
+	},
+	"stepNumber": {
+		"message": "Trin %n%",
+		"description": "Step number label"
+	},
+	"actionDelay": {
+		"message": "Forsinkelse",
+		"description": "Delay action name for chain steps"
+	},
+	"actionSendCustomEvent": {
+		"message": "Send tilpasset hændelse",
+		"description": "Action to dispatch a custom DOM event"
+	},
+	"actionSimulateKey": {
+		"message": "Simuler tastetryk",
+		"description": "Action to simulate a keyboard key press on the page"
+	},
+	"simulateKeyPreset": {
+		"message": "Forudindstillet tast",
+		"description": "Label for preset key dropdown in simulate key config"
+	},
+	"simulateKeyPresetLeft": {
+		"message": "← Venstre pil (Forrige side)",
+		"description": "Preset: ArrowLeft key"
+	},
+	"simulateKeyPresetRight": {
+		"message": "→ Højre pil (Næste side)",
+		"description": "Preset: ArrowRight key"
+	},
+	"simulateKeyPresetCustom": {
+		"message": "Brugerdefineret tast",
+		"description": "Preset: Custom key option"
+	},
+	"simulateKeyRecordBtn": {
+		"message": "Optag tast",
+		"description": "Button to start recording a key press"
+	},
+	"simulateKeyRecording": {
+		"message": "Tryk på en tast...",
+		"description": "Recording state text"
+	},
+	"simulateKeyManualInput": {
+		"message": "Aktuel tast",
+		"description": "Label for current key display in simulate key config"
+	},
+	"simulateKeyHint": {
+		"message": "Denne funktion sender kun tastaturhændelser til den aktuelle side, og bruges normalt til sidenavigation (← forrige / → næste). Den vil IKKE udløse browsergenveje (f.eks. vil Ctrl+R ikke genindlæse siden). På grund af begrænsninger i webstedets framework opfanges de simulerede hændelser muligvis ikke af alle brugerdefinerede komponenter eller indtastningsfelter.",
+		"description": "Hint text for simulate key feature"
+	},
+	"customEventInvalidJson": {
+		"message": "Ugyldigt JSON-format",
+		"description": "Error message when event detail is not valid JSON"
+	},
+	"customEventHint": {
+		"message": "Sender %code% på %window%. Nyttigt til integration med andre scripts.",
+		"description": "Hint explaining how custom event works. %code% = <code>new CustomEvent(...)</code>, %window% = <code>window</code>"
+	},
+	"delayDuration": {
+		"message": "Varighed",
+		"description": "Delay duration label"
+	},
+	"chainStepCount": {
+		"message": "%count% trin",
+		"description": "Step count for unnamed chains, e.g. '3 steps'"
+	},
+	"chainStepCountOne": {
+		"message": "%count% trin",
+		"description": "Step count for unnamed chains with exactly 1 step"
 	}
 }

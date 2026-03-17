@@ -8,20 +8,12 @@
 		"description": "Short extension name for popup"
 	},
 	"extDescription": {
-		"message": "Isang open-source na mouse gesture extension na nakatuon sa privacy at maayos na karanasan. Makinis na mga galaw ng mouse, suporta sa super drag, at lahat ng data ay nakaimbak nang lokal.",
+		"message": "Isang open-source na mouse gesture extension na nakatuon sa privacy at maayos na karanasan. Makinis na mga galaw ng mouse, suporta sa super drag.",
 		"description": "Extension description"
-	},
-	"appearance": {
-		"message": "Hitsura",
-		"description": "Appearance section"
 	},
 	"theme": {
 		"message": "Tema",
 		"description": "Theme"
-	},
-	"themeDesc": {
-		"message": "Lumipat sa pagitan ng maliwanag at madilim na tema",
-		"description": "Theme description"
 	},
 	"themeDark": {
 		"message": "Madilim",
@@ -34,10 +26,6 @@
 	"themeAuto": {
 		"message": "Sundin ang Sistema",
 		"description": "Auto theme - follow system"
-	},
-	"languageDesc": {
-		"message": "Piliin ang wika ng interface",
-		"description": "Language description"
 	},
 	"syncStatus": {
 		"message": "Katayuan ng Pag-sync",
@@ -56,7 +44,7 @@
 		"description": "Author"
 	},
 	"privacyNote": {
-		"message": "🔒 Gumagana nang lokal, walang koneksyon sa network maliban sa sync, walang pangongolekta ng data",
+		"message": " Gumagana nang lokal, walang koneksyon sa network maliban sa sync, walang pangongolekta ng data",
 		"description": "Privacy note in footer"
 	},
 	"supportUsText": {
@@ -120,11 +108,19 @@
 		"description": "Hold the right mouse button and move the mouse to easily perform gestures"
 	},
 	"macLinuxContextMenuNotice": {
-		"message": "⚠️ Dahil sa mga limitasyon ng system, kinakailangan ang dobleng pag-right-click upang buksan ang context menu sa macOS / Linux.",
+		"message": "Dahil sa mga limitasyon ng system, kapag naka-enable ang mga right-click gesture, kinakailangan ang dobleng pag-right-click upang buksan ang context menu sa macOS / Linux.",
 		"description": "Notice for macOS / Linux users about double right-click for context menu"
 	},
+	"macLinuxDoubleClickHint": {
+		"message": "Upang buksan ang context menu, i-double-click ang kanan. (Matuto pa)",
+		"description": "Short toast hint shown on first right-click on macOS/Linux explaining double-click requirement"
+	},
+	"edgeGestureConflictNotice": {
+		"message": "Ang %browserName% ay may built-in na mga tampok na gesture. Upang magamit ang mga gesture ng FlowMouse, mangyaring <a href=\"#\" class=\"edge-gesture-link\">huwag paganahin ang mga built-in na gesture</a> sa mga setting ng %browserName%.",
+		"description": "Notice for Edge users about built-in gesture conflict"
+	},
 	"macTextDragNotice": {
-		"message": "⚠️ Dahil sa gawi ng macOS, kapag nagda-drag ng text, piliin muna ang text, pagkatapos ay pindutin at hawakan ang kaliwang pindutan nang sandali bago mag-drag. Kung hindi, maaaring hindi ma-trigger ang paghahanap.",
+		"message": "Dahil sa gawi ng macOS, kapag nagda-drag ng text, piliin muna ang text, pagkatapos ay pindutin at hawakan ang kaliwang pindutan sa loob ng napiling bahagi at mag-pause sandali bago mag-drag. Kung hindi, maaaring hindi ma-trigger ang pag-drag.",
 		"description": "Notice for macOS users about text drag behavior"
 	},
 	"showTrail": {
@@ -159,6 +155,14 @@
 		"message": "Opacity",
 		"description": "Opacity"
 	},
+	"blur": {
+		"message": "Pag-blur",
+		"description": "Blur radius"
+	},
+	"hudShadow": {
+		"message": "Anino",
+		"description": "HUD shadow toggle"
+	},
 	"text": {
 		"message": "Teksto",
 		"description": "Text"
@@ -179,6 +183,10 @@
 		"message": "Effect ng animation ng pag-scroll para sa mga galaw na pataas/pababa",
 		"description": "Scroll smoothness description"
 	},
+	"smoothnessAuto": {
+		"message": "Awtomatiko",
+		"description": "Auto scroll smoothness - uses system if animation enabled, otherwise smooth"
+	},
 	"smoothnessSystem": {
 		"message": "Sistema (Mataas na Pagganap)",
 		"description": "System scroll smoothness"
@@ -190,6 +198,18 @@
 	"smoothnessNone": {
 		"message": "Walang animation",
 		"description": "No scroll animation"
+	},
+	"scrollAccel": {
+		"message": "Multiplier ng tuluy-tuloy na pag-scroll",
+		"description": "Speed multiplier applied when scrolling consecutively"
+	},
+	"scrollAccelOff": {
+		"message": "Naka-off",
+		"description": "Scroll acceleration disabled"
+	},
+	"scrollAccelWindow": {
+		"message": "Timeout ng magkakasunod na pag-scroll",
+		"description": "Max time (ms) between scrolls to count as consecutive"
 	},
 	"dragFeatures": {
 		"message": "Mga Tampok ng Pag-drag",
@@ -283,6 +303,22 @@
 		"message": "Walang mga naka-blacklist na site. Maglagay ng domain sa itaas upang magdagdag.",
 		"description": "Empty blacklist message"
 	},
+	"enableBlacklistContextMenu": {
+		"message": "Toggle ng Gestures sa Context Menu",
+		"description": "Setting title for blacklist context menu toggle"
+	},
+	"enableBlacklistContextMenuDesc": {
+		"message": "Magpakita ng opsyon upang i-disable/i-enable ang mga iswat sa pangkoneksyong menu",
+		"description": "Setting description for blacklist context menu toggle"
+	},
+	"menuAddToBlacklist": {
+		"message": "I-disable ang mga iswat sa site na ito",
+		"description": "Context menu title for adding current site to blacklist"
+	},
+	"menuRemoveFromBlacklist": {
+		"message": "I-enable ang mga iswat sa site na ito",
+		"description": "Context menu title for removing current site from blacklist"
+	},
 	"dataManagement": {
 		"message": "Pamamahala ng Data",
 		"description": "Data management section"
@@ -322,6 +358,10 @@
 	"importDone": {
 		"message": "Na-import ang mga setting",
 		"description": "Import done message"
+	},
+	"importConfirm": {
+		"message": "I-o-overwrite ng pag-import ang iyong mga kasalukuyang setting. Mag-import lang ng mga configuration file mula sa mga pinagkakatiwalaang source.\n\nIpagpatuloy?",
+		"description": "Import confirmation warning"
 	},
 	"importFailed": {
 		"message": "Nabigo ang pag-import: Di-wastong configuration file",
@@ -459,13 +499,41 @@
 		"message": "Isara ang Tab",
 		"description": "Close tab"
 	},
-	"actionCloseTabKeepWindow": {
-		"message": "Isara ang Tab (Panatilihin ang Window)",
-		"description": "Close tab but keep window open"
+	"closeTabKeepWindow": {
+		"message": "Kung ito ang huling tab, panatilihing bukas ang window",
+		"description": "Checkbox label for closeTab action config"
+	},
+	"closeTabAfterClose": {
+		"message": "Pagkatapos isara",
+		"description": "Label for closeTab afterClose config"
+	},
+	"closeTabAfterCloseDefault": {
+		"message": "Default ng browser",
+		"description": "Option for closeTab afterClose config - let browser decide"
+	},
+	"closeTabAfterCloseLeft": {
+		"message": "Lumipat sa tab sa kaliwa",
+		"description": "Option for closeTab afterClose config - switch to left tab"
+	},
+	"closeTabAfterCloseRight": {
+		"message": "Lumipat sa tab sa kanan",
+		"description": "Option for closeTab afterClose config - switch to right tab"
+	},
+	"switchTabNoWrap": {
+		"message": "Huwag lumipat nang paikot",
+		"description": "Checkbox label for switchLeftTab/switchRightTab action config"
+	},
+	"switchTabMoveTab": {
+		"message": "Ilipat ang kasalukuyang tab",
+		"description": "Checkbox label for switchLeftTab/switchRightTab/switchFirstTab/switchLastTab action config"
 	},
 	"actionCloseBrowser": {
 		"message": "Isara ang Browser",
 		"description": "Close browser"
+	},
+	"actionCloseWindow": {
+		"message": "Isara ang window",
+		"description": "Close current window"
 	},
 	"actionRestoreTab": {
 		"message": "Ibalik ang Isinara na Tab",
@@ -498,6 +566,14 @@
 	"actionSwitchRightTab": {
 		"message": "Lumipat sa Tab sa Kanan",
 		"description": "Switch to right tab"
+	},
+	"actionSwitchFirstTab": {
+		"message": "Lumipat sa Unang Tab",
+		"description": "Switch to first tab"
+	},
+	"actionSwitchLastTab": {
+		"message": "Lumipat sa Huling Tab",
+		"description": "Switch to last tab"
 	},
 	"actionRefresh": {
 		"message": "I-refresh ang Kasalukuyang Tab",
@@ -575,6 +651,10 @@
 		"message": "I-mute/I-unmute ang Lahat ng Tab",
 		"description": "Toggle mute all tabs"
 	},
+	"actionTogglePinTab": {
+		"message": "I-pin/I-unpin ang Kasalukuyang Tab",
+		"description": "Toggle pin current tab"
+	},
 	"showTrailOrigin": {
 		"message": "Ipakita ang Pinagmulan",
 		"description": "Show trail origin point"
@@ -595,17 +675,29 @@
 		"message": "Tip: Inirerekomenda ang value sa pagitan ng 15-30 para sa pinakamahusay na pagkilala.",
 		"description": "Warning when distance threshold is too small or too large"
 	},
-	"enableAdvancedSettings": {
-		"message": "Mga Advanced na Setting",
-		"description": "Enable advanced settings"
+	"gestureTurnTolerance": {
+		"message": "Tolerance sa pagliko ng kilos",
+		"description": "Turn tolerance for detecting direction changes in long gestures"
 	},
-	"enableAdvancedSettingsDesc": {
-		"message": "Ipakita ang higit pang mga advanced na opsyon kapag pinagana",
-		"description": "Show more advanced options when enabled"
+	"gestureTurnToleranceDesc": {
+		"message": "Ang mas matataas na value ay nagpapababa ng mga hindi sinadyang pagliko ngunit nangangailangan ng mas mahabang paggalaw upang magbago ng direksyon",
+		"description": "Description for gesture turn tolerance setting"
 	},
-	"enableAdvancedSettingsToggle": {
-		"message": "Mode ng Mga Advanced na Setting",
-		"description": "Enable advanced settings toggle label"
+	"advanced": {
+		"message": "Expert Mode",
+		"description": "Short label for per-section advanced toggle"
+	},
+	"otherSettings": {
+		"message": "Iba pang mga Setting",
+		"description": "Section title for other/miscellaneous settings"
+	},
+	"show": {
+		"message": "Ipakita",
+		"description": "Show navigation menu"
+	},
+	"hide": {
+		"message": "Itago",
+		"description": "Hide navigation menu"
 	},
 	"urlFormatError": {
 		"message": "Mangyaring maglagay ng buong URL na nagsisimula sa http:// o https://",
@@ -615,41 +707,61 @@
 		"message": "I-reset sa default",
 		"description": "Reset gesture to default action"
 	},
+	"resetToDefaultConfirm": {
+		"message": "I-reset ang mga setting na ito sa mga default na value?",
+		"description": "Confirmation dialog for resetting settings"
+	},
 	"addCustomGesture": {
 		"message": "Magdagdag ng Custom na Galaw",
 		"description": "Add custom gesture section title"
-	},
-	"gesturePattern": {
-		"message": "Pattern",
-		"description": "Gesture pattern label"
-	},
-	"selectAction": {
-		"message": "Piliin ang Aksyon",
-		"description": "Select action label"
 	},
 	"clear": {
 		"message": "I-clear",
 		"description": "Clear button"
 	},
-	"addGesture": {
-		"message": "Magdagdag ng Galaw",
-		"description": "Add gesture button"
-	},
-	"pleaseDrawGesture": {
-		"message": "Mangyaring gumuhit muna ng galaw",
-		"description": "Alert when no gesture drawn"
-	},
 	"gestureAdded": {
 		"message": "✓ Naidagdag ang Galaw",
 		"description": "Gesture added success message"
 	},
-	"gestureDrawInstructions": {
-		"message": "Pindutin nang matagal ang kanang pindutan ng mouse at gumuhit ng galaw sa ibaba, bitiwan upang makumpleto. Mga suportadong direksyon:",
-		"description": "Instructions for gesture drawing"
+	"gestureRecorderTitle": {
+		"message": "Gumuhit ng Galaw",
+		"description": "Gesture recorder full-screen title"
 	},
-	"gestureOverwriteConfirm": {
-		"message": "Umiiral na ang galaw na %pattern%. I-overwrite?",
-		"description": "Confirmation message when adding a duplicate gesture"
+	"gestureRecorderDesc": {
+		"message": "Pindutin nang matagal ang %button% at gumuhit ng pattern ng galaw",
+		"description": "Gesture recorder instruction, %button% is replaced with the mouse button name"
+	},
+	"gestureRecorderEsc": {
+		"message": "Kanselahin",
+		"description": "Gesture recorder cancel button label"
+	},
+	"gestureRecorderRecording": {
+		"message": "Nire-record…",
+		"description": "Gesture recorder recording indicator"
+	},
+	"gestureRecorderResult": {
+		"message": "Na-record na Galaw",
+		"description": "Gesture recorder result label"
+	},
+	"gestureRecorderConfirm": {
+		"message": "Kumpirmahin",
+		"description": "Gesture recorder confirm button"
+	},
+	"gestureRecorderRedraw": {
+		"message": "I-redraw",
+		"description": "Gesture recorder redraw button"
+	},
+	"gestureRecorderBanned": {
+		"message": "Umiiral na ang galaw na %pattern%",
+		"description": "Gesture recorder message when user draws a banned/existing gesture pattern"
+	},
+	"rightButton": {
+		"message": "Kanang button ng mouse",
+		"description": "Right mouse button name"
+	},
+	"leftButton": {
+		"message": "Kaliwang button ng mouse",
+		"description": "Left mouse button name"
 	},
 	"customGesture": {
 		"message": "Custom",
@@ -670,6 +782,10 @@
 	"enterCustomUrl": {
 		"message": "Ilagay ang URL (iminungkahing isama ang protocol tulad ng https://, chrome://, atbp.):",
 		"description": "Prompt for custom URL input"
+	},
+	"copyUrlIncludeTitle": {
+		"message": "Kopyahin din ang pamagat ng pahina",
+		"description": "Checkbox label for including page title when copying URL"
 	},
 	"invalidUrl": {
 		"message": "Mangyaring maglagay ng wastong URL (nagsisimula sa http:// o https://)",
@@ -750,6 +866,10 @@
 	"aboutTitle": {
 		"message": "Tungkol sa FlowMouse",
 		"description": "About title"
+	},
+	"aboutTitleShort": {
+		"message": "Tungkol",
+		"description": "Short About title "
 	},
 	"aboutAuthor": {
 		"message": "May-akda",
@@ -863,6 +983,10 @@
 		"message": "Buksan sa foreground",
 		"description": "Open tab in foreground"
 	},
+	"openInIncognito": {
+		"message": "Incognito",
+		"description": "Open in incognito checkbox"
+	},
 	"textDragGestures": {
 		"message": "Mga Galaw ng Drag ng Teksto",
 		"description": "Text drag gestures"
@@ -880,7 +1004,7 @@
 		"description": "Direction column header"
 	},
 	"action": {
-		"message": "Aksyon",
+		"message": "Command",
 		"description": "Action column header"
 	},
 	"imageSearchUrl": {
@@ -915,6 +1039,10 @@
 		"message": "📋 Kopyahin ang Link",
 		"description": "Copy link"
 	},
+	"dragActionCopyLinkText": {
+		"message": "📋 Kopyahin ang Teksto ng Link",
+		"description": "Copy link text"
+	},
 	"dragActionSaveImage": {
 		"message": "💾 I-save ang Larawan",
 		"description": "Save image"
@@ -936,7 +1064,7 @@
 		"description": "Custom search"
 	},
 	"reducedMotionWarning": {
-		"message": "⚠️ Ang animation ng system ng %OS% ay naka-disable, maaaring hindi gumana nang maayos ang scroll animation. Maaari mong paganahin ang animation sa mga setting ng system ng %OS%.",
+		"message": "Ang animation ng system ng %OS% ay naka-disable, maaaring hindi gumana nang maayos ang scroll animation. Maaari mong paganahin ang animation sa mga setting ng system ng %OS%.",
 		"description": "Warning message when system reduced motion is enabled"
 	},
 	"autoDetectUrl": {
@@ -964,7 +1092,7 @@
 		"description": "Setting description for restricted page notice"
 	},
 	"restrictedPagesDetailsTitle": {
-		"message": "⚠️ Dahil sa mga patakaran sa seguridad ng browser, hindi maaaring tumakbo ang mga extension sa ilang uri ng mga pahina.",
+		"message": "Dahil sa mga patakaran sa seguridad ng browser, hindi maaaring tumakbo ang mga extension sa ilang uri ng mga pahina.",
 		"description": "Collapsible details title"
 	},
 	"showMoreHint": {
@@ -972,7 +1100,7 @@
 		"description": "Hint to show more details"
 	},
 	"restrictedNewTab": {
-		"message": "Pahina ng Bagong Tab (chrome://newtab)",
+		"message": "Pahina ng Bagong Tab",
 		"description": "New tab page title"
 	},
 	"restrictedNewTabDesc": {
@@ -988,11 +1116,11 @@
 		"description": "Store page description"
 	},
 	"restrictedInternal": {
-		"message": "Mga Internal na Pahina ng Browser",
+		"message": "Mga Internal na Pahina ng Browser (%browserProtocol%)",
 		"description": "Internal page title"
 	},
 	"restrictedInternalDesc": {
-		"message": "Lahat ng pahina na nagsisimula sa chrome:// (Chrome) o edge:// (Edge), kabilang ang mga setting, kasaysayan, mga download, atbp. Ang mga pahinang ito ay may kinalaman sa mga pangunahing function ng browser at data ng privacy ng user, kaya mahigpit silang protektado.",
+		"message": "Halimbawa, ang mga internal na setting, kasaysayan, mga download, atbp. ng %browserName%. Ang mga pahinang ito ay kinasasangkutan ng mga pangunahing function ng browser at data ng privacy ng user, kaya mahigpit silang protektado.",
 		"description": "Internal page description"
 	},
 	"restrictedFile": {
@@ -1000,7 +1128,7 @@
 		"description": "File page title"
 	},
 	"restrictedFileDesc": {
-		"message": "Mga lokal na HTML file na binuksan sa pamamagitan ng protocol na file://. Dahil sa mga paghihigpit sa seguridad (pinipigilan ang mga nakakahamak na extension na ma-access ang lokal na file system), hindi maaaring gumana ang mga extension sa mga pahinang ito.",
+		"message": "Mga lokal na html, pdf atbp. na file na binuksan sa pamamagitan ng protocol na file://. Dahil sa mga paghihigpit sa seguridad (pinipigilan ang mga nakakahamak na extension na ma-access ang lokal na file system), hindi maaaring gumana ang mga extension sa mga pahinang ito.",
 		"description": "File page description"
 	},
 	"restrictedViewSource": {
@@ -1024,7 +1152,7 @@
 		"description": "Popup description when content script not loaded"
 	},
 	"popupRefreshBtn": {
-		"message": "🔄 I-refresh ang Pahina",
+		"message": "I-refresh ang Pahina",
 		"description": "Popup refresh button text"
 	},
 	"popupRestrictedTitle": {
@@ -1036,7 +1164,7 @@
 		"description": "Popup description for restricted pages"
 	},
 	"popupLearnMore": {
-		"message": "📖 Matuto Pa",
+		"message": "Matuto Pa",
 		"description": "Popup learn more button text"
 	},
 	"tutorialPending": {
@@ -1207,6 +1335,26 @@
 		"message": "Upang ma-save ang mga larawan, kailangan ng FlowMouse ng access sa mga page at mga download.",
 		"description": "Permission popup description for downloads and page capture"
 	},
+	"permissionIncognitoTitle": {
+		"message": "Payagan sa Incognito",
+		"description": "Permission popup title for incognito"
+	},
+	"permissionIncognitoDesc": {
+		"message": "Para gumana sa mga window ng Incognito, kailangan mong manual na i-enable ang 'Payagan sa Incognito' para sa FlowMouse.",
+		"description": "Permission popup description for incognito"
+	},
+	"openExtensionsSettings": {
+		"message": "Buksan ang mga Detalye ng Extension",
+		"description": "Button to open extension details page"
+	},
+	"permissionFirefoxIncognitoTitle": {
+		"message": "Tumakbo sa Pribadong Windows",
+		"description": "Permission popup title for Firefox private browsing"
+	},
+	"permissionFirefoxIncognitoDesc": {
+		"message": "Para gumana sa Pribadong Windows, kailangan mong manual na i-enable ang 'Tumakbo sa Pribadong Windows' para sa FlowMouse sa Add-ons Manager.",
+		"description": "Permission popup description for Firefox private browsing"
+	},
 	"grantPermission": {
 		"message": "Magbigay ng Pahintulot",
 		"description": "Grant permission button"
@@ -1234,5 +1382,205 @@
 	"saveImageTimeout": {
 		"message": "Nabigo ang pag-save ng larawan: Nag-time out ang pag-load",
 		"description": "Toast message when image loading times out"
+	},
+	"buttonOkay": {
+		"message": "OK",
+		"description": "Generic OK button"
+	},
+	"buttonCancel": {
+		"message": "Kanselahin",
+		"description": "Generic Cancel button"
+	},
+	"buttonClose": {
+		"message": "Isara",
+		"description": "Generic Close button"
+	},
+	"searchActions": {
+		"message": "Maghanap ng mga command...",
+		"description": "Placeholder for action search input in action picker"
+	},
+	"actionCategoryNavigation": {
+		"message": "Nabigasyon",
+		"description": "Action category: navigation"
+	},
+	"actionCategoryTabs": {
+		"message": "Mga Tab",
+		"description": "Action category: tabs"
+	},
+	"actionCategoryWindow": {
+		"message": "Window",
+		"description": "Action category: window"
+	},
+	"actionCategoryUtilities": {
+		"message": "Mga Tool",
+		"description": "Action category: utilities"
+	},
+	"noResults": {
+		"message": "Walang resulta",
+		"description": "No search results found"
+	},
+	"wheelGestures": {
+		"message": "Mga Gesture ng Mouse Wheel",
+		"description": "Mouse wheel gestures section title"
+	},
+	"enableWheelGestures": {
+		"message": "Paganahin ang Mga Gesture ng Mouse Wheel",
+		"description": "Enable mouse wheel gestures"
+	},
+	"enableWheelGesturesDesc": {
+		"message": "Mabilis na magsagawa ng iba't ibang aksyon gamit ang mouse wheel",
+		"description": "Enable mouse wheel gestures description"
+	},
+	"wheelGesture_scrollUpHoldingRight": {
+		"message": "Mag-scroll pataas habang pinipigilan ang kanang button",
+		"description": "Wheel gesture: scroll up while holding right button"
+	},
+	"wheelGesture_scrollDownHoldingRight": {
+		"message": "Mag-scroll pababa habang pinipigilan ang kanang button",
+		"description": "Wheel gesture: scroll down while holding right button"
+	},
+	"specialGestures": {
+		"message": "Mga Espesyal na Kumpas",
+		"description": "Special gestures section title"
+	},
+	"enableSpecialGestures": {
+		"message": "Paganahin ang mga espesyal na kumpas",
+		"description": "Enable special gestures"
+	},
+	"enableSpecialGesturesDesc": {
+		"message": "Magsagawa ng mga aksyon sa pamamagitan ng pag-click ng isang pindutan ng mouse habang hawak ang isa",
+		"description": "Enable special gestures description"
+	},
+	"specialGesture_leftClickHoldingRight": {
+		"message": "I-click ang kaliwa habang nakadiin ang kanang button",
+		"description": "Special gesture: left click while holding right button"
+	},
+	"specialGesture_rightClickHoldingLeft": {
+		"message": "I-click ang kanan habang nakadiin ang kaliwang button",
+		"description": "Special gesture: right click while holding left button"
+	},
+	"actionChains": {
+		"message": "Mga Command Chain",
+		"description": "Action chains section title"
+	},
+	"actionChainsDesc": {
+		"message": "Gumawa ng mga magagamit muling serye ng commands na sunod-sunod na gumagana",
+		"description": "Action chains section description"
+	},
+	"actionActionChain": {
+		"message": "Command chain",
+		"description": "Action chain action name"
+	},
+	"actionCategoryChains": {
+		"message": "Mga command chain",
+		"description": "Action category: action chains"
+	},
+	"addChain": {
+		"message": "Magdagdag ng Chain",
+		"description": "Add chain button"
+	},
+	"addNewChain": {
+		"message": "Gumawa ng Bagong Chain...",
+		"description": "Action item to navigate to chain editor and create a new chain"
+	},
+	"chainNamePlaceholder": {
+		"message": "Aking Command Chain",
+		"description": "Chain name input placeholder"
+	},
+	"chainDelayUnit": {
+		"message": "ms",
+		"description": "Milliseconds unit for chain delay"
+	},
+	"addStep": {
+		"message": "Magdagdag ng Hakbang",
+		"description": "Add step button"
+	},
+	"emptyChainSteps": {
+		"message": "Walang idinagdag na hakbang. I-click ang \"Magdagdag ng Hakbang\" para magsimula.",
+		"description": "Empty chain steps message in expanded body"
+	},
+	"emptyChainStepsShort": {
+		"message": "Walang idinagdag na hakbang",
+		"description": "Short empty chain steps message for summary"
+	},
+	"noChains": {
+		"message": "Wala pang mga command chain. I-click ang \"Magdagdag ng Chain\" para gumawa.",
+		"description": "No chains message"
+	},
+	"chainNotFound": {
+		"message": "(Hindi nahanap ang chain)",
+		"description": "Chain not found label"
+	},
+	"deleteChainConfirm": {
+		"message": "I-delete ang chain na \"%name%\"?",
+		"description": "Delete chain confirmation"
+	},
+	"stepNumber": {
+		"message": "Hakbang %n%",
+		"description": "Step number label"
+	},
+	"actionDelay": {
+		"message": "Deley",
+		"description": "Delay action name for chain steps"
+	},
+	"actionSendCustomEvent": {
+		"message": "Magpadala ng Custom Event",
+		"description": "Action to dispatch a custom DOM event"
+	},
+	"actionSimulateKey": {
+		"message": "Gayayahin ang pagpindot ng key",
+		"description": "Action to simulate a keyboard key press on the page"
+	},
+	"simulateKeyPreset": {
+		"message": "Preset na Key",
+		"description": "Label for preset key dropdown in simulate key config"
+	},
+	"simulateKeyPresetLeft": {
+		"message": "← Kaliwang Arrow (Nakaraang Pahina)",
+		"description": "Preset: ArrowLeft key"
+	},
+	"simulateKeyPresetRight": {
+		"message": "→ Kanang Arrow (Susunod na Pahina)",
+		"description": "Preset: ArrowRight key"
+	},
+	"simulateKeyPresetCustom": {
+		"message": "Custom na key",
+		"description": "Preset: Custom key option"
+	},
+	"simulateKeyRecordBtn": {
+		"message": "I-record ang key",
+		"description": "Button to start recording a key press"
+	},
+	"simulateKeyRecording": {
+		"message": "Pindutin ang isang key...",
+		"description": "Recording state text"
+	},
+	"simulateKeyManualInput": {
+		"message": "Kasalukuyang key",
+		"description": "Label for current key display in simulate key config"
+	},
+	"simulateKeyHint": {
+		"message": "Nagpapadala lamang ang feature na ito ng mga event ng keyboard sa kasalukuyang page, at karaniwang ginagamit para sa pag-navigate ng page (← nakaraan / → susunod). HINDI nito iti-trigger ang mga shortcut sa browser (hal., hindi magre-refresh ang Ctrl+R). Bukod pa rito, dahil sa mga limitasyon sa framework ng website, ang mga simulate na event ay maaaring hindi makuha ng lahat ng custom na bahagi o input field.",
+		"description": "Hint text for simulate key feature"
+	},
+	"customEventInvalidJson": {
+		"message": "Imbalidong format ng JSON",
+		"description": "Error message when event detail is not valid JSON"
+	},
+	"customEventHint": {
+		"message": "Nagpapadala ng %code% sa %window%. Kapaki-pakinabang para sa integration sa iba pang mga script.",
+		"description": "Hint explaining how custom event works. %code% = <code>new CustomEvent(...)</code>, %window% = <code>window</code>"
+	},
+	"delayDuration": {
+		"message": "Tagal",
+		"description": "Delay duration label"
+	},
+	"chainStepCount": {
+		"message": "%count% na hakbang",
+		"description": "Step count for unnamed chains, e.g. '3 steps'"
+	},
+	"chainStepCountOne": {
+		"message": "%count% na hakbang",
+		"description": "Step count for unnamed chains with exactly 1 step"
 	}
 }

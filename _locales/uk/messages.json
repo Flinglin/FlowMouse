@@ -8,20 +8,12 @@
 		"description": "Short extension name for popup"
 	},
 	"extDescription": {
-		"message": "Розширення з відкритим кодом для жестів мишею. Акцент на конфіденційності та плавності. Підтримує жести, супер-перетягування (Super Drag); дані зберігаються лише локально.",
+		"message": "Розширення з відкритим кодом для жестів мишею. Акцент на конфіденційності та плавності. Підтримує жести, супер-перетягування (Super Drag).",
 		"description": "Extension description"
-	},
-	"appearance": {
-		"message": "Зовнішній вигляд",
-		"description": "Appearance section"
 	},
 	"theme": {
 		"message": "Тема",
 		"description": "Theme"
-	},
-	"themeDesc": {
-		"message": "Перемикання світлої/темної теми",
-		"description": "Theme description"
 	},
 	"themeDark": {
 		"message": "Темна",
@@ -34,10 +26,6 @@
 	"themeAuto": {
 		"message": "Як у системі",
 		"description": "Auto theme - follow system"
-	},
-	"languageDesc": {
-		"message": "Мова інтерфейсу",
-		"description": "Language description"
 	},
 	"syncStatus": {
 		"message": "Статус синхронізації",
@@ -56,7 +44,7 @@
 		"description": "Author"
 	},
 	"privacyNote": {
-		"message": "🔒 Працює локально, без доступу до мережі (крім синхронізації), без збору даних",
+		"message": " Працює локально, без доступу до мережі (крім синхронізації), без збору даних",
 		"description": "Privacy note in footer"
 	},
 	"supportUsText": {
@@ -120,11 +108,19 @@
 		"description": "Hold the right mouse button and move the mouse to easily perform gestures"
 	},
 	"macLinuxContextMenuNotice": {
-		"message": "⚠️ Через системні обмеження macOS / Linux, для виклику контекстного меню потрібен подвійний клік правою кнопкою.",
+		"message": "Через системні обмеження, коли ввімкнено жести правою кнопкою миші, для виклику контекстного меню на macOS / Linux потрібен подвійний клік правою кнопкою.",
 		"description": "Notice for macOS / Linux users about double right-click for context menu"
 	},
+	"macLinuxDoubleClickHint": {
+		"message": "Щоб відкрити контекстне меню, двічі клацніть правою кнопкою миші. (Докладніше)",
+		"description": "Short toast hint shown on first right-click on macOS/Linux explaining double-click requirement"
+	},
+	"edgeGestureConflictNotice": {
+		"message": "%browserName% має вбудовані функції жестів. Щоб використовувати жести FlowMouse, <a href=\"#\" class=\"edge-gesture-link\">вимкніть вбудовані жести</a> в налаштуваннях %browserName%.",
+		"description": "Notice for Edge users about built-in gesture conflict"
+	},
 	"macTextDragNotice": {
-		"message": "⚠️ У macOS: виділіть текст, натисніть і потримайте ліву кнопку, а потім тягніть. Інакше пошук може не спрацювати.",
+		"message": "Через особливості macOS: спочатку виділіть текст, потім натисніть і потримайте ліву кнопку миші у межах виділеної області та зробіть коротку паузу перед перетягуванням. Інакше функція перетягування може не спрацювати.",
 		"description": "Notice for macOS users about text drag behavior"
 	},
 	"showTrail": {
@@ -159,6 +155,14 @@
 		"message": "Прозорість",
 		"description": "Opacity"
 	},
+	"blur": {
+		"message": "Розмиття",
+		"description": "Blur radius"
+	},
+	"hudShadow": {
+		"message": "Тінь",
+		"description": "HUD shadow toggle"
+	},
 	"text": {
 		"message": "Текст",
 		"description": "Text"
@@ -179,6 +183,10 @@
 		"message": "Ефект анімації для жестів прокрутки вгору/вниз",
 		"description": "Scroll smoothness description"
 	},
+	"smoothnessAuto": {
+		"message": "Авто",
+		"description": "Auto scroll smoothness - uses system if animation enabled, otherwise smooth"
+	},
 	"smoothnessSystem": {
 		"message": "Системна (Висока продуктивність)",
 		"description": "System scroll smoothness"
@@ -190,6 +198,18 @@
 	"smoothnessNone": {
 		"message": "Без анімації",
 		"description": "No scroll animation"
+	},
+	"scrollAccel": {
+		"message": "Множник безперервного прокручування",
+		"description": "Speed multiplier applied when scrolling consecutively"
+	},
+	"scrollAccelOff": {
+		"message": "Вимк.",
+		"description": "Scroll acceleration disabled"
+	},
+	"scrollAccelWindow": {
+		"message": "Час очікування послідовного прокручування",
+		"description": "Max time (ms) between scrolls to count as consecutive"
 	},
 	"dragFeatures": {
 		"message": "Функції перетягування",
@@ -283,6 +303,22 @@
 		"message": "Чорний список порожній. Введіть домен вище, щоб додати.",
 		"description": "Empty blacklist message"
 	},
+	"enableBlacklistContextMenu": {
+		"message": "Перемикач жестів у контекстному меню",
+		"description": "Setting title for blacklist context menu toggle"
+	},
+	"enableBlacklistContextMenuDesc": {
+		"message": "Показувати опцію вимкнення/увімкнення жестів у контекстному меню",
+		"description": "Setting description for blacklist context menu toggle"
+	},
+	"menuAddToBlacklist": {
+		"message": "Вимкнути жести на цьому сайті",
+		"description": "Context menu title for adding current site to blacklist"
+	},
+	"menuRemoveFromBlacklist": {
+		"message": "Увімкнути жести на цьому сайті",
+		"description": "Context menu title for removing current site from blacklist"
+	},
 	"dataManagement": {
 		"message": "Керування даними",
 		"description": "Data management section"
@@ -322,6 +358,10 @@
 	"importDone": {
 		"message": "Налаштування імпортовано",
 		"description": "Import done message"
+	},
+	"importConfirm": {
+		"message": "Імпорт перезапише ваші поточні налаштування. Імпортуйте файли конфігурації лише з надійних джерел.\n\nПродовжити?",
+		"description": "Import confirmation warning"
 	},
 	"importFailed": {
 		"message": "Помилка імпорту: Недійсний файл конфігурації",
@@ -459,13 +499,41 @@
 		"message": "Закрити вкладку",
 		"description": "Close tab"
 	},
-	"actionCloseTabKeepWindow": {
-		"message": "Закрити вкладку (зберегти вікно)",
-		"description": "Close tab but keep window open"
+	"closeTabKeepWindow": {
+		"message": "Якщо це остання вкладка, залишити вікно відкритим",
+		"description": "Checkbox label for closeTab action config"
+	},
+	"closeTabAfterClose": {
+		"message": "Після закриття",
+		"description": "Label for closeTab afterClose config"
+	},
+	"closeTabAfterCloseDefault": {
+		"message": "Як у браузері",
+		"description": "Option for closeTab afterClose config - let browser decide"
+	},
+	"closeTabAfterCloseLeft": {
+		"message": "Перемкнути на вкладку зліва",
+		"description": "Option for closeTab afterClose config - switch to left tab"
+	},
+	"closeTabAfterCloseRight": {
+		"message": "Перемкнути на вкладку справа",
+		"description": "Option for closeTab afterClose config - switch to right tab"
+	},
+	"switchTabNoWrap": {
+		"message": "Не перемикати циклічно",
+		"description": "Checkbox label for switchLeftTab/switchRightTab action config"
+	},
+	"switchTabMoveTab": {
+		"message": "Перемістити поточну вкладку",
+		"description": "Checkbox label for switchLeftTab/switchRightTab/switchFirstTab/switchLastTab action config"
 	},
 	"actionCloseBrowser": {
 		"message": "Закрити браузер",
 		"description": "Close browser"
+	},
+	"actionCloseWindow": {
+		"message": "Закрити вікно",
+		"description": "Close current window"
 	},
 	"actionRestoreTab": {
 		"message": "Відновити закриту вкладку",
@@ -498,6 +566,14 @@
 	"actionSwitchRightTab": {
 		"message": "Перемкнути на вкладку справа",
 		"description": "Switch to right tab"
+	},
+	"actionSwitchFirstTab": {
+		"message": "Перемкнути на першу вкладку",
+		"description": "Switch to first tab"
+	},
+	"actionSwitchLastTab": {
+		"message": "Перемкнути на останню вкладку",
+		"description": "Switch to last tab"
 	},
 	"actionRefresh": {
 		"message": "Оновити поточну вкладку",
@@ -575,6 +651,10 @@
 		"message": "Увімк./Вимк. звук усіх вкладок",
 		"description": "Toggle mute all tabs"
 	},
+	"actionTogglePinTab": {
+		"message": "Закріпити/Відкріпити поточну вкладку",
+		"description": "Toggle pin current tab"
+	},
 	"showTrailOrigin": {
 		"message": "Показувати точку початку",
 		"description": "Show trail origin point"
@@ -595,17 +675,29 @@
 		"message": "Порада: Для найкращого розпізнавання рекомендується значення від 15 до 30.",
 		"description": "Warning when distance threshold is too small or too large"
 	},
-	"enableAdvancedSettings": {
-		"message": "Розширені налаштування",
-		"description": "Enable advanced settings"
+	"gestureTurnTolerance": {
+		"message": "Допуск повороту жесту",
+		"description": "Turn tolerance for detecting direction changes in long gestures"
 	},
-	"enableAdvancedSettingsDesc": {
-		"message": "Показувати більше опцій при увімкненні",
-		"description": "Show more advanced options when enabled"
+	"gestureTurnToleranceDesc": {
+		"message": "Вищі значення зменшують випадкові повороти, але вимагають довших рухів для зміни напрямку",
+		"description": "Description for gesture turn tolerance setting"
 	},
-	"enableAdvancedSettingsToggle": {
-		"message": "Режим розширених налаштувань",
-		"description": "Enable advanced settings toggle label"
+	"advanced": {
+		"message": "Режим експерта",
+		"description": "Short label for per-section advanced toggle"
+	},
+	"otherSettings": {
+		"message": "Інші налаштування",
+		"description": "Section title for other/miscellaneous settings"
+	},
+	"show": {
+		"message": "Показати",
+		"description": "Show navigation menu"
+	},
+	"hide": {
+		"message": "Приховати",
+		"description": "Hide navigation menu"
 	},
 	"urlFormatError": {
 		"message": "Введіть повний URL, починаючи з http:// або https://",
@@ -615,41 +707,61 @@
 		"message": "Скинути до типових",
 		"description": "Reset gesture to default action"
 	},
+	"resetToDefaultConfirm": {
+		"message": "Скинути ці налаштування до значень за замовчуванням?",
+		"description": "Confirmation dialog for resetting settings"
+	},
 	"addCustomGesture": {
 		"message": "Додати власний жест",
 		"description": "Add custom gesture section title"
-	},
-	"gesturePattern": {
-		"message": "Шаблон жесту",
-		"description": "Gesture pattern label"
-	},
-	"selectAction": {
-		"message": "Виберіть дію",
-		"description": "Select action label"
 	},
 	"clear": {
 		"message": "Очистити",
 		"description": "Clear button"
 	},
-	"addGesture": {
-		"message": "Додати жест",
-		"description": "Add gesture button"
-	},
-	"pleaseDrawGesture": {
-		"message": "Будь ласка, спочатку намалюйте жест",
-		"description": "Alert when no gesture drawn"
-	},
 	"gestureAdded": {
 		"message": "✓ Жест додано",
 		"description": "Gesture added success message"
 	},
-	"gestureDrawInstructions": {
-		"message": "Утримуйте праву кнопку миші, намалюйте жест і відпустіть кнопку. Підтримувані напрямки:",
-		"description": "Instructions for gesture drawing"
+	"gestureRecorderTitle": {
+		"message": "Намалювати жест",
+		"description": "Gesture recorder full-screen title"
 	},
-	"gestureOverwriteConfirm": {
-		"message": "Жест %pattern% вже існує. Перезаписати?",
-		"description": "Confirmation message when adding a duplicate gesture"
+	"gestureRecorderDesc": {
+		"message": "Утримуйте кнопку «%button%» та намалюйте візерунок жесту",
+		"description": "Gesture recorder instruction, %button% is replaced with the mouse button name"
+	},
+	"gestureRecorderEsc": {
+		"message": "Скасувати",
+		"description": "Gesture recorder cancel button label"
+	},
+	"gestureRecorderRecording": {
+		"message": "Запис…",
+		"description": "Gesture recorder recording indicator"
+	},
+	"gestureRecorderResult": {
+		"message": "Записаний жест",
+		"description": "Gesture recorder result label"
+	},
+	"gestureRecorderConfirm": {
+		"message": "Підтвердити",
+		"description": "Gesture recorder confirm button"
+	},
+	"gestureRecorderRedraw": {
+		"message": "Перемалювати",
+		"description": "Gesture recorder redraw button"
+	},
+	"gestureRecorderBanned": {
+		"message": "Жест %pattern% вже існує",
+		"description": "Gesture recorder message when user draws a banned/existing gesture pattern"
+	},
+	"rightButton": {
+		"message": "Права кнопка миші",
+		"description": "Right mouse button name"
+	},
+	"leftButton": {
+		"message": "Ліва кнопка миші",
+		"description": "Left mouse button name"
 	},
 	"customGesture": {
 		"message": "Власний",
@@ -670,6 +782,10 @@
 	"enterCustomUrl": {
 		"message": "Введіть URL (рекомендовано з протоколом, напр. https://, chrome:// тощо):",
 		"description": "Prompt for custom URL input"
+	},
+	"copyUrlIncludeTitle": {
+		"message": "Також копіювати заголовок сторінки",
+		"description": "Checkbox label for including page title when copying URL"
 	},
 	"invalidUrl": {
 		"message": "Будь ласка, введіть дійсний URL (починаючи з http:// або https://)",
@@ -750,6 +866,10 @@
 	"aboutTitle": {
 		"message": "Про FlowMouse",
 		"description": "About title"
+	},
+	"aboutTitleShort": {
+		"message": "Про розширення",
+		"description": "Short About title "
 	},
 	"aboutAuthor": {
 		"message": "Автор",
@@ -863,6 +983,10 @@
 		"message": "Відкривати на передньому плані",
 		"description": "Open tab in foreground"
 	},
+	"openInIncognito": {
+		"message": "Інкогніто",
+		"description": "Open in incognito checkbox"
+	},
 	"textDragGestures": {
 		"message": "Жести перетягування тексту",
 		"description": "Text drag gestures"
@@ -880,7 +1004,7 @@
 		"description": "Direction column header"
 	},
 	"action": {
-		"message": "Дія",
+		"message": "Команда",
 		"description": "Action column header"
 	},
 	"imageSearchUrl": {
@@ -915,6 +1039,10 @@
 		"message": "📋 Копіювати посилання",
 		"description": "Copy link"
 	},
+	"dragActionCopyLinkText": {
+		"message": "📋 Копіювати текст посилання",
+		"description": "Copy link text"
+	},
 	"dragActionSaveImage": {
 		"message": "💾 Зберегти зображення",
 		"description": "Save image"
@@ -936,7 +1064,7 @@
 		"description": "Custom search"
 	},
 	"reducedMotionWarning": {
-		"message": "⚠️ У системі %OS% вимкнено анімації. Анімація прокрутки може працювати некоректно. Ви можете увімкнути анімації в налаштуваннях системи %OS%.",
+		"message": "У системі %OS% вимкнено анімації. Анімація прокрутки може працювати некоректно. Ви можете увімкнути анімації в налаштуваннях системи %OS%.",
 		"description": "Warning message when system reduced motion is enabled"
 	},
 	"autoDetectUrl": {
@@ -964,7 +1092,7 @@
 		"description": "Setting description for restricted page notice"
 	},
 	"restrictedPagesDetailsTitle": {
-		"message": "⚠️ Через політику безпеки браузера, розширення не можуть працювати на певних типах сторінок.",
+		"message": "Через політику безпеки браузера, розширення не можуть працювати на певних типах сторінок.",
 		"description": "Collapsible details title"
 	},
 	"showMoreHint": {
@@ -972,7 +1100,7 @@
 		"description": "Hint to show more details"
 	},
 	"restrictedNewTab": {
-		"message": "Нова вкладка (chrome://newtab)",
+		"message": "Нова вкладка",
 		"description": "New tab page title"
 	},
 	"restrictedNewTabDesc": {
@@ -988,11 +1116,11 @@
 		"description": "Store page description"
 	},
 	"restrictedInternal": {
-		"message": "Внутрішні сторінки браузера",
+		"message": "Внутрішні сторінки браузера (%browserProtocol%)",
 		"description": "Internal page title"
 	},
 	"restrictedInternalDesc": {
-		"message": "Всі сторінки, що починаються з chrome:// (Chrome) або edge:// (Edge), включаючи налаштування, історію, завантаження тощо. Ці сторінки містять основні функції браузера та приватні дані користувача, тому суворо захищені.",
+		"message": "Наприклад, внутрішні налаштування, історія, завантаження %browserName% тощо. Ці сторінки стосуються основних функцій браузера та конфіденційних даних користувача, тому вони суворо захищені.",
 		"description": "Internal page description"
 	},
 	"restrictedFile": {
@@ -1000,7 +1128,7 @@
 		"description": "File page title"
 	},
 	"restrictedFileDesc": {
-		"message": "Локальні HTML-файли, відкриті через протокол file://. Через обмеження безпеки (для запобігання доступу шкідливих розширень до локальної файлової системи), розширення не можуть працювати на цих сторінках.",
+		"message": "Локальні html, pdf та ін. файли, відкриті через протокол file://. Через обмеження безпеки (для запобігання доступу шкідливих розширень до локальної файлової системи), розширення не можуть працювати на цих сторінках.",
 		"description": "File page description"
 	},
 	"restrictedViewSource": {
@@ -1024,7 +1152,7 @@
 		"description": "Popup description when content script not loaded"
 	},
 	"popupRefreshBtn": {
-		"message": "🔄 Оновити сторінку",
+		"message": "Оновити сторінку",
 		"description": "Popup refresh button text"
 	},
 	"popupRestrictedTitle": {
@@ -1036,7 +1164,7 @@
 		"description": "Popup description for restricted pages"
 	},
 	"popupLearnMore": {
-		"message": "📖 Дізнатися більше",
+		"message": "Дізнатися більше",
 		"description": "Popup learn more button text"
 	},
 	"tutorialPending": {
@@ -1207,6 +1335,26 @@
 		"message": "Для зберігання зображень FlowMouse потрібен доступ до сторінок та завантажень.",
 		"description": "Permission popup description for downloads and page capture"
 	},
+	"permissionIncognitoTitle": {
+		"message": "Дозволити в режимі інкогніто",
+		"description": "Permission popup title for incognito"
+	},
+	"permissionIncognitoDesc": {
+		"message": "Щоб працювати у вікнах інкогніто, потрібно вручну ввімкнути опцію «Дозволити в режимі інкогніто» для FlowMouse.",
+		"description": "Permission popup description for incognito"
+	},
+	"openExtensionsSettings": {
+		"message": "Відкрити відомості про розширення",
+		"description": "Button to open extension details page"
+	},
+	"permissionFirefoxIncognitoTitle": {
+		"message": "Запуск у приватних вікнах",
+		"description": "Permission popup title for Firefox private browsing"
+	},
+	"permissionFirefoxIncognitoDesc": {
+		"message": "Щоб працювати у приватних вікнах, потрібно вручну ввімкнути опцію «Запуск у приватних вікнах» для FlowMouse у Керуванні додатками.",
+		"description": "Permission popup description for Firefox private browsing"
+	},
 	"grantPermission": {
 		"message": "Надати дозвіл",
 		"description": "Grant permission button"
@@ -1234,5 +1382,205 @@
 	"saveImageTimeout": {
 		"message": "Не вдалося зберегти зображення: час завантаження вичерпано",
 		"description": "Toast message when image loading times out"
+	},
+	"buttonOkay": {
+		"message": "Гаразд",
+		"description": "Generic OK button"
+	},
+	"buttonCancel": {
+		"message": "Скасувати",
+		"description": "Generic Cancel button"
+	},
+	"buttonClose": {
+		"message": "Закрити",
+		"description": "Generic Close button"
+	},
+	"searchActions": {
+		"message": "Пошук команд...",
+		"description": "Placeholder for action search input in action picker"
+	},
+	"actionCategoryNavigation": {
+		"message": "Навігація",
+		"description": "Action category: navigation"
+	},
+	"actionCategoryTabs": {
+		"message": "Вкладки",
+		"description": "Action category: tabs"
+	},
+	"actionCategoryWindow": {
+		"message": "Вікно",
+		"description": "Action category: window"
+	},
+	"actionCategoryUtilities": {
+		"message": "Інструменти",
+		"description": "Action category: utilities"
+	},
+	"noResults": {
+		"message": "Немає результатів",
+		"description": "No search results found"
+	},
+	"wheelGestures": {
+		"message": "Жести коліщатком миші",
+		"description": "Mouse wheel gestures section title"
+	},
+	"enableWheelGestures": {
+		"message": "Увімкнути жести коліщатком миші",
+		"description": "Enable mouse wheel gestures"
+	},
+	"enableWheelGesturesDesc": {
+		"message": "Швидко виконуйте різноманітні дії за допомогою коліщатка миші",
+		"description": "Enable mouse wheel gestures description"
+	},
+	"wheelGesture_scrollUpHoldingRight": {
+		"message": "Прокручування вгору, утримуючи праву кнопку",
+		"description": "Wheel gesture: scroll up while holding right button"
+	},
+	"wheelGesture_scrollDownHoldingRight": {
+		"message": "Прокручування вниз, утримуючи праву кнопку",
+		"description": "Wheel gesture: scroll down while holding right button"
+	},
+	"specialGestures": {
+		"message": "Спеціальні жести",
+		"description": "Special gestures section title"
+	},
+	"enableSpecialGestures": {
+		"message": "Увімкнути спеціальні жести",
+		"description": "Enable special gestures"
+	},
+	"enableSpecialGesturesDesc": {
+		"message": "Виконуйте дії, натискаючи одну кнопку миші, утримуючи іншу",
+		"description": "Enable special gestures description"
+	},
+	"specialGesture_leftClickHoldingRight": {
+		"message": "Клацання лівою кнопкою миші під час утримання правої",
+		"description": "Special gesture: left click while holding right button"
+	},
+	"specialGesture_rightClickHoldingLeft": {
+		"message": "Клацання правою кнопкою миші під час утримання лівої",
+		"description": "Special gesture: right click while holding left button"
+	},
+	"actionChains": {
+		"message": "Ланцюжки команд",
+		"description": "Action chains section title"
+	},
+	"actionChainsDesc": {
+		"message": "Створюйте багаторазові послідовності команд, які виконуються одна за одною",
+		"description": "Action chains section description"
+	},
+	"actionActionChain": {
+		"message": "Ланцюжок команд",
+		"description": "Action chain action name"
+	},
+	"actionCategoryChains": {
+		"message": "Ланцюжки команд",
+		"description": "Action category: action chains"
+	},
+	"addChain": {
+		"message": "Додати ланцюжок",
+		"description": "Add chain button"
+	},
+	"addNewChain": {
+		"message": "Створити новий ланцюжок...",
+		"description": "Action item to navigate to chain editor and create a new chain"
+	},
+	"chainNamePlaceholder": {
+		"message": "Мій ланцюжок команд",
+		"description": "Chain name input placeholder"
+	},
+	"chainDelayUnit": {
+		"message": "мс",
+		"description": "Milliseconds unit for chain delay"
+	},
+	"addStep": {
+		"message": "Додати крок",
+		"description": "Add step button"
+	},
+	"emptyChainSteps": {
+		"message": "Кроків не додано. Натисніть «Додати крок», щоб розпочати.",
+		"description": "Empty chain steps message in expanded body"
+	},
+	"emptyChainStepsShort": {
+		"message": "Немає доданих кроків",
+		"description": "Short empty chain steps message for summary"
+	},
+	"noChains": {
+		"message": "Поки немає ланцюжків команд. Натисніть «Додати ланцюжок», щоб створити його.",
+		"description": "No chains message"
+	},
+	"chainNotFound": {
+		"message": "(Ланцюжок не знайдено)",
+		"description": "Chain not found label"
+	},
+	"deleteChainConfirm": {
+		"message": "Видалити ланцюжок \"%name%\"?",
+		"description": "Delete chain confirmation"
+	},
+	"stepNumber": {
+		"message": "Крок %n%",
+		"description": "Step number label"
+	},
+	"actionDelay": {
+		"message": "Затримка",
+		"description": "Delay action name for chain steps"
+	},
+	"actionSendCustomEvent": {
+		"message": "Надіслати спеціальну подію",
+		"description": "Action to dispatch a custom DOM event"
+	},
+	"actionSimulateKey": {
+		"message": "Імітація натискання клавіші",
+		"description": "Action to simulate a keyboard key press on the page"
+	},
+	"simulateKeyPreset": {
+		"message": "Попередньо встановлена клавіша",
+		"description": "Label for preset key dropdown in simulate key config"
+	},
+	"simulateKeyPresetLeft": {
+		"message": "← Стрілка вліво (Попередня сторінка)",
+		"description": "Preset: ArrowLeft key"
+	},
+	"simulateKeyPresetRight": {
+		"message": "→ Стрілка вправо (Наступна сторінка)",
+		"description": "Preset: ArrowRight key"
+	},
+	"simulateKeyPresetCustom": {
+		"message": "Спеціальна клавіша",
+		"description": "Preset: Custom key option"
+	},
+	"simulateKeyRecordBtn": {
+		"message": "Записати клавішу",
+		"description": "Button to start recording a key press"
+	},
+	"simulateKeyRecording": {
+		"message": "Натисніть клавішу...",
+		"description": "Recording state text"
+	},
+	"simulateKeyManualInput": {
+		"message": "Поточна клавіша",
+		"description": "Label for current key display in simulate key config"
+	},
+	"simulateKeyHint": {
+		"message": "Ця функція надсилає події клавіатури лише на поточну сторінку, зазвичай використовується для навігації сторінкою (← назад / → вперед). Вона НЕ запускатиме комбінації клавіш браузера (наприклад, Ctrl+R не оновить сторінку). Крім того, через обмеження фреймворку вебсайту змодельовані події можуть не фіксуватися всіма користувацькими компонентами або полями введення.",
+		"description": "Hint text for simulate key feature"
+	},
+	"customEventInvalidJson": {
+		"message": "Недійсний формат JSON",
+		"description": "Error message when event detail is not valid JSON"
+	},
+	"customEventHint": {
+		"message": "Відправляє %code% на %window%. Корисно для інтеграції з іншими скриптами.",
+		"description": "Hint explaining how custom event works. %code% = <code>new CustomEvent(...)</code>, %window% = <code>window</code>"
+	},
+	"delayDuration": {
+		"message": "Тривалість",
+		"description": "Delay duration label"
+	},
+	"chainStepCount": {
+		"message": "%count% кроків",
+		"description": "Step count for unnamed chains, e.g. '3 steps'"
+	},
+	"chainStepCountOne": {
+		"message": "%count% крок",
+		"description": "Step count for unnamed chains with exactly 1 step"
 	}
 }

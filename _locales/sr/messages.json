@@ -8,20 +8,12 @@
 		"description": "Short extension name for popup"
 	},
 	"extDescription": {
-		"message": "Екстензија за гестове мишем отвореног кода фокусирана на приватност и глатко искуство. Глатки гестови, подршка за супер превлачење, а сви подаци се чувају локално.",
+		"message": "Екстензија за гестове мишем отвореног кода фокусирана на приватност и глатко искуство. Глатки гестови, подршка за супер превлачење.",
 		"description": "Extension description"
-	},
-	"appearance": {
-		"message": "Изглед",
-		"description": "Appearance section"
 	},
 	"theme": {
 		"message": "Тема",
 		"description": "Theme"
-	},
-	"themeDesc": {
-		"message": "Пребаците између светле и тамне теме",
-		"description": "Theme description"
 	},
 	"themeDark": {
 		"message": "Тамна",
@@ -34,10 +26,6 @@
 	"themeAuto": {
 		"message": "Прати систем",
 		"description": "Auto theme - follow system"
-	},
-	"languageDesc": {
-		"message": "Изаберите језик интерфејса",
-		"description": "Language description"
 	},
 	"syncStatus": {
 		"message": "Статус синхронизације",
@@ -56,7 +44,7 @@
 		"description": "Author"
 	},
 	"privacyNote": {
-		"message": "🔒 Ради локално, без приступа мрежи осим синхронизације, без прикупљања података",
+		"message": " Ради локално, без приступа мрежи осим синхронизације, без прикупљања података",
 		"description": "Privacy note in footer"
 	},
 	"supportUsText": {
@@ -120,11 +108,19 @@
 		"description": "Hold the right mouse button and move the mouse to easily perform gestures"
 	},
 	"macLinuxContextMenuNotice": {
-		"message": "⚠️ Због системских ограничења, двоструки десни клик је потребан за отварање контекстног менија на macOS / Linux.",
+		"message": "Због системских ограничења, када су омогућени гестови десним тастером миша, двоструки десни клик је потребан за отварање контекстног менија на macOS / Linux.",
 		"description": "Notice for macOS / Linux users about double right-click for context menu"
 	},
+	"macLinuxDoubleClickHint": {
+		"message": "Да бисте отворили контекстни мени, двапут кликните десним тастером миша. (Сазнајте више)",
+		"description": "Short toast hint shown on first right-click on macOS/Linux explaining double-click requirement"
+	},
+	"edgeGestureConflictNotice": {
+		"message": "%browserName% има уграђене функције покрета. Да бисте користили покрете FlowMouse-а, <a href=\"#\" class=\"edge-gesture-link\">онемогућите уграђене покрете</a> у подешавањима %browserName%-а.",
+		"description": "Notice for Edge users about built-in gesture conflict"
+	},
 	"macTextDragNotice": {
-		"message": "⚠️ Због понашања macOS-а, приликом превлачења текста, прво изаберите текст, затим притисните и држите леви тастер кратко пре превлачења. Иначе, претрага се можда неће покренути.",
+		"message": "Због понашања macOS-а, приликом превлачења текста, прво изаберите текст, затим унутар изабране области притисните и држите леви тастер и направите кратку паузу пре превлачења. Иначе, функција превлачења се можда неће покренути.",
 		"description": "Notice for macOS users about text drag behavior"
 	},
 	"showTrail": {
@@ -159,6 +155,14 @@
 		"message": "Непровидност",
 		"description": "Opacity"
 	},
+	"blur": {
+		"message": "Замућење",
+		"description": "Blur radius"
+	},
+	"hudShadow": {
+		"message": "Сенка",
+		"description": "HUD shadow toggle"
+	},
 	"text": {
 		"message": "Текст",
 		"description": "Text"
@@ -179,6 +183,10 @@
 		"message": "Ефекат анимације скроловања за гестове горе/доле",
 		"description": "Scroll smoothness description"
 	},
+	"smoothnessAuto": {
+		"message": "Automatski",
+		"description": "Auto scroll smoothness - uses system if animation enabled, otherwise smooth"
+	},
 	"smoothnessSystem": {
 		"message": "Систем (Високе перформансе)",
 		"description": "System scroll smoothness"
@@ -190,6 +198,18 @@
 	"smoothnessNone": {
 		"message": "Без анимације",
 		"description": "No scroll animation"
+	},
+	"scrollAccel": {
+		"message": "Множилац непрекидног померања",
+		"description": "Speed multiplier applied when scrolling consecutively"
+	},
+	"scrollAccelOff": {
+		"message": "Искључено",
+		"description": "Scroll acceleration disabled"
+	},
+	"scrollAccelWindow": {
+		"message": "Временско ограничење узастопног померања",
+		"description": "Max time (ms) between scrolls to count as consecutive"
 	},
 	"dragFeatures": {
 		"message": "Функције превлачења",
@@ -283,6 +303,22 @@
 		"message": "Нема сајтова на црној листи. Унесите домен изнад за додавање.",
 		"description": "Empty blacklist message"
 	},
+	"enableBlacklistContextMenu": {
+		"message": "Прекидач гестова у контекстном менију",
+		"description": "Setting title for blacklist context menu toggle"
+	},
+	"enableBlacklistContextMenuDesc": {
+		"message": "Прикажи опцију за онемогућавање/омогућавање гестова у контекстном менију",
+		"description": "Setting description for blacklist context menu toggle"
+	},
+	"menuAddToBlacklist": {
+		"message": "Онемогући гестове на овом сајту",
+		"description": "Context menu title for adding current site to blacklist"
+	},
+	"menuRemoveFromBlacklist": {
+		"message": "Омогући гестове на овом сајту",
+		"description": "Context menu title for removing current site from blacklist"
+	},
 	"dataManagement": {
 		"message": "Управљање подацима",
 		"description": "Data management section"
@@ -322,6 +358,10 @@
 	"importDone": {
 		"message": "Подешавања увезена",
 		"description": "Import done message"
+	},
+	"importConfirm": {
+		"message": "Увоз ће заменити ваша тренутна подешавања. Увозите конфигурационе датотеке само из поузданих извора.\n\nНаставити?",
+		"description": "Import confirmation warning"
 	},
 	"importFailed": {
 		"message": "Увоз није успео: Неважећа датотека конфигурације",
@@ -459,13 +499,41 @@
 		"message": "Затвори картицу",
 		"description": "Close tab"
 	},
-	"actionCloseTabKeepWindow": {
-		"message": "Затвори картицу (Задржи прозор)",
-		"description": "Close tab but keep window open"
+	"closeTabKeepWindow": {
+		"message": "Ако је ово последња картица, задржи прозор отворен",
+		"description": "Checkbox label for closeTab action config"
+	},
+	"closeTabAfterClose": {
+		"message": "Након затварања",
+		"description": "Label for closeTab afterClose config"
+	},
+	"closeTabAfterCloseDefault": {
+		"message": "Подразумевани претраживач",
+		"description": "Option for closeTab afterClose config - let browser decide"
+	},
+	"closeTabAfterCloseLeft": {
+		"message": "Пребаци на леву картицу",
+		"description": "Option for closeTab afterClose config - switch to left tab"
+	},
+	"closeTabAfterCloseRight": {
+		"message": "Пребаци на десну картицу",
+		"description": "Option for closeTab afterClose config - switch to right tab"
+	},
+	"switchTabNoWrap": {
+		"message": "Без цикличног пребацивања",
+		"description": "Checkbox label for switchLeftTab/switchRightTab action config"
+	},
+	"switchTabMoveTab": {
+		"message": "Премести тренутну картицу",
+		"description": "Checkbox label for switchLeftTab/switchRightTab/switchFirstTab/switchLastTab action config"
 	},
 	"actionCloseBrowser": {
 		"message": "Затвори прегледач",
 		"description": "Close browser"
+	},
+	"actionCloseWindow": {
+		"message": "Zatvori prozor",
+		"description": "Close current window"
 	},
 	"actionRestoreTab": {
 		"message": "Поврати затворену картицу",
@@ -498,6 +566,14 @@
 	"actionSwitchRightTab": {
 		"message": "Пребаци на десну картицу",
 		"description": "Switch to right tab"
+	},
+	"actionSwitchFirstTab": {
+		"message": "Пребаци на прву картицу",
+		"description": "Switch to first tab"
+	},
+	"actionSwitchLastTab": {
+		"message": "Пребаци на последњу картицу",
+		"description": "Switch to last tab"
 	},
 	"actionRefresh": {
 		"message": "Освежи тренутну картицу",
@@ -575,6 +651,10 @@
 		"message": "Утишај/Укључи звук свих картица",
 		"description": "Toggle mute all tabs"
 	},
+	"actionTogglePinTab": {
+		"message": "Закачи/Откачи тренутну картицу",
+		"description": "Toggle pin current tab"
+	},
 	"showTrailOrigin": {
 		"message": "Прикажи тачку почетка",
 		"description": "Show trail origin point"
@@ -595,17 +675,29 @@
 		"message": "Савет: Препоручује се вредност између 15-30 за најбоље препознавање.",
 		"description": "Warning when distance threshold is too small or too large"
 	},
-	"enableAdvancedSettings": {
-		"message": "Напредна подешавања",
-		"description": "Enable advanced settings"
+	"gestureTurnTolerance": {
+		"message": "Толеранција окретања геста",
+		"description": "Turn tolerance for detecting direction changes in long gestures"
 	},
-	"enableAdvancedSettingsDesc": {
-		"message": "Прикажи више напредних опција када је омогућено",
-		"description": "Show more advanced options when enabled"
+	"gestureTurnToleranceDesc": {
+		"message": "Веће вредности смањују случајна окретања, али захтевају дуже покрете за промену правца",
+		"description": "Description for gesture turn tolerance setting"
 	},
-	"enableAdvancedSettingsToggle": {
-		"message": "Режим напредних подешавања",
-		"description": "Enable advanced settings toggle label"
+	"advanced": {
+		"message": "Експертски режим",
+		"description": "Short label for per-section advanced toggle"
+	},
+	"otherSettings": {
+		"message": "Остала подешавања",
+		"description": "Section title for other/miscellaneous settings"
+	},
+	"show": {
+		"message": "Prikaži",
+		"description": "Show navigation menu"
+	},
+	"hide": {
+		"message": "Sakrij",
+		"description": "Hide navigation menu"
 	},
 	"urlFormatError": {
 		"message": "Молимо унесите пун URL који почиње са http:// или https://",
@@ -615,41 +707,61 @@
 		"message": "Врати на подразумевано",
 		"description": "Reset gesture to default action"
 	},
+	"resetToDefaultConfirm": {
+		"message": "Ресетовати ова подешавања на подразумеване вредности?",
+		"description": "Confirmation dialog for resetting settings"
+	},
 	"addCustomGesture": {
 		"message": "Додај прилагођени гест",
 		"description": "Add custom gesture section title"
-	},
-	"gesturePattern": {
-		"message": "Образац",
-		"description": "Gesture pattern label"
-	},
-	"selectAction": {
-		"message": "Изабери акцију",
-		"description": "Select action label"
 	},
 	"clear": {
 		"message": "Очисти",
 		"description": "Clear button"
 	},
-	"addGesture": {
-		"message": "Додај гест",
-		"description": "Add gesture button"
-	},
-	"pleaseDrawGesture": {
-		"message": "Прво нацртајте гест",
-		"description": "Alert when no gesture drawn"
-	},
 	"gestureAdded": {
 		"message": "✓ Гест додат",
 		"description": "Gesture added success message"
 	},
-	"gestureDrawInstructions": {
-		"message": "Држите десни тастер миша и нацртајте гест испод, пустите да завршите. Подржани правци:",
-		"description": "Instructions for gesture drawing"
+	"gestureRecorderTitle": {
+		"message": "Нацртај гест",
+		"description": "Gesture recorder full-screen title"
 	},
-	"gestureOverwriteConfirm": {
-		"message": "Гест %pattern% већ постоји. Заменити?",
-		"description": "Confirmation message when adding a duplicate gesture"
+	"gestureRecorderDesc": {
+		"message": "Држите дугме „%button%“ и нацртајте образац геста",
+		"description": "Gesture recorder instruction, %button% is replaced with the mouse button name"
+	},
+	"gestureRecorderEsc": {
+		"message": "Откажи",
+		"description": "Gesture recorder cancel button label"
+	},
+	"gestureRecorderRecording": {
+		"message": "Снимање…",
+		"description": "Gesture recorder recording indicator"
+	},
+	"gestureRecorderResult": {
+		"message": "Снимљен гест",
+		"description": "Gesture recorder result label"
+	},
+	"gestureRecorderConfirm": {
+		"message": "Потврди",
+		"description": "Gesture recorder confirm button"
+	},
+	"gestureRecorderRedraw": {
+		"message": "Поново нацртај",
+		"description": "Gesture recorder redraw button"
+	},
+	"gestureRecorderBanned": {
+		"message": "Гест %pattern% већ постоји",
+		"description": "Gesture recorder message when user draws a banned/existing gesture pattern"
+	},
+	"rightButton": {
+		"message": "Десно дугме миша",
+		"description": "Right mouse button name"
+	},
+	"leftButton": {
+		"message": "Лево дугме миша",
+		"description": "Left mouse button name"
 	},
 	"customGesture": {
 		"message": "Прилагођено",
@@ -670,6 +782,10 @@
 	"enterCustomUrl": {
 		"message": "Унесите URL (предлажемо укључивање протокола као што су https://, chrome://, итд.):",
 		"description": "Prompt for custom URL input"
+	},
+	"copyUrlIncludeTitle": {
+		"message": "Копирај и наслов странице",
+		"description": "Checkbox label for including page title when copying URL"
 	},
 	"invalidUrl": {
 		"message": "Молимо унесите важећи URL (који почиње са http:// или https://)",
@@ -750,6 +866,10 @@
 	"aboutTitle": {
 		"message": "О FlowMouse-у",
 		"description": "About title"
+	},
+	"aboutTitleShort": {
+		"message": "Информације",
+		"description": "Short About title "
 	},
 	"aboutAuthor": {
 		"message": "Аутор",
@@ -863,6 +983,10 @@
 		"message": "Отвори у првом плану",
 		"description": "Open tab in foreground"
 	},
+	"openInIncognito": {
+		"message": "Инкогнито",
+		"description": "Open in incognito checkbox"
+	},
 	"textDragGestures": {
 		"message": "Гестови превлачења текста",
 		"description": "Text drag gestures"
@@ -880,7 +1004,7 @@
 		"description": "Direction column header"
 	},
 	"action": {
-		"message": "Акција",
+		"message": "Команда",
 		"description": "Action column header"
 	},
 	"imageSearchUrl": {
@@ -915,6 +1039,10 @@
 		"message": "📋 Копирај линк",
 		"description": "Copy link"
 	},
+	"dragActionCopyLinkText": {
+		"message": "📋 Копирај текст линка",
+		"description": "Copy link text"
+	},
 	"dragActionSaveImage": {
 		"message": "💾 Сачувај слику",
 		"description": "Save image"
@@ -936,7 +1064,7 @@
 		"description": "Custom search"
 	},
 	"reducedMotionWarning": {
-		"message": "⚠️ %OS% системска анимација је онемогућена, анимација скроловања можда неће радити исправно. Можете омогућити анимацију у подешавањима %OS% система.",
+		"message": "%OS% системска анимација је онемогућена, анимација скроловања можда неће радити исправно. Можете омогућити анимацију у подешавањима %OS% система.",
 		"description": "Warning message when system reduced motion is enabled"
 	},
 	"autoDetectUrl": {
@@ -964,7 +1092,7 @@
 		"description": "Setting description for restricted page notice"
 	},
 	"restrictedPagesDetailsTitle": {
-		"message": "⚠️ Због безбедносних политика прегледача, екстензије не могу да раде на одређеним типовима страница.",
+		"message": "Због безбедносних политика прегледача, екстензије не могу да раде на одређеним типовима страница.",
 		"description": "Collapsible details title"
 	},
 	"showMoreHint": {
@@ -972,7 +1100,7 @@
 		"description": "Hint to show more details"
 	},
 	"restrictedNewTab": {
-		"message": "Страница нове картице (chrome://newtab)",
+		"message": "Страница нове картице",
 		"description": "New tab page title"
 	},
 	"restrictedNewTabDesc": {
@@ -988,11 +1116,11 @@
 		"description": "Store page description"
 	},
 	"restrictedInternal": {
-		"message": "Интерне странице прегледача",
+		"message": "Интерне странице прегледача (%browserProtocol%)",
 		"description": "Internal page title"
 	},
 	"restrictedInternalDesc": {
-		"message": "Све странице које почињу са chrome:// (Chrome) или edge:// (Edge), укључујући подешавања, историју, преузимања, итд. Ове странице укључују основне функције прегледача и податке о приватности корисника, стога су строго заштићене.",
+		"message": "На пример, интерна подешавања, историја, преузимања, итд. прегледача %browserName%. Ове странице укључују основне функције прегледача и податке о приватности корисника, стога су строго заштићене.",
 		"description": "Internal page description"
 	},
 	"restrictedFile": {
@@ -1000,7 +1128,7 @@
 		"description": "File page title"
 	},
 	"restrictedFileDesc": {
-		"message": "Локалне HTML датотеке отворене путем file:// протокола. Због безбедносних ограничења (спречавање злонамерних екстензија да приступају локалном систему датотека), екстензије не могу радити на овим страницама.",
+		"message": "Локалне html, pdf, итд. датотеке отворене путем file:// протокола. Због безбедносних ограничења (спречавање злонамерних екстензија да приступају локалном систему датотека), екстензије не могу радити на овим страницама.",
 		"description": "File page description"
 	},
 	"restrictedViewSource": {
@@ -1024,7 +1152,7 @@
 		"description": "Popup description when content script not loaded"
 	},
 	"popupRefreshBtn": {
-		"message": "🔄 Освежи страницу",
+		"message": "Освежи страницу",
 		"description": "Popup refresh button text"
 	},
 	"popupRestrictedTitle": {
@@ -1036,7 +1164,7 @@
 		"description": "Popup description for restricted pages"
 	},
 	"popupLearnMore": {
-		"message": "📖 Сазнајте више",
+		"message": "Сазнајте више",
 		"description": "Popup learn more button text"
 	},
 	"tutorialPending": {
@@ -1207,6 +1335,26 @@
 		"message": "Да би сачувао слике, FlowMouse захтева приступ страницама и преузимањима.",
 		"description": "Permission popup description for downloads and page capture"
 	},
+	"permissionIncognitoTitle": {
+		"message": "Дозволи у режиму без архивирања",
+		"description": "Permission popup title for incognito"
+	},
+	"permissionIncognitoDesc": {
+		"message": "Да би радио у прозорима без архивирања, морате ручно да омогућите „Дозволи у режиму без архивирања“ за FlowMouse.",
+		"description": "Permission popup description for incognito"
+	},
+	"openExtensionsSettings": {
+		"message": "Отвори детаље проширења",
+		"description": "Button to open extension details page"
+	},
+	"permissionFirefoxIncognitoTitle": {
+		"message": "Покрени у приватним прозорима",
+		"description": "Permission popup title for Firefox private browsing"
+	},
+	"permissionFirefoxIncognitoDesc": {
+		"message": "Да би радио у приватним прозорима, морате ручно да омогућите „Покрени у приватним прозорима“ за FlowMouse у Управљачу додацима.",
+		"description": "Permission popup description for Firefox private browsing"
+	},
 	"grantPermission": {
 		"message": "Дај дозволу",
 		"description": "Grant permission button"
@@ -1234,5 +1382,205 @@
 	"saveImageTimeout": {
 		"message": "Čuvanje slike nije uspelo: Isteklo je vreme učitavanja",
 		"description": "Toast message when image loading times out"
+	},
+	"buttonOkay": {
+		"message": "У реду",
+		"description": "Generic OK button"
+	},
+	"buttonCancel": {
+		"message": "Одустани",
+		"description": "Generic Cancel button"
+	},
+	"buttonClose": {
+		"message": "Затвори",
+		"description": "Generic Close button"
+	},
+	"searchActions": {
+		"message": "Претражи команде...",
+		"description": "Placeholder for action search input in action picker"
+	},
+	"actionCategoryNavigation": {
+		"message": "Навигација",
+		"description": "Action category: navigation"
+	},
+	"actionCategoryTabs": {
+		"message": "Картице",
+		"description": "Action category: tabs"
+	},
+	"actionCategoryWindow": {
+		"message": "Прозор",
+		"description": "Action category: window"
+	},
+	"actionCategoryUtilities": {
+		"message": "Алатке",
+		"description": "Action category: utilities"
+	},
+	"noResults": {
+		"message": "Нема резултата",
+		"description": "No search results found"
+	},
+	"wheelGestures": {
+		"message": "Покрети точкићем миша",
+		"description": "Mouse wheel gestures section title"
+	},
+	"enableWheelGestures": {
+		"message": "Омогући покрете точкићем миша",
+		"description": "Enable mouse wheel gestures"
+	},
+	"enableWheelGesturesDesc": {
+		"message": "Брзо извршавајте различите радње помоћу точкића миша",
+		"description": "Enable mouse wheel gestures description"
+	},
+	"wheelGesture_scrollUpHoldingRight": {
+		"message": "Померајте се нагоре док држите десни тастер",
+		"description": "Wheel gesture: scroll up while holding right button"
+	},
+	"wheelGesture_scrollDownHoldingRight": {
+		"message": "Померајте се надоле док држите десни тастер",
+		"description": "Wheel gesture: scroll down while holding right button"
+	},
+	"specialGestures": {
+		"message": "Специјални гестови",
+		"description": "Special gestures section title"
+	},
+	"enableSpecialGestures": {
+		"message": "Омогући специјалне гестове",
+		"description": "Enable special gestures"
+	},
+	"enableSpecialGesturesDesc": {
+		"message": "Извршавајте радње кликом на један тастер миша док држите други",
+		"description": "Enable special gestures description"
+	},
+	"specialGesture_leftClickHoldingRight": {
+		"message": "Леви клик док држите десни тастер",
+		"description": "Special gesture: left click while holding right button"
+	},
+	"specialGesture_rightClickHoldingLeft": {
+		"message": "Десни клик док држите леви тастер",
+		"description": "Special gesture: right click while holding left button"
+	},
+	"actionChains": {
+		"message": "Ланци команди",
+		"description": "Action chains section title"
+	},
+	"actionChainsDesc": {
+		"message": "Направите поновљиве секвенце команди које се извршавају једна за другом",
+		"description": "Action chains section description"
+	},
+	"actionActionChain": {
+		"message": "Ланац команди",
+		"description": "Action chain action name"
+	},
+	"actionCategoryChains": {
+		"message": "Ланци команди",
+		"description": "Action category: action chains"
+	},
+	"addChain": {
+		"message": "Додај ланац",
+		"description": "Add chain button"
+	},
+	"addNewChain": {
+		"message": "Направи нови ланац...",
+		"description": "Action item to navigate to chain editor and create a new chain"
+	},
+	"chainNamePlaceholder": {
+		"message": "Мој ланац команди",
+		"description": "Chain name input placeholder"
+	},
+	"chainDelayUnit": {
+		"message": "мсек",
+		"description": "Milliseconds unit for chain delay"
+	},
+	"addStep": {
+		"message": "Додај корак",
+		"description": "Add step button"
+	},
+	"emptyChainSteps": {
+		"message": "Нису додати кораци. Кликните на \"Додај корак\" да бисте почели.",
+		"description": "Empty chain steps message in expanded body"
+	},
+	"emptyChainStepsShort": {
+		"message": "Нема додатих корака",
+		"description": "Short empty chain steps message for summary"
+	},
+	"noChains": {
+		"message": "Још нема ланаца команди. Кликните на \"Додај ланац\" да бисте га направили.",
+		"description": "No chains message"
+	},
+	"chainNotFound": {
+		"message": "(Ланац није пронађен)",
+		"description": "Chain not found label"
+	},
+	"deleteChainConfirm": {
+		"message": "Избрисати ланац \"%name%\"?",
+		"description": "Delete chain confirmation"
+	},
+	"stepNumber": {
+		"message": "Корак %n%",
+		"description": "Step number label"
+	},
+	"actionDelay": {
+		"message": "Кашњење",
+		"description": "Delay action name for chain steps"
+	},
+	"actionSendCustomEvent": {
+		"message": "Пошаљи прилагођени догађај",
+		"description": "Action to dispatch a custom DOM event"
+	},
+	"actionSimulateKey": {
+		"message": "Симулирај притисак тастера",
+		"description": "Action to simulate a keyboard key press on the page"
+	},
+	"simulateKeyPreset": {
+		"message": "Предефинисани тастер",
+		"description": "Label for preset key dropdown in simulate key config"
+	},
+	"simulateKeyPresetLeft": {
+		"message": "← Стрелица лево (Претходна страница)",
+		"description": "Preset: ArrowLeft key"
+	},
+	"simulateKeyPresetRight": {
+		"message": "→ Стрелица десно (Следећа страница)",
+		"description": "Preset: ArrowRight key"
+	},
+	"simulateKeyPresetCustom": {
+		"message": "Прилагођени тастер",
+		"description": "Preset: Custom key option"
+	},
+	"simulateKeyRecordBtn": {
+		"message": "Сними тастер",
+		"description": "Button to start recording a key press"
+	},
+	"simulateKeyRecording": {
+		"message": "Притисни тастер...",
+		"description": "Recording state text"
+	},
+	"simulateKeyManualInput": {
+		"message": "Тренутни тастер",
+		"description": "Label for current key display in simulate key config"
+	},
+	"simulateKeyHint": {
+		"message": "Ova funkcija šalje događaje na tastaturi samo trenutnoj stranici, a obično se koristi za navigaciju stranicom (← prethodna / → sledeća). NEĆE pokrenuti prečice pregledača (npr. Ctrl+R neće osvežiti stranicu). Pored toga, zbog ograničenja okvira veb stranice, simulirane događaje možda neće zabeležiti sve prilagođene komponente ili polja za unos.",
+		"description": "Hint text for simulate key feature"
+	},
+	"customEventInvalidJson": {
+		"message": "Неважећи JSON формат",
+		"description": "Error message when event detail is not valid JSON"
+	},
+	"customEventHint": {
+		"message": "Шаље %code% на %window%. Корисно за интеграцију са другим скриптама.",
+		"description": "Hint explaining how custom event works. %code% = <code>new CustomEvent(...)</code>, %window% = <code>window</code>"
+	},
+	"delayDuration": {
+		"message": "Трајање",
+		"description": "Delay duration label"
+	},
+	"chainStepCount": {
+		"message": "%count% корака",
+		"description": "Step count for unnamed chains, e.g. '3 steps'"
+	},
+	"chainStepCountOne": {
+		"message": "%count% корак",
+		"description": "Step count for unnamed chains with exactly 1 step"
 	}
 }

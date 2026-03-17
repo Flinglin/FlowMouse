@@ -8,20 +8,12 @@
 		"description": "Short extension name for popup"
 	},
 	"extDescription": {
-		"message": "Eine Open-Source-Mausgesten-Erweiterung, die sich auf Datenschutz und flüssige Bedienung konzentriert. Flüssige und reaktionsschnelle Gesten, Unterstützung für Super-Drag, und alle Daten werden ausschließlich lokal gespeichert.",
+		"message": "Eine Open-Source-Mausgesten-Erweiterung, die sich auf Datenschutz und flüssige Bedienung konzentriert. Flüssige und reaktionsschnelle Gesten, Unterstützung für Super-Drag.",
 		"description": "Extension description"
-	},
-	"appearance": {
-		"message": "Erscheinungsbild",
-		"description": "Appearance section"
 	},
 	"theme": {
 		"message": "Design",
 		"description": "Theme"
-	},
-	"themeDesc": {
-		"message": "Zwischen hellem und dunklem Design wechseln",
-		"description": "Theme description"
 	},
 	"themeDark": {
 		"message": "Dunkel",
@@ -34,10 +26,6 @@
 	"themeAuto": {
 		"message": "Systemstandard",
 		"description": "Auto theme - follow system"
-	},
-	"languageDesc": {
-		"message": "Sprache auswählen",
-		"description": "Language description"
 	},
 	"syncStatus": {
 		"message": "Synchronisierungsstatus",
@@ -56,7 +44,7 @@
 		"description": "Author"
 	},
 	"privacyNote": {
-		"message": "🔒 Läuft lokal, kein Netzwerkzugriff außer Sync, keine Datenerfassung",
+		"message": " Läuft lokal, kein Netzwerkzugriff außer Sync, keine Datenerfassung",
 		"description": "Privacy note in footer"
 	},
 	"supportUsText": {
@@ -120,11 +108,19 @@
 		"description": "Hold the right mouse button and move the mouse to easily perform gestures"
 	},
 	"macLinuxContextMenuNotice": {
-		"message": "⚠️ Aufgrund von Systemeinschränkungen ist unter macOS / Linux ein schneller Rechts-Doppelklick erforderlich, um das Kontextmenü zu öffnen.",
+		"message": "Aufgrund von Systemeinschränkungen ist unter macOS / Linux ein Rechts-Doppelklick erforderlich, um das Kontextmenü zu öffnen, wenn Rechtsklick-Gesten aktiviert sind.",
 		"description": "Notice for macOS / Linux users about double right-click for context menu"
 	},
+	"macLinuxDoubleClickHint": {
+		"message": "Um das Kontextmenü zu öffnen, führen Sie einen Rechtsdoppelklick aus. (Mehr erfahren)",
+		"description": "Short toast hint shown on first right-click on macOS/Linux explaining double-click requirement"
+	},
+	"edgeGestureConflictNotice": {
+		"message": "%browserName% verfügt über integrierte Gestenfunktionen. Um die Gesten von FlowMouse zu verwenden, <a href=\"#\" class=\"edge-gesture-link\">deaktivieren Sie bitte die integrierten Gesten</a> in den %browserName%-Einstellungen.",
+		"description": "Notice for Edge users about built-in gesture conflict"
+	},
 	"macTextDragNotice": {
-		"message": "⚠️ Aufgrund von macOS-Verhalten: Markieren Sie beim Ziehen von Text zuerst den Text, halten Sie dann kurz die linke Taste gedrückt, bevor Sie ziehen. Andernfalls wird die Suche möglicherweise nicht ausgelöst.",
+		"message": "Aufgrund des macOS-Verhaltens: Markieren Sie beim Ziehen von Text zuerst den Text, halten Sie dann die linke Maustaste im markierten Bereich gedrückt und pausieren Sie kurz, bevor Sie ziehen. Andernfalls wird die Ziehfunktion möglicherweise nicht ausgelöst.",
 		"description": "Notice for macOS users about text drag behavior"
 	},
 	"showTrail": {
@@ -159,6 +155,14 @@
 		"message": "Deckkraft",
 		"description": "Opacity"
 	},
+	"blur": {
+		"message": "Unschärfe",
+		"description": "Blur radius"
+	},
+	"hudShadow": {
+		"message": "Schatten",
+		"description": "HUD shadow toggle"
+	},
 	"text": {
 		"message": "Text",
 		"description": "Text"
@@ -179,6 +183,10 @@
 		"message": "Scroll-Animationseffekt für Auf/Ab-Gesten",
 		"description": "Scroll smoothness description"
 	},
+	"smoothnessAuto": {
+		"message": "Automatisch",
+		"description": "Auto scroll smoothness - uses system if animation enabled, otherwise smooth"
+	},
 	"smoothnessSystem": {
 		"message": "System (Hohe Leistung)",
 		"description": "System scroll smoothness"
@@ -190,6 +198,18 @@
 	"smoothnessNone": {
 		"message": "Keine Animation",
 		"description": "No scroll animation"
+	},
+	"scrollAccel": {
+		"message": "Multiplikator für kontinuierliches Scrollen",
+		"description": "Speed multiplier applied when scrolling consecutively"
+	},
+	"scrollAccelOff": {
+		"message": "Aus",
+		"description": "Scroll acceleration disabled"
+	},
+	"scrollAccelWindow": {
+		"message": "Zeitfenster für aufeinanderfolgendes Scrollen",
+		"description": "Max time (ms) between scrolls to count as consecutive"
 	},
 	"dragFeatures": {
 		"message": "Drag-Funktionen",
@@ -283,6 +303,22 @@
 		"message": "Keine blockierten Seiten. Domain oben eingeben zum Hinzufügen.",
 		"description": "Empty blacklist message"
 	},
+	"enableBlacklistContextMenu": {
+		"message": "Gesten-Umschalter im Kontextmenü",
+		"description": "Setting title for blacklist context menu toggle"
+	},
+	"enableBlacklistContextMenuDesc": {
+		"message": "Option zum Deaktivieren/Aktivieren von Gesten im Kontextmenü anzeigen",
+		"description": "Setting description for blacklist context menu toggle"
+	},
+	"menuAddToBlacklist": {
+		"message": "Gesten auf dieser Website deaktivieren",
+		"description": "Context menu title for adding current site to blacklist"
+	},
+	"menuRemoveFromBlacklist": {
+		"message": "Gesten auf dieser Website aktivieren",
+		"description": "Context menu title for removing current site from blacklist"
+	},
 	"dataManagement": {
 		"message": "Datenverwaltung",
 		"description": "Data management section"
@@ -322,6 +358,10 @@
 	"importDone": {
 		"message": "Einstellungen importiert",
 		"description": "Import done message"
+	},
+	"importConfirm": {
+		"message": "Der Import überschreibt Ihre aktuellen Einstellungen. Importieren Sie Konfigurationsdateien nur aus vertrauenswürdigen Quellen.\n\nFortfahren?",
+		"description": "Import confirmation warning"
 	},
 	"importFailed": {
 		"message": "Import fehlgeschlagen: Ungültige Konfigurationsdatei",
@@ -459,13 +499,41 @@
 		"message": "Tab schließen",
 		"description": "Close tab"
 	},
-	"actionCloseTabKeepWindow": {
-		"message": "Tab schließen (Fenster behalten)",
-		"description": "Close tab but keep window open"
+	"closeTabKeepWindow": {
+		"message": "Bei letztem Tab das Fenster offen halten",
+		"description": "Checkbox label for closeTab action config"
+	},
+	"closeTabAfterClose": {
+		"message": "Nach dem Schließen",
+		"description": "Label for closeTab afterClose config"
+	},
+	"closeTabAfterCloseDefault": {
+		"message": "Browser-Standard",
+		"description": "Option for closeTab afterClose config - let browser decide"
+	},
+	"closeTabAfterCloseLeft": {
+		"message": "Zum linken Tab wechseln",
+		"description": "Option for closeTab afterClose config - switch to left tab"
+	},
+	"closeTabAfterCloseRight": {
+		"message": "Zum rechten Tab wechseln",
+		"description": "Option for closeTab afterClose config - switch to right tab"
+	},
+	"switchTabNoWrap": {
+		"message": "Nicht zyklisch durchschalten",
+		"description": "Checkbox label for switchLeftTab/switchRightTab action config"
+	},
+	"switchTabMoveTab": {
+		"message": "Aktuellen Tab verschieben",
+		"description": "Checkbox label for switchLeftTab/switchRightTab/switchFirstTab/switchLastTab action config"
 	},
 	"actionCloseBrowser": {
 		"message": "Browser schließen",
 		"description": "Close browser"
+	},
+	"actionCloseWindow": {
+		"message": "Fenster schließen",
+		"description": "Close current window"
 	},
 	"actionRestoreTab": {
 		"message": "Geschlossenen Tab wiederherstellen",
@@ -498,6 +566,14 @@
 	"actionSwitchRightTab": {
 		"message": "Zum rechten Tab wechseln",
 		"description": "Switch to right tab"
+	},
+	"actionSwitchFirstTab": {
+		"message": "Zum ersten Tab wechseln",
+		"description": "Switch to first tab"
+	},
+	"actionSwitchLastTab": {
+		"message": "Zum letzten Tab wechseln",
+		"description": "Switch to last tab"
 	},
 	"actionRefresh": {
 		"message": "Aktuellen Tab aktualisieren",
@@ -575,6 +651,10 @@
 		"message": "Alle Tabs stumm/laut schalten",
 		"description": "Toggle mute all tabs"
 	},
+	"actionTogglePinTab": {
+		"message": "Aktuellen Tab anheften/lösen",
+		"description": "Toggle pin current tab"
+	},
 	"showTrailOrigin": {
 		"message": "Startpunkt anzeigen",
 		"description": "Show trail origin point"
@@ -595,17 +675,29 @@
 		"message": "Tipp: Ein Wert zwischen 15-30 wird für die beste Erkennung empfohlen.",
 		"description": "Warning when distance threshold is too small or too large"
 	},
-	"enableAdvancedSettings": {
-		"message": "Erweiterte Einstellungen",
-		"description": "Enable advanced settings"
+	"gestureTurnTolerance": {
+		"message": "Geste-Drehtoleranz",
+		"description": "Turn tolerance for detecting direction changes in long gestures"
 	},
-	"enableAdvancedSettingsDesc": {
-		"message": "Mehr erweiterte Optionen anzeigen, wenn aktiviert",
-		"description": "Show more advanced options when enabled"
+	"gestureTurnToleranceDesc": {
+		"message": "Höhere Werte verringern versehentliche Richtungsänderungen, erfordern jedoch längere Bewegungen, um die Richtung zu ändern",
+		"description": "Description for gesture turn tolerance setting"
 	},
-	"enableAdvancedSettingsToggle": {
-		"message": "Erweiterter Einstellungsmodus",
-		"description": "Enable advanced settings toggle label"
+	"advanced": {
+		"message": "Expertenmodus",
+		"description": "Short label for per-section advanced toggle"
+	},
+	"otherSettings": {
+		"message": "Weitere Einstellungen",
+		"description": "Section title for other/miscellaneous settings"
+	},
+	"show": {
+		"message": "Anzeigen",
+		"description": "Show navigation menu"
+	},
+	"hide": {
+		"message": "Ausblenden",
+		"description": "Hide navigation menu"
 	},
 	"urlFormatError": {
 		"message": "Bitte geben Sie eine vollständige URL beginnend mit http:// oder https:// ein",
@@ -615,41 +707,61 @@
 		"message": "Auf Standard zurücksetzen",
 		"description": "Reset gesture to default action"
 	},
+	"resetToDefaultConfirm": {
+		"message": "Diese Einstellungen auf die Standardwerte zurücksetzen?",
+		"description": "Confirmation dialog for resetting settings"
+	},
 	"addCustomGesture": {
 		"message": "Benutzerdefinierte Geste hinzufügen",
 		"description": "Add custom gesture section title"
-	},
-	"gesturePattern": {
-		"message": "Muster",
-		"description": "Gesture pattern label"
-	},
-	"selectAction": {
-		"message": "Aktion auswählen",
-		"description": "Select action label"
 	},
 	"clear": {
 		"message": "Löschen",
 		"description": "Clear button"
 	},
-	"addGesture": {
-		"message": "Geste hinzufügen",
-		"description": "Add gesture button"
-	},
-	"pleaseDrawGesture": {
-		"message": "Bitte zeichnen Sie zuerst eine Geste",
-		"description": "Alert when no gesture drawn"
-	},
 	"gestureAdded": {
 		"message": "✓ Geste hinzugefügt",
 		"description": "Gesture added success message"
 	},
-	"gestureDrawInstructions": {
-		"message": "Halten Sie die rechte Maustaste gedrückt und zeichnen Sie unten eine Geste, lassen Sie los zum Beenden. Unterstützte Richtungen:",
-		"description": "Instructions for gesture drawing"
+	"gestureRecorderTitle": {
+		"message": "Geste zeichnen",
+		"description": "Gesture recorder full-screen title"
 	},
-	"gestureOverwriteConfirm": {
-		"message": "Geste %pattern% existiert bereits. Überschreiben?",
-		"description": "Confirmation message when adding a duplicate gesture"
+	"gestureRecorderDesc": {
+		"message": "Halten Sie die %button% gedrückt und zeichnen Sie ein Gestenmuster",
+		"description": "Gesture recorder instruction, %button% is replaced with the mouse button name"
+	},
+	"gestureRecorderEsc": {
+		"message": "Abbrechen",
+		"description": "Gesture recorder cancel button label"
+	},
+	"gestureRecorderRecording": {
+		"message": "Aufnahme…",
+		"description": "Gesture recorder recording indicator"
+	},
+	"gestureRecorderResult": {
+		"message": "Aufgezeichnete Geste",
+		"description": "Gesture recorder result label"
+	},
+	"gestureRecorderConfirm": {
+		"message": "Bestätigen",
+		"description": "Gesture recorder confirm button"
+	},
+	"gestureRecorderRedraw": {
+		"message": "Neu zeichnen",
+		"description": "Gesture recorder redraw button"
+	},
+	"gestureRecorderBanned": {
+		"message": "Geste %pattern% existiert bereits",
+		"description": "Gesture recorder message when user draws a banned/existing gesture pattern"
+	},
+	"rightButton": {
+		"message": "Rechte Maustaste",
+		"description": "Right mouse button name"
+	},
+	"leftButton": {
+		"message": "Linke Maustaste",
+		"description": "Left mouse button name"
 	},
 	"customGesture": {
 		"message": "Benutzerdefiniert",
@@ -670,6 +782,10 @@
 	"enterCustomUrl": {
 		"message": "URL eingeben (Protokoll wie https://, chrome:// usw. empfohlen):",
 		"description": "Prompt for custom URL input"
+	},
+	"copyUrlIncludeTitle": {
+		"message": "Seitentitel ebenfalls kopieren",
+		"description": "Checkbox label for including page title when copying URL"
 	},
 	"invalidUrl": {
 		"message": "Bitte geben Sie eine gültige URL ein (beginnend mit http:// oder https://)",
@@ -750,6 +866,10 @@
 	"aboutTitle": {
 		"message": "Über FlowMouse",
 		"description": "About title"
+	},
+	"aboutTitleShort": {
+		"message": "Info",
+		"description": "Short About title "
 	},
 	"aboutAuthor": {
 		"message": "Autor",
@@ -863,6 +983,10 @@
 		"message": "Im Vordergrund öffnen",
 		"description": "Open tab in foreground"
 	},
+	"openInIncognito": {
+		"message": "Inkognito",
+		"description": "Open in incognito checkbox"
+	},
 	"textDragGestures": {
 		"message": "Text-Zieh-Gesten",
 		"description": "Text drag gestures"
@@ -880,7 +1004,7 @@
 		"description": "Direction column header"
 	},
 	"action": {
-		"message": "Aktion",
+		"message": "Befehl",
 		"description": "Action column header"
 	},
 	"imageSearchUrl": {
@@ -915,6 +1039,10 @@
 		"message": "📋 Link kopieren",
 		"description": "Copy link"
 	},
+	"dragActionCopyLinkText": {
+		"message": "📋 Linktext kopieren",
+		"description": "Copy link text"
+	},
 	"dragActionSaveImage": {
 		"message": "💾 Bild speichern",
 		"description": "Save image"
@@ -936,7 +1064,7 @@
 		"description": "Custom search"
 	},
 	"reducedMotionWarning": {
-		"message": "⚠️ %OS% Systemanimation ist deaktiviert, Scroll-Animation funktioniert möglicherweise nicht richtig. Sie können Animationen in den %OS% Systemeinstellungen aktivieren.",
+		"message": "%OS% Systemanimation ist deaktiviert, Scroll-Animation funktioniert möglicherweise nicht richtig. Sie können Animationen in den %OS% Systemeinstellungen aktivieren.",
 		"description": "Warning message when system reduced motion is enabled"
 	},
 	"autoDetectUrl": {
@@ -964,7 +1092,7 @@
 		"description": "Setting description for restricted page notice"
 	},
 	"restrictedPagesDetailsTitle": {
-		"message": "⚠️ Aufgrund von Browser-Sicherheitsrichtlinien können Erweiterungen auf bestimmten Seitentypen nicht ausgeführt werden.",
+		"message": "Aufgrund von Browser-Sicherheitsrichtlinien können Erweiterungen auf bestimmten Seitentypen nicht ausgeführt werden.",
 		"description": "Collapsible details title"
 	},
 	"showMoreHint": {
@@ -972,7 +1100,7 @@
 		"description": "Hint to show more details"
 	},
 	"restrictedNewTab": {
-		"message": "Neuer Tab (chrome://newtab)",
+		"message": "Neuer Tab",
 		"description": "New tab page title"
 	},
 	"restrictedNewTabDesc": {
@@ -988,11 +1116,11 @@
 		"description": "Store page description"
 	},
 	"restrictedInternal": {
-		"message": "Browser-Interne Seiten",
+		"message": "Browser-Interne Seiten (%browserProtocol%)",
 		"description": "Internal page title"
 	},
 	"restrictedInternalDesc": {
-		"message": "Alle Seiten, die mit chrome:// (Chrome) oder edge:// (Edge) beginnen, einschließlich Einstellungen, Verlauf, Downloads usw. Diese Seiten beinhalten Kernfunktionen des Browsers und private Benutzerdaten und sind daher streng geschützt.",
+		"message": "Zum Beispiel %browserName%s interne Einstellungen, Verlauf, Downloads usw. Diese Seiten betreffen Kernfunktionen des Browsers und Datenschutzdaten der Benutzer, daher sind sie streng geschützt.",
 		"description": "Internal page description"
 	},
 	"restrictedFile": {
@@ -1000,7 +1128,7 @@
 		"description": "File page title"
 	},
 	"restrictedFileDesc": {
-		"message": "Lokale HTML-Dateien, die über das file:// Protokoll geöffnet werden. Aufgrund von Sicherheitsbeschränkungen (Verhinderung des Zugriffs bösartiger Erweiterungen auf das lokale Dateisystem) können Erweiterungen auf diesen Seiten nicht arbeiten.",
+		"message": "Lokale html, pdf, usw. Dateien, die über das file:// Protokoll geöffnet werden. Aufgrund von Sicherheitsbeschränkungen (Verhinderung des Zugriffs bösartiger Erweiterungen auf das lokale Dateisystem) können Erweiterungen auf diesen Seiten nicht arbeiten.",
 		"description": "File page description"
 	},
 	"restrictedViewSource": {
@@ -1024,7 +1152,7 @@
 		"description": "Popup description when content script not loaded"
 	},
 	"popupRefreshBtn": {
-		"message": "🔄 Seite aktualisieren",
+		"message": "Seite aktualisieren",
 		"description": "Popup refresh button text"
 	},
 	"popupRestrictedTitle": {
@@ -1036,7 +1164,7 @@
 		"description": "Popup description for restricted pages"
 	},
 	"popupLearnMore": {
-		"message": "📖 Mehr erfahren",
+		"message": "Mehr erfahren",
 		"description": "Popup learn more button text"
 	},
 	"tutorialPending": {
@@ -1207,6 +1335,26 @@
 		"message": "Um Bilder zu speichern, benötigt FlowMouse Zugriff auf Seiten und Downloads.",
 		"description": "Permission popup description for downloads and page capture"
 	},
+	"permissionIncognitoTitle": {
+		"message": "Im Inkognitomodus zulassen",
+		"description": "Permission popup title for incognito"
+	},
+	"permissionIncognitoDesc": {
+		"message": "Damit FlowMouse in Inkognito-Fenstern funktioniert, müssen Sie manuell „Im Inkognitomodus zulassen“ aktivieren.",
+		"description": "Permission popup description for incognito"
+	},
+	"openExtensionsSettings": {
+		"message": "Erweiterungsdetails öffnen",
+		"description": "Button to open extension details page"
+	},
+	"permissionFirefoxIncognitoTitle": {
+		"message": "In privaten Fenstern ausführen",
+		"description": "Permission popup title for Firefox private browsing"
+	},
+	"permissionFirefoxIncognitoDesc": {
+		"message": "Damit FlowMouse in privaten Fenstern funktioniert, müssen Sie manuell „In privaten Fenstern ausführen“ im Add-ons-Manager aktivieren.",
+		"description": "Permission popup description for Firefox private browsing"
+	},
 	"grantPermission": {
 		"message": "Berechtigung erteilen",
 		"description": "Grant permission button"
@@ -1234,5 +1382,205 @@
 	"saveImageTimeout": {
 		"message": "Bild speichern fehlgeschlagen: Zeitüberschreitung beim Laden",
 		"description": "Toast message when image loading times out"
+	},
+	"buttonOkay": {
+		"message": "OK",
+		"description": "Generic OK button"
+	},
+	"buttonCancel": {
+		"message": "Abbrechen",
+		"description": "Generic Cancel button"
+	},
+	"buttonClose": {
+		"message": "Schließen",
+		"description": "Generic Close button"
+	},
+	"searchActions": {
+		"message": "Befehle suchen...",
+		"description": "Placeholder for action search input in action picker"
+	},
+	"actionCategoryNavigation": {
+		"message": "Navigation",
+		"description": "Action category: navigation"
+	},
+	"actionCategoryTabs": {
+		"message": "Tabs",
+		"description": "Action category: tabs"
+	},
+	"actionCategoryWindow": {
+		"message": "Fenster",
+		"description": "Action category: window"
+	},
+	"actionCategoryUtilities": {
+		"message": "Werkzeuge",
+		"description": "Action category: utilities"
+	},
+	"noResults": {
+		"message": "Keine Ergebnisse",
+		"description": "No search results found"
+	},
+	"wheelGestures": {
+		"message": "Mausrad-Gesten",
+		"description": "Mouse wheel gestures section title"
+	},
+	"enableWheelGestures": {
+		"message": "Mausrad-Gesten aktivieren",
+		"description": "Enable mouse wheel gestures"
+	},
+	"enableWheelGesturesDesc": {
+		"message": "Verschiedene Aktionen schnell mit dem Mausrad ausführen",
+		"description": "Enable mouse wheel gestures description"
+	},
+	"wheelGesture_scrollUpHoldingRight": {
+		"message": "Nach oben scrollen, während die rechte Taste gedrückt wird",
+		"description": "Wheel gesture: scroll up while holding right button"
+	},
+	"wheelGesture_scrollDownHoldingRight": {
+		"message": "Nach unten scrollen, während die rechte Taste gedrückt wird",
+		"description": "Wheel gesture: scroll down while holding right button"
+	},
+	"specialGestures": {
+		"message": "Spezielle Gesten",
+		"description": "Special gestures section title"
+	},
+	"enableSpecialGestures": {
+		"message": "Spezielle Gesten aktivieren",
+		"description": "Enable special gestures"
+	},
+	"enableSpecialGesturesDesc": {
+		"message": "Führen Sie Aktionen aus, indem Sie auf eine Maustaste klicken und die andere gedrückt halten",
+		"description": "Enable special gestures description"
+	},
+	"specialGesture_leftClickHoldingRight": {
+		"message": "Linksklick bei gehaltener rechter Taste",
+		"description": "Special gesture: left click while holding right button"
+	},
+	"specialGesture_rightClickHoldingLeft": {
+		"message": "Rechtsklick bei gehaltener linker Taste",
+		"description": "Special gesture: right click while holding left button"
+	},
+	"actionChains": {
+		"message": "Befehlsketten",
+		"description": "Action chains section title"
+	},
+	"actionChainsDesc": {
+		"message": "Erstellen Sie wiederverwendbare Befehlssequenzen, die nacheinander ausgeführt werden",
+		"description": "Action chains section description"
+	},
+	"actionActionChain": {
+		"message": "Befehlskette",
+		"description": "Action chain action name"
+	},
+	"actionCategoryChains": {
+		"message": "Befehlsketten",
+		"description": "Action category: action chains"
+	},
+	"addChain": {
+		"message": "Kette hinzufügen",
+		"description": "Add chain button"
+	},
+	"addNewChain": {
+		"message": "Neue Kette erstellen...",
+		"description": "Action item to navigate to chain editor and create a new chain"
+	},
+	"chainNamePlaceholder": {
+		"message": "Meine Befehlskette",
+		"description": "Chain name input placeholder"
+	},
+	"chainDelayUnit": {
+		"message": "ms",
+		"description": "Milliseconds unit for chain delay"
+	},
+	"addStep": {
+		"message": "Schritt hinzufügen",
+		"description": "Add step button"
+	},
+	"emptyChainSteps": {
+		"message": "Keine Schritte hinzugefügt. Klicken Sie auf 'Schritt hinzufügen', um zu beginnen.",
+		"description": "Empty chain steps message in expanded body"
+	},
+	"emptyChainStepsShort": {
+		"message": "Keine Schritte hinzugefügt",
+		"description": "Short empty chain steps message for summary"
+	},
+	"noChains": {
+		"message": "Noch keine Befehlsketten. Klicken Sie auf 'Kette hinzufügen', um eine zu erstellen.",
+		"description": "No chains message"
+	},
+	"chainNotFound": {
+		"message": "(Kette nicht gefunden)",
+		"description": "Chain not found label"
+	},
+	"deleteChainConfirm": {
+		"message": "Kette \"%name%\" löschen?",
+		"description": "Delete chain confirmation"
+	},
+	"stepNumber": {
+		"message": "Schritt %n%",
+		"description": "Step number label"
+	},
+	"actionDelay": {
+		"message": "Verzögerung",
+		"description": "Delay action name for chain steps"
+	},
+	"actionSendCustomEvent": {
+		"message": "Benutzerdefiniertes Ereignis senden",
+		"description": "Action to dispatch a custom DOM event"
+	},
+	"actionSimulateKey": {
+		"message": "Tastendruck simulieren",
+		"description": "Action to simulate a keyboard key press on the page"
+	},
+	"simulateKeyPreset": {
+		"message": "Voreingestellte Taste",
+		"description": "Label for preset key dropdown in simulate key config"
+	},
+	"simulateKeyPresetLeft": {
+		"message": "← Pfeil nach links (Vorherige Seite)",
+		"description": "Preset: ArrowLeft key"
+	},
+	"simulateKeyPresetRight": {
+		"message": "→ Pfeil nach rechts (Nächste Seite)",
+		"description": "Preset: ArrowRight key"
+	},
+	"simulateKeyPresetCustom": {
+		"message": "Benutzerdefinierte Taste",
+		"description": "Preset: Custom key option"
+	},
+	"simulateKeyRecordBtn": {
+		"message": "Taste aufzeichnen",
+		"description": "Button to start recording a key press"
+	},
+	"simulateKeyRecording": {
+		"message": "Drücke eine Taste...",
+		"description": "Recording state text"
+	},
+	"simulateKeyManualInput": {
+		"message": "Aktuelle Taste",
+		"description": "Label for current key display in simulate key config"
+	},
+	"simulateKeyHint": {
+		"message": "Diese Funktion sendet Tastaturereignisse nur an die aktuelle Seite und wird häufig für die Seitennavigation verwendet (← zurück / → weiter). Browser-Verknüpfungen (z. B. aktualisiert Strg+R die Seite nicht) werden NICHT ausgelöst. Aufgrund von Einschränkungen des Website-Frameworks werden die simulierten Ereignisse möglicherweise nicht von allen benutzerdefinierten Komponenten oder Eingabefeldern erfasst.",
+		"description": "Hint text for simulate key feature"
+	},
+	"customEventInvalidJson": {
+		"message": "Ungültiges JSON-Format",
+		"description": "Error message when event detail is not valid JSON"
+	},
+	"customEventHint": {
+		"message": "Löst %code% bei %window% aus. Nützlich für die Integration mit anderen Skripten.",
+		"description": "Hint explaining how custom event works. %code% = <code>new CustomEvent(...)</code>, %window% = <code>window</code>"
+	},
+	"delayDuration": {
+		"message": "Dauer",
+		"description": "Delay duration label"
+	},
+	"chainStepCount": {
+		"message": "%count% Schritte",
+		"description": "Step count for unnamed chains, e.g. '3 steps'"
+	},
+	"chainStepCountOne": {
+		"message": "%count% Schritt",
+		"description": "Step count for unnamed chains with exactly 1 step"
 	}
 }

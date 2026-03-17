@@ -8,20 +8,12 @@
 		"description": "Short extension name for popup"
 	},
 	"extDescription": {
-		"message": "תוסף מחוות עכבר בקוד פתוח המתמקד בפרטיות וחוויה חלקה. מחוות חלקות, תמיכה בגרירת-על, וכל הנתונים נשמרים מקומית.",
+		"message": "תוסף מחוות עכבר בקוד פתוח המתמקד בפרטיות וחוויה חלקה. מחוות חלקות, תמיכה בגרירת-על.",
 		"description": "Extension description"
-	},
-	"appearance": {
-		"message": "מראה",
-		"description": "Appearance section"
 	},
 	"theme": {
 		"message": "ערכת נושא",
 		"description": "Theme"
-	},
-	"themeDesc": {
-		"message": "החלף בין ערכת נושא בהירה לכהה",
-		"description": "Theme description"
 	},
 	"themeDark": {
 		"message": "כהה",
@@ -34,10 +26,6 @@
 	"themeAuto": {
 		"message": "לפי המערכת",
 		"description": "Auto theme - follow system"
-	},
-	"languageDesc": {
-		"message": "בחר שפת ממשק",
-		"description": "Language description"
 	},
 	"syncStatus": {
 		"message": "סטטוס סנכרון",
@@ -56,7 +44,7 @@
 		"description": "Author"
 	},
 	"privacyNote": {
-		"message": "🔒 רץ מקומית, ללא גישה לרשת למעט סנכרון, ללא איסוף נתונים",
+		"message": " רץ מקומית, ללא גישה לרשת למעט סנכרון, ללא איסוף נתונים",
 		"description": "Privacy note in footer"
 	},
 	"supportUsText": {
@@ -120,11 +108,19 @@
 		"description": "Hold the right mouse button and move the mouse to easily perform gestures"
 	},
 	"macLinuxContextMenuNotice": {
-		"message": "⚠️ עקב מגבלות מערכת, לחיצה כפולה ימנית נדרשת לפתיחת התפריט ב-macOS / Linux.",
+		"message": "עקב מגבלות מערכת, כאשר מחוות לחיצה ימנית מופעלות, לחיצה כפולה ימנית נדרשת לפתיחת התפריט ב-macOS / Linux.",
 		"description": "Notice for macOS / Linux users about double right-click for context menu"
 	},
+	"macLinuxDoubleClickHint": {
+		"message": "כדי לפתוח את תפריט ההקשר, לחץ פעמיים על לחצן העכבר הימני. (מידע נוסף)",
+		"description": "Short toast hint shown on first right-click on macOS/Linux explaining double-click requirement"
+	},
+	"edgeGestureConflictNotice": {
+		"message": "לـ %browserName% יש תכונות מחוות מובנות. כדי להשתמש במחוות של FlowMouse, נא <a href=\"#\" class=\"edge-gesture-link\">להשבית את המחוות המובנות</a> בהגדרות %browserName%.",
+		"description": "Notice for Edge users about built-in gesture conflict"
+	},
 	"macTextDragNotice": {
-		"message": "⚠️ עקב התנהגות macOS, בעת גרירת טקסט, יש לבחור את הטקסט, ללחוץ ולהחזיק לרגע לפני הגרירה. אחרת, החיפוש עלול לא לפעול.",
+		"message": "עקב התנהגות macOS, בעת גרירת טקסט, יש לבחור תחילה את הטקסט, לאחר מכן ללחוץ ולהחזיק את הכפתור השמאלי בתוך האזור הנבחר ולהמתין רגע לפני הגרירה. אחרת, פונקציית הגרירה עלולה לא לפעול.",
 		"description": "Notice for macOS users about text drag behavior"
 	},
 	"showTrail": {
@@ -159,6 +155,14 @@
 		"message": "אטימות",
 		"description": "Opacity"
 	},
+	"blur": {
+		"message": "טשטוש",
+		"description": "Blur radius"
+	},
+	"hudShadow": {
+		"message": "צל",
+		"description": "HUD shadow toggle"
+	},
 	"text": {
 		"message": "טקסט",
 		"description": "Text"
@@ -179,6 +183,10 @@
 		"message": "אפקט אנימציית גלילה למחוות מעלה/מטה",
 		"description": "Scroll smoothness description"
 	},
+	"smoothnessAuto": {
+		"message": "אוטומטי",
+		"description": "Auto scroll smoothness - uses system if animation enabled, otherwise smooth"
+	},
 	"smoothnessSystem": {
 		"message": "מערכת (ביצועים גבוהים)",
 		"description": "System scroll smoothness"
@@ -190,6 +198,18 @@
 	"smoothnessNone": {
 		"message": "ללא אנימציה",
 		"description": "No scroll animation"
+	},
+	"scrollAccel": {
+		"message": "מכפיל גלילה רציפה",
+		"description": "Speed multiplier applied when scrolling consecutively"
+	},
+	"scrollAccelOff": {
+		"message": "כבוי",
+		"description": "Scroll acceleration disabled"
+	},
+	"scrollAccelWindow": {
+		"message": "פסק זמן בין גלילות רצופות",
+		"description": "Max time (ms) between scrolls to count as consecutive"
 	},
 	"dragFeatures": {
 		"message": "תכונות גרירה",
@@ -283,6 +303,22 @@
 		"message": "אין אתרים ברשימה השחורה. הזן דומיין למעלה להוספה.",
 		"description": "Empty blacklist message"
 	},
+	"enableBlacklistContextMenu": {
+		"message": "מתג מחוות בתפריט ההקשר",
+		"description": "Setting title for blacklist context menu toggle"
+	},
+	"enableBlacklistContextMenuDesc": {
+		"message": "הצג אפשרות להשבית/להפעיל מחוות בתפריט ההקשר",
+		"description": "Setting description for blacklist context menu toggle"
+	},
+	"menuAddToBlacklist": {
+		"message": "השבת מחוות באתר זה",
+		"description": "Context menu title for adding current site to blacklist"
+	},
+	"menuRemoveFromBlacklist": {
+		"message": "הפעל מחוות באתר זה",
+		"description": "Context menu title for removing current site from blacklist"
+	},
 	"dataManagement": {
 		"message": "ניהול נתונים",
 		"description": "Data management section"
@@ -322,6 +358,10 @@
 	"importDone": {
 		"message": "ההגדרות יובאו",
 		"description": "Import done message"
+	},
+	"importConfirm": {
+		"message": "הייבוא ידרוס את ההגדרות הנוכחיות שלך. יש לייבא קובצי תצורה רק ממקורות מהימנים.\n\nלהמשיך?",
+		"description": "Import confirmation warning"
 	},
 	"importFailed": {
 		"message": "ייבוא נכשל: קובץ תצורה לא תקין",
@@ -459,13 +499,41 @@
 		"message": "סגור כרטיסייה",
 		"description": "Close tab"
 	},
-	"actionCloseTabKeepWindow": {
-		"message": "סגור כרטיסייה (השאר חלון)",
-		"description": "Close tab but keep window open"
+	"closeTabKeepWindow": {
+		"message": "אם זו הכרטיסייה האחרונה, השאר את החלון פתוח",
+		"description": "Checkbox label for closeTab action config"
+	},
+	"closeTabAfterClose": {
+		"message": "לאחר סגירה",
+		"description": "Label for closeTab afterClose config"
+	},
+	"closeTabAfterCloseDefault": {
+		"message": "ברירת מחדל של הדפדפן",
+		"description": "Option for closeTab afterClose config - let browser decide"
+	},
+	"closeTabAfterCloseLeft": {
+		"message": "עבור לכרטיסייה משמאל",
+		"description": "Option for closeTab afterClose config - switch to left tab"
+	},
+	"closeTabAfterCloseRight": {
+		"message": "עבור לכרטיסייה מימין",
+		"description": "Option for closeTab afterClose config - switch to right tab"
+	},
+	"switchTabNoWrap": {
+		"message": "ללא מעבר מחזורי",
+		"description": "Checkbox label for switchLeftTab/switchRightTab action config"
+	},
+	"switchTabMoveTab": {
+		"message": "העבר כרטיסייה נוכחית",
+		"description": "Checkbox label for switchLeftTab/switchRightTab/switchFirstTab/switchLastTab action config"
 	},
 	"actionCloseBrowser": {
 		"message": "סגור דפדפן",
 		"description": "Close browser"
+	},
+	"actionCloseWindow": {
+		"message": "סגור חלון",
+		"description": "Close current window"
 	},
 	"actionRestoreTab": {
 		"message": "שחזר כרטיסייה סגורה",
@@ -498,6 +566,14 @@
 	"actionSwitchRightTab": {
 		"message": "עבור לכרטיסייה מימין",
 		"description": "Switch to right tab"
+	},
+	"actionSwitchFirstTab": {
+		"message": "עבור לכרטיסייה הראשונה",
+		"description": "Switch to first tab"
+	},
+	"actionSwitchLastTab": {
+		"message": "עבור לכרטיסייה האחרונה",
+		"description": "Switch to last tab"
 	},
 	"actionRefresh": {
 		"message": "רענן כרטיסייה נוכחית",
@@ -575,6 +651,10 @@
 		"message": "השתק/בטל השתקה לכל הכרטיסיות",
 		"description": "Toggle mute all tabs"
 	},
+	"actionTogglePinTab": {
+		"message": "הצמד/בטל הצמדה לכרטיסייה נוכחית",
+		"description": "Toggle pin current tab"
+	},
 	"showTrailOrigin": {
 		"message": "הצג נקודת התחלה",
 		"description": "Show trail origin point"
@@ -595,17 +675,29 @@
 		"message": "טיפ: מומלץ להגדיר ערך בין 15-30 לזיהוי אופטימלי.",
 		"description": "Warning when distance threshold is too small or too large"
 	},
-	"enableAdvancedSettings": {
-		"message": "הגדרות מתקדמות",
-		"description": "Enable advanced settings"
+	"gestureTurnTolerance": {
+		"message": "סיבולת סיבוב מחוות",
+		"description": "Turn tolerance for detecting direction changes in long gestures"
 	},
-	"enableAdvancedSettingsDesc": {
-		"message": "הצג אפשרויות מתקדמות נוספות בעת הפעלה",
-		"description": "Show more advanced options when enabled"
+	"gestureTurnToleranceDesc": {
+		"message": "ערכים גבוהים יותר מפחיתים סיבובים מקריים אך דורשים תנועות ארוכות יותר כדי לשנות כיוון",
+		"description": "Description for gesture turn tolerance setting"
 	},
-	"enableAdvancedSettingsToggle": {
-		"message": "מצב הגדרות מתקדמות",
-		"description": "Enable advanced settings toggle label"
+	"advanced": {
+		"message": "מצב מומחה",
+		"description": "Short label for per-section advanced toggle"
+	},
+	"otherSettings": {
+		"message": "הגדרות אחרות",
+		"description": "Section title for other/miscellaneous settings"
+	},
+	"show": {
+		"message": "הצג",
+		"description": "Show navigation menu"
+	},
+	"hide": {
+		"message": "הסתר",
+		"description": "Hide navigation menu"
 	},
 	"urlFormatError": {
 		"message": "אנא הזן כתובת מלאה המתחילה ב-http:// או https://",
@@ -615,41 +707,61 @@
 		"message": "אפס לברירת מחדל",
 		"description": "Reset gesture to default action"
 	},
+	"resetToDefaultConfirm": {
+		"message": "האם לאפס הגדרות אלה לערכי ברירת מחדל?",
+		"description": "Confirmation dialog for resetting settings"
+	},
 	"addCustomGesture": {
 		"message": "הוסף מחווה מותאמת אישית",
 		"description": "Add custom gesture section title"
-	},
-	"gesturePattern": {
-		"message": "תבנית",
-		"description": "Gesture pattern label"
-	},
-	"selectAction": {
-		"message": "בחר פעולה",
-		"description": "Select action label"
 	},
 	"clear": {
 		"message": "נקה",
 		"description": "Clear button"
 	},
-	"addGesture": {
-		"message": "הוסף מחווה",
-		"description": "Add gesture button"
-	},
-	"pleaseDrawGesture": {
-		"message": "אנא צייר מחווה תחילה",
-		"description": "Alert when no gesture drawn"
-	},
 	"gestureAdded": {
 		"message": "✓ המחווה נוספה",
 		"description": "Gesture added success message"
 	},
-	"gestureDrawInstructions": {
-		"message": "החזק את הלחצן הימני וצייר מחווה למטה, שחרר לסיום. כיוונים נתמכים:",
-		"description": "Instructions for gesture drawing"
+	"gestureRecorderTitle": {
+		"message": "צייר מחווה",
+		"description": "Gesture recorder full-screen title"
 	},
-	"gestureOverwriteConfirm": {
-		"message": "המחווה %pattern% כבר קיימת. להחליף?",
-		"description": "Confirmation message when adding a duplicate gesture"
+	"gestureRecorderDesc": {
+		"message": "החזק את %button% וצייר תבנית מחווה",
+		"description": "Gesture recorder instruction, %button% is replaced with the mouse button name"
+	},
+	"gestureRecorderEsc": {
+		"message": "ביטול",
+		"description": "Gesture recorder cancel button label"
+	},
+	"gestureRecorderRecording": {
+		"message": "מקליט…",
+		"description": "Gesture recorder recording indicator"
+	},
+	"gestureRecorderResult": {
+		"message": "מחווה מוקלטת",
+		"description": "Gesture recorder result label"
+	},
+	"gestureRecorderConfirm": {
+		"message": "אישור",
+		"description": "Gesture recorder confirm button"
+	},
+	"gestureRecorderRedraw": {
+		"message": "צייר מחדש",
+		"description": "Gesture recorder redraw button"
+	},
+	"gestureRecorderBanned": {
+		"message": "המחווה %pattern% כבר קיימת",
+		"description": "Gesture recorder message when user draws a banned/existing gesture pattern"
+	},
+	"rightButton": {
+		"message": "לחצן עכבר ימני",
+		"description": "Right mouse button name"
+	},
+	"leftButton": {
+		"message": "לחצן עכבר שמאלי",
+		"description": "Left mouse button name"
 	},
 	"customGesture": {
 		"message": "מותאם אישית",
@@ -670,6 +782,10 @@
 	"enterCustomUrl": {
 		"message": "הזן כתובת (מומלץ לכלול פרוטוקול כגון https://, chrome:// וכו'):",
 		"description": "Prompt for custom URL input"
+	},
+	"copyUrlIncludeTitle": {
+		"message": "העתק גם את כותרת הדף",
+		"description": "Checkbox label for including page title when copying URL"
 	},
 	"invalidUrl": {
 		"message": "אנא הזן כתובת חוקית (מתחילה ב-http:// או https://)",
@@ -750,6 +866,10 @@
 	"aboutTitle": {
 		"message": "אודות FlowMouse",
 		"description": "About title"
+	},
+	"aboutTitleShort": {
+		"message": "אודות",
+		"description": "Short About title "
 	},
 	"aboutAuthor": {
 		"message": "מחבר",
@@ -863,6 +983,10 @@
 		"message": "פתח בחזית",
 		"description": "Open tab in foreground"
 	},
+	"openInIncognito": {
+		"message": "גלישה בסתר",
+		"description": "Open in incognito checkbox"
+	},
 	"textDragGestures": {
 		"message": "מחוות גרירת טקסט",
 		"description": "Text drag gestures"
@@ -880,7 +1004,7 @@
 		"description": "Direction column header"
 	},
 	"action": {
-		"message": "פעולה",
+		"message": "פקודה",
 		"description": "Action column header"
 	},
 	"imageSearchUrl": {
@@ -915,6 +1039,10 @@
 		"message": "📋 העתק קישור",
 		"description": "Copy link"
 	},
+	"dragActionCopyLinkText": {
+		"message": "📋 העתק טקסט של קישור",
+		"description": "Copy link text"
+	},
 	"dragActionSaveImage": {
 		"message": "💾 שמור תמונה",
 		"description": "Save image"
@@ -936,7 +1064,7 @@
 		"description": "Custom search"
 	},
 	"reducedMotionWarning": {
-		"message": "⚠️ אנימציות מערכת %OS% מושבתות, אנימציית גלילה עלולה לא לפעול כראוי. ניתן להפעיל אנימציות בהגדרות מערכת %OS%.",
+		"message": "אנימציות מערכת %OS% מושבתות, אנימציית גלילה עלולה לא לפעול כראוי. ניתן להפעיל אנימציות בהגדרות מערכת %OS%.",
 		"description": "Warning message when system reduced motion is enabled"
 	},
 	"autoDetectUrl": {
@@ -964,7 +1092,7 @@
 		"description": "Setting description for restricted page notice"
 	},
 	"restrictedPagesDetailsTitle": {
-		"message": "⚠️ עקב מדיניות אבטחה של הדפדפן, תוספים אינם יכולים לפעול בסוגי דפים מסוימים.",
+		"message": "עקב מדיניות אבטחה של הדפדפן, תוספים אינם יכולים לפעול בסוגי דפים מסוימים.",
 		"description": "Collapsible details title"
 	},
 	"showMoreHint": {
@@ -972,7 +1100,7 @@
 		"description": "Hint to show more details"
 	},
 	"restrictedNewTab": {
-		"message": "דף כרטיסייה חדשה (chrome://newtab)",
+		"message": "דף כרטיסייה חדשה",
 		"description": "New tab page title"
 	},
 	"restrictedNewTabDesc": {
@@ -988,11 +1116,11 @@
 		"description": "Store page description"
 	},
 	"restrictedInternal": {
-		"message": "דפים פנימיים של הדפדפן",
+		"message": "דפים פנימיים של הדפדפן (%browserProtocol%)",
 		"description": "Internal page title"
 	},
 	"restrictedInternalDesc": {
-		"message": "כל הדפים המתחילים ב-chrome:// (Chrome) או edge:// (Edge), כולל הגדרות, היסטוריה, הורדות וכו'. דפים אלו מערבים ליבת דפדפן ומידע פרטי, ולכן מוגנים בקפידה.",
+		"message": "לדוגמה, הגדרות פנימיות, היסטוריה, הורדות וכו' של %browserName%. דפים אלו נוגעים לפונקציות ליבה של הדפדפן ולנתוני פרטיות של המשתמש, ולכן הם מוגנים בקפידה.",
 		"description": "Internal page description"
 	},
 	"restrictedFile": {
@@ -1000,7 +1128,7 @@
 		"description": "File page title"
 	},
 	"restrictedFileDesc": {
-		"message": "קבצי HTML מקומיים שנפתחו דרך פרוטוקול file://. עקב מגבלות אבטחה (מניעת גישה של תוספים זדוניים למערכת הקבצים), תוספים אינם יכולים לפעול בדפים אלו.",
+		"message": "קבצי html, pdf וכו' מקומיים שנפתחו דרך פרוטוקול file://. עקב מגבלות אבטחה (מניעת גישה של תוספים זדוניים למערכת הקבצים), תוספים אינם יכולים לפעול בדפים אלו.",
 		"description": "File page description"
 	},
 	"restrictedViewSource": {
@@ -1024,7 +1152,7 @@
 		"description": "Popup description when content script not loaded"
 	},
 	"popupRefreshBtn": {
-		"message": "🔄 רענן דף",
+		"message": "רענן דף",
 		"description": "Popup refresh button text"
 	},
 	"popupRestrictedTitle": {
@@ -1036,7 +1164,7 @@
 		"description": "Popup description for restricted pages"
 	},
 	"popupLearnMore": {
-		"message": "📖 למידע נוסף",
+		"message": "למידע נוסף",
 		"description": "Popup learn more button text"
 	},
 	"tutorialPending": {
@@ -1207,6 +1335,26 @@
 		"message": "לשמירת תמונות, FlowMouse צריך גישה לדפים ולהורדות.",
 		"description": "Permission popup description for downloads and page capture"
 	},
+	"permissionIncognitoTitle": {
+		"message": "אפשר במצב גלישה בסתר",
+		"description": "Permission popup title for incognito"
+	},
+	"permissionIncognitoDesc": {
+		"message": "כדי לפעול בחלונות גלישה בסתר, עליך להפעיל ידנית את 'אפשר במצב גלישה בסתר' עבור FlowMouse.",
+		"description": "Permission popup description for incognito"
+	},
+	"openExtensionsSettings": {
+		"message": "פתח את פרטי התוסף",
+		"description": "Button to open extension details page"
+	},
+	"permissionFirefoxIncognitoTitle": {
+		"message": "הפעל בחלונות פרטיים",
+		"description": "Permission popup title for Firefox private browsing"
+	},
+	"permissionFirefoxIncognitoDesc": {
+		"message": "כדי לפעול בחלונות פרטיים, עליך להפעיל ידנית את 'הפעל בחלונות פרטיים' עבור FlowMouse במנהל התוספות.",
+		"description": "Permission popup description for Firefox private browsing"
+	},
 	"grantPermission": {
 		"message": "אשר גישה",
 		"description": "Grant permission button"
@@ -1234,5 +1382,205 @@
 	"saveImageTimeout": {
 		"message": "שמירת תמונה נכשלה: תם הזמן הקצוב לטעינה",
 		"description": "Toast message when image loading times out"
+	},
+	"buttonOkay": {
+		"message": "אישור",
+		"description": "Generic OK button"
+	},
+	"buttonCancel": {
+		"message": "ביטול",
+		"description": "Generic Cancel button"
+	},
+	"buttonClose": {
+		"message": "סגור",
+		"description": "Generic Close button"
+	},
+	"searchActions": {
+		"message": "חפש פקודות...",
+		"description": "Placeholder for action search input in action picker"
+	},
+	"actionCategoryNavigation": {
+		"message": "ניווט",
+		"description": "Action category: navigation"
+	},
+	"actionCategoryTabs": {
+		"message": "כרטיסיות",
+		"description": "Action category: tabs"
+	},
+	"actionCategoryWindow": {
+		"message": "חלון",
+		"description": "Action category: window"
+	},
+	"actionCategoryUtilities": {
+		"message": "כלים",
+		"description": "Action category: utilities"
+	},
+	"noResults": {
+		"message": "אין תוצאות",
+		"description": "No search results found"
+	},
+	"wheelGestures": {
+		"message": "מחוות גלגלת העכבר",
+		"description": "Mouse wheel gestures section title"
+	},
+	"enableWheelGestures": {
+		"message": "הפעל מחוות גלגלת עכבר",
+		"description": "Enable mouse wheel gestures"
+	},
+	"enableWheelGesturesDesc": {
+		"message": "בצע פעולות שונות במהירות באמצעות גלגלת העכבר",
+		"description": "Enable mouse wheel gestures description"
+	},
+	"wheelGesture_scrollUpHoldingRight": {
+		"message": "גלול מעלה תוך כדי לחיצה על הכפתור הימני",
+		"description": "Wheel gesture: scroll up while holding right button"
+	},
+	"wheelGesture_scrollDownHoldingRight": {
+		"message": "גלול מטה תוך כדי לחיצה על הכפתור הימני",
+		"description": "Wheel gesture: scroll down while holding right button"
+	},
+	"specialGestures": {
+		"message": "מחוות מיוחדות",
+		"description": "Special gestures section title"
+	},
+	"enableSpecialGestures": {
+		"message": "הפעל מחוות מיוחדות",
+		"description": "Enable special gestures"
+	},
+	"enableSpecialGesturesDesc": {
+		"message": "בצע פעולות על ידי לחיצה על כפתור עכבר אחד תוך החזקת הכפתור השני",
+		"description": "Enable special gestures description"
+	},
+	"specialGesture_leftClickHoldingRight": {
+		"message": "לחיצה שמאלית תוך כדי החזקת הלחצן הימני",
+		"description": "Special gesture: left click while holding right button"
+	},
+	"specialGesture_rightClickHoldingLeft": {
+		"message": "לחיצה ימנית תוך כדי החזקת הלחצן השמאלי",
+		"description": "Special gesture: right click while holding left button"
+	},
+	"actionChains": {
+		"message": "שרשראות פקודות",
+		"description": "Action chains section title"
+	},
+	"actionChainsDesc": {
+		"message": "יצירת רצפי פקודות לשימוש חוזר שמתבצעים בזה אחר זה",
+		"description": "Action chains section description"
+	},
+	"actionActionChain": {
+		"message": "שרשרת פקודות",
+		"description": "Action chain action name"
+	},
+	"actionCategoryChains": {
+		"message": "שרשראות פקודות",
+		"description": "Action category: action chains"
+	},
+	"addChain": {
+		"message": "הוספת שרשרת",
+		"description": "Add chain button"
+	},
+	"addNewChain": {
+		"message": "יצירת שרשרת חדשה...",
+		"description": "Action item to navigate to chain editor and create a new chain"
+	},
+	"chainNamePlaceholder": {
+		"message": "שרשרת הפקודות שלי",
+		"description": "Chain name input placeholder"
+	},
+	"chainDelayUnit": {
+		"message": "אלפיות שנייה",
+		"description": "Milliseconds unit for chain delay"
+	},
+	"addStep": {
+		"message": "הוספת שלב",
+		"description": "Add step button"
+	},
+	"emptyChainSteps": {
+		"message": "לא נוספו שלבים. לחץ על \"הוספת שלב\" כדי להתחיל.",
+		"description": "Empty chain steps message in expanded body"
+	},
+	"emptyChainStepsShort": {
+		"message": "לא נוספו שלבים",
+		"description": "Short empty chain steps message for summary"
+	},
+	"noChains": {
+		"message": "עדיין אין שרשראות פקודות. לחץ על \"הוספת שרשרת\" כדי ליצור אחת.",
+		"description": "No chains message"
+	},
+	"chainNotFound": {
+		"message": "(השרשרת לא נמצאה)",
+		"description": "Chain not found label"
+	},
+	"deleteChainConfirm": {
+		"message": "האם למחוק את השרשרת \"%name%\"?",
+		"description": "Delete chain confirmation"
+	},
+	"stepNumber": {
+		"message": "שלב %n%",
+		"description": "Step number label"
+	},
+	"actionDelay": {
+		"message": "השהייה",
+		"description": "Delay action name for chain steps"
+	},
+	"actionSendCustomEvent": {
+		"message": "שלח אירוע מותאם אישית",
+		"description": "Action to dispatch a custom DOM event"
+	},
+	"actionSimulateKey": {
+		"message": "הדמיית לחיצת מקש",
+		"description": "Action to simulate a keyboard key press on the page"
+	},
+	"simulateKeyPreset": {
+		"message": "מקש מוגדר מראש",
+		"description": "Label for preset key dropdown in simulate key config"
+	},
+	"simulateKeyPresetLeft": {
+		"message": "← חץ שמאלה (דף קודם)",
+		"description": "Preset: ArrowLeft key"
+	},
+	"simulateKeyPresetRight": {
+		"message": "→ חץ ימינה (דף הבא)",
+		"description": "Preset: ArrowRight key"
+	},
+	"simulateKeyPresetCustom": {
+		"message": "מקש מותאם אישית",
+		"description": "Preset: Custom key option"
+	},
+	"simulateKeyRecordBtn": {
+		"message": "הקלט מקש",
+		"description": "Button to start recording a key press"
+	},
+	"simulateKeyRecording": {
+		"message": "לחץ על מקש...",
+		"description": "Recording state text"
+	},
+	"simulateKeyManualInput": {
+		"message": "מקש נוכחי",
+		"description": "Label for current key display in simulate key config"
+	},
+	"simulateKeyHint": {
+		"message": "תכונה זו שולחת אירועי מקלדת רק לדף הנוכחי, ומשמשת לרוב לניווט בדפים (← הקודם / → הבא). היא לא תפעיל קיצורי דרך של הדפדפן (לדוגמה, Ctrl+R לא ירענן את הדף). בנוסף, עקב מגבלות של מסגרת האתר, ייתכן שהאירועים המדומים לא ייתפסו על ידי כל הרכיבים המותאמים אישית או שדות הקלט.",
+		"description": "Hint text for simulate key feature"
+	},
+	"customEventInvalidJson": {
+		"message": "פורמט JSON לא תקין",
+		"description": "Error message when event detail is not valid JSON"
+	},
+	"customEventHint": {
+		"message": "שולח %code% אל %window%. שימושי לאינטגרציה עם סקריפטים אחרים.",
+		"description": "Hint explaining how custom event works. %code% = <code>new CustomEvent(...)</code>, %window% = <code>window</code>"
+	},
+	"delayDuration": {
+		"message": "משך זמן",
+		"description": "Delay duration label"
+	},
+	"chainStepCount": {
+		"message": "%count% שלבים",
+		"description": "Step count for unnamed chains, e.g. '3 steps'"
+	},
+	"chainStepCountOne": {
+		"message": "שלב %count%",
+		"description": "Step count for unnamed chains with exactly 1 step"
 	}
 }

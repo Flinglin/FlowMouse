@@ -8,20 +8,12 @@
 		"description": "Short extension name for popup"
 	},
 	"extDescription": {
-		"message": "ส่วนขยายท่าทางเมาส์แบบโอเพนซอร์สที่เน้นความเป็นส่วนตัวและประสบการณ์ที่ลื่นไหล การทำงานของท่าทางที่ลื่นไหล รองรับการลากขั้นสูง (Super Drag) และข้อมูลทั้งหมดจะถูกจัดเก็บไว้ในเครื่อง",
+		"message": "ส่วนขยายท่าทางเมาส์แบบโอเพนซอร์สที่เน้นความเป็นส่วนตัวและประสบการณ์ที่ลื่นไหล การทำงานของท่าทางที่ลื่นไหล รองรับการลากขั้นสูง (Super Drag)",
 		"description": "Extension description"
-	},
-	"appearance": {
-		"message": "รูปลักษณ์",
-		"description": "Appearance section"
 	},
 	"theme": {
 		"message": "ธีม",
 		"description": "Theme"
-	},
-	"themeDesc": {
-		"message": "สลับระหว่างธีมสว่าง/มืด",
-		"description": "Theme description"
 	},
 	"themeDark": {
 		"message": "มืด",
@@ -34,10 +26,6 @@
 	"themeAuto": {
 		"message": "ตามระบบ",
 		"description": "Auto theme - follow system"
-	},
-	"languageDesc": {
-		"message": "เลือกภาษา",
-		"description": "Language description"
 	},
 	"syncStatus": {
 		"message": "สถานะการซิงค์",
@@ -56,7 +44,7 @@
 		"description": "Author"
 	},
 	"privacyNote": {
-		"message": "🔒 ทำงานในเครื่องเท่านั้น ไม่มีการเชื่อมต่อเครือข่ายยกเว้นการซิงค์ ไม่มีการรวบรวมข้อมูล",
+		"message": " ทำงานในเครื่องเท่านั้น ไม่มีการเชื่อมต่อเครือข่ายยกเว้นการซิงค์ ไม่มีการรวบรวมข้อมูล",
 		"description": "Privacy note in footer"
 	},
 	"supportUsText": {
@@ -120,11 +108,19 @@
 		"description": "Hold the right mouse button and move the mouse to easily perform gestures"
 	},
 	"macLinuxContextMenuNotice": {
-		"message": "⚠️ เนื่องจากข้อจำกัดของระบบ ใน macOS / Linux ต้องคลิกขวาสองครั้งเร็วๆ เพื่อเปิดเมนูบริบท",
+		"message": "เนื่องจากข้อจำกัดของระบบ เมื่อเปิดใช้งานท่าทางสัมผัสคลิกขวา ใน macOS / Linux ต้องดับเบิลคลิกขวาเพื่อเปิดเมนูบริบท",
 		"description": "Notice for macOS / Linux users about double right-click for context menu"
 	},
+	"macLinuxDoubleClickHint": {
+		"message": "หากต้องการเปิดเมนูบริบท ให้ดับเบิลคลิกขวา (เรียนรู้เพิ่มเติม)",
+		"description": "Short toast hint shown on first right-click on macOS/Linux explaining double-click requirement"
+	},
+	"edgeGestureConflictNotice": {
+		"message": "%browserName% มีคุณสมบัติท่าทางในตัว หากต้องการใช้ท่าทางของ FlowMouse โปรด<a href=\"#\" class=\"edge-gesture-link\">ปิดการใช้งานท่าทางในตัว</a>ในการตั้งค่า %browserName%",
+		"description": "Notice for Edge users about built-in gesture conflict"
+	},
 	"macTextDragNotice": {
-		"message": "⚠️ เนื่องจากพฤติกรรมของ macOS เมื่อลากข้อความ ให้เลือกข้อความก่อน แล้วกดซ้ายค้างไว้สักครู่ก่อนลาก มิฉะนั้นการค้นหาอาจไม่ทำงาน",
+		"message": "เนื่องจากลักษณะการทำงานของ macOS เมื่อลากข้อความ ให้เลือกข้อความก่อน แล้วกดปุ่มซ้ายค้างไว้ภายในพื้นที่ที่เลือกและหยุดเล็กน้อยก่อนลาก มิฉะนั้นฟังก์ชันการลากอาจไม่ทำงาน",
 		"description": "Notice for macOS users about text drag behavior"
 	},
 	"showTrail": {
@@ -159,6 +155,14 @@
 		"message": "ความทึบ",
 		"description": "Opacity"
 	},
+	"blur": {
+		"message": "เบลอ",
+		"description": "Blur radius"
+	},
+	"hudShadow": {
+		"message": "เงา",
+		"description": "HUD shadow toggle"
+	},
 	"text": {
 		"message": "ข้อความ",
 		"description": "Text"
@@ -179,6 +183,10 @@
 		"message": "เอฟเฟกต์ภาพเคลื่อนไหวสำหรับการเลื่อนขึ้น/ลง",
 		"description": "Scroll smoothness description"
 	},
+	"smoothnessAuto": {
+		"message": "อัตโนมัติ",
+		"description": "Auto scroll smoothness - uses system if animation enabled, otherwise smooth"
+	},
 	"smoothnessSystem": {
 		"message": "ระบบ (ประสิทธิภาพสูง)",
 		"description": "System scroll smoothness"
@@ -190,6 +198,18 @@
 	"smoothnessNone": {
 		"message": "ไม่มีภาพเคลื่อนไหว",
 		"description": "No scroll animation"
+	},
+	"scrollAccel": {
+		"message": "ตัวคูณการเลื่อนอย่างต่อเนื่อง",
+		"description": "Speed multiplier applied when scrolling consecutively"
+	},
+	"scrollAccelOff": {
+		"message": "ปิด",
+		"description": "Scroll acceleration disabled"
+	},
+	"scrollAccelWindow": {
+		"message": "หมดเวลาการเลื่อนติดต่อกัน",
+		"description": "Max time (ms) between scrolls to count as consecutive"
 	},
 	"dragFeatures": {
 		"message": "ฟีเจอร์การลาก",
@@ -283,6 +303,22 @@
 		"message": "ไม่มีบัญชีดำ ป้อนโดเมนด้านบนเพื่อเพิ่ม",
 		"description": "Empty blacklist message"
 	},
+	"enableBlacklistContextMenu": {
+		"message": "สวิตช์เปิด/ปิดท่าทางในเมนูบริบท",
+		"description": "Setting title for blacklist context menu toggle"
+	},
+	"enableBlacklistContextMenuDesc": {
+		"message": "แสดงตัวเลือกสำหรับปิด/เปิดใช้งานท่าทางในเมนูบริบท",
+		"description": "Setting description for blacklist context menu toggle"
+	},
+	"menuAddToBlacklist": {
+		"message": "ปิดการใช้งานท่าทางบนเว็บไซต์นี้",
+		"description": "Context menu title for adding current site to blacklist"
+	},
+	"menuRemoveFromBlacklist": {
+		"message": "เปิดการใช้งานท่าทางบนเว็บไซต์นี้",
+		"description": "Context menu title for removing current site from blacklist"
+	},
 	"dataManagement": {
 		"message": "การจัดการข้อมูล",
 		"description": "Data management section"
@@ -322,6 +358,10 @@
 	"importDone": {
 		"message": "นำเข้าการตั้งค่าแล้ว",
 		"description": "Import done message"
+	},
+	"importConfirm": {
+		"message": "การนำเข้าจะเขียนทับการตั้งค่าปัจจุบันของคุณ โปรดนำเข้าไฟล์การกำหนดค่าจากแหล่งที่เชื่อถือได้เท่านั้น\n\nดำเนินการต่อหรือไม่?",
+		"description": "Import confirmation warning"
 	},
 	"importFailed": {
 		"message": "นำเข้าล้มเหลว: ไฟล์การกำหนดค่าไม่ถูกต้อง",
@@ -459,13 +499,41 @@
 		"message": "ปิดแท็บ",
 		"description": "Close tab"
 	},
-	"actionCloseTabKeepWindow": {
-		"message": "ปิดแท็บ (คงหน้าต่างไว้)",
-		"description": "Close tab but keep window open"
+	"closeTabKeepWindow": {
+		"message": "หากเป็นแท็บสุดท้าย ให้คงหน้าต่างไว้",
+		"description": "Checkbox label for closeTab action config"
+	},
+	"closeTabAfterClose": {
+		"message": "หลังจากปิด",
+		"description": "Label for closeTab afterClose config"
+	},
+	"closeTabAfterCloseDefault": {
+		"message": "ค่าเริ่มต้นเบราว์เซอร์",
+		"description": "Option for closeTab afterClose config - let browser decide"
+	},
+	"closeTabAfterCloseLeft": {
+		"message": "สลับไปแท็บซ้าย",
+		"description": "Option for closeTab afterClose config - switch to left tab"
+	},
+	"closeTabAfterCloseRight": {
+		"message": "สลับไปแท็บขวา",
+		"description": "Option for closeTab afterClose config - switch to right tab"
+	},
+	"switchTabNoWrap": {
+		"message": "ไม่สลับแบบวนซ้ำ",
+		"description": "Checkbox label for switchLeftTab/switchRightTab action config"
+	},
+	"switchTabMoveTab": {
+		"message": "ย้ายแท็บปัจจุบัน",
+		"description": "Checkbox label for switchLeftTab/switchRightTab/switchFirstTab/switchLastTab action config"
 	},
 	"actionCloseBrowser": {
 		"message": "ปิดเบราว์เซอร์",
 		"description": "Close browser"
+	},
+	"actionCloseWindow": {
+		"message": "ปิดหน้าต่าง",
+		"description": "Close current window"
 	},
 	"actionRestoreTab": {
 		"message": "กู้คืนแท็บที่ปิดไป",
@@ -498,6 +566,14 @@
 	"actionSwitchRightTab": {
 		"message": "สลับไปแท็บขวา",
 		"description": "Switch to right tab"
+	},
+	"actionSwitchFirstTab": {
+		"message": "สลับไปแท็บแรก",
+		"description": "Switch to first tab"
+	},
+	"actionSwitchLastTab": {
+		"message": "สลับไปแท็บสุดท้าย",
+		"description": "Switch to last tab"
 	},
 	"actionRefresh": {
 		"message": "รีเฟรชแท็บปัจจุบัน",
@@ -575,6 +651,10 @@
 		"message": "ปิดเสียง/เลิกปิดเสียงทุกแท็บ",
 		"description": "Toggle mute all tabs"
 	},
+	"actionTogglePinTab": {
+		"message": "ปักหมุด/เลิกปักหมุดแท็บปัจจุบัน",
+		"description": "Toggle pin current tab"
+	},
 	"showTrailOrigin": {
 		"message": "แสดงจุดเริ่มต้น",
 		"description": "Show trail origin point"
@@ -595,17 +675,29 @@
 		"message": "คำแนะนำ: แนะนำให้ตั้งค่าระหว่าง 15-30 เพื่อประสิทธิภาพในการจดจำท่าทางที่ดีที่สุด",
 		"description": "Warning when distance threshold is too small or too large"
 	},
-	"enableAdvancedSettings": {
-		"message": "การตั้งค่าขั้นสูง",
-		"description": "Enable advanced settings"
+	"gestureTurnTolerance": {
+		"message": "ค่าความคลาดเคลื่อนในการหมุนท่าทาง",
+		"description": "Turn tolerance for detecting direction changes in long gestures"
 	},
-	"enableAdvancedSettingsDesc": {
-		"message": "แสดงตัวเลือกขั้นสูงเพิ่มเติมเมื่อเปิดใช้งาน",
-		"description": "Show more advanced options when enabled"
+	"gestureTurnToleranceDesc": {
+		"message": "ค่าที่สูงกว่าจะช่วยลดการหมุนโดยไม่ตั้งใจ แต่ต้องใช้การเคลื่อนไหวที่ยาวขึ้นเพื่อเปลี่ยนทิศทาง",
+		"description": "Description for gesture turn tolerance setting"
 	},
-	"enableAdvancedSettingsToggle": {
-		"message": "โหมดการตั้งค่าขั้นสูง",
-		"description": "Enable advanced settings toggle label"
+	"advanced": {
+		"message": "โหมดผู้เชี่ยวชาญ",
+		"description": "Short label for per-section advanced toggle"
+	},
+	"otherSettings": {
+		"message": "การตั้งค่าอื่นๆ",
+		"description": "Section title for other/miscellaneous settings"
+	},
+	"show": {
+		"message": "แสดง",
+		"description": "Show navigation menu"
+	},
+	"hide": {
+		"message": "ซ่อน",
+		"description": "Hide navigation menu"
 	},
 	"urlFormatError": {
 		"message": "โปรดป้อน URL แบบเต็มที่ขึ้นต้นด้วย http:// หรือ https://",
@@ -615,41 +707,61 @@
 		"message": "คืนค่าเริ่มต้น",
 		"description": "Reset gesture to default action"
 	},
+	"resetToDefaultConfirm": {
+		"message": "รีเซ็ตการตั้งค่าเหล่านี้เป็นค่าเริ่มต้นหรือไม่?",
+		"description": "Confirmation dialog for resetting settings"
+	},
 	"addCustomGesture": {
 		"message": "เพิ่มท่าทางที่กำหนดเอง",
 		"description": "Add custom gesture section title"
-	},
-	"gesturePattern": {
-		"message": "รูปแบบท่าทาง",
-		"description": "Gesture pattern label"
-	},
-	"selectAction": {
-		"message": "เลือกการกระทำ",
-		"description": "Select action label"
 	},
 	"clear": {
 		"message": "ล้าง",
 		"description": "Clear button"
 	},
-	"addGesture": {
-		"message": "เพิ่มท่าทาง",
-		"description": "Add gesture button"
-	},
-	"pleaseDrawGesture": {
-		"message": "โปรดวาดท่าทางก่อน",
-		"description": "Alert when no gesture drawn"
-	},
 	"gestureAdded": {
 		"message": "✓ เพิ่มท่าทางแล้ว",
 		"description": "Gesture added success message"
 	},
-	"gestureDrawInstructions": {
-		"message": "กดคลิกขวาค้างไว้แล้ววาดท่าทางด้านล่าง ปล่อยเพื่อเสร็จสิ้น ทิศทางที่รองรับ:",
-		"description": "Instructions for gesture drawing"
+	"gestureRecorderTitle": {
+		"message": "วาดท่าทาง",
+		"description": "Gesture recorder full-screen title"
 	},
-	"gestureOverwriteConfirm": {
-		"message": "ท่าทาง %pattern% มีอยู่แล้ว ต้องการเขียนทับหรือไม่?",
-		"description": "Confirmation message when adding a duplicate gesture"
+	"gestureRecorderDesc": {
+		"message": "กด %button% ค้างไว้และวาดรูปแบบท่าทาง",
+		"description": "Gesture recorder instruction, %button% is replaced with the mouse button name"
+	},
+	"gestureRecorderEsc": {
+		"message": "ยกเลิก",
+		"description": "Gesture recorder cancel button label"
+	},
+	"gestureRecorderRecording": {
+		"message": "กำลังบันทึก…",
+		"description": "Gesture recorder recording indicator"
+	},
+	"gestureRecorderResult": {
+		"message": "ท่าทางที่บันทึกไว้",
+		"description": "Gesture recorder result label"
+	},
+	"gestureRecorderConfirm": {
+		"message": "ยืนยัน",
+		"description": "Gesture recorder confirm button"
+	},
+	"gestureRecorderRedraw": {
+		"message": "วาดใหม่",
+		"description": "Gesture recorder redraw button"
+	},
+	"gestureRecorderBanned": {
+		"message": "มีท่าทาง %pattern% อยู่แล้ว",
+		"description": "Gesture recorder message when user draws a banned/existing gesture pattern"
+	},
+	"rightButton": {
+		"message": "ปุ่มขวาของเมาส์",
+		"description": "Right mouse button name"
+	},
+	"leftButton": {
+		"message": "ปุ่มซ้ายของเมาส์",
+		"description": "Left mouse button name"
 	},
 	"customGesture": {
 		"message": "กำหนดเอง",
@@ -670,6 +782,10 @@
 	"enterCustomUrl": {
 		"message": "ป้อน URL (แนะนำให้ระบุโปรโตคอล เช่น https://, chrome:// ฯลฯ):",
 		"description": "Prompt for custom URL input"
+	},
+	"copyUrlIncludeTitle": {
+		"message": "คัดลอกชื่อหน้าด้วย",
+		"description": "Checkbox label for including page title when copying URL"
 	},
 	"invalidUrl": {
 		"message": "โปรดป้อน URL ที่ถูกต้อง (ขึ้นต้นด้วย http:// หรือ https://)",
@@ -750,6 +866,10 @@
 	"aboutTitle": {
 		"message": "เกี่ยวกับ FlowMouse",
 		"description": "About title"
+	},
+	"aboutTitleShort": {
+		"message": "เกี่ยวกับ",
+		"description": "Short About title "
 	},
 	"aboutAuthor": {
 		"message": "ผู้เขียน",
@@ -863,6 +983,10 @@
 		"message": "เปิดในเบื้องหน้า",
 		"description": "Open tab in foreground"
 	},
+	"openInIncognito": {
+		"message": "ไม่ระบุตัวตน",
+		"description": "Open in incognito checkbox"
+	},
 	"textDragGestures": {
 		"message": "ท่าทางลากข้อความ",
 		"description": "Text drag gestures"
@@ -880,7 +1004,7 @@
 		"description": "Direction column header"
 	},
 	"action": {
-		"message": "การกระทำ",
+		"message": "คำสั่ง",
 		"description": "Action column header"
 	},
 	"imageSearchUrl": {
@@ -915,6 +1039,10 @@
 		"message": "📋 คัดลอกลิงก์",
 		"description": "Copy link"
 	},
+	"dragActionCopyLinkText": {
+		"message": "📋 คัดลอกข้อความลิงก์",
+		"description": "Copy link text"
+	},
 	"dragActionSaveImage": {
 		"message": "💾 บันทึกรูปภาพ",
 		"description": "Save image"
@@ -936,7 +1064,7 @@
 		"description": "Custom search"
 	},
 	"reducedMotionWarning": {
-		"message": "⚠️ ภาพเคลื่อนไหวของระบบ %OS% ถูกปิดใช้งาน การเลื่อนแบบมีภาพเคลื่อนไหวอาจทำงานไม่ถูกต้อง คุณสามารถเปิดใช้งานภาพเคลื่อนไหวในการตั้งค่าระบบ %OS%",
+		"message": "ภาพเคลื่อนไหวของระบบ %OS% ถูกปิดใช้งาน การเลื่อนแบบมีภาพเคลื่อนไหวอาจทำงานไม่ถูกต้อง คุณสามารถเปิดใช้งานภาพเคลื่อนไหวในการตั้งค่าระบบ %OS%",
 		"description": "Warning message when system reduced motion is enabled"
 	},
 	"autoDetectUrl": {
@@ -964,7 +1092,7 @@
 		"description": "Setting description for restricted page notice"
 	},
 	"restrictedPagesDetailsTitle": {
-		"message": "⚠️ เนื่องจากนโยบายความปลอดภัยของเบราว์เซอร์ ส่วนขยายไม่สามารถทำงานในหน้าเว็บเฉพาะบางประเภทได้",
+		"message": "เนื่องจากนโยบายความปลอดภัยของเบราว์เซอร์ ส่วนขยายไม่สามารถทำงานในหน้าเว็บเฉพาะบางประเภทได้",
 		"description": "Collapsible details title"
 	},
 	"showMoreHint": {
@@ -972,7 +1100,7 @@
 		"description": "Hint to show more details"
 	},
 	"restrictedNewTab": {
-		"message": "หน้าแท็บใหม่ (chrome://newtab)",
+		"message": "หน้าแท็บใหม่",
 		"description": "New tab page title"
 	},
 	"restrictedNewTabDesc": {
@@ -988,11 +1116,11 @@
 		"description": "Store page description"
 	},
 	"restrictedInternal": {
-		"message": "หน้าภายในของเบราว์เซอร์",
+		"message": "หน้าภายในของเบราว์เซอร์ (%browserProtocol%)",
 		"description": "Internal page title"
 	},
 	"restrictedInternalDesc": {
-		"message": "หน้าทั้งหมดที่ขึ้นต้นด้วย chrome:// (Chrome) หรือ edge:// (Edge) รวมถึงการตั้งค่า ประวัติการเข้าชม การดาวน์โหลด ฯลฯ หน้าเหล่านี้เกี่ยวข้องกับฟังก์ชันหลักของเบราว์เซอร์และข้อมูลความเป็นส่วนตัวของผู้ใช้ จึงได้รับการป้องกันอย่างเข้มงวด",
+		"message": "ตัวอย่างเช่น การตั้งค่าภายในของ %browserName% ประวัติการเข้าชม การดาวน์โหลด ฯลฯ หน้าเหล่านี้เกี่ยวข้องกับฟังก์ชันหลักของเบราว์เซอร์และข้อมูลความเป็นส่วนตัวของผู้ใช้ จึงได้รับการป้องกันอย่างเข้มงวด",
 		"description": "Internal page description"
 	},
 	"restrictedFile": {
@@ -1000,7 +1128,7 @@
 		"description": "File page title"
 	},
 	"restrictedFileDesc": {
-		"message": "ไฟล์ HTML ในเครื่องที่เปิดผ่านโปรโตคอล file:// เนื่องจากข้อจำกัดด้านความปลอดภัย (ป้องกันส่วนขยายที่เป็นอันตรายจากการเข้าถึงระบบไฟล์ในเครื่อง) ส่วนขยายจึงไม่สามารถทำงานบนหน้าเหล่านี้ได้",
+		"message": "ไฟล์ html, pdf ฯลฯ ในเครื่องที่เปิดผ่านโปรโตคอล file:// เนื่องจากข้อจำกัดด้านความปลอดภัย (ป้องกันส่วนขยายที่เป็นอันตรายจากการเข้าถึงระบบไฟล์ในเครื่อง) ส่วนขยายจึงไม่สามารถทำงานบนหน้าเหล่านี้ได้",
 		"description": "File page description"
 	},
 	"restrictedViewSource": {
@@ -1024,7 +1152,7 @@
 		"description": "Popup description when content script not loaded"
 	},
 	"popupRefreshBtn": {
-		"message": "🔄 รีเฟรชหน้า",
+		"message": "รีเฟรชหน้า",
 		"description": "Popup refresh button text"
 	},
 	"popupRestrictedTitle": {
@@ -1036,7 +1164,7 @@
 		"description": "Popup description for restricted pages"
 	},
 	"popupLearnMore": {
-		"message": "📖 เรียนรู้เพิ่มเติม",
+		"message": "เรียนรู้เพิ่มเติม",
 		"description": "Popup learn more button text"
 	},
 	"tutorialPending": {
@@ -1207,6 +1335,26 @@
 		"message": "เพื่อบันทึกรูปภาพ FlowMouse ต้องการสิทธิ์เข้าถึงหน้าเว็บและการดาวน์โหลด",
 		"description": "Permission popup description for downloads and page capture"
 	},
+	"permissionIncognitoTitle": {
+		"message": "อนุญาตในโหมดไม่ระบุตัวตน",
+		"description": "Permission popup title for incognito"
+	},
+	"permissionIncognitoDesc": {
+		"message": "หากต้องการใช้งานในหน้าต่างที่ไม่ระบุตัวตน คุณต้องเปิดใช้งาน \"อนุญาตในโหมดไม่ระบุตัวตน\" สำหรับ FlowMouse ด้วยตนเอง",
+		"description": "Permission popup description for incognito"
+	},
+	"openExtensionsSettings": {
+		"message": "เปิดรายละเอียดส่วนขยาย",
+		"description": "Button to open extension details page"
+	},
+	"permissionFirefoxIncognitoTitle": {
+		"message": "ทำงานในหน้าต่างส่วนตัว",
+		"description": "Permission popup title for Firefox private browsing"
+	},
+	"permissionFirefoxIncognitoDesc": {
+		"message": "หากต้องการใช้งานในหน้าต่างส่วนตัว คุณต้องเปิดใช้งาน \"ทำงานในหน้าต่างส่วนตัว\" สำหรับ FlowMouse ในตัวจัดการส่วนขยายด้วยตนเอง",
+		"description": "Permission popup description for Firefox private browsing"
+	},
 	"grantPermission": {
 		"message": "ให้สิทธิ์",
 		"description": "Grant permission button"
@@ -1234,5 +1382,205 @@
 	"saveImageTimeout": {
 		"message": "บันทึกรูปภาพไม่สำเร็จ: หมดเวลาโหลด",
 		"description": "Toast message when image loading times out"
+	},
+	"buttonOkay": {
+		"message": "ตกลง",
+		"description": "Generic OK button"
+	},
+	"buttonCancel": {
+		"message": "ยกเลิก",
+		"description": "Generic Cancel button"
+	},
+	"buttonClose": {
+		"message": "ปิด",
+		"description": "Generic Close button"
+	},
+	"searchActions": {
+		"message": "ค้นหาคำสั่ง...",
+		"description": "Placeholder for action search input in action picker"
+	},
+	"actionCategoryNavigation": {
+		"message": "การนำทาง",
+		"description": "Action category: navigation"
+	},
+	"actionCategoryTabs": {
+		"message": "แท็บ",
+		"description": "Action category: tabs"
+	},
+	"actionCategoryWindow": {
+		"message": "หน้าต่าง",
+		"description": "Action category: window"
+	},
+	"actionCategoryUtilities": {
+		"message": "เครื่องมือ",
+		"description": "Action category: utilities"
+	},
+	"noResults": {
+		"message": "ไม่พบผลลัพธ์",
+		"description": "No search results found"
+	},
+	"wheelGestures": {
+		"message": "ท่าทางลูกกลิ้งเมาส์",
+		"description": "Mouse wheel gestures section title"
+	},
+	"enableWheelGestures": {
+		"message": "เปิดใช้งานท่าทางลูกกลิ้งเมาส์",
+		"description": "Enable mouse wheel gestures"
+	},
+	"enableWheelGesturesDesc": {
+		"message": "ดำเนินการต่างๆ อย่างรวดเร็วโดยใช้ลูกกลิ้งเมาส์",
+		"description": "Enable mouse wheel gestures description"
+	},
+	"wheelGesture_scrollUpHoldingRight": {
+		"message": "เลื่อนขึ้นในขณะที่กดปุ่มขวาค้างไว้",
+		"description": "Wheel gesture: scroll up while holding right button"
+	},
+	"wheelGesture_scrollDownHoldingRight": {
+		"message": "เลื่อนลงในขณะที่กดปุ่มขวาค้างไว้",
+		"description": "Wheel gesture: scroll down while holding right button"
+	},
+	"specialGestures": {
+		"message": "ท่าทางพิเศษ",
+		"description": "Special gestures section title"
+	},
+	"enableSpecialGestures": {
+		"message": "เปิดใช้งานท่าทางพิเศษ",
+		"description": "Enable special gestures"
+	},
+	"enableSpecialGesturesDesc": {
+		"message": "ดำเนินการโดยคลิกปุ่มเมาส์ปุ่มหนึ่งในขณะที่กดอีกปุ่มค้างไว้",
+		"description": "Enable special gestures description"
+	},
+	"specialGesture_leftClickHoldingRight": {
+		"message": "คลิกซ้ายในขณะที่กดปุ่มขวาค้างไว้",
+		"description": "Special gesture: left click while holding right button"
+	},
+	"specialGesture_rightClickHoldingLeft": {
+		"message": "คลิกขวาในขณะที่กดปุ่มซ้ายค้างไว้",
+		"description": "Special gesture: right click while holding left button"
+	},
+	"actionChains": {
+		"message": "เชนคำสั่ง",
+		"description": "Action chains section title"
+	},
+	"actionChainsDesc": {
+		"message": "สร้างลำดับคำสั่งที่นำมาใช้ซ้ำได้ ซึ่งจะดำเนินการทีละรายการต่อเนื่องกัน",
+		"description": "Action chains section description"
+	},
+	"actionActionChain": {
+		"message": "เชนคำสั่ง",
+		"description": "Action chain action name"
+	},
+	"actionCategoryChains": {
+		"message": "เชนคำสั่ง",
+		"description": "Action category: action chains"
+	},
+	"addChain": {
+		"message": "เพิ่มเชน",
+		"description": "Add chain button"
+	},
+	"addNewChain": {
+		"message": "สร้างเชนใหม่...",
+		"description": "Action item to navigate to chain editor and create a new chain"
+	},
+	"chainNamePlaceholder": {
+		"message": "เชนคำสั่งของฉัน",
+		"description": "Chain name input placeholder"
+	},
+	"chainDelayUnit": {
+		"message": "ms",
+		"description": "Milliseconds unit for chain delay"
+	},
+	"addStep": {
+		"message": "เพิ่มขั้นตอน",
+		"description": "Add step button"
+	},
+	"emptyChainSteps": {
+		"message": "ยังไม่มีการเพิ่มขั้นตอน คลิก \"เพิ่มขั้นตอน\" เพื่อเริ่มต้น",
+		"description": "Empty chain steps message in expanded body"
+	},
+	"emptyChainStepsShort": {
+		"message": "ยังไม่มีการเพิ่มขั้นตอน",
+		"description": "Short empty chain steps message for summary"
+	},
+	"noChains": {
+		"message": "ยังไม่มีเชนคำสั่ง คลิก \"เพิ่มเชน\" เพื่อสร้าง",
+		"description": "No chains message"
+	},
+	"chainNotFound": {
+		"message": "(ไม่พบเชน)",
+		"description": "Chain not found label"
+	},
+	"deleteChainConfirm": {
+		"message": "ต้องการลบเชน \"%name%\" หรือไม่",
+		"description": "Delete chain confirmation"
+	},
+	"stepNumber": {
+		"message": "ขั้นตอนที่ %n%",
+		"description": "Step number label"
+	},
+	"actionDelay": {
+		"message": "ความล่าช้า",
+		"description": "Delay action name for chain steps"
+	},
+	"actionSendCustomEvent": {
+		"message": "ส่งเหตุการณ์ที่กำหนดเอง",
+		"description": "Action to dispatch a custom DOM event"
+	},
+	"actionSimulateKey": {
+		"message": "จำลองการกดแป้นพิมพ์",
+		"description": "Action to simulate a keyboard key press on the page"
+	},
+	"simulateKeyPreset": {
+		"message": "แป้นพิมพ์ที่ตั้งไว้ล่วงหน้า",
+		"description": "Label for preset key dropdown in simulate key config"
+	},
+	"simulateKeyPresetLeft": {
+		"message": "← ลูกศรซ้าย (หน้าก่อนหน้า)",
+		"description": "Preset: ArrowLeft key"
+	},
+	"simulateKeyPresetRight": {
+		"message": "→ ลูกศรขวา (หน้าถัดไป)",
+		"description": "Preset: ArrowRight key"
+	},
+	"simulateKeyPresetCustom": {
+		"message": "ปุ่มแบบกำหนดเอง",
+		"description": "Preset: Custom key option"
+	},
+	"simulateKeyRecordBtn": {
+		"message": "บันทึกปุ่ม",
+		"description": "Button to start recording a key press"
+	},
+	"simulateKeyRecording": {
+		"message": "กดปุ่ม...",
+		"description": "Recording state text"
+	},
+	"simulateKeyManualInput": {
+		"message": "ปุ่มปัจจุบัน",
+		"description": "Label for current key display in simulate key config"
+	},
+	"simulateKeyHint": {
+		"message": "ฟีเจอร์นี้จะส่งเหตุการณ์แป้นพิมพ์ไปยังหน้าปัจจุบันเท่านั้น มักใช้สำหรับการนำทางหน้า (← ก่อนหน้า / → ถัดไป) จะไม่ทริกเกอร์แป้นพิมพ์ลัดของเบราว์เซอร์ (เช่น Ctrl+R จะไม่รีเฟรชหน้า) นอกจากนี้ เนื่องจากข้อจำกัดของเฟรมเวิร์กเว็บไซต์ เหตุการณ์ที่จำลองขึ้นอาจไม่ถูกจับโดยส่วนประกอบที่กำหนดเองหรือช่องป้อนข้อมูลทั้งหมด",
+		"description": "Hint text for simulate key feature"
+	},
+	"customEventInvalidJson": {
+		"message": "รูปแบบ JSON ไม่ถูกต้อง",
+		"description": "Error message when event detail is not valid JSON"
+	},
+	"customEventHint": {
+		"message": "ส่ง %code% บน %window% มีประโยชน์สำหรับการผสานรวมกับสคริปต์อื่น",
+		"description": "Hint explaining how custom event works. %code% = <code>new CustomEvent(...)</code>, %window% = <code>window</code>"
+	},
+	"delayDuration": {
+		"message": "ระยะเวลา",
+		"description": "Delay duration label"
+	},
+	"chainStepCount": {
+		"message": "%count% ขั้นตอน",
+		"description": "Step count for unnamed chains, e.g. '3 steps'"
+	},
+	"chainStepCountOne": {
+		"message": "%count% ขั้นตอน",
+		"description": "Step count for unnamed chains with exactly 1 step"
 	}
 }

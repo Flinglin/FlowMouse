@@ -23,13 +23,9 @@ Supports gesture navigation, super drag, wheel and rocker gestures, and the abil
 
 ## Install
 
-#### Chrome / Microsoft Edge
-
-<a href="https://chrome.google.com/webstore/detail/fnldhkfidchnjiokpoemdhoejmaojkgp"><img src="https://developer.chrome.com/static/docs/webstore/branding/image/mPGKYBIR2uCP0ApchDXE.png" alt="Available on Chrome Web Store" height="58"></a>
-
-#### Firefox
-
-<a href="https://addons.mozilla.org/firefox/addon/flowmouse/"><img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt="Get the Add-on for Firefox" height="58"></a>
+| Chrome / Microsoft Edge | Firefox |
+|:---:|:---:|
+| <a href="https://chrome.google.com/webstore/detail/fnldhkfidchnjiokpoemdhoejmaojkgp"><img src="https://developer.chrome.com/static/docs/webstore/branding/image/mPGKYBIR2uCP0ApchDXE.png" alt="Available on Chrome Web Store" width="206" height="58"></a> | <a href="https://addons.mozilla.org/firefox/addon/flowmouse/"><img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt="Get the Add-on for Firefox" width="166" height="58"></a> |
 
 > You can also download from [GitHub Releases](https://github.com/Hmily-LCG/FlowMouse/releases) for manual installation.
 

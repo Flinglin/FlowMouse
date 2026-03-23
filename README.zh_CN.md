@@ -23,13 +23,9 @@
 
 ## 安装
 
-#### Chrome / Microsoft Edge
-
-<a href="https://chrome.google.com/webstore/detail/fnldhkfidchnjiokpoemdhoejmaojkgp"><img src="https://developer.chrome.com/static/docs/webstore/branding/image/mPGKYBIR2uCP0ApchDXE.png" alt="Available on Chrome Web Store" height="58"></a>
-
-#### Firefox
-
-<a href="https://addons.mozilla.org/firefox/addon/flowmouse/"><img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt="Get the Add-on for Firefox" height="58"></a>
+| Chrome / Microsoft Edge | Firefox |
+|:---:|:---:|
+| <a href="https://chrome.google.com/webstore/detail/fnldhkfidchnjiokpoemdhoejmaojkgp"><img src="https://developer.chrome.com/static/docs/webstore/branding/image/mPGKYBIR2uCP0ApchDXE.png" alt="Available on Chrome Web Store" width="206" height="58"></a> | <a href="https://addons.mozilla.org/firefox/addon/flowmouse/"><img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt="Get the Add-on for Firefox" width="166" height="58"></a> |
 
 > 也可从 [GitHub Releases](https://github.com/Hmily-LCG/FlowMouse/releases) 或 [百度网盘](https://pan.baidu.com/s/175cd1dOrAcQEAbRRFlOfhA?pwd=52pj) 下载并手动离线安装。
 

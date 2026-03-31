@@ -1,5 +1,11 @@
 ## FlowMouse Changelog
 
+### v1.4.2 (2026-03-31)
+
+- Relaxed the minimum version requirement for Firefox
+- Optimized HUD display logic to improve compatibility with rich text editors like KindEditor
+
+
 ### v1.4 (2026-03-22)
 
 **Gesture Improvements:**

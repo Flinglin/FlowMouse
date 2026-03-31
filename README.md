@@ -97,4 +97,4 @@ FlowMouse aims to carry on the convenience of gesture navigation while putting p
 - **Website**: [https://www.52pojie.cn/thread-2080303-1-1.html](https://www.52pojie.cn/thread-2080303-1-1.html)
 - **GitHub**: [https://github.com/Hmily-LCG/FlowMouse](https://github.com/Hmily-LCG/FlowMouse)
 - **Email**: Service@52pojie.cn
-- Feedback and suggestions are welcomed via email.
+- Feedback and suggestions are welcomed.
